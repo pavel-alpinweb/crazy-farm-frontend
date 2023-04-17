@@ -1,0 +1,19 @@
+{
+  "name": "crazy-farm-frontend",
+  "version": "0.1.0",
+  "description": "Frontend for HTML5 game. Crazy farm semulator",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "HTML5",
+    "game",
+    "typescript",
+    "PIXI.js",
+    "Jest",
+    "AlpinwebStudio"
+  ],
+  "author": "pavel-alpinweb",
+  "license": "ISC"
+}
