@@ -5,6 +5,8 @@
     "target": "es5",
     "sourceMap": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports" : true,
+    "esModuleInterop" : true,
     "moduleResolution": "nodenext",
   },
   "exclude": [
