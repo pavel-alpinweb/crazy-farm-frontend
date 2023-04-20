@@ -1,7 +1,6 @@
 import User from "../model/user.model";
-
 export default class AuthController {
-  private $userModel ;
+  private $userModel: User;
   constructor(userModel: User) {
       this.$userModel = userModel;
   }
