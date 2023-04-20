@@ -1,10 +1,12 @@
+import User from "../model/user.model";
+
 export default class AuthController {
-  private $userModel = null;
-  constructor({ userModel }: any) {
+  private $userModel ;
+  constructor(userModel: User) {
       this.$userModel = userModel;
   }
 
   public init() {
-      console.log('User Model:', this.$userModel);
+      console.log('User Model:', this.$userModel.data);
   }
 }

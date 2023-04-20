@@ -1,3 +1,6 @@
-import sum from "./utils/sum";
+import User from "./model/user.model";
+import AuthController from "./controler/auth.controller";
 
-console.log(sum(5, 5));
+const userModel = new User();
+const authController = new AuthController(userModel);
+authController.init();
