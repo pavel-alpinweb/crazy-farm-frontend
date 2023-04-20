@@ -12,4 +12,12 @@ export default class User {
     public get email() {
         return this.userEmail;
     }
+
+    public get data() {
+        return {
+            login: this.userLogin,
+            password: this.userPassword,
+            email: this.userEmail,
+        }
+    }
 }
