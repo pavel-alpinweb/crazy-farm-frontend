@@ -1,6 +1,6 @@
 export abstract class AbstractView {
     private renderedElement: Element | null = null;
-    private renderPosition = {
+    public static renderPosition = {
         BEFOREBEGIN: 'beforebegin',
         AFTERBEGIN: 'afterbegin',
         BEFOREEND: 'beforeend',
@@ -17,7 +17,7 @@ export abstract class AbstractView {
         const newElement = document.createElement('div');
         newElement.innerHTML = this.template;
 
-        return this.renderedElement;
+        return newElement.firstElementChild;
     }
 
     public remove(): void {

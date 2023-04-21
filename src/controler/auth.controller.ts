@@ -1,11 +1,18 @@
 import User from "../model/user.model";
+import {appContainer} from "../utils/constants";
+import {AuthScreen} from "../view/screens/Auth.screen";
+import {AbstractView} from "../framework/interface/AbstractView";
 export default class AuthController {
-  private $userModel: User;
+  private userModel: User;
+  private $AuthScreen: AbstractView;
   constructor(userModel: User) {
-      this.$userModel = userModel;
+      this.userModel = userModel;
+      this.$AuthScreen = new AuthScreen();
   }
 
   public init() {
-      console.log('User Model:', this.$userModel.data);
+      console.log('User Model:', this.userModel.data);
+      // @ts-ignore
+      appContainer?.insertAdjacentElement(AbstractView.renderPosition.BEFOREEND, this.$AuthScreen.element);
   }
 }
