@@ -8,13 +8,15 @@ export abstract class AbstractView {
     };
     abstract get template(): string;
     public get element(): Element | null {
+        if (!this.renderedElement) {
+            this.renderedElement = this.render();
+        }
         return this.renderedElement;
     }
-    public render(): Element | null  {
+    private render(): Element | null  {
         const newElement = document.createElement('div');
         newElement.innerHTML = this.template;
 
-        this.renderedElement = newElement.firstElementChild
         return this.renderedElement;
     }
 
