@@ -5,6 +5,9 @@ declare global {
         BEFOREEND: 'beforeend',
         AFTEREND: 'afterend',
     }
+    interface Components {
+        [key: string]: AbstractView | null;
+    }
 }
 export abstract class AbstractView {
     private renderedElement: Element | null = null;
