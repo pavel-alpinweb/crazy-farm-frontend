@@ -7,9 +7,9 @@ declare global {
 }
 
 export default class User {
-  private userLogin = "login";
-  private userPassword = "password";
-  private userEmail = "email";
+  private userLogin = "Sioda";
+  private userPassword = "Sioda123456";
+  private userEmail = "sioda@sioda.sioda";
 
   public get login(): string {
     return this.userLogin;

@@ -4,11 +4,11 @@ import {AuthScreen} from "../view/screens/Auth.screen";
 import {AbstractView} from "../framework/interface/AbstractView";
 
 export default class AuthController {
-  private userModel: User;
+  private readonly userModel: User;
   private $AuthScreen: AbstractView;
   constructor(userModel: User) {
       this.userModel = userModel;
-      this.$AuthScreen = new AuthScreen();
+      this.$AuthScreen = new AuthScreen(this.userModel);
   }
 
   public init() {
