@@ -2,6 +2,7 @@ import User from "../model/user.model";
 import {appContainer} from "../utils/constants";
 import {AuthScreen} from "../view/screens/Auth.screen";
 import {AbstractView} from "../framework/interface/AbstractView";
+
 export default class AuthController {
   private userModel: User;
   private $AuthScreen: AbstractView;
@@ -12,7 +13,6 @@ export default class AuthController {
 
   public init() {
       console.log('User Model:', this.userModel.data);
-      // @ts-ignore
-      appContainer?.insertAdjacentElement(AbstractView.renderPosition.BEFOREEND, this.$AuthScreen.element);
+      appContainer?.insertAdjacentElement(AbstractView.positions.BEFOREEND, <Element>this.$AuthScreen.element);
   }
 }

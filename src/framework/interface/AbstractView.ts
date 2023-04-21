@@ -1,6 +1,14 @@
+declare global {
+    interface RenderPositions {
+        BEFOREBEGIN: 'beforebegin',
+        AFTERBEGIN: 'afterbegin',
+        BEFOREEND: 'beforeend',
+        AFTEREND: 'afterend',
+    }
+}
 export abstract class AbstractView {
     private renderedElement: Element | null = null;
-    public static renderPosition = {
+    public static positions: RenderPositions = {
         BEFOREBEGIN: 'beforebegin',
         AFTERBEGIN: 'afterbegin',
         BEFOREEND: 'beforeend',
