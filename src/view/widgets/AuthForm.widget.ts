@@ -12,7 +12,7 @@ interface State {
 }
 
 const createAuthFormTemplate = (state: State, components: Components) => `
-<Form action="#">
+<Form class="auth-form" action="#">
     <h2>${state.title}</h2>
     ${components.LoginTextInput?.template} </br>
     ${components.PasswordTextInput?.template} </br>
