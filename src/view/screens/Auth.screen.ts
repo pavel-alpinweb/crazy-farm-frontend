@@ -1,5 +1,6 @@
 import {AbstractView} from "../../framework/interface/AbstractView";
 import {PageHeaderComponent} from "../ui-components/PageHeader.component";
+import {UserInfoComponent} from "../ui-components/UserInfo.component";
 
 
 interface Props {
@@ -16,12 +17,7 @@ interface State {
 const createAuthScreenTemplate = (state: State, components: Components) => `
 <div class="auth-screen">
     ${components.PageHeaderComponent?.template}
-    <h2>Пользователь:</h2>
-    <h4>${state.user.login}</h4>
-    <h2>Пароль:</h2>
-    <h4>${state.user.password}</h4>
-    <h2>Email:</h2>
-    <h4>${state.user.email}</h4>
+    ${components.UserInfoComponent?.template}
 </div>
 `;
 
@@ -35,13 +31,17 @@ export class AuthScreen extends AbstractView {
         },
     };
     private components: Components = {
-        PageHeaderComponent: null
+        PageHeaderComponent: null,
+        UserInfoComponent: null,
     };
     constructor(props: Props) {
         super();
         this.state.user = props;
         this.components.PageHeaderComponent = new PageHeaderComponent({
             title: this.state.title,
+        });
+        this.components.UserInfoComponent = new UserInfoComponent({
+            user: this.state.user
         });
     }
     get template(): string {
