@@ -23,7 +23,7 @@ const createAuthFormTemplate = (state: State, components: Components) => `
 
 export class AuthFormWidget extends AbstractView {
   protected state: State = {
-    title: "Введите даннеы аккаунта",
+    title: "Введите данные аккаунта",
     user: {
       login: "",
       password: "",
@@ -58,7 +58,7 @@ export class AuthFormWidget extends AbstractView {
       placeholder: "Введите email",
       isDisabled: false,
       isError: false,
-      isPassword: true,
+      isPassword: false,
     });
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
