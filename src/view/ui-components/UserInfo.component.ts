@@ -10,11 +10,11 @@ interface State {
 
 const createUserInfoTemplate = (state: State) => `
 <div class="user-info">
-    <h2>Пользователь:</h2>
+    <h3>Пользователь:</h3>
     <h4>${state.user.login}</h4>
-    <h2>Пароль:</h2>
+    <h3>Пароль:</h3>
     <h4>${state.user.password}</h4>
-    <h2>Email:</h2>
+    <h3>Email:</h3>
     <h4>${state.user.email}</h4>
 </div>
 `;
