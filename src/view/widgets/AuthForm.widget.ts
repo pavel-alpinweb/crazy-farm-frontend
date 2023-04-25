@@ -1,6 +1,6 @@
-import { AbstractView } from "../../framework/interface/AbstractView";
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
+import {AbstractWidget} from "../../framework/interface/AbstractWidget";
 
 interface Props {
   user: userData;
@@ -21,7 +21,7 @@ const createAuthFormTemplate = (state: State, components: Components) => `
 </Form>
 `;
 
-export class AuthFormWidget extends AbstractView {
+export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
     title: "Введите данные аккаунта",
     user: {
@@ -30,7 +30,7 @@ export class AuthFormWidget extends AbstractView {
       email: "",
     },
   };
-  private components: Components = {
+  protected components: WidgetComponents = {
     LoginTextInput: null,
     PasswordTextInput: null,
     EmailTextInput: null,
@@ -38,7 +38,13 @@ export class AuthFormWidget extends AbstractView {
   };
   constructor(props: Props) {
     super();
+    this.setState(props);
+    this.initComponents();
+  }
+  protected setState(props: Props) {
     this.state.user = props.user;
+  }
+  protected initComponents() {
     this.components.LoginTextInput = new TextInputComponent({
       value: this.state.user.login,
       placeholder: "Введите логин",
@@ -64,6 +70,7 @@ export class AuthFormWidget extends AbstractView {
       title: "Отправить",
     });
   }
+
   get template(): string {
     return createAuthFormTemplate(this.state, this.components);
   }
