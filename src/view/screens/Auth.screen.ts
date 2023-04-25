@@ -30,7 +30,7 @@ export class AuthScreen extends AbstractScreen {
       email: "",
     },
   };
-  protected components: Components = {
+  protected components: ScreenComponents = {
     PageHeaderComponent: null,
     UserInfoComponent: null,
     AuthFormWidget: null,
