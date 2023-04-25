@@ -17,7 +17,7 @@ const createAuthScreenTemplate = (state: State, components: Components) => `
     ${components.PageHeaderComponent?.template}
     ${components.UserInfoComponent?.template}
     <hr>
-    ${components.AuthFormWidget?.template}
+    ${components.AuthFormWidget?.element?.outerHTML}
 </div>
 `;
 

@@ -10,7 +10,7 @@ declare global {
   }
 }
 export abstract class AbstractView {
-  private renderedElement: Element | null = null;
+  protected renderedElement: Element | null = null;
   private render(): Element | null {
     const newElement = document.createElement("div");
     newElement.innerHTML = this.template;
@@ -18,6 +18,9 @@ export abstract class AbstractView {
     return newElement.firstElementChild;
   }
   abstract get template(): string;
+  setHandlers() {
+    console.log('Init handlers', this.constructor.name);
+  }
   protected abstract state: object;
 
   public static positions: RenderPositions = {
@@ -29,6 +32,8 @@ export abstract class AbstractView {
   public get element(): Element | null {
     if (!this.renderedElement) {
       this.renderedElement = this.render();
+      console.log(`Render ${this.constructor.name}`, this.renderedElement);
+      this.setHandlers();
     }
     return this.renderedElement;
   }

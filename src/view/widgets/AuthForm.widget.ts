@@ -17,7 +17,7 @@ const createAuthFormTemplate = (state: State, components: Components) => `
     ${components.LoginTextInput?.template} </br>
     ${components.PasswordTextInput?.template} </br>
     ${components.EmailTextInput?.template} </br>
-    ${components.FormButton?.template} </br>
+    ${components.FormButton?.element?.outerHTML} </br>
 </Form>
 `;
 
@@ -68,6 +68,13 @@ export class AuthFormWidget extends AbstractWidget {
     });
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
+    });
+  }
+  setHandlers() {
+    console.log('Implement setHandlers: renderedElement', this.element);
+    this.renderedElement?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      console.log('Click!');
     });
   }
 
