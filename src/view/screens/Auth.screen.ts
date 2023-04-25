@@ -1,16 +1,15 @@
-import {AbstractView} from "../../framework/interface/AbstractView";
-import {PageHeaderComponent} from "../ui-components/PageHeader.component";
-import {UserInfoComponent} from "../ui-components/UserInfo.component";
-import {AuthFormWidget} from "../widgets/AuthForm.widget";
-
+import { AbstractView } from "../../framework/interface/AbstractView";
+import { PageHeaderComponent } from "../ui-components/PageHeader.component";
+import { UserInfoComponent } from "../ui-components/UserInfo.component";
+import { AuthFormWidget } from "../widgets/AuthForm.widget";
 
 interface Props {
-    user: userData;
+  user: userData;
 }
 
 interface State {
-    title: string;
-    user: Props["user"];
+  title: string;
+  user: Props["user"];
 }
 
 const createAuthScreenTemplate = (state: State, components: Components) => `
@@ -23,33 +22,33 @@ const createAuthScreenTemplate = (state: State, components: Components) => `
 `;
 
 export class AuthScreen extends AbstractView {
-    protected state: State = {
-        title: 'Вход/Регистрация',
-        user: {
-            login: '',
-            password: '',
-            email: '',
-        },
-    };
-    private components: Components = {
-        PageHeaderComponent: null,
-        UserInfoComponent: null,
-        AuthFormWidget: null,
-    };
-    constructor(props: Props) {
-        super();
-        this.state.user = props.user;
-        this.components.PageHeaderComponent = new PageHeaderComponent({
-            title: this.state.title,
-        });
-        this.components.UserInfoComponent = new UserInfoComponent({
-            user: this.state.user,
-        });
-        this.components.AuthFormWidget = new AuthFormWidget({
-            user: this.state.user,
-        });
-    }
-    get template(): string {
-        return createAuthScreenTemplate(this.state, this.components);
-    }
+  protected state: State = {
+    title: "Вход/Регистрация",
+    user: {
+      login: "",
+      password: "",
+      email: "",
+    },
+  };
+  private components: Components = {
+    PageHeaderComponent: null,
+    UserInfoComponent: null,
+    AuthFormWidget: null,
+  };
+  constructor(props: Props) {
+    super();
+    this.state.user = props.user;
+    this.components.PageHeaderComponent = new PageHeaderComponent({
+      title: this.state.title,
+    });
+    this.components.UserInfoComponent = new UserInfoComponent({
+      user: this.state.user,
+    });
+    this.components.AuthFormWidget = new AuthFormWidget({
+      user: this.state.user,
+    });
+  }
+  get template(): string {
+    return createAuthScreenTemplate(this.state, this.components);
+  }
 }

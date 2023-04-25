@@ -20,18 +20,18 @@ const createUserInfoTemplate = (state: State) => `
 `;
 
 export class UserInfoComponent extends AbstractView {
-    protected state: State = {
-        user: {
-            login: '',
-            password: '',
-            email: '',
-        },
-    };
-    constructor(props: Props) {
-        super();
-        this.state.user = props.user;
-    }
-    get template(): string {
-        return createUserInfoTemplate(this.state);
-    }
+  protected state: State = {
+    user: {
+      login: "",
+      password: "",
+      email: "",
+    },
+  };
+  constructor(props: Props) {
+    super();
+    this.state.user = props.user;
+  }
+  get template(): string {
+    return createUserInfoTemplate(this.state);
+  }
 }
