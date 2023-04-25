@@ -70,13 +70,6 @@ export class AuthFormWidget extends AbstractWidget {
       title: "Отправить",
     });
   }
-  setHandlers() {
-    console.log('Implement setHandlers: renderedElement', this.element);
-    this.renderedElement?.addEventListener('click', (event) => {
-      event.stopPropagation();
-      console.log('Click!');
-    });
-  }
 
   get template(): string {
     return createAuthFormTemplate(this.state, this.components);

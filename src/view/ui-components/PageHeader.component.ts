@@ -24,8 +24,7 @@ export class PageHeaderComponent extends AbstractView {
   }
   setHandlers() {
     console.log('Implement setHandlers: renderedElement', this.element);
-    this.renderedElement?.addEventListener('click', (event) => {
-      event.stopPropagation();
+    this.element?.addEventListener('click', () => {
       console.log('Click!');
     });
   }

@@ -14,8 +14,8 @@ interface State {
 
 const createAuthScreenTemplate = (state: State, components: Components) => `
 <div class="auth-screen">
-    ${components.PageHeaderComponent?.template}
-    ${components.UserInfoComponent?.template}
+    ${components.PageHeaderComponent?.element?.outerHTML}
+    ${components.UserInfoComponent?.element?.outerHTML}
     <hr>
     ${components.AuthFormWidget?.element?.outerHTML}
 </div>
@@ -53,7 +53,8 @@ export class AuthScreen extends AbstractScreen {
     });
     this.components.AuthFormWidget = new AuthFormWidget({
       user: this.state.user,
-    });}
+    });
+  }
 
   get template(): string {
     return createAuthScreenTemplate(this.state, this.components);
