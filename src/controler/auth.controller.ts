@@ -8,7 +8,7 @@ export default class AuthController {
   private $AuthScreen: AbstractView;
   constructor(userModel: User) {
       this.userModel = userModel;
-      this.$AuthScreen = new AuthScreen(this.userModel);
+      this.$AuthScreen = new AuthScreen({ user: this.userModel.data});
   }
 
   public init() {

@@ -5,14 +5,12 @@ import {AuthFormWidget} from "../widgets/AuthForm.widget";
 
 
 interface Props {
-    login: string;
-    password: string;
-    email: string,
+    user: userData;
 }
 
 interface State {
     title: string;
-    user: Props;
+    user: Props["user"];
 }
 
 const createAuthScreenTemplate = (state: State, components: Components) => `
@@ -40,7 +38,7 @@ export class AuthScreen extends AbstractView {
     };
     constructor(props: Props) {
         super();
-        this.state.user = props;
+        this.state.user = props.user;
         this.components.PageHeaderComponent = new PageHeaderComponent({
             title: this.state.title,
         });
