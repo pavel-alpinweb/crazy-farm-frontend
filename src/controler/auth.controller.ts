@@ -24,7 +24,7 @@ export default class AuthController {
   }
 
   public async fetchUser() {
-    const user = await getUserDataMock();
+    const user:userData = await getUserDataMock();
     this.userModel.setUserData(user);
   }
 }

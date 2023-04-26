@@ -1,4 +1,4 @@
-export function getUserDataMock() {
+export function getUserDataMock(): Promise<userData> {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve({
