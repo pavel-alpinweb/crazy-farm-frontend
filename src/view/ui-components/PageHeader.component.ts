@@ -28,7 +28,7 @@ export class PageHeaderComponent extends AbstractView {
   setHandlers() {
     this.element?.addEventListener('click', (event) => {
       event.preventDefault();
-      this.events.click('переданные данные');
+      this.events.click(this.state.title);
     });
   }
   get template(): string {
