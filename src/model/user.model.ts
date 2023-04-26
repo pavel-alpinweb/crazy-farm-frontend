@@ -28,4 +28,10 @@ export default class User {
       email: this.userEmail,
     };
   }
+
+  public setUserData(data: any) {
+    this.userLogin = data.login;
+    this.userPassword = data.password;
+    this.userEmail = data.email;
+  }
 }
