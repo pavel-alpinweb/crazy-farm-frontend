@@ -21,14 +21,15 @@ export class ButtonComponent extends AbstractView {
     isDisabled: false,
     title: "Отправить",
   };
-  private methods = {
-    clickHandler: () => {
-      console.log('click', this.state);
-    },
-  }
   constructor(props: Props) {
     super();
     this.state.title = props.title;
+  }
+  setHandlers() {
+    this.element?.addEventListener('click', (event) => {
+      event.preventDefault();
+      console.log('Click button!', this.state);
+    });
   }
   get template(): string {
     return createButtonTemplate(this.state);

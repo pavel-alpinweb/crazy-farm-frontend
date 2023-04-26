@@ -23,9 +23,9 @@ export class PageHeaderComponent extends AbstractView {
     this.state = props;
   }
   setHandlers() {
-    console.log('Implement setHandlers: renderedElement', this.element);
-    this.element?.addEventListener('click', () => {
-      console.log('Click!');
+    this.element?.addEventListener('click', (event) => {
+      event.preventDefault();
+      console.log('Click header!', this.state);
     });
   }
   get template(): string {

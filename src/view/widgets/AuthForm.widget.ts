@@ -1,6 +1,7 @@
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
 import {AbstractWidget} from "../../framework/interface/AbstractWidget";
+import {AbstractView} from "../../framework/interface/AbstractView";
 
 interface Props {
   user: userData;
@@ -11,13 +12,9 @@ interface State {
   user: Props["user"];
 }
 
-const createAuthFormTemplate = (state: State, components: Components) => `
-<Form class="auth-form" action="#">
+const createAuthFormTemplate = (state: State) => `
+<Form class="auth-form" action="#" style="display: flex; flex-direction: column; align-items: flex-start;">
     <h2>${state.title}</h2>
-    ${components.LoginTextInput?.template} </br>
-    ${components.PasswordTextInput?.template} </br>
-    ${components.EmailTextInput?.template} </br>
-    ${components.FormButton?.element?.outerHTML} </br>
 </Form>
 `;
 
@@ -40,6 +37,7 @@ export class AuthFormWidget extends AbstractWidget {
     super();
     this.setState(props);
     this.initComponents();
+    this.renderComponents();
   }
   protected setState(props: Props) {
     this.state.user = props.user;
@@ -72,6 +70,25 @@ export class AuthFormWidget extends AbstractWidget {
   }
 
   get template(): string {
-    return createAuthFormTemplate(this.state, this.components);
+    return createAuthFormTemplate(this.state);
+  }
+
+  protected renderComponents(): void {
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.LoginTextInput?.element
+    );
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.PasswordTextInput?.element
+    );
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.EmailTextInput?.element
+    );
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.FormButton?.element
+    );
   }
 }

@@ -31,6 +31,12 @@ export class UserInfoComponent extends AbstractView {
     super();
     this.state.user = props.user;
   }
+  setHandlers() {
+    this.element?.addEventListener('click', (event) => {
+      event.preventDefault();
+      console.log('Click UserInfo!', this.state);
+    });
+  }
   get template(): string {
     return createUserInfoTemplate(this.state);
   }

@@ -32,7 +32,6 @@ export abstract class AbstractView {
   public get element(): Element | null {
     if (!this.renderedElement) {
       this.renderedElement = this.render();
-      console.log(`Render ${this.constructor.name}`, this.renderedElement);
       this.setHandlers();
     }
     return this.renderedElement;

@@ -2,6 +2,7 @@ import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { UserInfoComponent } from "../ui-components/UserInfo.component";
 import { AuthFormWidget } from "../widgets/AuthForm.widget";
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
+import {AbstractView} from "../../framework/interface/AbstractView";
 
 interface Props {
   user: userData;
@@ -12,13 +13,8 @@ interface State {
   user: Props["user"];
 }
 
-const createAuthScreenTemplate = (state: State, components: Components) => `
-<div class="auth-screen">
-    ${components.PageHeaderComponent?.element?.outerHTML}
-    ${components.UserInfoComponent?.element?.outerHTML}
-    <hr>
-    ${components.AuthFormWidget?.element?.outerHTML}
-</div>
+const createAuthScreenTemplate = () => `
+<div class="auth-screen"></div>
 `;
 
 export class AuthScreen extends AbstractScreen {
@@ -39,6 +35,7 @@ export class AuthScreen extends AbstractScreen {
     super();
     this.setState(props);
     this.initComponents();
+    this.renderComponents();
   }
 
   protected setState(props: Props) {
@@ -56,7 +53,22 @@ export class AuthScreen extends AbstractScreen {
     });
   }
 
+  protected renderComponents() {
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.AFTERBEGIN,
+        <Element>this.components.PageHeaderComponent?.element
+    );
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.UserInfoComponent?.element
+    );
+    this.element?.insertAdjacentElement(
+        AbstractView.positions.BEFOREEND,
+        <Element>this.components.AuthFormWidget?.element
+    );
+  }
+
   get template(): string {
-    return createAuthScreenTemplate(this.state, this.components);
+    return createAuthScreenTemplate();
   }
 }
