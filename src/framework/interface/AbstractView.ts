@@ -11,6 +11,8 @@ declare global {
 }
 export abstract class AbstractView {
   protected renderedElement: Element | null = null;
+  protected events: any = {};
+  public emits: any = {};
   private render(): Element | null {
     const newElement = document.createElement("div");
     newElement.innerHTML = this.template;

@@ -51,6 +51,10 @@ export class AuthScreen extends AbstractScreen {
     this.components.AuthFormWidget = new AuthFormWidget({
       user: this.state.user,
     });
+
+    this.components.PageHeaderComponent.emits.setClickEvent((data: string) => {
+      console.log('Header click!', data);
+    });
   }
 
   protected renderComponents() {

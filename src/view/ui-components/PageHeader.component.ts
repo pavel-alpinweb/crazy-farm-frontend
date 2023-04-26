@@ -21,11 +21,14 @@ export class PageHeaderComponent extends AbstractView {
   constructor(props: Props) {
     super();
     this.state = props;
+    this.emits.setClickEvent = (callback: (data: string) => void) => {
+      this.events.click = callback;
+    }
   }
   setHandlers() {
     this.element?.addEventListener('click', (event) => {
       event.preventDefault();
-      console.log('Click header!', this.state);
+      this.events.click('переданные данные');
     });
   }
   get template(): string {
