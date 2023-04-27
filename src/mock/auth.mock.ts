@@ -9,3 +9,15 @@ export function getUserDataMock(): Promise<userData> {
         }, 1000);
     });
 }
+
+export function updateUserDataMock(): Promise<userData> {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve({
+                login: 'BakuardUpdate',
+                password: 'PelmeshUpgrade',
+                email: 'bakuard@pelmesh.pro',
+            });
+        }, 2000);
+    });
+}

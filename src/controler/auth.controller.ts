@@ -3,7 +3,7 @@ import { appContainer } from "../utils/constants";
 import { AuthScreen } from "../view/screens/Auth.screen";
 import {AbstractView} from "../framework/interface/AbstractView";
 import {AbstractScreen} from "../framework/interface/AbstractScreen";
-import {getUserDataMock} from "../mock/auth.mock";
+import {getUserDataMock, updateUserDataMock} from "../mock/auth.mock";
 
 export default class AuthController {
   private readonly userModel: User;
@@ -26,8 +26,11 @@ export default class AuthController {
         const user:userData = await getUserDataMock();
         this.userModel.setUserData(user);
       },
-      updateUser: (data: string) => {
+      updateUser: async (data: string) => {
          console.log('updateUser', data);
+         const user: userData = await updateUserDataMock();
+         this.userModel.setUserData(user);
+         console.log("User Model:", this.userModel.data);
       },
     };
   }
