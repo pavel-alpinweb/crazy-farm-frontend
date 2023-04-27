@@ -55,6 +55,10 @@ export class AuthScreen extends AbstractScreen {
     this.components.PageHeaderComponent.emits.setClickEvent((data: string) => {
       console.log('Header click!', data);
     });
+
+    this.components.AuthFormWidget.emits.setSubmit((data: string) => {
+      console.log('Form data', data);
+    });
   }
 
   protected renderComponents() {

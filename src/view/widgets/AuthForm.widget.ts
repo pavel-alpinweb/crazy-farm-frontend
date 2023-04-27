@@ -38,6 +38,10 @@ export class AuthFormWidget extends AbstractWidget {
     this.setState(props);
     this.initComponents();
     this.renderComponents();
+
+    this.emits.setSubmit = (callback: (data: string) => void) => {
+      this.events.submit = callback;
+    }
   }
   protected setState(props: Props) {
     this.state.user = props.user;
@@ -66,6 +70,10 @@ export class AuthFormWidget extends AbstractWidget {
     });
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
+    });
+
+    this.components.FormButton.emits.setClickEvent((data: string) => {
+      this.events.submit(data);
     });
   }
 

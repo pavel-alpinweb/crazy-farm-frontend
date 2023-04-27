@@ -24,11 +24,14 @@ export class ButtonComponent extends AbstractView {
   constructor(props: Props) {
     super();
     this.state.title = props.title;
+    this.emits.setClickEvent = (callback: (data: string) => void) => {
+      this.events.click = callback;
+    }
   }
   setHandlers() {
     this.element?.addEventListener('click', (event) => {
       event.preventDefault();
-      console.log('Click button!', this.state);
+      this.events.click('Click button!');
     });
   }
   get template(): string {
