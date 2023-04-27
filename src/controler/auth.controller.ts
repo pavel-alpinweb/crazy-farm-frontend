@@ -8,23 +8,27 @@ import {getUserDataMock} from "../mock/auth.mock";
 export default class AuthController {
   private readonly userModel: User;
   private AuthScreen: AbstractScreen | null;
+  public methods: any = {};
   constructor(userModel: User) {
     this.userModel = userModel;
     this.AuthScreen = null;
-  }
-
-  public async init() {
-    console.log("User Model:", this.userModel.data);
-    await this.fetchUser();
-    this.AuthScreen = new AuthScreen({user: this.userModel.data});
-    appContainer?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.AuthScreen.element
-    );
-  }
-
-  public async fetchUser() {
-    const user:userData = await getUserDataMock();
-    this.userModel.setUserData(user);
+    this.methods = {
+       init: async () =>  {
+        console.log("User Model:", this.userModel.data);
+        await this.methods.fetchUser();
+        this.AuthScreen = new AuthScreen({user: this.userModel.data}, this.methods);
+        appContainer?.insertAdjacentElement(
+            AbstractView.positions.BEFOREEND,
+            <Element>this.AuthScreen.element
+        );
+      },
+      fetchUser: async () => {
+        const user:userData = await getUserDataMock();
+        this.userModel.setUserData(user);
+      },
+      updateUser: (data: string) => {
+         console.log('updateUser', data);
+      },
+    };
   }
 }

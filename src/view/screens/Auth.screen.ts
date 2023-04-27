@@ -18,6 +18,7 @@ const createAuthScreenTemplate = () => `
 `;
 
 export class AuthScreen extends AbstractScreen {
+  private controllerMethods: any = {};
   protected state: State = {
     title: "Вход/Регистрация",
     user: {
@@ -31,8 +32,9 @@ export class AuthScreen extends AbstractScreen {
     UserInfoComponent: null,
     AuthFormWidget: null,
   };
-  constructor(props: Props) {
+  constructor(props: Props, methods: any) {
     super();
+    this.controllerMethods = methods;
     this.setState(props);
     this.initComponents();
     this.renderComponents();
@@ -57,7 +59,7 @@ export class AuthScreen extends AbstractScreen {
     });
 
     this.components.AuthFormWidget.emits.setSubmit((data: string) => {
-      console.log('Form data', data);
+      this.controllerMethods.updateUser(data);
     });
   }
 
