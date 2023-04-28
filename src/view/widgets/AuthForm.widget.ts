@@ -2,6 +2,7 @@ import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
 import {AbstractWidget} from "../../framework/interface/AbstractWidget";
 import {AbstractView} from "../../framework/interface/AbstractView";
+import {eventBus} from "../../main";
 
 interface Props {
   user: userData;
@@ -42,6 +43,12 @@ export class AuthFormWidget extends AbstractWidget {
     this.emits.setSubmit = (callback: (data: string) => void) => {
       this.events.submit = callback;
     }
+    eventBus.on('User:update', (data)=> {
+      this.state.user = data;
+      this.rerenderElement();
+      this.initComponents();
+      this.renderComponents();
+    });
   }
   protected setState(props: Props) {
     this.state.user = props.user;
