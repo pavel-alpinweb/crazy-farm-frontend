@@ -39,7 +39,15 @@ export abstract class AbstractView {
     return this.renderedElement;
   }
   public remove(): void {
-    this.renderedElement?.remove();
     this.renderedElement = null;
+  }
+
+  protected rerenderElement(): void {
+    const prevElement = this.element;
+    const parent = prevElement?.parentElement;
+    this.remove();
+
+    const newElement = this.element;
+    parent?.replaceChild(<Element>newElement, <Element>prevElement);
   }
 }

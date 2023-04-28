@@ -38,7 +38,8 @@ export class UserInfoComponent extends AbstractView {
       console.log('Click UserInfo!', this.state);
     });
     eventBus.on('User:update', (data)=> {
-      console.log('User:update', data);
+      this.state.user = data;
+      this.rerenderElement();
     });
   }
   get template(): string {
