@@ -14,7 +14,6 @@ export default class AuthController {
     this.AuthScreen = null;
     this.methods = {
        init: async () =>  {
-        console.log("User Model:", this.userModel.data);
         await this.methods.fetchUser();
         this.AuthScreen = new AuthScreen({user: this.userModel.data}, this.methods);
         appContainer?.insertAdjacentElement(
@@ -24,13 +23,11 @@ export default class AuthController {
       },
       fetchUser: async () => {
         const user:userData = await getUserDataMock();
-        this.userModel.setUserData(user);
+        this.userModel.setUserData(user, false);
       },
       updateUser: async (data: string) => {
-         console.log('updateUser', data);
          const user: userData = await updateUserDataMock();
-         this.userModel.setUserData(user);
-         console.log("User Model:", this.userModel.data);
+         this.userModel.setUserData(user, true);
       },
     };
   }

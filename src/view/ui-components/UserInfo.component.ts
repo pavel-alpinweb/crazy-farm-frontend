@@ -1,4 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {eventBus} from "../../main";
 
 interface Props {
   user: userData;
@@ -35,6 +36,9 @@ export class UserInfoComponent extends AbstractView {
     this.element?.addEventListener('click', (event) => {
       event.preventDefault();
       console.log('Click UserInfo!', this.state);
+    });
+    eventBus.on('User:update', (data)=> {
+      console.log('User:update', data);
     });
   }
   get template(): string {

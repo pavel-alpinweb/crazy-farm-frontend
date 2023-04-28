@@ -16,7 +16,7 @@ export class EventBus {
       });
     };
   }
-  emit(event: string, ...args: never[]) {
+  emit(event: string, ...args: any[]) {
       this.listeners[event].forEach((listener) => {
           listener(...args);
       });
