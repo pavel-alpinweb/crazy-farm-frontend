@@ -45,9 +45,7 @@ export class AuthFormWidget extends AbstractWidget {
     }
     eventBus.on('User:update', (data)=> {
       this.state.user = data;
-      this.rerenderElement();
-      this.initComponents();
-      this.renderComponents();
+      this.updateWidget();
     });
   }
   protected setState(props: Props) {

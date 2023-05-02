@@ -10,4 +10,9 @@ export abstract class AbstractWidget extends AbstractView {
     protected abstract components: WidgetComponents;
     protected abstract initComponents(): void;
     protected abstract renderComponents(): void;
+    protected updateWidget() {
+        this.rerenderElement();
+        this.initComponents();
+        this.renderComponents();
+    }
 }
