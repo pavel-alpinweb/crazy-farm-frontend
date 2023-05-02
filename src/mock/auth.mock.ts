@@ -1,4 +1,4 @@
-export function getUserDataMock(): Promise<userData> {
+export function getUserDataMock(): Promise<UserData> {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve({
@@ -10,7 +10,7 @@ export function getUserDataMock(): Promise<userData> {
     });
 }
 
-export function updateUserDataMock(): Promise<userData> {
+export function updateUserDataMock(): Promise<UserData> {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve({

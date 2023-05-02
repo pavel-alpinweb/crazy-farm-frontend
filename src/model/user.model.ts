@@ -1,7 +1,7 @@
 import {eventBus} from "../main";
 
 declare global {
-  interface userData {
+  interface UserData {
     login: string;
     password: string;
     email: string;
@@ -24,7 +24,7 @@ export default class User {
     return this.userEmail;
   }
 
-  public get data(): userData {
+  public get data(): UserData {
     return {
       login: this.userLogin,
       password: this.userPassword,
@@ -32,7 +32,7 @@ export default class User {
     };
   }
 
-  public setUserData(data: userData, isUpdateUI: boolean) {
+  public setUserData(data: UserData, isUpdateUI: boolean) {
     this.userLogin = data.login;
     this.userPassword = data.password;
     this.userEmail = data.email;

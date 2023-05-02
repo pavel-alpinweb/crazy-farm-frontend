@@ -5,7 +5,7 @@ import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {AbstractView} from "../../framework/interface/AbstractView";
 
 interface Props {
-  user: userData;
+  user: UserData;
 }
 
 interface State {
@@ -18,7 +18,7 @@ const createAuthScreenTemplate = () => `
 `;
 
 export class AuthScreen extends AbstractScreen {
-  private controllerMethods: any = {};
+  private controllerMethods: Methods = {};
   protected state: State = {
     title: "Вход/Регистрация",
     user: {
@@ -32,7 +32,7 @@ export class AuthScreen extends AbstractScreen {
     UserInfoComponent: null,
     AuthFormWidget: null,
   };
-  constructor(props: Props, methods: any) {
+  constructor(props: Props, methods: Methods) {
     super();
     this.controllerMethods = methods;
     this.setState(props);
@@ -59,7 +59,7 @@ export class AuthScreen extends AbstractScreen {
     });
 
     this.components.AuthFormWidget.emits.setSubmit((data: Concrete) => {
-      this.controllerMethods.updateUser(data);
+      this.controllerMethods.updateUser();
     });
   }
 

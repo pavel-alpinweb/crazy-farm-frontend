@@ -5,9 +5,12 @@ import {AbstractView} from "../framework/interface/AbstractView";
 import {AbstractScreen} from "../framework/interface/AbstractScreen";
 import {getUserDataMock, updateUserDataMock} from "../mock/auth.mock";
 
-interface Methods {
-    [key: string]: (...args: never) => void;
+declare global {
+    interface Methods {
+        [key: string]: (...args: never) => void;
+    }
 }
+
 export default class AuthController {
   private readonly userModel: User;
   private AuthScreen: AbstractScreen | null;
@@ -25,11 +28,11 @@ export default class AuthController {
         );
       },
       fetchUser: async () => {
-        const user:userData = await getUserDataMock();
+        const user:UserData = await getUserDataMock();
         this.userModel.setUserData(user, false);
       },
       updateUser: async () => {
-         const user: userData = await updateUserDataMock();
+         const user: UserData = await updateUserDataMock();
          this.userModel.setUserData(user, true);
       },
     };
