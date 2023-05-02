@@ -6,10 +6,6 @@ declare global {
     BEFOREEND: "beforeend";
     AFTEREND: "afterend";
   }
-  interface Components {
-    [key: string]: AbstractView | null;
-  }
-
   interface Events {
     [key: string]: (data: Concrete) => void;
   }
