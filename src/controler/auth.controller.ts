@@ -31,8 +31,8 @@ export default class AuthController {
         const user:UserData = await getUserDataMock();
         this.userModel.setUserData(user, false);
       },
-      updateUser: async () => {
-         const user: UserData = await updateUserDataMock();
+      updateUser: async (data: UserData) => {
+         const user: UserData = await updateUserDataMock(data);
          this.userModel.setUserData(user, true);
       },
     };

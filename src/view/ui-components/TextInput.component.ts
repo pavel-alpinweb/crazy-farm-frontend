@@ -40,6 +40,19 @@ export class TextInputComponent extends AbstractView {
   }
   protected setState(props: Props) {
     this.state = props;
+    this.setEvents();
+  }
+  protected setEvents() {
+    this.emits.setInputEvent = (callback: (data: Concrete) => void) => {
+      this.events.input = callback;
+    }
+  }
+  setHandlers() {
+    this.element?.addEventListener('input', (event) => {
+      event.preventDefault();
+      const target = event.target as HTMLInputElement;
+      this.events.input(target.value);
+    });
   }
   get template(): string {
     return createTextInputTemplate(this.state);

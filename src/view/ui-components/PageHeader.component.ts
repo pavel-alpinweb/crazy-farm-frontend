@@ -21,12 +21,15 @@ export class PageHeaderComponent extends AbstractView {
   constructor(props: Props) {
     super();
     this.setState(props);
-    this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
-      this.events.click = callback;
-    }
+    this.setEvents();
   }
   protected setState(props: Props) {
     this.state = props;
+  }
+  protected setEvents(): void {
+    this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
+      this.events.click = callback;
+    }
   }
   setHandlers() {
     this.element?.addEventListener('click', (event) => {

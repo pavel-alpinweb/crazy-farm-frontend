@@ -38,19 +38,13 @@ export class AuthFormWidget extends AbstractWidget {
     super();
     this.setState(props);
     this.initComponents();
+    this.setEvents();
     this.renderComponents();
-
-    this.emits.setSubmit = (callback: (data: Concrete) => void) => {
-      this.events.submit = callback;
-    }
-    eventBus.on('User:update', (data)=> {
-      this.state.user = data;
-      this.updateWidget();
-    });
   }
   protected setState(props: Props) {
     this.state.user = props.user;
   }
+
   protected initComponents() {
     this.components.LoginTextInput = new TextInputComponent({
       value: this.state.user.login,
@@ -76,9 +70,32 @@ export class AuthFormWidget extends AbstractWidget {
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
     });
-
-    this.components.FormButton.emits.setClickEvent((data: Concrete) => {
-      this.events.submit(data);
+  }
+  protected setEvents(): void {
+    this.emits.setSubmit = (callback: (data: Concrete) => void) => {
+      this.events.submit = callback;
+    }
+    this.components.LoginTextInput?.emits.setInputEvent((data: Concrete) => {
+      if (typeof data === "string") {
+        this.state.user.login = data;
+      }
+    });
+    this.components.PasswordTextInput?.emits.setInputEvent((data: Concrete) => {
+      if (typeof data === "string") {
+        this.state.user.password = data;
+      }
+    });
+    this.components.EmailTextInput?.emits.setInputEvent((data: Concrete) => {
+      if (typeof data === "string") {
+        this.state.user.email = data;
+      }
+    });
+    this.components.FormButton?.emits.setClickEvent((data: Concrete) => {
+      this.events.submit(this.state.user);
+    });
+    eventBus.on('User:update', (data)=> {
+      this.state.user = data;
+      this.updateWidget();
     });
   }
 

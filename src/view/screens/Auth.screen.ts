@@ -3,6 +3,7 @@ import { UserInfoComponent } from "../ui-components/UserInfo.component";
 import { AuthFormWidget } from "../widgets/AuthForm.widget";
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {AbstractView} from "../../framework/interface/AbstractView";
+import {eventBus} from "../../main";
 
 interface Props {
   user: UserData;
@@ -37,6 +38,7 @@ export class AuthScreen extends AbstractScreen {
     this.controllerMethods = methods;
     this.setState(props);
     this.initComponents();
+    this.setEvents();
     this.renderComponents();
   }
 
@@ -54,11 +56,14 @@ export class AuthScreen extends AbstractScreen {
       user: this.state.user,
     });
 
-    this.components.PageHeaderComponent.emits.setClickEvent((data: Concrete) => {
+
+  }
+  protected setEvents(): void {
+    this.components.PageHeaderComponent?.emits.setClickEvent((data: Concrete) => {
       console.log('Header click!', data);
     });
 
-    this.components.AuthFormWidget.emits.setSubmit((data: Concrete) => {
+    this.components.AuthFormWidget?.emits.setSubmit((data: Concrete) => {
       this.controllerMethods.updateUser(data);
     });
   }

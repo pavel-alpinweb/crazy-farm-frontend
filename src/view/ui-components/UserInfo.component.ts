@@ -31,14 +31,21 @@ export class UserInfoComponent extends AbstractView {
   constructor(props: Props) {
     super();
     this.setState(props);
-    eventBus.on('User:update', (data)=> {
-      this.state.user = data;
-      this.rerenderElement();
-    });
+    this.setEvents();
   }
 
   protected setState(props: Props) {
     this.state.user = props.user;
+  }
+
+  protected setEvents(): void {
+    this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
+      this.events.click = callback;
+    }
+    eventBus.on('User:update', (data)=> {
+      this.state.user = data;
+      this.rerenderElement();
+    });
   }
 
   setHandlers() {
