@@ -54,11 +54,11 @@ export class AuthScreen extends AbstractScreen {
       user: this.state.user,
     });
 
-    this.components.PageHeaderComponent.emits.setClickEvent((data: string) => {
+    this.components.PageHeaderComponent.emits.setClickEvent((data: Concrete) => {
       console.log('Header click!', data);
     });
 
-    this.components.AuthFormWidget.emits.setSubmit((data: string) => {
+    this.components.AuthFormWidget.emits.setSubmit((data: Concrete) => {
       this.controllerMethods.updateUser(data);
     });
   }

@@ -1,4 +1,5 @@
 declare global {
+  type Concrete = string | number | boolean | symbol | object
   interface RenderPositions {
     BEFOREBEGIN: "beforebegin";
     AFTERBEGIN: "afterbegin";
@@ -8,11 +9,19 @@ declare global {
   interface Components {
     [key: string]: AbstractView | null;
   }
+
+  interface Events {
+    [key: string]: (data: Concrete) => void;
+  }
+
+  interface Emits {
+    [key: string]: (callback: (data: Concrete) => void) => void;
+  }
 }
 export abstract class AbstractView {
   protected renderedElement: Element | null = null;
-  protected events: any = {};
-  public emits: any = {};
+  protected events: Events = {};
+  public emits: Emits = {};
   private render(): Element | null {
     const newElement = document.createElement("div");
     newElement.innerHTML = this.template;

@@ -1,4 +1,4 @@
-import { AbstractView } from "../../framework/interface/AbstractView";
+import {AbstractView} from "../../framework/interface/AbstractView";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ export class ButtonComponent extends AbstractView {
   constructor(props: Props) {
     super();
     this.setState(props);
-    this.emits.setClickEvent = (callback: (data: string) => void) => {
+    this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
     }
   }

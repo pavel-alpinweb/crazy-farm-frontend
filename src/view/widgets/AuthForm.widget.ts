@@ -40,7 +40,7 @@ export class AuthFormWidget extends AbstractWidget {
     this.initComponents();
     this.renderComponents();
 
-    this.emits.setSubmit = (callback: (data: string) => void) => {
+    this.emits.setSubmit = (callback: (data: Concrete) => void) => {
       this.events.submit = callback;
     }
     eventBus.on('User:update', (data)=> {
@@ -79,7 +79,7 @@ export class AuthFormWidget extends AbstractWidget {
       title: "Отправить",
     });
 
-    this.components.FormButton.emits.setClickEvent((data: string) => {
+    this.components.FormButton.emits.setClickEvent((data: Concrete) => {
       this.events.submit(data);
     });
   }
