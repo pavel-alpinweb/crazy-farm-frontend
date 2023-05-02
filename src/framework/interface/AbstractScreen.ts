@@ -9,7 +9,6 @@ declare global {
 
 export abstract class AbstractScreen extends AbstractView {
     protected abstract components: ScreenComponents;
-    protected abstract setState(props: object): void;
     protected abstract initComponents(): void;
     protected abstract renderComponents(): void;
 }

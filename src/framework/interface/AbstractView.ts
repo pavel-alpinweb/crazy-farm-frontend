@@ -20,6 +20,7 @@ export abstract class AbstractView {
     return newElement.firstElementChild;
   }
   abstract get template(): string;
+  protected abstract setState(props: object): void;
   setHandlers() {
     console.log('Init handlers', this.constructor.name);
   }

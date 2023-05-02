@@ -8,7 +8,6 @@ declare global {
 
 export abstract class AbstractWidget extends AbstractView {
     protected abstract components: WidgetComponents;
-    protected abstract setState(props: object): void;
     protected abstract initComponents(): void;
     protected abstract renderComponents(): void;
 }

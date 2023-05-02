@@ -36,6 +36,9 @@ export class TextInputComponent extends AbstractView {
   };
   constructor(props: Props) {
     super();
+    this.setState(props);
+  }
+  protected setState(props: Props) {
     this.state = props;
   }
   get template(): string {
