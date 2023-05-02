@@ -59,7 +59,7 @@ export class AuthScreen extends AbstractScreen {
     });
 
     this.components.AuthFormWidget.emits.setSubmit((data: Concrete) => {
-      this.controllerMethods.updateUser();
+      this.controllerMethods.updateUser(data);
     });
   }
 

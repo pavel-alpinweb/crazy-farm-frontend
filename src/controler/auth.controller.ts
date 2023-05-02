@@ -7,7 +7,7 @@ import {getUserDataMock, updateUserDataMock} from "../mock/auth.mock";
 
 declare global {
     interface Methods {
-        [key: string]: (...args: never) => void;
+        [key: string]: (...args: any) => void;
     }
 }
 
