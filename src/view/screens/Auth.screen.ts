@@ -1,9 +1,8 @@
 import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { UserInfoComponent } from "../ui-components/UserInfo.component";
 import { AuthFormWidget } from "../widgets/AuthForm.widget";
-import {AbstractScreen} from "../../framework/interface/AbstractScreen";
-import {AbstractView} from "../../framework/interface/AbstractView";
-import {eventBus} from "../../main";
+import { AbstractScreen } from "../../framework/interface/AbstractScreen";
+import { AbstractView } from "../../framework/interface/AbstractView";
 
 interface Props {
   user: UserData;
@@ -55,13 +54,13 @@ export class AuthScreen extends AbstractScreen {
     this.components.AuthFormWidget = new AuthFormWidget({
       user: this.state.user,
     });
-
-
   }
   protected setEvents(): void {
-    this.components.PageHeaderComponent?.emits.setClickEvent((data: Concrete) => {
-      console.log('Header click!', data);
-    });
+    this.components.PageHeaderComponent?.emits.setClickEvent(
+      (data: Concrete) => {
+        console.log("Header click!", data);
+      }
+    );
 
     this.components.AuthFormWidget?.emits.setSubmit((data: Concrete) => {
       this.controllerMethods.updateUser(data);
@@ -70,16 +69,16 @@ export class AuthScreen extends AbstractScreen {
 
   protected renderComponents() {
     this.element?.insertAdjacentElement(
-        AbstractView.positions.AFTERBEGIN,
-        <Element>this.components.PageHeaderComponent?.element
+      AbstractView.positions.AFTERBEGIN,
+      <Element>this.components.PageHeaderComponent?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.UserInfoComponent?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.UserInfoComponent?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.AuthFormWidget?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.AuthFormWidget?.element
     );
   }
 

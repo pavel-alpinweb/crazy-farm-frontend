@@ -1,8 +1,8 @@
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
-import {AbstractWidget} from "../../framework/interface/AbstractWidget";
-import {AbstractView} from "../../framework/interface/AbstractView";
-import {eventBus} from "../../main";
+import { AbstractWidget } from "../../framework/interface/AbstractWidget";
+import { AbstractView } from "../../framework/interface/AbstractView";
+import { eventBus } from "../../main";
 
 interface Props {
   user: UserData;
@@ -74,7 +74,7 @@ export class AuthFormWidget extends AbstractWidget {
   protected setEvents(): void {
     this.emits.setSubmit = (callback: (data: Concrete) => void) => {
       this.events.submit = callback;
-    }
+    };
     this.components.LoginTextInput?.emits.setInputEvent((data: Concrete) => {
       if (typeof data === "string") {
         this.state.user.login = data;
@@ -90,10 +90,10 @@ export class AuthFormWidget extends AbstractWidget {
         this.state.user.email = data;
       }
     });
-    this.components.FormButton?.emits.setClickEvent((data: Concrete) => {
+    this.components.FormButton?.emits.setClickEvent(() => {
       this.events.submit(this.state.user);
     });
-    eventBus.on('User:update', (data)=> {
+    eventBus.on("User:update", (data) => {
       this.state.user = data;
       this.updateWidget();
     });
@@ -105,20 +105,20 @@ export class AuthFormWidget extends AbstractWidget {
 
   protected renderComponents(): void {
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.LoginTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.LoginTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.PasswordTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.PasswordTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.EmailTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.EmailTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.FormButton?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.FormButton?.element
     );
   }
 }

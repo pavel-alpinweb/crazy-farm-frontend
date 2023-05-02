@@ -1,18 +1,18 @@
-import {AbstractView} from "./AbstractView";
+import { AbstractView } from "./AbstractView";
 
 declare global {
-    interface WidgetComponents {
-        [key: string]: AbstractView | null;
-    }
+  interface WidgetComponents {
+    [key: string]: AbstractView | null;
+  }
 }
 
 export abstract class AbstractWidget extends AbstractView {
-    protected abstract components: WidgetComponents;
-    protected abstract initComponents(): void;
-    protected abstract renderComponents(): void;
-    protected updateWidget() {
-        this.rerenderElement();
-        this.initComponents();
-        this.renderComponents();
-    }
+  protected abstract components: WidgetComponents;
+  protected abstract initComponents(): void;
+  protected abstract renderComponents(): void;
+  protected updateWidget() {
+    this.rerenderElement();
+    this.initComponents();
+    this.renderComponents();
+  }
 }

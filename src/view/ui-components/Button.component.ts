@@ -1,4 +1,4 @@
-import {AbstractView} from "../../framework/interface/AbstractView";
+import { AbstractView } from "../../framework/interface/AbstractView";
 
 interface Props {
   title: string;
@@ -33,12 +33,12 @@ export class ButtonComponent extends AbstractView {
   protected setEvents(): void {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
-    }
+    };
   }
   setHandlers() {
-    this.element?.addEventListener('click', (event) => {
+    this.element?.addEventListener("click", (event) => {
       event.preventDefault();
-      this.events.click('Click button!');
+      this.events.click("Click button!");
     });
   }
   get template(): string {

@@ -1,4 +1,4 @@
-import {eventBus} from "../main";
+import { eventBus } from "../main";
 
 declare global {
   interface UserData {
@@ -9,7 +9,6 @@ declare global {
 }
 
 export default class User {
-
   private userLogin = "Sioda";
   private userPassword = "Sioda123456";
   private userEmail = "sioda@sioda.sioda";
@@ -37,7 +36,7 @@ export default class User {
     this.userPassword = data.password;
     this.userEmail = data.email;
     if (isUpdateUI) {
-      eventBus.emit('User:update', this.data);
+      eventBus.emit("User:update", this.data);
     }
   }
 }

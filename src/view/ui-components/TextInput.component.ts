@@ -45,10 +45,10 @@ export class TextInputComponent extends AbstractView {
   protected setEvents() {
     this.emits.setInputEvent = (callback: (data: Concrete) => void) => {
       this.events.input = callback;
-    }
+    };
   }
   setHandlers() {
-    this.element?.addEventListener('input', (event) => {
+    this.element?.addEventListener("input", (event) => {
       event.preventDefault();
       const target = event.target as HTMLInputElement;
       this.events.input(target.value);

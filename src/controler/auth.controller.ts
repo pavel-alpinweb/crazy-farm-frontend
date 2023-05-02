@@ -1,14 +1,14 @@
 import User from "../model/user.model";
 import { appContainer } from "../utils/constants";
 import { AuthScreen } from "../view/screens/Auth.screen";
-import {AbstractView} from "../framework/interface/AbstractView";
-import {AbstractScreen} from "../framework/interface/AbstractScreen";
-import {getUserDataMock, updateUserDataMock} from "../mock/auth.mock";
+import { AbstractView } from "../framework/interface/AbstractView";
+import { AbstractScreen } from "../framework/interface/AbstractScreen";
+import { getUserDataMock, updateUserDataMock } from "../mock/auth.mock";
 
 declare global {
-    interface Methods {
-        [key: string]: (...args: any) => void;
-    }
+  interface Methods {
+    [key: string]: (...args: any) => void;
+  }
 }
 
 export default class AuthController {
@@ -19,21 +19,24 @@ export default class AuthController {
     this.userModel = userModel;
     this.AuthScreen = null;
     this.methods = {
-       init: async () =>  {
+      init: async () => {
         await this.methods.fetchUser();
-        this.AuthScreen = new AuthScreen({user: this.userModel.data}, this.methods);
+        this.AuthScreen = new AuthScreen(
+          { user: this.userModel.data },
+          this.methods
+        );
         appContainer?.insertAdjacentElement(
-            AbstractView.positions.BEFOREEND,
-            <Element>this.AuthScreen.element
+          AbstractView.positions.BEFOREEND,
+          <Element>this.AuthScreen.element
         );
       },
       fetchUser: async () => {
-        const user:UserData = await getUserDataMock();
+        const user: UserData = await getUserDataMock();
         this.userModel.setUserData(user, false);
       },
       updateUser: async (data: UserData) => {
-         const user: UserData = await updateUserDataMock(data);
-         this.userModel.setUserData(user, true);
+        const user: UserData = await updateUserDataMock(data);
+        this.userModel.setUserData(user, true);
       },
     };
   }

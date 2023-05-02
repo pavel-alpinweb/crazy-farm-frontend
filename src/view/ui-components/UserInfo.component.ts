@@ -1,5 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {eventBus} from "../../main";
+import { eventBus } from "../../main";
 
 interface Props {
   user: UserData;
@@ -41,17 +41,17 @@ export class UserInfoComponent extends AbstractView {
   protected setEvents(): void {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
-    }
-    eventBus.on('User:update', (data)=> {
+    };
+    eventBus.on("User:update", (data) => {
       this.state.user = data;
       this.rerenderElement();
     });
   }
 
   setHandlers() {
-    this.element?.addEventListener('click', (event) => {
+    this.element?.addEventListener("click", (event) => {
       event.preventDefault();
-      console.log('Click UserInfo!', this.state);
+      console.log("Click UserInfo!", this.state);
     });
   }
   get template(): string {
