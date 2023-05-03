@@ -23,7 +23,7 @@ export class Router {
     }
 
     private changePageHandler = () => {
-        const route: any = this.params.find((item: any) => item.url === Router.path);
+        const route: RouterParams | undefined = this.params.find((item: RouterParams) => item.url === Router.path);
         if (route) {
             route.controller.methods.init();
         } else {
