@@ -10,6 +10,7 @@ declare global {
 
 export class Router {
     private params: Array<RouterParams> = [];
+    private controller: controller | undefined;
     constructor(params: Array<RouterParams>) {
         this.params = params;
     }
@@ -24,8 +25,10 @@ export class Router {
 
     private changePageHandler = () => {
         const route: RouterParams | undefined = this.params.find((item: RouterParams) => item.url === Router.path);
+        if (this.controller === route?.controller) return;
         if (route) {
-            route.controller.methods.init();
+            this.controller = route.controller;
+            this.controller.methods.init();
         } else {
             Router.push('/#/404');
         }
