@@ -1,7 +1,8 @@
 import AuthController from "../controler/auth.controller";
+import FarmController from "../controler/farm.controler";
 
 declare global {
-    type controller = AuthController;
+    type controller = AuthController | FarmController;
     interface RouterParams {
         url: string,
         controller: controller,
