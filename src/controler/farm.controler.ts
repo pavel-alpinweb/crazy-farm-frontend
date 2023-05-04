@@ -17,6 +17,13 @@ export default class FarmController {
                     <Element>this.FarmScreen.element
                 );
             },
+            destroy: () => {
+                this.FarmScreen?.remove();
+                this.FarmScreen = null;
+                if (appContainer) {
+                    appContainer.innerHTML = '';
+                }
+            },
         };
     }
 }

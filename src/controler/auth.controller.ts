@@ -30,6 +30,13 @@ export default class AuthController {
           <Element>this.AuthScreen.element
         );
       },
+      destroy: () => {
+        this.AuthScreen?.remove();
+        this.AuthScreen = null;
+        if (appContainer) {
+          appContainer.innerHTML = '';
+        }
+      },
       fetchUser: async () => {
         const user: UserData = await getUserDataMock();
         this.userModel.setUserData(user, false);
