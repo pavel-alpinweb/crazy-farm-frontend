@@ -1,5 +1,5 @@
 import AuthController from "../controler/auth.controller";
-import FarmController from "../controler/farm.controler";
+import FarmController from "../controler/farm.controller";
 
 declare global {
     type controller = AuthController | FarmController;

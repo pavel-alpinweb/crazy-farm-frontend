@@ -2,7 +2,7 @@ import User from "./model/user.model";
 import AuthController from "./controler/auth.controller";
 import {Router} from "./framework/Router";
 import { EventBus } from "./framework/EventBus";
-import FarmController from "./controler/farm.controler";
+import FarmController from "./controler/farm.controller";
 
 export const eventBus: EventBus = new EventBus();
 const userModel: User = new User();
