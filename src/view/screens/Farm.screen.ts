@@ -1,4 +1,4 @@
-import {AbstractStaticScreen} from "../../framework/interface/AbstractStaticScreen";
+import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
 
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
@@ -6,8 +6,7 @@ const createFarmScreenTemplate = () => `
 </div>
 `;
 export class FarmScreen extends AbstractStaticScreen {
-    get template(): string {
-        return createFarmScreenTemplate();
-    }
-    
+  get template(): string {
+    return createFarmScreenTemplate();
+  }
 }

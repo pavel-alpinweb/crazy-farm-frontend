@@ -34,7 +34,7 @@ export default class AuthController {
         this.AuthScreen?.remove();
         this.AuthScreen = null;
         if (appContainer) {
-          appContainer.innerHTML = '';
+          appContainer.innerHTML = "";
         }
       },
       fetchUser: async () => {

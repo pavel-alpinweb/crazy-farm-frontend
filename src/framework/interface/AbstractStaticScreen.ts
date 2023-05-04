@@ -1,22 +1,22 @@
 export abstract class AbstractStaticScreen {
-    protected renderedElement: Element | null = null;
+  protected renderedElement: Element | null = null;
 
-    private render(): Element | null {
-        const newElement = document.createElement("div");
-        newElement.innerHTML = this.template;
+  private render(): Element | null {
+    const newElement = document.createElement("div");
+    newElement.innerHTML = this.template;
 
-        return newElement.firstElementChild;
+    return newElement.firstElementChild;
+  }
+  abstract get template(): string;
+
+  public get element(): Element | null {
+    if (!this.renderedElement) {
+      this.renderedElement = this.render();
     }
-    abstract get template(): string;
+    return this.renderedElement;
+  }
 
-    public get element(): Element | null {
-        if (!this.renderedElement) {
-            this.renderedElement = this.render();
-        }
-        return this.renderedElement;
-    }
-
-    public remove(): void {
-        this.renderedElement = null;
-    }
+  public remove(): void {
+    this.renderedElement = null;
+  }
 }
