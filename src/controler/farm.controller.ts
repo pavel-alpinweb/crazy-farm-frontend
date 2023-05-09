@@ -1,10 +1,10 @@
-import { AbstractStaticScreen } from "../framework/interface/AbstractStaticScreen";
 import { FarmScreen } from "../view/screens/Farm.screen";
 import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
+import {AbstractScreen} from "../framework/interface/AbstractScreen";
 
 export default class FarmController {
-  private FarmScreen: AbstractStaticScreen | null;
+  private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
   constructor() {

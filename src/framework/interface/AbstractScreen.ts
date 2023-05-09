@@ -1,9 +1,10 @@
 import { AbstractView } from "./AbstractView";
 import { AbstractWidget } from "./AbstractWidget";
+import {AbstractScene} from "../graphics/AbstractScene";
 
 declare global {
   interface ScreenComponents {
-    [key: string]: AbstractWidget | AbstractView | null;
+    [key: string]: AbstractWidget | AbstractView | AbstractScene | null;
   }
 }
 
