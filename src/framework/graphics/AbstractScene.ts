@@ -1,9 +1,10 @@
 import * as PIXI from "pixi.js";
 import {AbstractStaticSprite} from "./AbstractStaticSprite";
+import {AbstractAnimatedSprite} from "./AbstractAnimatedSprite";
 
 declare global {
   interface Sprites {
-    [key: string]: AbstractStaticSprite | null;
+    [key: string]: AbstractStaticSprite | AbstractAnimatedSprite | null;
   }
 }
 
@@ -22,8 +23,6 @@ export abstract class AbstractScene {
     const canvas = document.createElement("canvas");
     this.scene = new PIXI.Application({
       background: "#1099bb",
-      width: 800,
-      height: 600,
       view: canvas,
     });
     this.container = new PIXI.Container();
