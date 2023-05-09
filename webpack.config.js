@@ -6,7 +6,12 @@ module.exports = {
   devtool: "inline-source-map",
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: "public" }],
+      patterns: [
+          {
+            from: path.resolve(__dirname, "src/assets/**/*"),
+            to: path.resolve(__dirname, "public/assets" ),
+          }
+      ],
     }),
   ],
   module: {
