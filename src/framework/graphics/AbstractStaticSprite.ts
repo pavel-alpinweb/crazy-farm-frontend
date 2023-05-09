@@ -11,6 +11,7 @@ export class AbstractStaticSprite {
         let sprite = null;
         if (this.texture) {
             sprite = new PIXI.Sprite(this.texture);
+            sprite.anchor.set(0.5);
         }
         return sprite;
     }
