@@ -54,4 +54,9 @@ export class FarmScreen extends AbstractScreen {
   get template(): string {
     return createFarmScreenTemplate(this.state);
   }
+
+  public remove(): void {
+    this.components.FarmScene?.remove();
+    this.renderedElement = null;
+  }
 }
