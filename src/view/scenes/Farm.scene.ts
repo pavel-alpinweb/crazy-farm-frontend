@@ -3,13 +3,9 @@ import {GroundSprite} from "../sprites/Ground.sprite";
 import {SproutPotatoSprite} from "../sprites/SproutPotato.sprite";
 
 export class FarmScene extends AbstractScene{
-
     protected sprites: Sprites = {
         ground: null,
         sproutPotato: null,
-    }
-    constructor() {
-        super();
     }
 
     protected initSprites(): void {
@@ -18,12 +14,8 @@ export class FarmScene extends AbstractScene{
     }
 
     protected renderSprites(): void {
-        if (this.sprites.ground?.sprite) {
-            this.container?.addChild(this.sprites.ground.sprite);
-        }
-        if (this.sprites.sproutPotato?.sprite) {
-            this.container?.addChild(this.sprites.sproutPotato.sprite);
-        }
+        this.addSprite(this.sprites.ground?.sprite);
+        this.addSprite(this.sprites.sproutPotato?.sprite);
     }
 
 }
