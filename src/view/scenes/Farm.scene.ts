@@ -1,5 +1,4 @@
 import {AbstractScene} from "../../framework/graphics/AbstractScene";
-import {STATIC_SPRITE_URL} from "../../utils/constants";
 import {GroundSprite} from "../sprites/Ground.sprite";
 import {SproutPotatoSprite} from "../sprites/SproutPotato.sprite";
 
@@ -14,7 +13,7 @@ export class FarmScene extends AbstractScene{
     }
 
     protected initSprites(): void {
-        this.sprites.ground = new GroundSprite(`${STATIC_SPRITE_URL}/land.sprite.png`);
+        this.sprites.ground = new GroundSprite();
         this.sprites.sproutPotato = new SproutPotatoSprite();
     }
 

@@ -1,18 +1,14 @@
 import * as PIXI from "pixi.js";
 
-export class AbstractStaticSprite {
-    private readonly texture: PIXI.Texture | null = null;
+export abstract class AbstractStaticSprite {
+    protected abstract spriteURL: string;
+    private texture: PIXI.Texture | null = null;
     private renderedSprite: PIXI.Sprite | null = null;
-    constructor(assetUrl: string) {
-        this.texture = PIXI.Texture.from(assetUrl);
-    }
 
     private render(): PIXI.Sprite | null {
-        let sprite = null;
-        if (this.texture) {
-            sprite = new PIXI.Sprite(this.texture);
-            sprite.anchor.set(0.5);
-        }
+        this.texture = PIXI.Texture.from(this.spriteURL);
+        const sprite = new PIXI.Sprite(this.texture);
+        sprite.anchor.set(0.5);
         return sprite;
     }
 

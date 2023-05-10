@@ -8,8 +8,4 @@ export class SproutPotatoSprite extends AbstractAnimatedSprite {
     `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato-2.frame.png`,
     `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato-3.frame.png`,
   ];
-
-  constructor() {
-    super();
-  }
 }

@@ -1,7 +1,6 @@
 import {AbstractStaticSprite} from "../../framework/graphics/AbstractStaticSprite";
+import {STATIC_SPRITE_URL} from "../../utils/constants";
 
 export class GroundSprite extends AbstractStaticSprite {
-    constructor(assetUrl: string) {
-        super(assetUrl);
-    }
+    protected spriteURL = `${STATIC_SPRITE_URL}/land.sprite.png`;
 }
