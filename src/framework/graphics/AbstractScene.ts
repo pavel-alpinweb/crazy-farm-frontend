@@ -48,6 +48,16 @@ export abstract class AbstractScene {
     }
   }
 
+  public removeSprite(sprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined): void {
+    if (this.container && sprite) {
+      this.container.removeChild(sprite);
+    }
+  }
+
+  public removeAllSprites() {
+    this.container?.removeChildren();
+  }
+
   public remove(): void {
     this.scene?.destroy();
     this.renderedElement = null;
