@@ -57,6 +57,6 @@ export class FarmScreen extends AbstractScreen {
 
   public remove(): void {
     this.components.FarmScene?.remove();
-    this.renderedElement = null;
+    super.remove();
   }
 }
