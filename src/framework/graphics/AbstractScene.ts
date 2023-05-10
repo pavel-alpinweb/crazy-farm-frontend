@@ -19,7 +19,6 @@ export abstract class AbstractScene {
   protected abstract renderSprites(): void;
 
   private render(): Element | null {
-    const newElement = document.createElement("div");
     const canvas = document.createElement("canvas");
     this.scene = new PIXI.Application({
       background: "#1099bb",
@@ -33,8 +32,7 @@ export abstract class AbstractScene {
     this.container.pivot.y = this.container.height / 2;
     this.initSprites();
     this.renderSprites();
-    newElement.append(canvas);
-    return newElement;
+    return canvas;
   }
 
   public get element(): Element | null {
