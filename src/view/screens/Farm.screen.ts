@@ -28,8 +28,8 @@ export class FarmScreen extends AbstractScreen {
     super();
     this.setState({title: 'Farm screen'});
     this.initComponents();
-    this.setEvents();
     this.renderComponents();
+    this.setEvents();
   }
 
   protected initComponents(): void {
@@ -44,7 +44,9 @@ export class FarmScreen extends AbstractScreen {
   }
 
   protected setEvents(): void {
-    console.log('setEvents');
+    this.components.FarmScene?.emits.setClickEvent((data: Concrete) => {
+      console.log('Ты жмакнул по ячейке: ', data);
+    });
   }
 
   protected setState(props: Props): void {

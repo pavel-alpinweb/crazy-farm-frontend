@@ -17,6 +17,8 @@ export abstract class AbstractScene {
   protected abstract sprites: Sprites;
   protected abstract initSprites(): void;
   protected abstract renderSprites(): void;
+  protected abstract setHandlers(): void;
+  protected abstract setEvents(): void;
 
   private render(): Element | null {
     const canvas = document.createElement("canvas");
@@ -24,6 +26,7 @@ export abstract class AbstractScene {
       background: "#1099bb",
       view: canvas,
     });
+
     this.container = new PIXI.Container();
     this.scene.stage.addChild(this.container);
     this.container.x = this.scene.screen.width / 2;
@@ -32,6 +35,8 @@ export abstract class AbstractScene {
     this.container.pivot.y = this.container.height / 2;
     this.initSprites();
     this.renderSprites();
+    this.setEvents();
+    this.setHandlers();
     return canvas;
   }
 

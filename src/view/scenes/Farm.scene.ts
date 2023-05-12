@@ -20,4 +20,26 @@ export class FarmScene extends AbstractScene {
       this.addSprite(this.sprites.sproutPotato?.sprite);
     }, 3000);
   }
+
+  protected setEvents(): void {
+    this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
+      this.events.click = callback;
+    };
+  }
+
+  setHandlers() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    this.container.name = 'Name №1';
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    this.container.eventMode = 'static';
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    this.container.on('pointerdown', () => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      this.events.click(this.container?.name);
+    });
+  }
 }
