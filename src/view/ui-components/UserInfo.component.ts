@@ -42,10 +42,11 @@ export class UserInfoComponent extends AbstractView {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
     };
-    eventBus.on("User:update", (data) => {
+    const updateElement = (data: UserData) => {
       this.state.user = data;
       this.rerenderElement();
-    });
+    }
+    eventBus.on("User:update", updateElement);
   }
 
   setHandlers() {

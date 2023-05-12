@@ -93,10 +93,12 @@ export class AuthFormWidget extends AbstractWidget {
     this.components.FormButton?.emits.setClickEvent(() => {
       this.events.submit(this.state.user);
     });
-    eventBus.on("User:update", (data) => {
+    const updateElement = (data: UserData) => {
       this.state.user = data;
       this.updateWidget();
-    });
+    };
+    eventBus.off("User:update", updateElement);
+    eventBus.on("User:update", updateElement);
   }
 
   get template(): string {
