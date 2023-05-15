@@ -61,6 +61,7 @@ export abstract class AbstractScene {
       container.render.y = y;
     }
   }
+
   protected setContainerPivotX(container: Container, x: number): void {
     if (container.render) {
       container.render.pivot.x = x;
