@@ -17,11 +17,13 @@ declare global {
 
 export abstract class AbstractScene {
   private renderedElement: Element | null = null;
-  public scene: PIXI.Application | null = null;
   protected events: Events = {};
   public emits: Emits = {};
+  public scene: PIXI.Application | null = null;
+  protected abstract state: object;
   protected abstract sprites: Sprites;
   protected abstract containers: Containers;
+  protected abstract setState(props: object): void;
   protected abstract initSprites(): void;
   protected abstract renderContainers(): void;
   protected abstract renderSprites(): void;

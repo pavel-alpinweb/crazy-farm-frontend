@@ -45,7 +45,7 @@ export class FarmScreen extends AbstractScreen {
   }
 
   protected initComponents(): void {
-    this.components.FarmScene = new FarmScene();
+    this.components.FarmScene = new FarmScene({farm: this.state.farm});
   }
 
   protected renderComponents(): void {
