@@ -19,10 +19,10 @@ export default class  FarmModel {
         containers: {
             central: {
                 isEmpty: true,
-                isBlocked: true,
+                isBlocked: false,
                 character: {
                     type: 'potato',
-                    stage: 1,
+                    stage: 2,
                 },
             },
         },

@@ -30,7 +30,7 @@ export class FarmScene extends AbstractScene {
     sproutPotato: null,
   };
   protected containers: Containers = {
-    main: {
+    central: {
       name: 'central',
       render: null,
     },
@@ -51,18 +51,26 @@ export class FarmScene extends AbstractScene {
   }
 
   protected renderContainers(): void {
-    this.renderContainer(this.containers.main);
-    this.centerContainer(this.containers.main);
-    this.centerPivotContainer(this.containers.main);
+    this.renderContainer(this.containers.central);
+    this.centerContainer(this.containers.central);
+    this.centerPivotContainer(this.containers.central);
   }
 
   protected renderSprites(): void {
-    console.log('renderSprites', this.state);
-    this.addSprite(this.containers.main, this.sprites.ground?.sprite);
-    setTimeout(() => {
-      this.removeAllSprites(this.containers.main);
-      this.addSprite(this.containers.main, this.sprites.sproutPotato?.sprite);
-    }, 3000);
+    if (this.state.farm.containers.central.isEmpty && !this.state.farm.containers.central.isBlocked) {
+      let sprite = null;
+      switch (this.state.farm.containers.central.character.stage) {
+        case 1:
+          sprite = this.sprites.ground?.sprite;
+          break;
+        case 2:
+          sprite = this.sprites.sproutPotato?.sprite;
+          break;
+        default:
+          break;
+      }
+      this.addSprite(this.containers.central, sprite);
+    }
   }
 
   protected setEvents(): void {
@@ -74,13 +82,13 @@ export class FarmScene extends AbstractScene {
   setHandlers() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    this.containers.main.render.eventMode = 'static';
+    this.containers.central.render.eventMode = 'static';
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    this.containers.main.render.on('pointerdown', () => {
+    this.containers.central.render.on('pointerdown', () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
-      this.events.click(this.containers.main.name);
+      this.events.click(this.containers.central.name);
     });
   }
 
