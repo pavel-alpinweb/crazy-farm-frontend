@@ -4,11 +4,13 @@ import { Router } from "./framework/Router";
 import { EventBus } from "./framework/EventBus";
 import FarmController from "./controler/farm.controller";
 import Error404ScreenController from "./controler/404.controller";
+import FarmModel from "./model/farm.model";
 
 export const eventBus: EventBus = new EventBus();
 const userModel: User = new User();
+const farmModel: FarmModel = new FarmModel();
 const authController = new AuthController(userModel);
-const farmController = new FarmController();
+const farmController = new FarmController(farmModel);
 const error404Controller = new Error404ScreenController();
 
 const params: Array<RouterParams> = [
