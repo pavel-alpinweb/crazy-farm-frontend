@@ -10,7 +10,7 @@ declare global {
     name: string;
     render: PIXI.Container | null;
   }
-  type Containers = Array<Container>
+  type Containers = Array<Container>;
 }
 
 export abstract class AbstractScene {
@@ -89,8 +89,8 @@ export abstract class AbstractScene {
   }
 
   protected addSprite(
-      container: Container,
-      sprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined
+    container: Container,
+    sprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined
   ): void {
     if (container.render && sprite) {
       container.render.addChild(sprite);
@@ -98,8 +98,8 @@ export abstract class AbstractScene {
   }
 
   protected removeSprite(
-      container: Container,
-      sprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined
+    container: Container,
+    sprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined
   ): void {
     if (container.render && sprite) {
       container.render.removeChild(sprite);

@@ -45,7 +45,7 @@ export class UserInfoComponent extends AbstractView {
     const updateElement = (data: UserData) => {
       this.state.user = data;
       this.rerenderElement();
-    }
+    };
     eventBus.on("User:update", updateElement);
   }
 

@@ -1,6 +1,6 @@
 import { AbstractView } from "./AbstractView";
 import { AbstractWidget } from "./AbstractWidget";
-import {AbstractScene} from "../graphics/AbstractScene";
+import { AbstractScene } from "../graphics/AbstractScene";
 
 declare global {
   interface ScreenComponents {

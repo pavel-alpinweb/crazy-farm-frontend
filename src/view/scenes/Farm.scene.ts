@@ -1,6 +1,6 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
-import {eventBus} from "../../main";
+import { eventBus } from "../../main";
 
 interface Props {
   farm: FarmState;
@@ -54,7 +54,8 @@ export class FarmScene extends AbstractScene {
       const container = this.containers.find((cont) => cont.name === cell.name);
       if (cell.character && container) {
         this.removeAllSprites(container);
-        const sprite = this.sprites[cell.character?.type][cell.character?.stage];
+        const sprite =
+          this.sprites[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
       }
     });
@@ -75,7 +76,9 @@ export class FarmScene extends AbstractScene {
   setHandlers() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    const centralContainer = this.containers.find((container) => container.name === 'central')
+    const centralContainer = this.containers.find(
+      (container) => container.name === "central"
+    );
     if (centralContainer) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore

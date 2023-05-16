@@ -101,20 +101,20 @@ export class AuthFormWidget extends AbstractWidget {
   }
   protected renderComponents(): void {
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.LoginTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.LoginTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.PasswordTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.PasswordTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.EmailTextInput?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.EmailTextInput?.element
     );
     this.element?.insertAdjacentElement(
-        AbstractView.positions.BEFOREEND,
-        <Element>this.components.FormButton?.element
+      AbstractView.positions.BEFOREEND,
+      <Element>this.components.FormButton?.element
     );
   }
   get template(): string {
