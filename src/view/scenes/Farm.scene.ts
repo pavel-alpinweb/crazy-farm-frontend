@@ -51,7 +51,7 @@ export class FarmScene extends AbstractScene {
   protected renderSprites(): void {
     this.state.farm.containers.forEach((cell) => {
       const container = this.containers.find((cont) => cont.name === cell.name);
-      if (!cell.isBlocked && cell.character && container) {
+      if (cell.character && container) {
         this.removeAllSprites(container);
         const sprite = this.sprites[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
