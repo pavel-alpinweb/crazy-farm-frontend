@@ -1,6 +1,7 @@
 import {DEFAULT_FARM_STATE} from "../utils/constants";
 import {AbstractStaticSprite} from "../framework/graphics/AbstractStaticSprite";
 import {AbstractAnimatedSprite} from "../framework/graphics/AbstractAnimatedSprite";
+import {eventBus} from "../main";
 
 declare global {
     interface Character {
@@ -22,9 +23,16 @@ declare global {
 }
 
 export default class  FarmModel {
-    private initialState: FarmState = DEFAULT_FARM_STATE;
+    private initialState = {
+        farm: DEFAULT_FARM_STATE,
+    };
 
     public get state(): FarmState {
-        return this.initialState;
+        return this.initialState.farm;
+    }
+
+    public setFarmState(data: FarmState): void {
+        this.initialState.farm = data;
+        eventBus.emit("Farm:update", this.initialState.farm);
     }
 }

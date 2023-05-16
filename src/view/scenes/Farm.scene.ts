@@ -1,5 +1,6 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
+import {eventBus} from "../../main";
 
 interface Props {
   farm: FarmState;
@@ -63,6 +64,12 @@ export class FarmScene extends AbstractScene {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
     };
+    const updateFarm = (data: FarmState) => {
+      this.state.farm = data;
+      this.renderSprites();
+    };
+    eventBus.off("Farm:update", updateFarm);
+    eventBus.on("Farm:update", updateFarm);
   }
 
   setHandlers() {

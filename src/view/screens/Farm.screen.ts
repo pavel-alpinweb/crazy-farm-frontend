@@ -18,6 +18,7 @@ const createFarmScreenTemplate = (state: State) => `
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
+  private controllerMethods: Methods = {};
   protected components: ScreenComponents = {
     FarmScene: null,
   };
@@ -26,8 +27,9 @@ export class FarmScreen extends AbstractScreen {
     farm: DEFAULT_FARM_STATE,
   };
 
-  constructor(props: Props) {
+  constructor(props: Props, methods: Methods) {
     super();
+    this.controllerMethods = methods;
     this.setState(props);
     this.initComponents();
     this.renderComponents();
@@ -48,6 +50,7 @@ export class FarmScreen extends AbstractScreen {
   protected setEvents(): void {
     this.components.FarmScene?.emits.setClickEvent((data: Concrete) => {
       console.log("Ты жмакнул по ячейке: ", data);
+      this.controllerMethods.updateFarm();
     });
   }
 
