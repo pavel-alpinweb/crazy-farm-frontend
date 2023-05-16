@@ -28,7 +28,7 @@ export abstract class AbstractView {
   protected abstract setState(props: object): void;
   protected abstract setEvents(): void;
   setHandlers() {
-    console.log("Init handlers", this.constructor.name);
+    console.warn("Init handlers", this.constructor.name);
   }
   protected abstract state: object;
 

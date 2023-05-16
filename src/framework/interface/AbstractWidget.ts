@@ -13,6 +13,7 @@ export abstract class AbstractWidget extends AbstractView {
   protected updateWidget() {
     this.rerenderElement();
     this.initComponents();
+    this.setEvents();
     this.renderComponents();
   }
 }

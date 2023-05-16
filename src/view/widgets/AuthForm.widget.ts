@@ -44,7 +44,6 @@ export class AuthFormWidget extends AbstractWidget {
   protected setState(props: Props) {
     this.state.user = props.user;
   }
-
   protected initComponents() {
     this.components.LoginTextInput = new TextInputComponent({
       value: this.state.user.login,
@@ -93,16 +92,13 @@ export class AuthFormWidget extends AbstractWidget {
     this.components.FormButton?.emits.setClickEvent(() => {
       this.events.submit(this.state.user);
     });
-    eventBus.on("User:update", (data) => {
+    const updateElement = (data: UserData) => {
       this.state.user = data;
       this.updateWidget();
-    });
+    };
+    eventBus.off("User:update", updateElement);
+    eventBus.on("User:update", updateElement);
   }
-
-  get template(): string {
-    return createAuthFormTemplate(this.state);
-  }
-
   protected renderComponents(): void {
     this.element?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
@@ -120,5 +116,8 @@ export class AuthFormWidget extends AbstractWidget {
       AbstractView.positions.BEFOREEND,
       <Element>this.components.FormButton?.element
     );
+  }
+  get template(): string {
+    return createAuthFormTemplate(this.state);
   }
 }

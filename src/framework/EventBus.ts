@@ -10,15 +10,19 @@ export class EventBus {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.listeners[event].push(callback);
-    return () => {
+  }
+  off(event: string, callback: (...args: any) => void) {
+    if (this.listeners[event]) {
       this.listeners[event] = this.listeners[event].filter((listener) => {
-        return listener !== callback;
+        return listener.toString() !== callback.toString();
       });
-    };
+    }
   }
   emit(event: string, ...args: any[]) {
-    this.listeners[event].forEach((listener) => {
-      listener(...args);
-    });
+    if (this.listeners[event]) {
+      this.listeners[event].forEach((listener) => {
+        listener(...args);
+      });
+    }
   }
 }
