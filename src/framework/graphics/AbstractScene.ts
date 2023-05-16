@@ -3,16 +3,14 @@ import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
 
 declare global {
+  interface Sprites {
+    [key: string]: Array<AbstractStaticSprite | AbstractAnimatedSprite | null>;
+  }
   interface Container {
     name: string;
     render: PIXI.Container | null;
   }
-  interface Sprites {
-    [key: string]: AbstractStaticSprite | AbstractAnimatedSprite | null;
-  }
-  interface Containers {
-    [key: string]: Container;
-  }
+  type Containers = Array<Container>
 }
 
 export abstract class AbstractScene {

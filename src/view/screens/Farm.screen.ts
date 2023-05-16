@@ -1,6 +1,7 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { FarmScene } from "../scenes/Farm.scene";
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {DEFAULT_FARM_STATE} from "../../utils/constants";
 
 interface Props {
   farm: FarmState;
@@ -22,18 +23,7 @@ export class FarmScreen extends AbstractScreen {
   };
   protected state: State = {
     title: "Farm, sweet Farm",
-    farm: {
-      containers: {
-        central: {
-          isEmpty: true,
-          isBlocked: true,
-          character: {
-            type: "potato",
-            stage: 1,
-          },
-        },
-      },
-    },
+    farm: DEFAULT_FARM_STATE,
   };
 
   constructor(props: Props) {

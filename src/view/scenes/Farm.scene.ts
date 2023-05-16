@@ -1,6 +1,5 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
-import { GroundSprite } from "../sprites/Ground.sprite";
-import { SproutPotatoSprite } from "../sprites/SproutPotato.sprite";
+import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
 
 interface Props {
   farm: FarmState;
@@ -12,29 +11,17 @@ interface State {
 
 export class FarmScene extends AbstractScene {
   protected state: State = {
-    farm: {
-      containers: {
-        central: {
-          isEmpty: true,
-          isBlocked: true,
-          character: {
-            type: 'potato',
-            stage: 1,
-          },
-        },
-      },
-    },
+    farm: DEFAULT_FARM_STATE,
   };
   protected sprites: Sprites = {
-    ground: null,
-    sproutPotato: null,
+    potato: [],
   };
-  protected containers: Containers = {
-    central: {
-      name: 'central',
+  protected containers: Containers = [
+    {
+      name: "central",
       render: null,
     },
-  };
+  ];
 
   constructor(props: Props) {
     super();
@@ -46,31 +33,30 @@ export class FarmScene extends AbstractScene {
   }
 
   protected initSprites(): void {
-    this.sprites.ground = new GroundSprite();
-    this.sprites.sproutPotato = new SproutPotatoSprite();
+    for (const character in CHARACTERS_SPRITES) {
+      CHARACTERS_SPRITES[character].forEach((Sprite) => {
+        this.sprites[character].push(new Sprite());
+      });
+    }
   }
 
   protected renderContainers(): void {
-    this.renderContainer(this.containers.central);
-    this.centerContainer(this.containers.central);
-    this.centerPivotContainer(this.containers.central);
+    this.containers.forEach((container) => {
+      this.renderContainer(container);
+      this.centerContainer(container);
+      this.centerPivotContainer(container);
+    });
   }
 
   protected renderSprites(): void {
-    if (this.state.farm.containers.central.isEmpty && !this.state.farm.containers.central.isBlocked) {
-      let sprite = null;
-      switch (this.state.farm.containers.central.character.stage) {
-        case 1:
-          sprite = this.sprites.ground?.sprite;
-          break;
-        case 2:
-          sprite = this.sprites.sproutPotato?.sprite;
-          break;
-        default:
-          break;
+    this.state.farm.containers.forEach((cell) => {
+      const container = this.containers.find((cont) => cont.name === cell.name);
+      if (!cell.isBlocked && cell.character && container) {
+        this.removeAllSprites(container);
+        const sprite = this.sprites[cell.character?.type][cell.character?.stage];
+        this.addSprite(container, sprite?.sprite);
       }
-      this.addSprite(this.containers.central, sprite);
-    }
+    });
   }
 
   protected setEvents(): void {
@@ -82,14 +68,18 @@ export class FarmScene extends AbstractScene {
   setHandlers() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    this.containers.central.render.eventMode = 'static';
+    const centralContainer = this.containers.find((container) => container.name === 'central')
+    if (centralContainer) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      centralContainer.render.eventMode = "static";
+    }
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
-    this.containers.central.render.on('pointerdown', () => {
+    centralContainer.render.on("pointerdown", () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
-      this.events.click(this.containers.central.name);
+      this.events.click(centralContainer.name);
     });
   }
-
 }
