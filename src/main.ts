@@ -5,6 +5,7 @@ import { EventBus } from "./framework/EventBus";
 import FarmController from "./controler/farm.controller";
 import Error404ScreenController from "./controler/404.controller";
 import FarmModel from "./model/farm.model";
+import "./assets/scss/main.scss";
 
 export const eventBus: EventBus = new EventBus();
 const userModel: User = new User();
