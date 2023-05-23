@@ -1,3 +1,8 @@
+.text-input-container {
+  width: 100%;
+  position: relative;
+  padding: 0 15px;
+}
 .text-input {
   background: #ffffff;
   border: 1px solid #000000;
@@ -7,6 +12,9 @@
   font-weight: 400;
   font-size: 16px;
   width: 100%;
+  &--error {
+    border: 3px solid #FF3D00;
+  }
   &--icon {
     padding-left: 33px;
     background-repeat: no-repeat;
@@ -22,4 +30,23 @@
   &--icon-envelope {
     background-image: url("/assets/img/icons/envelope.svg");
   }
+}
+
+.text-input-hint-trigger {
+  width: 35px;
+  height: 35px;
+  background: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  left: calc(100% - 35px);
+  top: -15px;
+}
+
+.text-input-hint-icon {
+  height: 32px;
+  width: auto;
 }

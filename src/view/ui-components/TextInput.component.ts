@@ -20,17 +20,24 @@ interface State {
 }
 
 const createTextInputTemplate = (state: State) => `
-<input
-    class=
-        "text-input 
-        ${state.isError ? "text-input--error" : ""}
-        ${state.icon ? `text-input--icon text-input--icon-${state.icon}` : ""}
-        "
-    type="${state.isPassword ? "password" : "text"}"
-    ${state.isDisabled ? "disabled" : ""}
-    value="${state.value}"
-    placeholder="${state.placeholder}"
-/>
+<div class="text-input-container">
+    <input
+        class=
+            "text-input 
+            ${state.isError ? "text-input--error" : ""}
+            ${state.icon ? `text-input--icon text-input--icon-${state.icon}` : ""}
+            "
+        type="${state.isPassword ? "password" : "text"}"
+        ${state.isDisabled ? "disabled" : ""}
+        value="${state.value}"
+        placeholder="${state.placeholder}"
+    />
+    ${state.isError ? `
+      <div class="text-input-hint-trigger">
+        <img class="text-input-hint-icon" src="/assets/img/icons/warning.svg" alt="warning">
+      </div>
+    ` : ''}
+</div>
 `;
 
 export class TextInputComponent extends AbstractView {

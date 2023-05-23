@@ -65,7 +65,7 @@ export class AuthFormWidget extends AbstractWidget {
       value: this.state.user.email,
       placeholder: "Введите email",
       isDisabled: false,
-      isError: false,
+      isError: true,
       isPassword: false,
       icon: 'envelope',
     });
