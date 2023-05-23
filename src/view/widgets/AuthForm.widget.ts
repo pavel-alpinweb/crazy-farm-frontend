@@ -51,6 +51,7 @@ export class AuthFormWidget extends AbstractWidget {
       isDisabled: false,
       isError: false,
       isPassword: false,
+      icon: 'user',
     });
     this.components.PasswordTextInput = new TextInputComponent({
       value: this.state.user.password,
@@ -58,6 +59,7 @@ export class AuthFormWidget extends AbstractWidget {
       isDisabled: false,
       isError: false,
       isPassword: true,
+      icon: 'lock',
     });
     this.components.EmailTextInput = new TextInputComponent({
       value: this.state.user.email,
@@ -65,6 +67,7 @@ export class AuthFormWidget extends AbstractWidget {
       isDisabled: false,
       isError: false,
       isPassword: false,
+      icon: 'envelope',
     });
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",

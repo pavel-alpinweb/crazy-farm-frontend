@@ -6,6 +6,7 @@ interface Props {
   isDisabled: boolean;
   isError: boolean;
   isPassword: boolean;
+  icon?: string;
 }
 
 interface State {
@@ -14,11 +15,17 @@ interface State {
   isPassword: Props["isPassword"];
   isDisabled: boolean;
   isError: boolean;
+  icon: null | Props["icon"];
+  isOpenHint: boolean;
 }
 
 const createTextInputTemplate = (state: State) => `
 <input
-    class="text-input ${state.isError ? "text-input--error" : ""}"
+    class=
+        "text-input 
+        ${state.isError ? "text-input--error" : ""}
+        ${state.icon ? `text-input--icon text-input--icon-${state.icon}` : ""}
+        "
     type="${state.isPassword ? "password" : "text"}"
     ${state.isDisabled ? "disabled" : ""}
     value="${state.value}"
@@ -33,13 +40,20 @@ export class TextInputComponent extends AbstractView {
     isDisabled: false,
     isError: false,
     isPassword: false,
+    icon: null,
+    isOpenHint: false,
   };
   constructor(props: Props) {
     super();
     this.setState(props);
   }
   protected setState(props: Props) {
-    this.state = props;
+    this.state.value = props.value;
+    this.state.placeholder = props.placeholder;
+    this.state.isPassword = props.isPassword;
+    this.state.isDisabled = props.isDisabled;
+    this.state.isError = props.isError;
+    this.state.icon = props.icon;
     this.setEvents();
   }
   protected setEvents() {
