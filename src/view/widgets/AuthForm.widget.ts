@@ -49,7 +49,6 @@ export class AuthFormWidget extends AbstractWidget {
       value: this.state.user.login,
       placeholder: "Введите логин",
       isDisabled: false,
-      isError: false,
       isPassword: false,
       icon: 'user',
     });
@@ -57,7 +56,6 @@ export class AuthFormWidget extends AbstractWidget {
       value: this.state.user.password,
       placeholder: "Введите пароль",
       isDisabled: false,
-      isError: false,
       isPassword: true,
       icon: 'lock',
     });
@@ -66,6 +64,7 @@ export class AuthFormWidget extends AbstractWidget {
       placeholder: "Введите email",
       isDisabled: false,
       isError: true,
+      errorText: 'Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.',
       isPassword: false,
       icon: 'envelope',
     });

@@ -3,19 +3,21 @@ import { AbstractView } from "../../framework/interface/AbstractView";
 interface Props {
   value: string;
   placeholder: string;
-  isDisabled: boolean;
-  isError: boolean;
-  isPassword: boolean;
+  isDisabled?: boolean;
+  isError?: boolean;
+  errorText?: string;
   icon?: string;
+  isPassword: boolean;
 }
 
 interface State {
   value: Props["value"];
   placeholder: Props["placeholder"];
   isPassword: Props["isPassword"];
-  isDisabled: boolean;
-  isError: boolean;
+  isDisabled: boolean | Props["isDisabled"];
+  isError: boolean | Props["isError"];
   icon: null | Props["icon"];
+  errorText: null | Props["errorText"];
   isOpenHint: boolean;
 }
 
@@ -33,8 +35,13 @@ const createTextInputTemplate = (state: State) => `
         placeholder="${state.placeholder}"
     />
     ${state.isError ? `
-      <div class="text-input-hint-trigger">
+      <div class="text-input-hint-trigger" data-hint-trigger>
         <img class="text-input-hint-icon" src="/assets/img/icons/warning.svg" alt="warning">
+      </div>
+    ` : ''}
+    ${state.isError && state.errorText && state.isOpenHint ? `
+      <div class="text-input-error-message">
+        ${state.errorText}
       </div>
     ` : ''}
 </div>
@@ -48,6 +55,7 @@ export class TextInputComponent extends AbstractView {
     isError: false,
     isPassword: false,
     icon: null,
+    errorText: null,
     isOpenHint: false,
   };
   constructor(props: Props) {
@@ -61,6 +69,7 @@ export class TextInputComponent extends AbstractView {
     this.state.isDisabled = props.isDisabled;
     this.state.isError = props.isError;
     this.state.icon = props.icon;
+    this.state.errorText = props.errorText;
     this.setEvents();
   }
   protected setEvents() {
@@ -73,6 +82,10 @@ export class TextInputComponent extends AbstractView {
       event.preventDefault();
       const target = event.target as HTMLInputElement;
       this.events.input(target.value);
+    });
+    this.element?.querySelector('[data-hint-trigger]')?.addEventListener("click", () => {
+      this.state.isOpenHint = !this.state.isOpenHint;
+      this.rerenderElement();
     });
   }
   get template(): string {
