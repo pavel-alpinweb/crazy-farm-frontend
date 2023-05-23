@@ -48,14 +48,12 @@ export class AuthFormWidget extends AbstractWidget {
     this.components.LoginTextInput = new TextInputComponent({
       value: this.state.user.login,
       placeholder: "Введите логин",
-      isDisabled: false,
       isPassword: false,
       icon: 'user',
     });
     this.components.PasswordTextInput = new TextInputComponent({
       value: this.state.user.password,
       placeholder: "Введите пароль",
-      isDisabled: false,
       isPassword: true,
       icon: 'lock',
     });
