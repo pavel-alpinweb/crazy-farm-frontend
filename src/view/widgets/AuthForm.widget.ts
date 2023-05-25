@@ -14,8 +14,14 @@ interface State {
 }
 
 const createAuthFormTemplate = (state: State) => `
-<Form class="auth-form" action="#" style="display: flex; flex-direction: column; align-items: flex-start;">
+<Form class="auth-form" action="#">
     <h2>${state.title}</h2>
+    <div class="auth-form__fields">
+        <div class="auth-form__input-container" data-input-login></div>
+        <div class="auth-form__input-container" data-input-email></div>
+        <div class="auth-form__input-container" data-input-password></div>
+    </div>
+    <div class="auth-form__button-container" data-button-container></div>
 </Form>
 `;
 
@@ -61,7 +67,7 @@ export class AuthFormWidget extends AbstractWidget {
       value: this.state.user.email,
       placeholder: "Введите email",
       isDisabled: false,
-      isError: true,
+      isError: false,
       errorText: 'Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.',
       isPassword: false,
       icon: 'envelope',
@@ -100,19 +106,19 @@ export class AuthFormWidget extends AbstractWidget {
     eventBus.on("User:update", updateElement);
   }
   protected renderComponents(): void {
-    this.element?.insertAdjacentElement(
+    this.element?.querySelector('[data-input-login]')?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
       <Element>this.components.LoginTextInput?.element
     );
-    this.element?.insertAdjacentElement(
+    this.element?.querySelector('[data-input-email]')?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
       <Element>this.components.PasswordTextInput?.element
     );
-    this.element?.insertAdjacentElement(
+    this.element?.querySelector('[data-input-password]')?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
       <Element>this.components.EmailTextInput?.element
     );
-    this.element?.insertAdjacentElement(
+    this.element?.querySelector('[data-button-container]')?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
       <Element>this.components.FormButton?.element
     );

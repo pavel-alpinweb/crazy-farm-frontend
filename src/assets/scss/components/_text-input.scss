@@ -1,7 +1,6 @@
 .text-input-container {
   width: 100%;
   position: relative;
-  padding: 0 15px;
 }
 .text-input {
   background: #ffffff;
@@ -42,7 +41,7 @@
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  left: calc(100% - 35px);
+  left: calc(100% - 17.5px);
   top: -15px;
 }
 
