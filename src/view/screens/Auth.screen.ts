@@ -52,7 +52,10 @@ export class AuthScreen extends AbstractScreen {
       user: this.state.user,
     });
     this.components.AuthFormWidget = new AuthFormWidget({
-      user: this.state.user,
+      user: {
+        login: this.state.user.login,
+        email: this.state.user.email,
+      },
     });
   }
   protected setEvents(): void {

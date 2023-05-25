@@ -54,12 +54,6 @@ export class AuthFormWidget extends AbstractWidget {
       isPassword: false,
       icon: 'user',
     });
-    this.components.PasswordTextInput = new TextInputComponent({
-      value: this.state.user.password,
-      placeholder: "Введите пароль",
-      isPassword: true,
-      icon: 'lock',
-    });
     this.components.EmailTextInput = new TextInputComponent({
       value: this.state.user.email,
       placeholder: "Введите email",
@@ -69,6 +63,14 @@ export class AuthFormWidget extends AbstractWidget {
       isPassword: false,
       icon: 'envelope',
     });
+    if (this.state.user.password) {
+      this.components.PasswordTextInput = new TextInputComponent({
+        value: this.state.user.password,
+        placeholder: "Введите пароль",
+        isPassword: true,
+        icon: 'lock',
+      });
+    }
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
     });
@@ -107,11 +109,13 @@ export class AuthFormWidget extends AbstractWidget {
       AbstractView.positions.BEFOREEND,
       <Element>this.components.LoginTextInput?.element
     );
+    if (this.components.PasswordTextInput) {
+      this.element?.querySelector('[data-input-password]')?.insertAdjacentElement(
+          AbstractView.positions.BEFOREEND,
+          <Element>this.components.PasswordTextInput?.element
+      );
+    }
     this.element?.querySelector('[data-input-email]')?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.PasswordTextInput?.element
-    );
-    this.element?.querySelector('[data-input-password]')?.insertAdjacentElement(
       AbstractView.positions.BEFOREEND,
       <Element>this.components.EmailTextInput?.element
     );

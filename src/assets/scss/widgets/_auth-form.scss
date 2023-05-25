@@ -10,6 +10,9 @@
   &__input-container {
     width: 100%;
     margin-bottom: 18px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   &__button-container {
     width: 100%;
