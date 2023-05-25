@@ -9,13 +9,11 @@ interface Props {
 }
 
 interface State {
-  title: string;
   user: Props["user"];
 }
 
-const createAuthFormTemplate = (state: State) => `
+const createAuthFormTemplate = () => `
 <Form class="auth-form" action="#">
-    <h2>${state.title}</h2>
     <div class="auth-form__fields">
         <div class="auth-form__input-container" data-input-login></div>
         <div class="auth-form__input-container" data-input-email></div>
@@ -27,7 +25,6 @@ const createAuthFormTemplate = (state: State) => `
 
 export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
-    title: "Введите данные аккаунта",
     user: {
       login: "",
       password: "",
@@ -124,6 +121,6 @@ export class AuthFormWidget extends AbstractWidget {
     );
   }
   get template(): string {
-    return createAuthFormTemplate(this.state);
+    return createAuthFormTemplate();
   }
 }
