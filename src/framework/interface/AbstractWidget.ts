@@ -16,4 +16,13 @@ export abstract class AbstractWidget extends AbstractView {
     this.setEvents();
     this.renderComponents();
   }
+  protected mountComponent(
+    slot: string,
+    component: AbstractView | null,
+    position: InsertPosition = AbstractView.positions.BEFOREEND
+  ): void {
+    this.element
+      ?.querySelector(`[data-slot-${slot}]`)
+      ?.insertAdjacentElement(position, <Element>component?.element);
+  }
 }

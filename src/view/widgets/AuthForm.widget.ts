@@ -1,7 +1,6 @@
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
 import { AbstractWidget } from "../../framework/interface/AbstractWidget";
-import { AbstractView } from "../../framework/interface/AbstractView";
 import { eventBus } from "../../main";
 
 interface Props {
@@ -15,11 +14,11 @@ interface State {
 const createAuthFormTemplate = () => `
 <Form class="auth-form" action="#">
     <div class="auth-form__fields">
-        <div class="auth-form__input-container" data-input-login></div>
-        <div class="auth-form__input-container" data-input-email></div>
-        <div class="auth-form__input-container" data-input-password></div>
+        <div class="auth-form__input-container" data-slot-login-input></div>
+        <div class="auth-form__input-container" data-slot-email-input></div>
+        <div class="auth-form__input-container" data-slot-password-input></div>
     </div>
-    <div class="auth-form__button-container" data-button-container></div>
+    <div class="auth-form__button-container" data-slot-button></div>
 </Form>
 `;
 
@@ -105,24 +104,12 @@ export class AuthFormWidget extends AbstractWidget {
     eventBus.on("User:update", updateElement);
   }
   protected renderComponents(): void {
-    this.element?.querySelector('[data-input-login]')?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.LoginTextInput?.element
-    );
+    this.mountComponent('login-input', this.components.LoginTextInput);
     if (this.components.PasswordTextInput) {
-      this.element?.querySelector('[data-input-password]')?.insertAdjacentElement(
-          AbstractView.positions.BEFOREEND,
-          <Element>this.components.PasswordTextInput?.element
-      );
+      this.mountComponent('password-input', this.components.PasswordTextInput);
     }
-    this.element?.querySelector('[data-input-email]')?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.EmailTextInput?.element
-    );
-    this.element?.querySelector('[data-button-container]')?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.FormButton?.element
-    );
+    this.mountComponent('email-input', this.components.EmailTextInput);
+    this.mountComponent('button', this.components.FormButton);
   }
   get template(): string {
     return createAuthFormTemplate();
