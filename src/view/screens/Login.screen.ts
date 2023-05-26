@@ -1,4 +1,7 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
+import {PageHeaderComponent} from "../ui-components/PageHeader.component";
+import {AbstractView} from "../../framework/interface/AbstractView";
+import {AuthFormWidget} from "../widgets/AuthForm.widget";
 
 interface Props {
     user: UserData;
@@ -11,8 +14,8 @@ interface State {
 
 const createAuthScreenTemplate = () => `
 <div class="auth-screen">
-    <div class="auth-screen__header" data-slot-header>Вход</div>
-    <div class="auth-screen__content" data-slot-content>Отправить</div>
+    <div class="auth-screen__header" data-slot-header></div>
+    <div class="auth-screen__content" data-slot-content></div>
     <div class="auth-screen__footer">Зарегестрироваться</div>
 </div>
 `;
@@ -45,11 +48,20 @@ export class LoginScreen extends AbstractScreen{
         this.state.user = props.user;
     }
     protected initComponents(): void {
-        console.warn("Init components", this.constructor.name);
+        this.components.PageHeaderComponent = new PageHeaderComponent({
+            title: this.state.title,
+        });
+        this.components.AuthFormWidget = new AuthFormWidget({
+            user: {
+                login: this.state.user.login,
+                email: this.state.user.email,
+            },
+        });
     }
 
     protected renderComponents(): void {
-        console.warn("Init rendering components", this.constructor.name);
+        this.mountComponent('header', this.components.PageHeaderComponent);
+        this.mountComponent('content', this.components.AuthFormWidget);
     }
 
     protected setEvents(): void {
