@@ -19,7 +19,7 @@ const createAuthScreenTemplate = () => `
 </div>
 `;
 
-export class LoginScreen extends AbstractScreen{
+export class RegistrationScreen extends AbstractScreen{
 
     protected controllerMethods: Methods = {};
     protected state: State = {
