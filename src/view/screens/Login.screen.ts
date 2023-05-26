@@ -10,7 +10,11 @@ interface State {
 }
 
 const createAuthScreenTemplate = () => `
-<div class="auth-screen"></div>
+<div class="auth-screen">
+    <div class="auth-screen__header" data-slot-header>Вход</div>
+    <div class="auth-screen__content" data-slot-content>Отправить</div>
+    <div class="auth-screen__footer">Зарегестрироваться</div>
+</div>
 `;
 
 export class LoginScreen extends AbstractScreen{
