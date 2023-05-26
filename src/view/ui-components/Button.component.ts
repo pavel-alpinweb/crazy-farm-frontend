@@ -38,6 +38,8 @@ export class ButtonComponent extends AbstractView {
   setHandlers() {
     this.element?.addEventListener("click", (event) => {
       event.preventDefault();
+      this.state.isLoading = true;
+      this.rerenderElement();
       this.events.click("Click button!");
     });
   }
