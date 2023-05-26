@@ -3,6 +3,7 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import {RegistrationScreen} from "../view/screens/Registration.screen";
+import {updateUserDataMock} from "../mock/auth.mock";
 
 export class RegistrationController {
     private readonly userModel: User;
@@ -31,6 +32,10 @@ export class RegistrationController {
                 if (appContainer) {
                     appContainer.innerHTML = "";
                 }
+            },
+            updateUser: async (data: UserData) => {
+                const user: UserData = await updateUserDataMock(data);
+                this.userModel.setUserData(user, true);
             },
         };
     }
