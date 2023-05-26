@@ -18,7 +18,7 @@ const createAuthScreenTemplate = () => `
 `;
 
 export class AuthScreen extends AbstractScreen {
-  private controllerMethods: Methods = {};
+  protected controllerMethods: Methods = {};
   protected state: State = {
     title: "Вход/Регистрация",
     user: {

@@ -9,6 +9,7 @@ declare global {
 }
 
 export abstract class AbstractScreen extends AbstractView {
+  protected abstract controllerMethods: Methods;
   protected abstract components: ScreenComponents;
   protected abstract initComponents(): void;
   protected abstract renderComponents(): void;
