@@ -15,7 +15,7 @@ const createAuthScreenTemplate = () => `
 <div class="auth-screen">
     <div class="auth-screen__header" data-slot-header></div>
     <div class="auth-screen__content" data-slot-content></div>
-    <div class="auth-screen__footer">Зарегестрироваться</div>
+    <div class="auth-screen__footer">Войти</div>
 </div>
 `;
 
@@ -23,7 +23,7 @@ export class RegistrationScreen extends AbstractScreen{
 
     protected controllerMethods: Methods = {};
     protected state: State = {
-        title: "Вход",
+        title: "Регистрация",
         user: {
             login: "",
             password: "",
