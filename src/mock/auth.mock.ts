@@ -6,7 +6,7 @@ export function getUserDataMock(): Promise<UserData> {
         password: "Pelmesh",
         email: "bakuard@pelmesh.bro",
       });
-    }, 1000);
+    }, 100);
   });
 }
 

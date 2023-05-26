@@ -13,6 +13,9 @@ declare global {
   interface Emits {
     [key: string]: (callback: (data: Concrete) => void) => void;
   }
+  interface Methods {
+    [key: string]: (...args: any) => void;
+  }
 }
 export abstract class AbstractView {
   protected renderedElement: Element | null = null;

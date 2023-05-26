@@ -3,8 +3,8 @@ import { eventBus } from "../main";
 declare global {
   interface UserData {
     login: string;
-    password: string;
     email: string;
+    password?: string;
   }
 }
 
@@ -33,8 +33,10 @@ export default class User {
 
   public setUserData(data: UserData, isUpdateUI: boolean) {
     this.userLogin = data.login;
-    this.userPassword = data.password;
     this.userEmail = data.email;
+    if (data.password) {
+      this.userPassword = data.password;
+    }
     if (isUpdateUI) {
       eventBus.emit("User:update", this.data);
     }

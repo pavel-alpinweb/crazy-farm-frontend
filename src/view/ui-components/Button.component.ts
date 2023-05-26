@@ -10,7 +10,9 @@ interface State {
 }
 
 const createButtonTemplate = (state: State) => `
-<button type="button" ${state.isDisabled || state.isLoading ? "disabled" : ""}>
+<button class="button" type="button" ${
+  state.isDisabled || state.isLoading ? "disabled" : ""
+}>
     ${state.isLoading ? "Loading..." : state.title}
 </button>
 `;
@@ -38,6 +40,8 @@ export class ButtonComponent extends AbstractView {
   setHandlers() {
     this.element?.addEventListener("click", (event) => {
       event.preventDefault();
+      this.state.isLoading = true;
+      this.rerenderElement();
       this.events.click("Click button!");
     });
   }

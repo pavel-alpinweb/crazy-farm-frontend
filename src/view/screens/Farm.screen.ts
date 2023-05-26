@@ -18,7 +18,7 @@ const createFarmScreenTemplate = (state: State) => `
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
-  private controllerMethods: Methods = {};
+  protected controllerMethods: Methods = {};
   protected components: ScreenComponents = {
     FarmScene: null,
   };

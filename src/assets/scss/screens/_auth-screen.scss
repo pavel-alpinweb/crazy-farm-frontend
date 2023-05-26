@@ -1,0 +1,17 @@
+.auth-screen {
+  &__header {
+    padding: 20px;
+    border-bottom: 1px solid #000000;
+  }
+  &__content {
+    padding: 20px 20px 0;
+    margin-bottom: 10px;
+  }
+  &__footer {
+    padding: 0 20px 20px;
+  }
+  &__link {
+    text-decoration: none;
+    color: #ff5c00;
+  }
+}

@@ -1,7 +1,6 @@
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
 import { AbstractWidget } from "../../framework/interface/AbstractWidget";
-import { AbstractView } from "../../framework/interface/AbstractView";
 import { eventBus } from "../../main";
 
 interface Props {
@@ -9,19 +8,22 @@ interface Props {
 }
 
 interface State {
-  title: string;
   user: Props["user"];
 }
 
-const createAuthFormTemplate = (state: State) => `
-<Form class="auth-form" action="#" style="display: flex; flex-direction: column; align-items: flex-start;">
-    <h2>${state.title}</h2>
+const createAuthFormTemplate = () => `
+<Form class="auth-form" action="#">
+    <div class="auth-form__fields">
+        <div class="auth-form__input-container" data-slot-login-input></div>
+        <div class="auth-form__input-container" data-slot-email-input></div>
+        <div class="auth-form__input-container" data-slot-password-input></div>
+    </div>
+    <div class="auth-form__button-container" data-slot-button></div>
 </Form>
 `;
 
 export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
-    title: "Введите данные аккаунта",
     user: {
       login: "",
       password: "",
@@ -48,24 +50,27 @@ export class AuthFormWidget extends AbstractWidget {
     this.components.LoginTextInput = new TextInputComponent({
       value: this.state.user.login,
       placeholder: "Введите логин",
-      isDisabled: false,
-      isError: false,
       isPassword: false,
-    });
-    this.components.PasswordTextInput = new TextInputComponent({
-      value: this.state.user.password,
-      placeholder: "Введите пароль",
-      isDisabled: false,
-      isError: false,
-      isPassword: true,
+      icon: "user",
     });
     this.components.EmailTextInput = new TextInputComponent({
       value: this.state.user.email,
       placeholder: "Введите email",
       isDisabled: false,
       isError: false,
+      errorText:
+        "Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.",
       isPassword: false,
+      icon: "envelope",
     });
+    if (this.state.user.password) {
+      this.components.PasswordTextInput = new TextInputComponent({
+        value: this.state.user.password,
+        placeholder: "Введите пароль",
+        isPassword: true,
+        icon: "lock",
+      });
+    }
     this.components.FormButton = new ButtonComponent({
       title: "Отправить",
     });
@@ -100,24 +105,14 @@ export class AuthFormWidget extends AbstractWidget {
     eventBus.on("User:update", updateElement);
   }
   protected renderComponents(): void {
-    this.element?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.LoginTextInput?.element
-    );
-    this.element?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.PasswordTextInput?.element
-    );
-    this.element?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.EmailTextInput?.element
-    );
-    this.element?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.FormButton?.element
-    );
+    this.mountComponent("login-input", this.components.LoginTextInput);
+    if (this.components.PasswordTextInput) {
+      this.mountComponent("password-input", this.components.PasswordTextInput);
+    }
+    this.mountComponent("email-input", this.components.EmailTextInput);
+    this.mountComponent("button", this.components.FormButton);
   }
   get template(): string {
-    return createAuthFormTemplate(this.state);
+    return createAuthFormTemplate();
   }
 }
