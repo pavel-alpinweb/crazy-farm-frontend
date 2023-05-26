@@ -4,7 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import {RegistrationScreen} from "../view/screens/Registration.screen";
 
-export class LoginController {
+export class RegistrationController {
     private readonly userModel: User;
     private Screen: AbstractScreen | null;
     public methods: Methods = {};
