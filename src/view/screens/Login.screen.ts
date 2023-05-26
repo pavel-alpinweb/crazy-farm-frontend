@@ -1,6 +1,5 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {PageHeaderComponent} from "../ui-components/PageHeader.component";
-import {AbstractView} from "../../framework/interface/AbstractView";
 import {AuthFormWidget} from "../widgets/AuthForm.widget";
 
 interface Props {
@@ -65,7 +64,9 @@ export class LoginScreen extends AbstractScreen{
     }
 
     protected setEvents(): void {
-        console.warn("Init events", this.constructor.name);
+        this.components.AuthFormWidget?.emits.setSubmit((data: Concrete) => {
+            this.controllerMethods.login(data);
+        });
     }
 
 

@@ -22,6 +22,9 @@ export class LoginController {
           <Element>this.Screen.element
         );
       },
+      login: (data) => {
+        console.log('login user:', data);
+      },
       destroy: () => {
         this.Screen?.remove();
         this.Screen = null;
