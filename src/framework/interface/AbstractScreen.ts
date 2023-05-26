@@ -14,12 +14,12 @@ export abstract class AbstractScreen extends AbstractView {
   protected abstract initComponents(): void;
   protected abstract renderComponents(): void;
   protected mountComponent(
-      slot: string,
-      component: AbstractWidget | AbstractView | AbstractScene | null,
-      position: InsertPosition = AbstractView.positions.BEFOREEND
+    slot: string,
+    component: AbstractWidget | AbstractView | AbstractScene | null,
+    position: InsertPosition = AbstractView.positions.BEFOREEND
   ): void {
     this.element
-        ?.querySelector(`[data-slot-${slot}]`)
-        ?.insertAdjacentElement(position, <Element>component?.element);
+      ?.querySelector(`[data-slot-${slot}]`)
+      ?.insertAdjacentElement(position, <Element>component?.element);
   }
 }

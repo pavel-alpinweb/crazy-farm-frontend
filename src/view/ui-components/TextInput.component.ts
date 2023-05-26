@@ -27,23 +27,35 @@ const createTextInputTemplate = (state: State) => `
         class=
             "text-input 
             ${state.isError ? "text-input--error" : ""}
-            ${state.icon ? `text-input--icon text-input--icon-${state.icon}` : ""}
+            ${
+              state.icon
+                ? `text-input--icon text-input--icon-${state.icon}`
+                : ""
+            }
             "
         type="${state.isPassword ? "password" : "text"}"
         ${state.isDisabled ? "disabled" : ""}
         value="${state.value}"
         placeholder="${state.placeholder}"
     />
-    ${state.isError ? `
+    ${
+      state.isError
+        ? `
       <div class="text-input-hint-trigger" data-hint-trigger>
         <img class="text-input-hint-icon" src="/assets/img/icons/warning.svg" alt="warning">
       </div>
-    ` : ''}
-    ${state.isError && state.errorText && state.isOpenHint ? `
+    `
+        : ""
+    }
+    ${
+      state.isError && state.errorText && state.isOpenHint
+        ? `
       <div class="text-input-error-message">
         ${state.errorText}
       </div>
-    ` : ''}
+    `
+        : ""
+    }
 </div>
 `;
 
@@ -83,10 +95,12 @@ export class TextInputComponent extends AbstractView {
       const target = event.target as HTMLInputElement;
       this.events.input(target.value);
     });
-    this.element?.querySelector('[data-hint-trigger]')?.addEventListener("click", () => {
-      this.state.isOpenHint = !this.state.isOpenHint;
-      this.rerenderElement();
-    });
+    this.element
+      ?.querySelector("[data-hint-trigger]")
+      ?.addEventListener("click", () => {
+        this.state.isOpenHint = !this.state.isOpenHint;
+        this.rerenderElement();
+      });
   }
   get template(): string {
     return createTextInputTemplate(this.state);

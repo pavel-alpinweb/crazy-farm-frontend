@@ -5,8 +5,8 @@ import FarmController from "./controler/farm.controller";
 import Error404ScreenController from "./controler/404.controller";
 import FarmModel from "./model/farm.model";
 import "./assets/scss/main.scss";
-import {LoginController} from "./controler/login.controller";
-import {RegistrationController} from "./controler/registration.controller";
+import { LoginController } from "./controler/login.controller";
+import { RegistrationController } from "./controler/registration.controller";
 
 export const eventBus: EventBus = new EventBus();
 const userModel: User = new User();

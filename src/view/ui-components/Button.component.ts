@@ -10,7 +10,9 @@ interface State {
 }
 
 const createButtonTemplate = (state: State) => `
-<button class="button" type="button" ${state.isDisabled || state.isLoading ? "disabled" : ""}>
+<button class="button" type="button" ${
+  state.isDisabled || state.isLoading ? "disabled" : ""
+}>
     ${state.isLoading ? "Loading..." : state.title}
 </button>
 `;

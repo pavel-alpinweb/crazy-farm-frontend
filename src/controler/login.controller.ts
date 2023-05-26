@@ -3,7 +3,7 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { LoginScreen } from "../view/screens/Login.screen";
-import {Router} from "../framework/Router";
+import { Router } from "../framework/Router";
 
 export class LoginController {
   private readonly userModel: User;
@@ -24,7 +24,7 @@ export class LoginController {
         );
       },
       login: (data) => {
-        console.log('login user:', data);
+        console.log("login user:", data);
         Router.push("/#/");
       },
       destroy: () => {
