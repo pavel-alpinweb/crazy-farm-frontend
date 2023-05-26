@@ -1,4 +1,3 @@
-import AuthController from "../controler/auth.controller";
 import FarmController from "../controler/farm.controller";
 import Error404ScreenController from "../controler/404.controller";
 import { LoginController } from "../controler/login.controller";
@@ -6,7 +5,6 @@ import {RegistrationController} from "../controler/registration.controller";
 
 declare global {
   type controller =
-    | AuthController
     | FarmController
     | Error404ScreenController
     | LoginController

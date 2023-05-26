@@ -4,6 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import {RegistrationScreen} from "../view/screens/Registration.screen";
 import {getUserDataMock, updateUserDataMock} from "../mock/auth.mock";
+import {Router} from "../framework/Router";
 
 export class RegistrationController {
     private readonly userModel: User;
@@ -23,9 +24,6 @@ export class RegistrationController {
                     <Element>this.Screen.element
                 );
             },
-            login: (data) => {
-                console.log('login user:', data);
-            },
             destroy: () => {
                 this.Screen?.remove();
                 this.Screen = null;
@@ -36,6 +34,7 @@ export class RegistrationController {
             updateUser: async (data: UserData) => {
                 const user: UserData = await updateUserDataMock(data);
                 this.userModel.setUserData(user, true);
+                Router.push("/#/");
             },
             fetchUser: async () => {
                 const user: UserData = await getUserDataMock();
