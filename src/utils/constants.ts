@@ -20,3 +20,10 @@ export const DEFAULT_FARM_STATE: FarmState = {
 export const CHARACTERS_SPRITES: CharactersSprites = {
   potato: [GroundSprite, SproutPotatoSprite],
 };
+
+export const DEFAULT_USER_DATA: UserData = {
+  userId: "crazyfarmid",
+  login: "crazyfarmlogin",
+  email: "crazyfarm@crazyfarm.crazyfarm",
+  password: "crazyfarmpassword",
+};

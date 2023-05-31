@@ -1,4 +1,5 @@
 import { eventBus } from "../main";
+import {DEFAULT_USER_DATA} from "../utils/constants";
 
 declare global {
   interface UserData {
@@ -10,23 +11,22 @@ declare global {
 }
 
 export default class User {
-  private userId = "crazyfarmid";
-  private userLogin = "crazyfarmlogin";
-  private userPassword = "crazyfarmpassword";
-  private userEmail = "crazyfarm@crazyfarm.crazyfarm";
+  private userId = DEFAULT_USER_DATA.userId;
+  private userLogin = DEFAULT_USER_DATA.login;
+  private userEmail = DEFAULT_USER_DATA.email;
+  private userPassword = DEFAULT_USER_DATA.password;
 
   public get id(): string {
     return this.userId;
   }
-
   public get login(): string {
     return this.userLogin;
   }
-  public get password(): string {
-    return this.userPassword;
-  }
   public get email(): string {
     return this.userEmail;
+  }
+  public get password(): string | undefined {
+    return this.userPassword;
   }
 
   public get data(): UserData {
