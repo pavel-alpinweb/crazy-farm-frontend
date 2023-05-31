@@ -23,6 +23,7 @@ const createUserInfoTemplate = (state: State) => `
 export class UserInfoComponent extends AbstractView {
   protected state: State = {
     user: {
+      userId: "",
       login: "",
       password: "",
       email: "",

@@ -24,6 +24,7 @@ export class LoginScreen extends AbstractScreen {
   protected state: State = {
     title: "Вход",
     user: {
+      userId: "",
       login: "",
       password: "",
       email: "",
@@ -51,6 +52,7 @@ export class LoginScreen extends AbstractScreen {
     });
     this.components.AuthFormWidget = new AuthFormWidget({
       user: {
+        userId: this.state.user.userId,
         login: this.state.user.login,
         email: this.state.user.email,
       },

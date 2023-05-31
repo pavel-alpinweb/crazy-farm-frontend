@@ -25,6 +25,7 @@ const createAuthFormTemplate = () => `
 export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
     user: {
+      userId: "",
       login: "",
       password: "",
       email: "",

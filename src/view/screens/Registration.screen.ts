@@ -24,6 +24,7 @@ export class RegistrationScreen extends AbstractScreen {
   protected state: State = {
     title: "Регистрация",
     user: {
+      userId: "",
       login: "",
       password: "",
       email: "",
