@@ -2,6 +2,7 @@ import { eventBus } from "../main";
 
 declare global {
   interface UserData {
+    userId: string;
     login: string;
     email: string;
     password?: string;
@@ -9,9 +10,14 @@ declare global {
 }
 
 export default class User {
-  private userLogin = "Sioda";
-  private userPassword = "Sioda123456";
-  private userEmail = "sioda@sioda.sioda";
+  private userId = "crazyfarmid";
+  private userLogin = "crazyfarmlogin";
+  private userPassword = "crazyfarmpassword";
+  private userEmail = "crazyfarm@crazyfarm.crazyfarm";
+
+  public get id(): string {
+    return this.userId;
+  }
 
   public get login(): string {
     return this.userLogin;
@@ -25,9 +31,10 @@ export default class User {
 
   public get data(): UserData {
     return {
+      userId: this.userId,
       login: this.userLogin,
       password: this.userPassword,
-      email: this.userEmail,
+      email: this.userEmail
     };
   }
 
