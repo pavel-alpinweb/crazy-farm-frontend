@@ -41,6 +41,7 @@ export default class User {
   public setUserData(data: UserData, isUpdateUI: boolean) {
     this.userLogin = data.login;
     this.userEmail = data.email;
+    this.userId = data.userId;
     if (data.password) {
       this.userPassword = data.password;
     }
