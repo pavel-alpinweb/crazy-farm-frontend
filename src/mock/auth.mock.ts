@@ -2,6 +2,7 @@ export function getUserDataMock(): Promise<UserData> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
+        userId: "BakuardId",
         login: "Bakuard",
         password: "Pelmesh",
         email: "bakuard@pelmesh.bro",
