@@ -34,11 +34,11 @@ export class RegistrationController {
       sendRegistrationData: async (data: UserData) => {
         this.userModel.setLoading(true);
         try {
-          const result = await registrationFirstStep(data, false);
+          const result = await registrationFirstStep(data, true);
           alert(result);
         } catch (error) {
           if (instanceOfHttpError(error)) {
-            alert(error.httpStatus);
+            alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
           }
         } finally {
           this.userModel.setLoading(false);
