@@ -3,8 +3,8 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
-import { getUserDataMock, updateUserDataMock } from "../mock/auth.mock";
-import { Router } from "../framework/Router";
+import { registrationFirstStep } from "../mock/auth.mock";
+import {instanceOfHttpError} from "../framework/Service";
 
 export class RegistrationController {
   private readonly userModel: User;
@@ -31,14 +31,15 @@ export class RegistrationController {
           appContainer.innerHTML = "";
         }
       },
-      updateUser: async (data: UserData) => {
-        const user: UserData = await updateUserDataMock(data);
-        this.userModel.setUserData(user, true);
-        Router.push("/#/");
-      },
-      fetchUser: async () => {
-        const user: UserData = await getUserDataMock();
-        this.userModel.setUserData(user, false);
+      sendRegistrationData: async (data: UserData) => {
+        try {
+          const result = await registrationFirstStep(data, false);
+          alert(result);
+        } catch (error) {
+          if (instanceOfHttpError(error)) {
+            alert(error.httpStatus);
+          }
+        }
       },
     };
   }

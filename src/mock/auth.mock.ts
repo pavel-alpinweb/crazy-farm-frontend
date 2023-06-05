@@ -23,26 +23,24 @@ export function registrationFirstStep(
   data: UserData,
   isSuccess = true
 ): Promise<string | HttpError> {
-  if (isSuccess) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (isSuccess) {
         resolve("Confirmation email sent to email");
-      }, 2000);
-    });
-  } else {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({
-          timestamp: "yyyy-MM-dd hh:mm:ss.SSS",
-          httpStatus: "http status short description",
-          httpErrorCode: 400,
-          reasons: [
+      } else {
+        reject(
             {
-              message: "string",
-            },
-          ],
-        });
-      }, 2000);
-    });
-  }
+              timestamp: "yyyy-MM-dd hh:mm:ss.SSS",
+              httpStatus: "http status short description",
+              httpErrorCode: 400,
+              reasons: [
+                {
+                  message: "string",
+                },
+              ],
+            }
+        );
+      }
+    }, 2000);
+  });
 }
