@@ -22,7 +22,7 @@ export function updateUserDataMock(data: UserData): Promise<UserData> {
 export function registrationFirstStep(
   data: UserData,
   isSuccess = true
-): Promise<string | HttpError> {
+): Promise<string> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {
@@ -46,7 +46,7 @@ export function registrationFirstStep(
 export function enter(
   data: UserData,
   isSuccess = true
-): Promise<UserResponse | HttpError> {
+): Promise<UserResponse> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {

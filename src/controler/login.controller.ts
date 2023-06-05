@@ -4,6 +4,8 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
+import {enter} from "../mock/auth.mock";
+import {instanceOfHttpError} from "../framework/Service";
 
 export class LoginController {
   private readonly userModel: User;
@@ -23,9 +25,19 @@ export class LoginController {
           <Element>this.Screen.element
         );
       },
-      login: (data) => {
-        console.log("login user:", data);
-        Router.push("/#/");
+      login: async (data) => {
+        this.userModel.setLoading(true);
+        try {
+          const result = await enter(data, true);
+          this.userModel.setUserData(result.user, false);
+          Router.push("/#/");
+        } catch (error) {
+          if (instanceOfHttpError(error)) {
+            alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
+          }
+        } finally {
+          this.userModel.setLoading(false);
+        }
       },
       destroy: () => {
         this.Screen?.remove();
