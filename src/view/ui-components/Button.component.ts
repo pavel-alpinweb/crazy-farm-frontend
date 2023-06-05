@@ -1,4 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {eventBus} from "../../main";
 
 interface Props {
   title: string;
@@ -40,10 +41,14 @@ export class ButtonComponent extends AbstractView {
   setHandlers() {
     this.element?.addEventListener("click", (event) => {
       event.preventDefault();
-      this.state.isLoading = true;
-      this.rerenderElement();
       this.events.click("Click button!");
     });
+    const setLoading = (value: boolean) => {
+      this.state.isLoading = value;
+      this.rerenderElement();
+    };
+    eventBus.off("User:loading", setLoading);
+    eventBus.on("User:loading", setLoading);
   }
   get template(): string {
     return createButtonTemplate(this.state);

@@ -15,6 +15,7 @@ export default class User {
   private userLogin = DEFAULT_USER_DATA.login;
   private userEmail = DEFAULT_USER_DATA.email;
   private userPassword = DEFAULT_USER_DATA.password;
+  private isLoadingUserData = false;
 
   public get id(): string {
     return this.userId;
@@ -27,6 +28,10 @@ export default class User {
   }
   public get password(): string | undefined {
     return this.userPassword;
+  }
+
+  public get loading(): boolean {
+    return this.isLoadingUserData;
   }
 
   public get data(): UserData {
@@ -48,5 +53,10 @@ export default class User {
     if (isUpdateUI) {
       eventBus.emit("User:update", this.data);
     }
+  }
+
+  public setLoading(value: boolean) {
+    this.isLoadingUserData = value;
+    eventBus.emit("User:loading", this.isLoadingUserData);
   }
 }

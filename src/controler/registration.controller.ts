@@ -32,6 +32,7 @@ export class RegistrationController {
         }
       },
       sendRegistrationData: async (data: UserData) => {
+        this.userModel.setLoading(true);
         try {
           const result = await registrationFirstStep(data, false);
           alert(result);
@@ -39,6 +40,8 @@ export class RegistrationController {
           if (instanceOfHttpError(error)) {
             alert(error.httpStatus);
           }
+        } finally {
+          this.userModel.setLoading(false);
         }
       },
     };
