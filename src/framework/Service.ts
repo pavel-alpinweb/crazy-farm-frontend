@@ -11,6 +11,7 @@ declare global {
 }
 
 export default class Service {
+  static readonly BASE_API_URL = 'https://crazyfarm.herokuapp.com';
   static instanceOfHttpError(object: any): object is HttpError {
     return (
         "httpStatus" in object &&
