@@ -5,7 +5,7 @@ import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
 import {enter} from "../mock/auth.mock";
-import {instanceOfHttpError} from "../framework/Service";
+import Service from "../framework/Service";
 
 export class LoginController {
   private readonly userModel: User;
@@ -32,7 +32,7 @@ export class LoginController {
           this.userModel.setUserData(result.user, false);
           Router.push("/#/");
         } catch (error) {
-          if (instanceOfHttpError(error)) {
+          if (Service.instanceOfHttpError(error)) {
             alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
           }
         } finally {

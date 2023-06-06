@@ -4,7 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
 import { registrationFirstStep } from "../mock/auth.mock";
-import {instanceOfHttpError} from "../framework/Service";
+import Service from "../framework/Service";
 
 export class RegistrationController {
   private readonly userModel: User;
@@ -37,7 +37,7 @@ export class RegistrationController {
           const result = await registrationFirstStep(data, true);
           alert(result);
         } catch (error) {
-          if (instanceOfHttpError(error)) {
+          if (Service.instanceOfHttpError(error)) {
             alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
           }
         } finally {

@@ -10,11 +10,13 @@ declare global {
   }
 }
 
-export function instanceOfHttpError(object: any): object is HttpError {
-  return (
-    "httpStatus" in object &&
-    "timestamp" in object &&
-    "httpErrorCode" in object &&
-    "reasons" in object
-  );
+export default class Service {
+  static instanceOfHttpError(object: any): object is HttpError {
+    return (
+        "httpStatus" in object &&
+        "timestamp" in object &&
+        "httpErrorCode" in object &&
+        "reasons" in object
+    );
+  }
 }
