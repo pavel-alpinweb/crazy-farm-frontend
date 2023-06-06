@@ -1,3 +1,5 @@
+import axios from "axios";
+
 declare global {
   interface ErrorMessage {
     message: string;
@@ -11,13 +13,23 @@ declare global {
 }
 
 export default class Service {
-  static readonly BASE_API_URL = 'https://crazyfarm.herokuapp.com';
+  static readonly BASE_API_URL = "https://crazyfarm.herokuapp.com";
+  static readonly HTTP = axios.create({
+    baseURL: Service.BASE_API_URL,
+    headers: {
+      Authorization: "Bearer ",
+      "Content-Type": "application/json",
+    },
+  });
   static instanceOfHttpError(object: any): object is HttpError {
     return (
-        "httpStatus" in object &&
-        "timestamp" in object &&
-        "httpErrorCode" in object &&
-        "reasons" in object
+      "httpStatus" in object &&
+      "timestamp" in object &&
+      "httpErrorCode" in object &&
+      "reasons" in object
     );
+  }
+  static async get(url: string, params: object) {
+    return await Service.HTTP.get(url, params);
   }
 }
