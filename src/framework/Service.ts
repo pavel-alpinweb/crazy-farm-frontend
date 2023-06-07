@@ -14,7 +14,7 @@ declare global {
 }
 
 export default class Service {
-  static readonly BASE_API_URL = "https://jsonplaceholder.typicode.com";
+  static readonly BASE_API_URL = "https://crazyfarm.herokuapp.com";
   static readonly HTTP = axios.create({
     baseURL: Service.BASE_API_URL,
     headers: {
