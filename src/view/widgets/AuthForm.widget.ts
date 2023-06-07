@@ -96,7 +96,11 @@ export class AuthFormWidget extends AbstractWidget {
       }
     });
     this.components.FormButton?.emits.setClickEvent(() => {
-      this.events.submit(this.state.user);
+      this.events.submit({
+        login: this.state.user.login,
+        email: this.state.user.email,
+        password: this.state.user.password,
+      });
     });
     const updateElement = (data: UserData) => {
       this.state.user = data;

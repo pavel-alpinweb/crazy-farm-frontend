@@ -3,8 +3,8 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
-import { registrationFirstStep } from "../mock/auth.mock";
 import Service from "../framework/Service";
+import AuthService from "../services/auth.service";
 
 export class RegistrationController {
   private readonly userModel: User;
@@ -34,8 +34,8 @@ export class RegistrationController {
       sendRegistrationData: async (data: UserData) => {
         this.userModel.setLoading(true);
         try {
-          const result = await registrationFirstStep(data, true);
-          alert(result);
+          const result = await AuthService.registrationFirstStep(data);
+          alert(result.data);
         } catch (error) {
           if (Service.instanceOfHttpError(error)) {
             alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
