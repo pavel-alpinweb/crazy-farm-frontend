@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 declare global {
   interface ErrorMessage {
@@ -34,5 +35,11 @@ export default class Service {
   }
   static async post(url: string, data: object) {
     return await Service.HTTP.post(url, data);
+  }
+  static setToken(value: string) {
+    Cookies.set("crazy-farm-jws", value, { expires: 7 });
+  }
+  static getToken() {
+    Cookies.get("crazy-farm-jws");
   }
 }
