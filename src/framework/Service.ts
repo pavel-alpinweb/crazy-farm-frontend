@@ -32,4 +32,7 @@ export default class Service {
   static async get(url: string, params?: object) {
     return await Service.HTTP.get(url, params);
   }
+  static async post(url: string, data: object) {
+    return await Service.HTTP.post(url, data);
+  }
 }

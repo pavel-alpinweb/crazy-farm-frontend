@@ -8,7 +8,7 @@ declare global {
 }
 
 export default class AuthService {
-    static async test() {
-        return await Service.get('/todos/1');
+    static async test(data: object) {
+        return await Service.post('/posts', data);
     }
 }
