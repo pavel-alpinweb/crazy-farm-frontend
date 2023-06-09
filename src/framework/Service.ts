@@ -20,6 +20,7 @@ export default class Service {
     headers: {
       Authorization: "Bearer ",
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": '*',
     },
   });
   static instanceOfHttpError(object: any): object is HttpError {

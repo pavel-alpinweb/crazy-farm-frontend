@@ -56,7 +56,13 @@ export class Router {
 
   public init(): void {
     window.addEventListener("hashchange", this.changePageHandler);
-    Router.push("/#/");
+    const token = Router.getParam('token');
+    if (token) {
+      Router.push(`/#/?token=${token}`);
+    } else {
+      Router.push('/#/');
+    }
+
     this.changePageHandler();
   }
 }

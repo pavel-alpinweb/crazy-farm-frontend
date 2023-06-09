@@ -4,6 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import { updateFarmState } from "../mock/farm.mock";
+import {Router} from "../framework/Router";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -19,6 +20,8 @@ export default class FarmController {
           { farm: farmModel.state },
           this.methods
         );
+        const token = Router.getParam('token');
+        console.log('token', token);
         appContainer?.insertAdjacentElement(
           AbstractView.positions.BEFOREEND,
           <Element>this.FarmScreen.element
