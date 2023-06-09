@@ -21,9 +21,10 @@ export class Router {
   constructor(params: Array<RouterParams>) {
     this.params = params;
   }
-  static get path(): string {
+  static get path(): Array<string> {
     const url = new URL(window.location.href);
-    return url.hash.slice(1);
+    console.log('hash: split ?', url.hash.slice(1).split('?'));
+    return url.hash.slice(1).split('?');
   }
 
   static push(path: string) {
@@ -32,7 +33,7 @@ export class Router {
 
   private changePageHandler = () => {
     const route: RouterParams | undefined = this.params.find(
-      (item: RouterParams) => item.url === Router.path
+      (item: RouterParams) => item.url === Router.path[0]
     );
     if (this.controller === route?.controller) return;
     if (route) {
