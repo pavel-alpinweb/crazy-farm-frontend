@@ -2,6 +2,7 @@ import FarmController from "../controler/farm.controller";
 import Error404ScreenController from "../controler/404.controller";
 import { LoginController } from "../controler/login.controller";
 import { RegistrationController } from "../controler/registration.controller";
+import Service from "./Service";
 
 declare global {
   type controller =
@@ -23,8 +24,16 @@ export class Router {
   }
   static get path(): Array<string> {
     const url = new URL(window.location.href);
-    console.log('hash: split ?', url.hash.slice(1).split('?'));
-    return url.hash.slice(1).split('?');
+    return url.hash.slice(1).split("?");
+  }
+
+  static getParam(name: string): string | null {
+    const paramsParts = Router.path[1]?.split('=');
+    if (paramsParts && paramsParts[0] === name) {
+      return paramsParts[1];
+    } else {
+      return null;
+    }
   }
 
   static push(path: string) {
