@@ -3,7 +3,6 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
-import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 
 export class RegistrationController {
@@ -34,8 +33,8 @@ export class RegistrationController {
       sendRegistrationData: async (data: UserData) => {
         this.userModel.setLoading(true);
         try {
-          const result = await AuthService.registrationFirstStep(data);
-          alert(result.data);
+          const result: successMessage = await AuthService.registrationFirstStep(data);
+          alert(result);
         } catch (error: any) {
           alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
         } finally {
