@@ -3,11 +3,11 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
+import User from "../model/user.model";
 import { updateFarmState } from "../mock/farm.mock";
 import {Router} from "../framework/Router";
 import Service from "../framework/Service";
-import {registrationFinalStep} from "../mock/auth.mock";
-import User from "../model/user.model";
+import AuthService from "../services/auth.service";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -28,7 +28,7 @@ export default class FarmController {
         const token = Router.getParam('token');
         if (token) {
           try {
-            const result = await registrationFinalStep(token, true);
+            const result = await AuthService.registrationFinalStep(token);
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
             appContainer?.insertAdjacentElement(
