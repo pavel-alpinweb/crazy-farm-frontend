@@ -4,7 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
-import {enter} from "../mock/auth.mock";
+import { enter } from "../mock/auth.mock";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 
@@ -34,7 +34,9 @@ export class LoginController {
           Service.setToken(result.jws);
           Router.push("/#/");
         } catch (error: any) {
-          alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
+          alert(
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+          );
         } finally {
           this.userModel.setLoading(false);
         }

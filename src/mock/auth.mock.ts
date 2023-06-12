@@ -74,10 +74,7 @@ export function registrationFinalStep(
   });
 }
 
-export function enter(
-  data: UserData,
-  isSuccess = true
-): Promise<UserResponse> {
+export function enter(data: UserData, isSuccess = true): Promise<UserResponse> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (isSuccess) {

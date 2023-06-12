@@ -28,7 +28,7 @@ export class Router {
   }
 
   static getParam(name: string): string | null {
-    const paramsParts = Router.path[1]?.split('=');
+    const paramsParts = Router.path[1]?.split("=");
     if (paramsParts && paramsParts[0] === name) {
       return paramsParts[1];
     } else {
@@ -56,11 +56,11 @@ export class Router {
 
   public init(): void {
     window.addEventListener("hashchange", this.changePageHandler);
-    const token = Router.getParam('token');
+    const token = Router.getParam("token");
     if (token) {
       Router.push(`/#/?token=${token}`);
     } else {
-      Router.push('/#/');
+      Router.push("/#/");
     }
 
     this.changePageHandler();

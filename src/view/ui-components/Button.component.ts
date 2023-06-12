@@ -1,5 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {eventBus} from "../../main";
+import { eventBus } from "../../main";
 
 interface Props {
   title: string;

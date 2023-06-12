@@ -1,5 +1,5 @@
 import { eventBus } from "../main";
-import {DEFAULT_USER_DATA} from "../utils/constants";
+import { DEFAULT_USER_DATA } from "../utils/constants";
 
 declare global {
   interface UserData {
@@ -39,7 +39,7 @@ export default class User {
       userId: this.userId,
       loggin: this.userLogin,
       password: this.userPassword,
-      email: this.userEmail
+      email: this.userEmail,
     };
   }
 

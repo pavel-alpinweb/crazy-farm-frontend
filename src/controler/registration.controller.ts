@@ -33,10 +33,13 @@ export class RegistrationController {
       sendRegistrationData: async (data: UserData) => {
         this.userModel.setLoading(true);
         try {
-          const result: successMessage = await AuthService.registrationFirstStep(data);
+          const result: successMessage =
+            await AuthService.registrationFirstStep(data);
           alert(result);
         } catch (error: any) {
-          alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
+          alert(
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+          );
         } finally {
           this.userModel.setLoading(false);
         }

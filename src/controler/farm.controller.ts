@@ -5,7 +5,7 @@ import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
 import { updateFarmState } from "../mock/farm.mock";
-import {Router} from "../framework/Router";
+import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 
@@ -22,27 +22,29 @@ export default class FarmController {
     this.methods = {
       init: async () => {
         this.FarmScreen = new FarmScreen(
-            { farm: farmModel.state },
-            this.methods
+          { farm: farmModel.state },
+          this.methods
         );
-        const token = Router.getParam('token');
+        const token = Router.getParam("token");
         if (token) {
           try {
             const result = await AuthService.registrationFinalStep(token);
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
             appContainer?.insertAdjacentElement(
-                AbstractView.positions.BEFOREEND,
-                <Element>this.FarmScreen.element
+              AbstractView.positions.BEFOREEND,
+              <Element>this.FarmScreen.element
             );
           } catch (error: any) {
-            alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
-            Router.push('/#/registration');
+            alert(
+              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+            );
+            Router.push("/#/registration");
           }
         } else {
           appContainer?.insertAdjacentElement(
-              AbstractView.positions.BEFOREEND,
-              <Element>this.FarmScreen.element
+            AbstractView.positions.BEFOREEND,
+            <Element>this.FarmScreen.element
           );
         }
       },
