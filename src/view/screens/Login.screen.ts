@@ -25,7 +25,7 @@ export class LoginScreen extends AbstractScreen {
     title: "Вход",
     user: {
       userId: "",
-      login: "",
+      loggin: "",
       password: "",
       email: "",
     },
@@ -53,7 +53,7 @@ export class LoginScreen extends AbstractScreen {
     this.components.AuthFormWidget = new AuthFormWidget({
       user: {
         userId: this.state.user.userId,
-        login: this.state.user.login,
+        loggin: this.state.user.loggin,
         email: this.state.user.email,
       },
     });

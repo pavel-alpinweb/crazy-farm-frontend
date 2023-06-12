@@ -9,7 +9,7 @@ describe("User Model getters:", () => {
   });
 
   test("Getter user.login", () => {
-    expect(user.login).toBe(DEFAULT_USER_DATA.login);
+    expect(user.login).toBe(DEFAULT_USER_DATA.loggin);
   });
 
   test("Getter user.email", () => {

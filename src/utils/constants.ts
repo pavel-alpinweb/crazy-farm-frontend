@@ -23,7 +23,7 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
 
 export const DEFAULT_USER_DATA: UserData = {
   userId: "crazyfarmid",
-  login: "crazyfarmlogin",
+  loggin: "crazyfarmlogin",
   email: "crazyfarm@crazyfarm.crazyfarm",
   password: "crazyfarmpassword",
 };

@@ -26,7 +26,7 @@ export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
     user: {
       userId: "",
-      login: "",
+      loggin: "",
       password: "",
       email: "",
     },
@@ -49,7 +49,7 @@ export class AuthFormWidget extends AbstractWidget {
   }
   protected initComponents() {
     this.components.LoginTextInput = new TextInputComponent({
-      value: this.state.user.login,
+      value: this.state.user.loggin,
       placeholder: "Введите логин",
       isPassword: false,
       icon: "user",
@@ -82,7 +82,7 @@ export class AuthFormWidget extends AbstractWidget {
     };
     this.components.LoginTextInput?.emits.setInputEvent((data: Concrete) => {
       if (typeof data === "string") {
-        this.state.user.login = data;
+        this.state.user.loggin = data;
       }
     });
     this.components.PasswordTextInput?.emits.setInputEvent((data: Concrete) => {
@@ -97,7 +97,7 @@ export class AuthFormWidget extends AbstractWidget {
     });
     this.components.FormButton?.emits.setClickEvent(() => {
       this.events.submit({
-        login: this.state.user.login,
+        login: this.state.user.loggin,
         email: this.state.user.email,
         password: this.state.user.password,
       });

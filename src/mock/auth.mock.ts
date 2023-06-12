@@ -3,7 +3,7 @@ export function getUserDataMock(): Promise<UserData> {
     setTimeout(() => {
       resolve({
         userId: "BakuardId",
-        login: "Bakuard",
+        loggin: "Bakuard",
         password: "Pelmesh",
         email: "bakuard@pelmesh.bro",
       });
@@ -54,7 +54,7 @@ export function enter(
           jws: "token-value",
           user: {
             userId: "uuid",
-            login: "login",
+            loggin: "login",
             email: "user@email.com",
           },
         });

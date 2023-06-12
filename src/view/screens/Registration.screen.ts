@@ -25,7 +25,7 @@ export class RegistrationScreen extends AbstractScreen {
     title: "Регистрация",
     user: {
       userId: "",
-      login: "",
+      loggin: "",
       password: "",
       email: "",
     },
