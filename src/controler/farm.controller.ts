@@ -35,10 +35,8 @@ export default class FarmController {
                 AbstractView.positions.BEFOREEND,
                 <Element>this.FarmScreen.element
             );
-          } catch (error) {
-            if (Service.instanceOfHttpError(error)) {
-              alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
-            }
+          } catch (error: any) {
+            alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
             Router.push('/#/registration');
           }
         } else {

@@ -36,10 +36,8 @@ export class RegistrationController {
         try {
           const result = await AuthService.registrationFirstStep(data);
           alert(result.data);
-        } catch (error) {
-          if (Service.instanceOfHttpError(error)) {
-            alert(`Error ${error.httpErrorCode}: ${error.httpStatus}`);
-          }
+        } catch (error: any) {
+          alert(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`);
         } finally {
           this.userModel.setLoading(false);
         }
