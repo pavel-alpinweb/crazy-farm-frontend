@@ -24,4 +24,9 @@ export default class AuthService {
         });
         return result.data;
     }
+
+    static async enter(data: UserData): Promise<UserResponse> {
+        const result: AxiosResponse<UserResponse> = await Service.post('/users/enter', data);
+        return result.data;
+    }
 }
