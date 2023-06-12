@@ -3,7 +3,7 @@ import { DEFAULT_USER_DATA } from "../utils/constants";
 
 declare global {
   interface UserData {
-    userId: string;
+    userId?: string;
     loggin: string;
     email: string;
     password?: string;
@@ -17,8 +17,10 @@ export default class User {
   private userPassword = DEFAULT_USER_DATA.password;
   private isLoadingUserData = false;
 
-  public get id(): string {
-    return this.userId;
+  public get id(): string | undefined {
+    if (this.userId) {
+      return this.userId;
+    }
   }
   public get login(): string {
     return this.userLogin;
