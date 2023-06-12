@@ -4,7 +4,6 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
-import { enter } from "../mock/auth.mock";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 
