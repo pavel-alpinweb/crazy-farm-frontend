@@ -21,11 +21,11 @@ export default class FarmController {
     this.FarmScreen = null;
     this.methods = {
       init: async () => {
-        const token = Router.getParam('token');
         this.FarmScreen = new FarmScreen(
             { farm: farmModel.state },
             this.methods
         );
+        const token = Router.getParam('token');
         if (token) {
           try {
             const result = await registrationFinalStep(token, true);
