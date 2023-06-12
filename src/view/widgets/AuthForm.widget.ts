@@ -97,7 +97,7 @@ export class AuthFormWidget extends AbstractWidget {
     });
     this.components.FormButton?.emits.setClickEvent(() => {
       this.events.submit({
-        login: this.state.user.loggin,
+        loggin: this.state.user.loggin,
         email: this.state.user.email,
         password: this.state.user.password,
       });
