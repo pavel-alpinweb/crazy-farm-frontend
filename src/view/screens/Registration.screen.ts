@@ -24,7 +24,8 @@ export class RegistrationScreen extends AbstractScreen {
   protected state: State = {
     title: "Регистрация",
     user: {
-      login: "",
+      userId: "",
+      loggin: "",
       password: "",
       email: "",
     },
@@ -61,7 +62,7 @@ export class RegistrationScreen extends AbstractScreen {
 
   protected setEvents(): void {
     this.components.AuthFormWidget?.emits.setSubmit((data: Concrete) => {
-      this.controllerMethods.updateUser(data);
+      this.controllerMethods.sendRegistrationData(data);
     });
   }
 

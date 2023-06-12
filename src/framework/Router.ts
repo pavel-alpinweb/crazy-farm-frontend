@@ -2,6 +2,7 @@ import FarmController from "../controler/farm.controller";
 import Error404ScreenController from "../controler/404.controller";
 import { LoginController } from "../controler/login.controller";
 import { RegistrationController } from "../controler/registration.controller";
+import Service from "./Service";
 
 declare global {
   type controller =
@@ -21,9 +22,18 @@ export class Router {
   constructor(params: Array<RouterParams>) {
     this.params = params;
   }
-  static get path(): string {
+  static get path(): Array<string> {
     const url = new URL(window.location.href);
-    return url.hash.slice(1);
+    return url.hash.slice(1).split("?");
+  }
+
+  static getParam(name: string): string | null {
+    const paramsParts = Router.path[1]?.split("=");
+    if (paramsParts && paramsParts[0] === name) {
+      return paramsParts[1];
+    } else {
+      return null;
+    }
   }
 
   static push(path: string) {
@@ -32,7 +42,7 @@ export class Router {
 
   private changePageHandler = () => {
     const route: RouterParams | undefined = this.params.find(
-      (item: RouterParams) => item.url === Router.path
+      (item: RouterParams) => item.url === Router.path[0]
     );
     if (this.controller === route?.controller) return;
     if (route) {
@@ -46,7 +56,13 @@ export class Router {
 
   public init(): void {
     window.addEventListener("hashchange", this.changePageHandler);
-    Router.push("/#/");
+    const token = Router.getParam("token");
+    if (token) {
+      Router.push(`/#/?token=${token}`);
+    } else {
+      Router.push("/#/");
+    }
+
     this.changePageHandler();
   }
 }

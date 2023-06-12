@@ -12,7 +12,7 @@ interface State {
 const createUserInfoTemplate = (state: State) => `
 <div class="user-info">
     <h3>Пользователь:</h3>
-    <h4>${state.user.login}</h4>
+    <h4>${state.user.loggin}</h4>
     <h3>Пароль:</h3>
     <h4>${state.user.password}</h4>
     <h3>Email:</h3>
@@ -23,7 +23,8 @@ const createUserInfoTemplate = (state: State) => `
 export class UserInfoComponent extends AbstractView {
   protected state: State = {
     user: {
-      login: "",
+      userId: "",
+      loggin: "",
       password: "",
       email: "",
     },

@@ -13,7 +13,7 @@ const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
 const loginController = new LoginController(userModel);
 const registrationController = new RegistrationController(userModel);
-const farmController = new FarmController(farmModel);
+const farmController = new FarmController(farmModel, userModel);
 const error404Controller = new Error404ScreenController();
 
 const params: Array<RouterParams> = [
