@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
@@ -11,11 +12,15 @@ module.exports = {
       patterns: [
           {
             from: "./assets/**/*"
-          }
+          },
       ],
     }),
     new MiniCssExtractPlugin({
       filename: 'style.css',
+    }),
+    new HtmlWebpackPlugin({
+      template: "../public/index.html",
+      filename: "./index.html"
     }),
   ],
   module: {
