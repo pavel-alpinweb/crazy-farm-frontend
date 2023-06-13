@@ -9,6 +9,9 @@
     "start": "webpack serve --mode development --open",
     "test": "node --experimental-vm-modules node_modules/.bin/jest --no-cache"
   },
+  "engines": {
+    "node": "18.x"
+  },
   "keywords": [
     "HTML5",
     "game",
