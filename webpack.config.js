@@ -1,12 +1,26 @@
 const path = require("path");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: "./src/main.ts",
+  context: path.resolve(__dirname, 'src'),
+  entry: "./main.ts",
   devtool: "inline-source-map",
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: "public" }],
+      patterns: [
+          {
+            from: "./assets/**/*"
+          },
+      ],
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    }),
+    new HtmlWebpackPlugin({
+      template: "../public/index.html",
+      filename: "./index.html"
     }),
   ],
   module: {
@@ -15,6 +29,16 @@ module.exports = {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },

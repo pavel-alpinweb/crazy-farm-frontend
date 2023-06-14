@@ -1,0 +1,68 @@
+.text-input-container {
+  width: 100%;
+  position: relative;
+}
+.text-input {
+  background: #ffffff;
+  border: 1px solid #000000;
+  height: 37px;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  width: 100%;
+  &--error {
+    border: 3px solid #ff3d00;
+  }
+  &--icon {
+    padding-left: 33px;
+    background-repeat: no-repeat;
+    background-position: 4px 4px;
+    background-size: 26px 26px;
+  }
+  &--icon-user {
+    background-image: url("/assets/img/icons/user.svg");
+  }
+  &--icon-lock {
+    background-image: url("/assets/img/icons/lock.svg");
+  }
+  &--icon-envelope {
+    background-image: url("/assets/img/icons/envelope.svg");
+  }
+}
+
+.text-input-hint-trigger {
+  width: 35px;
+  height: 35px;
+  background: red;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  left: calc(100% - 17.5px);
+  top: -15px;
+}
+
+.text-input-error-message {
+  width: 100%;
+  padding: 10px;
+  background: #ff4848;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  font-family: sans-serif;
+  max-height: 90px;
+  overflow: auto;
+  position: absolute;
+  bottom: 53px;
+  left: 0;
+  right: 0;
+}
+
+.text-input-hint-icon {
+  height: 32px;
+  width: auto;
+}
