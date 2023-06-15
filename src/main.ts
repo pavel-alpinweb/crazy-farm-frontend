@@ -7,6 +7,7 @@ import FarmModel from "./model/farm.model";
 import "./assets/scss/main.scss";
 import { LoginController } from "./controler/login.controller";
 import { RegistrationController } from "./controler/registration.controller";
+import DevRoomController from "./controler/devRoom.controller";
 
 export const eventBus: EventBus = new EventBus();
 const userModel: User = new User();
@@ -14,6 +15,7 @@ const farmModel: FarmModel = new FarmModel();
 const loginController = new LoginController(userModel);
 const registrationController = new RegistrationController(userModel);
 const farmController = new FarmController(farmModel, userModel);
+const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
 
 const params: Array<RouterParams> = [
@@ -28,6 +30,10 @@ const params: Array<RouterParams> = [
   {
     url: "/registration",
     controller: registrationController,
+  },
+  {
+    url: "/dev-room",
+    controller: devRoomController,
   },
   {
     url: "/404",

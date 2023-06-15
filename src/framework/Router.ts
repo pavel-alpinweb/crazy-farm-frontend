@@ -2,14 +2,15 @@ import FarmController from "../controler/farm.controller";
 import Error404ScreenController from "../controler/404.controller";
 import { LoginController } from "../controler/login.controller";
 import { RegistrationController } from "../controler/registration.controller";
-import Service from "./Service";
+import DevRoomController from "../controler/devRoom.controller";
 
 declare global {
   type controller =
     | FarmController
     | Error404ScreenController
     | LoginController
-    | RegistrationController;
+    | RegistrationController
+    | DevRoomController;
   interface RouterParams {
     url: string;
     controller: controller;

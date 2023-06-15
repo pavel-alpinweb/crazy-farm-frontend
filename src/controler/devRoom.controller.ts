@@ -3,7 +3,7 @@ import {appContainer} from "../utils/constants";
 import {DevRoomScreen} from "../view/screens/DevRoom.screen";
 import {AbstractView} from "../framework/interface/AbstractView";
 
-export default abstract class DevRoomController {
+export default class DevRoomController {
     private DevRoomScreen: AbstractScreen | null;
     public methods: Methods = {};
 
