@@ -44,7 +44,7 @@ export class DevRoomScreen extends AbstractScreen{
     }
 
     get template(): string {
-        return createDevRoomScreenTemplate(this.state);
+        return createDevRoomScreenTemplate();
     }
 
     public remove(): void {
