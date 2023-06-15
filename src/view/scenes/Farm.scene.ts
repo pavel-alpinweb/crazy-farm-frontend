@@ -87,9 +87,11 @@ export class FarmScene extends AbstractScene {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     centralContainer.render.on("pointerdown", () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      this.events.click(centralContainer.name);
+      if (this.events.click) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        this.events.click(centralContainer.name);
+      }
     });
   }
 }
