@@ -2,6 +2,7 @@ import { GroundSprite } from "../view/sprites/Ground.sprite";
 import { SproutPotatoSprite } from "../view/sprites/SproutPotato.sprite";
 import {ChildPotatoSprite} from "../view/sprites/ChildPotato.sprite";
 import {KidPotatoSprite} from "../view/sprites/KidPotato.sprite";
+import {AdultPotatoSprite} from "../view/sprites/AdultPotato.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
@@ -14,13 +15,13 @@ export const DEFAULT_FARM_STATE: FarmState = {
       name: "central",
       character: {
         type: "potato",
-        stage: 3,
+        stage: 4,
       },
     },
   ],
 };
 export const CHARACTERS_SPRITES: CharactersSprites = {
-  potato: [GroundSprite, SproutPotatoSprite, ChildPotatoSprite, KidPotatoSprite],
+  potato: [GroundSprite, SproutPotatoSprite, ChildPotatoSprite, KidPotatoSprite, AdultPotatoSprite],
 };
 
 export const DEFAULT_USER_DATA: UserData = {
