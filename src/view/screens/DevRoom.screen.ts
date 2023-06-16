@@ -1,6 +1,6 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {DEFAULT_FARM_STATE} from "../../utils/constants";
-import {FarmScene} from "../scenes/Farm.scene";
+import {DevScene} from "../scenes/Dev.scene";
 
 interface State {
     farm: FarmState;
@@ -28,7 +28,7 @@ export class DevRoomScreen extends AbstractScreen{
     }
 
     protected initComponents(): void {
-        this.components.MainScene = new FarmScene({ farm: this.state.farm });
+        this.components.MainScene = new DevScene({ farm: this.state.farm });
     }
 
     protected renderComponents(): void {
