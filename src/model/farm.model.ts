@@ -1,4 +1,4 @@
-import { DEFAULT_FARM_STATE } from "../utils/constants";
+import {DEFAULT_FARM_STATE} from "../utils/constants";
 import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
 import { eventBus } from "../main";
@@ -7,6 +7,7 @@ declare global {
   interface Character {
     type: string;
     stage: number;
+    needs: need;
   }
   interface Cell {
     isEmpty: boolean;
