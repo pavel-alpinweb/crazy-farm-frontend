@@ -1,5 +1,8 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
+import {DialogSprite} from "../sprites/Dialog.sprite";
+import {AbstractStaticSprite} from "../../framework/graphics/AbstractStaticSprite";
+import {AnimatedSprite, Sprite} from "pixi.js";
 
 interface Props {
   farm: FarmState;
@@ -15,10 +18,15 @@ export class DevScene extends AbstractScene {
   };
   protected sprites: Sprites = {
     potato: [],
+    dialogs: [],
   };
   protected containers: Containers = [
     {
       name: "central",
+      render: null,
+    },
+    {
+      name: "dialog",
       render: null,
     },
   ];
@@ -33,14 +41,23 @@ export class DevScene extends AbstractScene {
         this.sprites[character].push(new Sprite());
       });
     }
+    this.sprites.dialogs.push(new DialogSprite());
   }
 
   protected renderContainers(): void {
     this.containers.forEach((container) => {
-      this.renderContainer(container);
-      this.centerContainer(container);
-      this.centerPivotContainer(container);
+      if (container.name !== "dialog") {
+        this.renderContainer(container);
+        this.centerContainer(container);
+        this.centerPivotContainer(container);
+      }
     });
+    const dialogContainer = this.containers.find((item) => item.name === "dialog");
+    this.renderContainer(<Container>dialogContainer);
+    this.setContainerX(<Container>dialogContainer, 430);
+    this.setContainerY(<Container>dialogContainer, 250);
+    this.setContainerPivotX(<Container>dialogContainer, 0);
+    this.setContainerPivotY(<Container>dialogContainer, 0);
   }
 
   protected renderSprites(): void {
@@ -53,6 +70,9 @@ export class DevScene extends AbstractScene {
         this.addSprite(container, sprite?.sprite);
       }
     });
+    const dialogContainer = this.containers.find((item) => item.name === "dialog");
+    const dialogSprite = this.sprites.dialogs[0];
+    this.addSprite(<Container>dialogContainer, dialogSprite?.sprite);
   }
 
   protected setEvents(): void {
