@@ -1,8 +1,9 @@
-import { AbstractScene } from "../../framework/graphics/AbstractScene";
+import {AbstractScene} from "../../framework/graphics/AbstractScene";
 import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
 import {DialogSprite} from "../sprites/Dialog.sprite";
-import {AbstractStaticSprite} from "../../framework/graphics/AbstractStaticSprite";
-import {AnimatedSprite, Sprite} from "pixi.js";
+import {BugSprite} from "../sprites/Bug.sprite";
+import {HungerSprite} from "../sprites/Hunger.sprite";
+import {DropSprite} from "../sprites/Drop";
 
 interface Props {
   farm: FarmState;
@@ -16,10 +17,15 @@ export class DevScene extends AbstractScene {
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
-  protected sprites: Sprites = {
+  protected sprites: SpritesArray = {
     potato: [],
-    dialogs: [],
   };
+  needsSprite: SpritesCollection = {
+    drop: null,
+    bug: null,
+    hunger: null,
+    dialog: null,
+  }
   protected containers: Containers = [
     {
       name: "central",
@@ -41,7 +47,10 @@ export class DevScene extends AbstractScene {
         this.sprites[character].push(new Sprite());
       });
     }
-    this.sprites.dialogs.push(new DialogSprite());
+    this.needsSprite.dialog = new DialogSprite();
+    this.needsSprite.bug = new BugSprite();
+    this.needsSprite.hunger = new HungerSprite();
+    this.needsSprite.drop = new DropSprite();
   }
 
   protected renderContainers(): void {
@@ -71,8 +80,8 @@ export class DevScene extends AbstractScene {
       }
     });
     const dialogContainer = this.containers.find((item) => item.name === "dialog");
-    const dialogSprite = this.sprites.dialogs[0];
-    this.addSprite(<Container>dialogContainer, dialogSprite?.sprite);
+    this.addSprite(<Container>dialogContainer, this.needsSprite.dialog?.sprite);
+    this.addSprite(<Container>dialogContainer, this.needsSprite.drop?.sprite);
   }
 
   protected setEvents(): void {

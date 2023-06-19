@@ -1,4 +1,4 @@
-import { AbstractScene } from "../../framework/graphics/AbstractScene";
+import {AbstractScene} from "../../framework/graphics/AbstractScene";
 import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
 import { eventBus } from "../../main";
 
@@ -14,7 +14,7 @@ export class FarmScene extends AbstractScene {
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
-  protected sprites: Sprites = {
+  protected sprites: SpritesArray = {
     potato: [],
   };
   protected containers: Containers = [
