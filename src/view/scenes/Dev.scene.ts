@@ -4,7 +4,6 @@ import {DialogSprite} from "../sprites/Dialog.sprite";
 import {BugSprite} from "../sprites/Bug.sprite";
 import {HungerSprite} from "../sprites/Hunger.sprite";
 import {DropSprite} from "../sprites/Drop";
-import {Container} from "pixi.js";
 
 interface Props {
   farm: FarmState;

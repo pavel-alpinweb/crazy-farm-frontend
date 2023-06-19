@@ -1,3 +1,5 @@
+import {CHARACTERS_NEEDS} from "../utils/constants";
+
 export function updateFarmState(): Promise<FarmState> {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -10,6 +12,7 @@ export function updateFarmState(): Promise<FarmState> {
             character: {
               type: "potato",
               stage: 1,
+              needs: CHARACTERS_NEEDS.GOOD,
             },
           },
         ],
