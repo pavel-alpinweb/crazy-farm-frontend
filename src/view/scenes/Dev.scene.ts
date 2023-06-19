@@ -52,15 +52,17 @@ export class DevScene extends AbstractScene {
     this.needsSprite.hunger = new HungerSprite();
     this.needsSprite.drop = new DropSprite();
 
-    if (this.needsSprite.bug.sprite) {
-      this.needsSprite.bug.width = 100;
-      this.needsSprite.bug.height = 100;
-    }
+    this.needsSprite.bug.width = 100;
+    this.needsSprite.bug.height = 100;
 
-    if (this.needsSprite.dialog.sprite) {
-      this.needsSprite.dialog.width = 200;
-      this.needsSprite.dialog.height = 200;
-    }
+    this.needsSprite.hunger.width = 100;
+    this.needsSprite.hunger.height = 100;
+
+    this.needsSprite.drop.width = 100;
+    this.needsSprite.drop.height = 100;
+
+    this.needsSprite.dialog.width = 200;
+    this.needsSprite.dialog.height = 200;
   }
 
   protected renderContainers(): void {
