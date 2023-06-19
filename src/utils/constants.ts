@@ -32,8 +32,8 @@ export const DEFAULT_FARM_STATE: FarmState = {
       name: "central",
       character: {
         type: "potato",
-        stage: 4,
-        needs: CHARACTERS_NEEDS.GOOD,
+        stage: 3,
+        needs: CHARACTERS_NEEDS.HUNGER,
       },
     },
   ],

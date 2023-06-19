@@ -1,9 +1,10 @@
 import {AbstractScene} from "../../framework/graphics/AbstractScene";
-import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
+import {CHARACTERS_NEEDS, CHARACTERS_SPRITES, DEFAULT_FARM_STATE} from "../../utils/constants";
 import {DialogSprite} from "../sprites/Dialog.sprite";
 import {BugSprite} from "../sprites/Bug.sprite";
 import {HungerSprite} from "../sprites/Hunger.sprite";
 import {DropSprite} from "../sprites/Drop";
+import {Container} from "pixi.js";
 
 interface Props {
   farm: FarmState;
@@ -32,7 +33,7 @@ export class DevScene extends AbstractScene {
       render: null,
     },
     {
-      name: "dialog",
+      name: "central-dialog",
       render: null,
     },
   ];
@@ -67,18 +68,18 @@ export class DevScene extends AbstractScene {
 
   protected renderContainers(): void {
     this.containers.forEach((container) => {
-      if (container.name !== "dialog") {
+      if (container.name !== "central-dialog") {
         this.renderContainer(container);
         this.centerContainer(container);
         this.centerPivotContainer(container);
+      } else {
+        this.renderContainer(container);
+        this.setContainerX(container, 500);
+        this.setContainerY(container, 100);
+        this.setContainerPivotX(container, 0);
+        this.setContainerPivotY(container, 0);
       }
     });
-    const dialogContainer = this.containers.find((item) => item.name === "dialog");
-    this.renderContainer(<Container>dialogContainer);
-    this.setContainerX(<Container>dialogContainer, 500);
-    this.setContainerY(<Container>dialogContainer, 100);
-    this.setContainerPivotX(<Container>dialogContainer, 0);
-    this.setContainerPivotY(<Container>dialogContainer, 0);
   }
 
   protected renderSprites(): void {
@@ -89,11 +90,29 @@ export class DevScene extends AbstractScene {
         const sprite =
           this.sprites[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
+
+        const dialogContainer = this.containers.find((cont) => cont.name === `${cell.name}-dialog`);
+
+        if (dialogContainer && cell.character.needs !== CHARACTERS_NEEDS.GOOD) {
+          this.removeAllSprites(dialogContainer);
+          this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
+
+          switch (cell.character.needs) {
+            case CHARACTERS_NEEDS.HUNGER:
+              this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
+              break;
+            case CHARACTERS_NEEDS.SICKNESS:
+              this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
+              break;
+            case CHARACTERS_NEEDS.THIRST:
+              this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
+              break;
+          }
+        } else if (dialogContainer){
+          this.removeAllSprites(dialogContainer)
+        }
       }
     });
-    const dialogContainer = this.containers.find((item) => item.name === "dialog");
-    this.addSprite(<Container>dialogContainer, this.needsSprite.dialog?.sprite);
-    this.addSprite(<Container>dialogContainer, this.needsSprite.bug?.sprite);
   }
 
   protected setEvents(): void {
