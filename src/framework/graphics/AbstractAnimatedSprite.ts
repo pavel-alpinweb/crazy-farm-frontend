@@ -24,4 +24,16 @@ export abstract class AbstractAnimatedSprite {
     }
     return this.renderedSprite;
   }
+
+  public set width(value: number) {
+    if (this.sprite) {
+      this.sprite.width = value;
+    }
+  }
+
+  public set height(value: number) {
+    if (this.sprite) {
+      this.sprite.height = value;
+    }
+  }
 }

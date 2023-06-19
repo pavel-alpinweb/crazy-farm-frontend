@@ -51,6 +51,16 @@ export class DevScene extends AbstractScene {
     this.needsSprite.bug = new BugSprite();
     this.needsSprite.hunger = new HungerSprite();
     this.needsSprite.drop = new DropSprite();
+
+    if (this.needsSprite.bug.sprite) {
+      this.needsSprite.bug.width = 100;
+      this.needsSprite.bug.height = 100;
+    }
+
+    if (this.needsSprite.dialog.sprite) {
+      this.needsSprite.dialog.width = 200;
+      this.needsSprite.dialog.height = 200;
+    }
   }
 
   protected renderContainers(): void {
@@ -63,8 +73,8 @@ export class DevScene extends AbstractScene {
     });
     const dialogContainer = this.containers.find((item) => item.name === "dialog");
     this.renderContainer(<Container>dialogContainer);
-    this.setContainerX(<Container>dialogContainer, 430);
-    this.setContainerY(<Container>dialogContainer, 250);
+    this.setContainerX(<Container>dialogContainer, 500);
+    this.setContainerY(<Container>dialogContainer, 100);
     this.setContainerPivotX(<Container>dialogContainer, 0);
     this.setContainerPivotY(<Container>dialogContainer, 0);
   }
@@ -81,7 +91,7 @@ export class DevScene extends AbstractScene {
     });
     const dialogContainer = this.containers.find((item) => item.name === "dialog");
     this.addSprite(<Container>dialogContainer, this.needsSprite.dialog?.sprite);
-    this.addSprite(<Container>dialogContainer, this.needsSprite.drop?.sprite);
+    this.addSprite(<Container>dialogContainer, this.needsSprite.bug?.sprite);
   }
 
   protected setEvents(): void {
