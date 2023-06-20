@@ -1,6 +1,5 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { FarmScene } from "../scenes/Farm.scene";
-import { AbstractView } from "../../framework/interface/AbstractView";
 import { DEFAULT_FARM_STATE } from "../../utils/constants";
 
 interface Props {
@@ -13,7 +12,7 @@ interface State {
 
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
-    
+    <div class="farm-screen__scene" data-slot-scene></div>
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
@@ -39,10 +38,7 @@ export class FarmScreen extends AbstractScreen {
   }
 
   protected renderComponents(): void {
-    this.element?.insertAdjacentElement(
-      AbstractView.positions.BEFOREEND,
-      <Element>this.components.FarmScene?.element
-    );
+    this.mountComponent('scene', this.components.FarmScene);
   }
 
   protected setEvents(): void {
