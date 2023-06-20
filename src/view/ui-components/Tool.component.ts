@@ -34,7 +34,17 @@ export class ToolComponent extends AbstractView {
     };
   }
 
-  protected setState(props: Props): void {
+  setHandlers() {
+      this.element?.addEventListener("click", () => {
+          if (this.events.click) {
+              this.events.click(this.state.name);
+          }
+          this.state.isActive = !this.state.isActive;
+          this.rerenderElement();
+      });
+  }
+
+    protected setState(props: Props): void {
     this.state.name = props.name;
   }
 
