@@ -9,7 +9,7 @@ interface State {
 }
 
 const createToolTemplate = (state: State) => `
-<div class="tool tool--${state.name}"></div>
+<div class="tool tool--${state.name}">Tool</div>
 `;
 
 export class ToolComponent extends AbstractView{

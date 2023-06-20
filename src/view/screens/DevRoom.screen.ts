@@ -1,6 +1,7 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {DEFAULT_FARM_STATE} from "../../utils/constants";
 import {DevScene} from "../scenes/Dev.scene";
+import {ToolComponent} from "../ui-components/Tool.component";
 
 interface State {
     farm: FarmState;
@@ -18,6 +19,7 @@ export class DevRoomScreen extends AbstractScreen{
     protected controllerMethods: Methods = {};
     protected components: ScreenComponents = {
         MainScene: null,
+        Tool: null,
     };
     protected state: State = {
         farm: DEFAULT_FARM_STATE,
@@ -31,10 +33,12 @@ export class DevRoomScreen extends AbstractScreen{
 
     protected initComponents(): void {
         this.components.MainScene = new DevScene({ farm: this.state.farm });
+        this.components.Tool = new ToolComponent({ name: 'seeds'});
     }
 
     protected renderComponents(): void {
         this.mountComponent('scene', this.components.MainScene);
+        this.mountComponent('tool', this.components.Tool);
     }
 
     protected setEvents(): void {
