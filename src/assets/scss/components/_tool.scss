@@ -20,4 +20,7 @@
   &--sprayer {
     background-image: url("/assets/img/icons/tools/sprayer.svg");
   }
+  &--active {
+    transform: scale(1.5);
+  }
 }
