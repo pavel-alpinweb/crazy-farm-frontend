@@ -38,6 +38,10 @@ export abstract class AbstractScene {
       background: "#1099bb",
       view: canvas,
     });
+    if (this.scene.renderer.view.style) {
+      this.scene.renderer.view.style.touchAction = 'auto';
+    }
+    this.scene.renderer.plugins.interaction.autoPreventDefault = false;
     this.initSprites();
     this.renderContainers();
     this.renderSprites();
