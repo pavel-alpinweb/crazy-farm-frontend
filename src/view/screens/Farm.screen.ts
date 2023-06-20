@@ -8,13 +8,12 @@ interface Props {
 }
 
 interface State {
-  title: string;
   farm: Props["farm"];
 }
 
-const createFarmScreenTemplate = (state: State) => `
+const createFarmScreenTemplate = () => `
 <div class="farm-screen">
-    <h1>${state.title}</h1>
+    
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
@@ -23,7 +22,6 @@ export class FarmScreen extends AbstractScreen {
     FarmScene: null,
   };
   protected state: State = {
-    title: "Farm, sweet Farm",
     farm: DEFAULT_FARM_STATE,
   };
 
@@ -59,7 +57,7 @@ export class FarmScreen extends AbstractScreen {
   }
 
   get template(): string {
-    return createFarmScreenTemplate(this.state);
+    return createFarmScreenTemplate();
   }
 
   public remove(): void {
