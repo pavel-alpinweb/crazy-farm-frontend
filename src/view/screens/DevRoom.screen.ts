@@ -9,6 +9,8 @@ interface State {
 const createDevRoomScreenTemplate = () => `
 <div class="dev-room">
     <div class="dev-room__scene" data-slot-scene></div>
+    <div class="dev-room__tool" data-slot-tool></div>
+    <div class="dev-room__tool-set" data-slot-tool-set></div>
 </div>
 `;
 
