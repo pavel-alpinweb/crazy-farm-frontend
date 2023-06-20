@@ -33,7 +33,7 @@ export class DevRoomScreen extends AbstractScreen{
 
     protected initComponents(): void {
         this.components.MainScene = new DevScene({ farm: this.state.farm });
-        this.components.Tool = new ToolComponent({ name: 'seeds'});
+        this.components.Tool = new ToolComponent({ name: 'sprayer'});
     }
 
     protected renderComponents(): void {
