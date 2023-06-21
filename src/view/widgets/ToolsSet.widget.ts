@@ -10,8 +10,8 @@ interface State {
 }
 
 const createToolsListTemplate = () => `
-<div class="tools-list">
-    <div class="tools-list__container" data-slot-tools-list></div>
+<div class="tools-set">
+    <div class="tools-set__container" data-slot-tools-list></div>
 </div>
 `;
 
