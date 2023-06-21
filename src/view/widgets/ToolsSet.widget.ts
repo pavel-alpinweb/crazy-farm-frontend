@@ -15,7 +15,7 @@ const createToolsListTemplate = () => `
 </div>
 `;
 
-export class ToolsListWidget extends AbstractWidget {
+export class ToolsSetWidget extends AbstractWidget {
     protected components: WidgetComponents = {};
     protected state: State = {
         toolsList: [],
