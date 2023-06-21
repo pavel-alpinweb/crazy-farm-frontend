@@ -44,7 +44,11 @@ export class ToolsSetWidget extends AbstractWidget {
     }
 
     protected setEvents(): void {
-        console.warn('Init set events');
+        Object.keys(this.components).forEach((Component) => {
+            this.components[Component]?.emits.setClickEvent((name: Concrete) => {
+                console.log('Tool:', name);
+            })
+        });
     }
 
     protected setState(props: Props) {
