@@ -35,7 +35,7 @@ export class DevRoomScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.MainScene = new DevScene({ farm: this.state.farm });
-    this.components.Tool = new ToolComponent({ name: "sprayer" });
+    this.components.Tool = new ToolComponent({ name: "seeds" });
     this.components.ToolSet = new ToolsSetWidget({
       toolsList: ["shovel", "bailer", "fertilizer", "sprayer"],
     });
