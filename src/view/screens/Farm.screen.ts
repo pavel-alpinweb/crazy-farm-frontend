@@ -13,6 +13,8 @@ interface State {
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
     <div class="farm-screen__scene" data-slot-scene></div>
+    <div class="farm-screen__aside" data-slot-aside>Aside</div>
+    <div class="farm-screen__footer" data-slot-footer>Footer</div>
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
