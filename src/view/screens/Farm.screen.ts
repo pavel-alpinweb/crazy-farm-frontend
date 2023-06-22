@@ -1,6 +1,8 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { FarmScene } from "../scenes/Farm.scene";
 import { DEFAULT_FARM_STATE } from "../../utils/constants";
+import { ToolComponent } from "../ui-components/Tool.component";
+import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 
 interface Props {
   farm: FarmState;
@@ -13,14 +15,16 @@ interface State {
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
     <div class="farm-screen__scene" data-slot-scene></div>
-    <div class="farm-screen__aside" data-slot-aside>Aside</div>
-    <div class="farm-screen__footer" data-slot-footer>Footer</div>
+    <div class="farm-screen__aside" data-slot-aside></div>
+    <div class="farm-screen__footer" data-slot-footer></div>
 </div>
 `;
 export class FarmScreen extends AbstractScreen {
   protected controllerMethods: Methods = {};
   protected components: ScreenComponents = {
     FarmScene: null,
+    Seeds: null,
+    ToolsSet: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
@@ -37,10 +41,16 @@ export class FarmScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.FarmScene = new FarmScene({ farm: this.state.farm });
+    this.components.Seeds = new ToolComponent({ name: "seeds" });
+    this.components.ToolsSet = new ToolsSetWidget({
+      toolsList: ["shovel", "bailer", "fertilizer", "sprayer"],
+    });
   }
 
   protected renderComponents(): void {
-    this.mountComponent('scene', this.components.FarmScene);
+    this.mountComponent("scene", this.components.FarmScene);
+    this.mountComponent("aside", this.components.Seeds);
+    this.mountComponent("footer", this.components.ToolsSet);
   }
 
   protected setEvents(): void {
