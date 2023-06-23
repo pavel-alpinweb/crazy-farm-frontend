@@ -55,8 +55,7 @@ export class FarmScreen extends AbstractScreen {
 
   protected setEvents(): void {
     this.components.FarmScene?.emits.setClickEvent((data: Concrete) => {
-      console.log("Ты жмакнул по ячейке: ", data);
-      this.controllerMethods.updateFarm();
+      this.controllerMethods.updateFarm(data);
     });
     this.components.Seeds?.emits.setClickEvent((tool: Concrete) => {
       this.controllerMethods.setActiveTool(tool);
