@@ -50,9 +50,9 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "central",
       character: {
-        type: "potato",
-        stage: 3,
-        needs: CHARACTERS_NEEDS.HUNGER,
+        type: "empty",
+        stage: 0,
+        needs: CHARACTERS_NEEDS.GOOD,
       },
     },
   ],
