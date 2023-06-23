@@ -19,6 +19,7 @@ export class DevScene extends AbstractScene {
   };
   protected sprites: SpritesArray = {
     potato: [],
+    empty: [],
   };
   needsSprite: SpritesCollection = {
     drop: null,

@@ -20,6 +20,7 @@ export class FarmScene extends AbstractScene {
   };
   protected sprites: SpritesArray = {
     potato: [],
+    empty: [],
   };
   needsSprite: SpritesCollection = {
     drop: null,

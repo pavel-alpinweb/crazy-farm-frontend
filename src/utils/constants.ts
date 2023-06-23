@@ -4,6 +4,7 @@ import {ChildPotatoSprite} from "../view/sprites/ChildPotato.sprite";
 import {KidPotatoSprite} from "../view/sprites/KidPotato.sprite";
 import {AdultPotatoSprite} from "../view/sprites/AdultPotato.sprite";
 import {GhostPotatoSprite} from "../view/sprites/GhostPotato.sprite";
+import {EmptyFieldSprite} from "../view/sprites/EmptyField.sprite";
 
 declare global {
   type need = "GOOD" | "HUNGER" | "SICKNESS" | "THIRST";
@@ -58,6 +59,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
 };
 export const CHARACTERS_SPRITES: CharactersSprites = {
   potato: [GroundSprite, SproutPotatoSprite, ChildPotatoSprite, KidPotatoSprite, AdultPotatoSprite, GhostPotatoSprite],
+  empty: [EmptyFieldSprite],
 };
 
 export const DEFAULT_USER_DATA: UserData = {
