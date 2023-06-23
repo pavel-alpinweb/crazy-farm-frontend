@@ -1,7 +1,7 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 
 interface Props {
-  name: string;
+  name: tool;
 }
 
 interface State {
@@ -19,7 +19,7 @@ const createToolTemplate = (state: State) => `
 
 export class ToolComponent extends AbstractView {
   protected state: State = {
-    name: "",
+    name: "empty",
     isActive: false,
   };
   constructor(props: Props) {

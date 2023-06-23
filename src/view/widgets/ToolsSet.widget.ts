@@ -2,7 +2,7 @@ import {AbstractWidget} from "../../framework/interface/AbstractWidget";
 import {ToolComponent} from "../ui-components/Tool.component";
 
 interface Props {
-    toolsList: Array<string>;
+    toolsList: Array<tool>;
 }
 
 interface State {
@@ -30,7 +30,7 @@ export class ToolsSetWidget extends AbstractWidget {
     }
 
     protected initComponents(): void {
-        this.state.toolsList.forEach((toolName) => {
+        this.state.toolsList.forEach((toolName: tool) => {
             this.components[`Tool_${toolName}`] = new ToolComponent({
                 name: toolName,
             });

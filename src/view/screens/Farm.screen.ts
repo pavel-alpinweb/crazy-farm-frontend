@@ -1,6 +1,6 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { FarmScene } from "../scenes/Farm.scene";
-import { DEFAULT_FARM_STATE } from "../../utils/constants";
+import {DEFAULT_FARM_STATE, TOOLS} from "../../utils/constants";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 
@@ -41,9 +41,9 @@ export class FarmScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.FarmScene = new FarmScene({ farm: this.state.farm });
-    this.components.Seeds = new ToolComponent({ name: "seeds" });
+    this.components.Seeds = new ToolComponent({ name: TOOLS.SEEDS });
     this.components.ToolsSet = new ToolsSetWidget({
-      toolsList: ["shovel", "bailer", "fertilizer", "sprayer"],
+      toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
     });
   }
 

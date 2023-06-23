@@ -13,6 +13,16 @@ declare global {
     SICKNESS: "SICKNESS";
     THIRST: "THIRST";
   }
+
+  type tool = "shovel" | "bailer" | "fertilizer" | "sprayer" | "seeds" | "empty";
+  interface Tools {
+    SHOVEL: "shovel";
+    BAILER: "bailer";
+    FERTILIZER: "fertilizer";
+    SPRAYER: "sprayer";
+    SEEDS: "seeds";
+    EMPTY: "empty";
+  }
 }
 
 export const appContainer: Element | null = document.getElementById("app");
@@ -23,6 +33,14 @@ export const CHARACTERS_NEEDS: CharactersNeeds = {
   HUNGER: "HUNGER",
   SICKNESS: "SICKNESS",
   THIRST: "THIRST",
+};
+export const TOOLS: Tools = {
+  SHOVEL: "shovel",
+  BAILER: "bailer",
+  FERTILIZER: "fertilizer",
+  SPRAYER: "sprayer",
+  SEEDS: "seeds",
+  EMPTY: "empty",
 };
 export const DEFAULT_FARM_STATE: FarmState = {
   containers: [
