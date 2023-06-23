@@ -1,7 +1,5 @@
 import { AbstractWidget } from "../../framework/interface/AbstractWidget";
 import { ToolComponent } from "../ui-components/Tool.component";
-import { eventBus } from "../../main";
-import { TOOLS } from "../../utils/constants";
 
 interface Props {
   toolsList: Array<tool>;
