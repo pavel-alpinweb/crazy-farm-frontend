@@ -45,7 +45,11 @@ export default class FarmModel {
   }
 
   public setActiveTool(tool: tool) {
-    this.initialState.activeTool = tool;
+    if (this.initialState.activeTool !== tool) {
+      this.initialState.activeTool = tool;
+    } else {
+      this.initialState.activeTool = TOOLS.EMPTY;
+    }
     eventBus.emit("Farm:set_tool", this.initialState.activeTool);
   }
 

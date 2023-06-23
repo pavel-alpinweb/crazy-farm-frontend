@@ -59,6 +59,9 @@ export default class FarmController {
         const farm: FarmState = await updateFarmState();
         this.farmModel.setFarmState(farm);
       },
+      setActiveTool: (tool: tool) => {
+        this.farmModel.setActiveTool(tool);
+      },
     };
   }
 }

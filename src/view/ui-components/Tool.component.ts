@@ -1,4 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {TOOLS} from "../../utils/constants";
 
 interface Props {
   name: tool;
@@ -19,7 +20,7 @@ const createToolTemplate = (state: State) => `
 
 export class ToolComponent extends AbstractView {
   protected state: State = {
-    name: "empty",
+    name: TOOLS.EMPTY,
     isActive: false,
   };
   constructor(props: Props) {
@@ -39,8 +40,6 @@ export class ToolComponent extends AbstractView {
           if (this.events.click) {
               this.events.click(this.state.name);
           }
-          this.state.isActive = !this.state.isActive;
-          this.rerenderElement();
       });
   }
 

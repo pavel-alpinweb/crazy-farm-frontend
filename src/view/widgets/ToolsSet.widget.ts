@@ -44,9 +44,12 @@ export class ToolsSetWidget extends AbstractWidget {
     }
 
     protected setEvents(): void {
+        this.emits.setChoiceTool = (callback: (data: Concrete) => void) => {
+            this.events.choiceTool = callback;
+        };
         Object.keys(this.components).forEach((Component) => {
             this.components[Component]?.emits.setClickEvent((name: Concrete) => {
-                console.log('Tool:', name);
+                this.events.choiceTool(name)
             })
         });
     }
