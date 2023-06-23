@@ -1,5 +1,5 @@
 import { FarmScreen } from "../view/screens/Farm.screen";
-import { appContainer } from "../utils/constants";
+import { appContainer, TOOLS } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
@@ -55,9 +55,17 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: async () => {
-        const farm: FarmState = await updateFarmState();
-        this.farmModel.setFarmState(farm);
+      updateFarm: async (cell: string) => {
+        if (this.farmModel.tool !== TOOLS.EMPTY) {
+          const farm: FarmState = await updateFarmState(
+            cell,
+            this.farmModel.tool
+          );
+          this.farmModel.setFarmState(farm);
+        }
+      },
+      setActiveTool: (tool: tool) => {
+        this.farmModel.setActiveTool(tool);
       },
     };
   }

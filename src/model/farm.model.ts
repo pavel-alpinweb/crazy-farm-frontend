@@ -1,4 +1,4 @@
-import { DEFAULT_FARM_STATE } from "../utils/constants";
+import { DEFAULT_FARM_STATE, TOOLS } from "../utils/constants";
 import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
 import { eventBus } from "../main";
@@ -7,6 +7,7 @@ declare global {
   interface Character {
     type: string;
     stage: number;
+    needs: need;
   }
   interface Cell {
     isEmpty: boolean;
@@ -22,15 +23,34 @@ declare global {
       { new (): AbstractStaticSprite } | { new (): AbstractAnimatedSprite }
     >;
   }
+
+  interface FarmData {
+    farm: FarmState;
+    activeTool: tool;
+  }
 }
 
 export default class FarmModel {
-  private initialState = {
+  private initialState: FarmData = {
     farm: DEFAULT_FARM_STATE,
+    activeTool: TOOLS.EMPTY,
   };
 
   public get state(): FarmState {
     return this.initialState.farm;
+  }
+
+  public get tool(): tool {
+    return this.initialState.activeTool;
+  }
+
+  public setActiveTool(tool: tool) {
+    if (this.initialState.activeTool !== tool) {
+      this.initialState.activeTool = tool;
+    } else {
+      this.initialState.activeTool = TOOLS.EMPTY;
+    }
+    eventBus.emit("Farm:set_tool", this.initialState.activeTool);
   }
 
   public setFarmState(data: FarmState): void {

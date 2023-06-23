@@ -1,0 +1,27 @@
+.tool {
+  width: 64px;
+  height: 64px;
+  background-color: #eee;
+  cursor: pointer;
+  background-position: center center;
+  background-size: 85%;
+  background-repeat: no-repeat;
+  &--seeds {
+    background-image: url("/assets/img/icons/tools/seeds.svg");
+  }
+  &--bailer {
+    background-image: url("/assets/img/icons/tools/bailer.svg");
+  }
+  &--fertilizer {
+    background-image: url("/assets/img/icons/tools/fertilizer.svg");
+  }
+  &--shovel {
+    background-image: url("/assets/img/icons/tools/shovel.svg");
+  }
+  &--sprayer {
+    background-image: url("/assets/img/icons/tools/sprayer.svg");
+  }
+  &--active {
+    transform: scale(1.5);
+  }
+}
