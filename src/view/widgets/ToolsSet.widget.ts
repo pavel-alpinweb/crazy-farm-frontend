@@ -1,5 +1,7 @@
 import {AbstractWidget} from "../../framework/interface/AbstractWidget";
 import {ToolComponent} from "../ui-components/Tool.component";
+import {eventBus} from "../../main";
+import {TOOLS} from "../../utils/constants";
 
 interface Props {
     toolsList: Array<tool>;
@@ -49,7 +51,7 @@ export class ToolsSetWidget extends AbstractWidget {
         };
         Object.keys(this.components).forEach((Component) => {
             this.components[Component]?.emits.setClickEvent((name: Concrete) => {
-                this.events.choiceTool(name)
+                this.events.choiceTool(name);
             })
         });
     }
