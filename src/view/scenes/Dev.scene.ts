@@ -1,9 +1,13 @@
-import {AbstractScene} from "../../framework/graphics/AbstractScene";
-import {CHARACTERS_NEEDS, CHARACTERS_SPRITES, DEFAULT_FARM_STATE} from "../../utils/constants";
-import {DialogSprite} from "../sprites/Dialog.sprite";
-import {BugSprite} from "../sprites/Bug.sprite";
-import {HungerSprite} from "../sprites/Hunger.sprite";
-import {DropSprite} from "../sprites/Drop";
+import { AbstractScene } from "../../framework/graphics/AbstractScene";
+import {
+  CHARACTERS_NEEDS,
+  CHARACTERS_SPRITES,
+  DEFAULT_FARM_STATE,
+} from "../../utils/constants";
+import { DialogSprite } from "../sprites/Dialog.sprite";
+import { BugSprite } from "../sprites/Bug.sprite";
+import { HungerSprite } from "../sprites/Hunger.sprite";
+import { DropSprite } from "../sprites/Drop";
 
 interface Props {
   farm: FarmState;
@@ -26,7 +30,7 @@ export class DevScene extends AbstractScene {
     bug: null,
     hunger: null,
     dialog: null,
-  }
+  };
   protected containers: Containers = [
     {
       name: "central",
@@ -91,7 +95,9 @@ export class DevScene extends AbstractScene {
           this.sprites[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
 
-        const dialogContainer = this.containers.find((cont) => cont.name === `${cell.name}-dialog`);
+        const dialogContainer = this.containers.find(
+          (cont) => cont.name === `${cell.name}-dialog`
+        );
 
         if (dialogContainer && cell.character.needs !== CHARACTERS_NEEDS.GOOD) {
           this.removeAllSprites(dialogContainer);
@@ -108,8 +114,8 @@ export class DevScene extends AbstractScene {
               this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
               break;
           }
-        } else if (dialogContainer){
-          this.removeAllSprites(dialogContainer)
+        } else if (dialogContainer) {
+          this.removeAllSprites(dialogContainer);
         }
       }
     });

@@ -1,10 +1,10 @@
 import { GroundSprite } from "../view/sprites/Ground.sprite";
 import { SproutPotatoSprite } from "../view/sprites/SproutPotato.sprite";
-import {ChildPotatoSprite} from "../view/sprites/ChildPotato.sprite";
-import {KidPotatoSprite} from "../view/sprites/KidPotato.sprite";
-import {AdultPotatoSprite} from "../view/sprites/AdultPotato.sprite";
-import {GhostPotatoSprite} from "../view/sprites/GhostPotato.sprite";
-import {EmptyFieldSprite} from "../view/sprites/EmptyField.sprite";
+import { ChildPotatoSprite } from "../view/sprites/ChildPotato.sprite";
+import { KidPotatoSprite } from "../view/sprites/KidPotato.sprite";
+import { AdultPotatoSprite } from "../view/sprites/AdultPotato.sprite";
+import { GhostPotatoSprite } from "../view/sprites/GhostPotato.sprite";
+import { EmptyFieldSprite } from "../view/sprites/EmptyField.sprite";
 
 declare global {
   type need = "GOOD" | "HUNGER" | "SICKNESS" | "THIRST";
@@ -15,7 +15,13 @@ declare global {
     THIRST: "THIRST";
   }
 
-  type tool = "shovel" | "bailer" | "fertilizer" | "sprayer" | "seeds" | "empty";
+  type tool =
+    | "shovel"
+    | "bailer"
+    | "fertilizer"
+    | "sprayer"
+    | "seeds"
+    | "empty";
   interface Tools {
     SHOVEL: "shovel";
     BAILER: "bailer";
@@ -58,7 +64,14 @@ export const DEFAULT_FARM_STATE: FarmState = {
   ],
 };
 export const CHARACTERS_SPRITES: CharactersSprites = {
-  potato: [GroundSprite, SproutPotatoSprite, ChildPotatoSprite, KidPotatoSprite, AdultPotatoSprite, GhostPotatoSprite],
+  potato: [
+    GroundSprite,
+    SproutPotatoSprite,
+    ChildPotatoSprite,
+    KidPotatoSprite,
+    AdultPotatoSprite,
+    GhostPotatoSprite,
+  ],
   empty: [EmptyFieldSprite],
 };
 

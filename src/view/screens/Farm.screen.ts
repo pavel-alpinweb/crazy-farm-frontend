@@ -1,6 +1,6 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { FarmScene } from "../scenes/Farm.scene";
-import {DEFAULT_FARM_STATE, TOOLS} from "../../utils/constants";
+import { DEFAULT_FARM_STATE, TOOLS } from "../../utils/constants";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 

@@ -60,7 +60,7 @@ export class Router {
     const token = Router.getParam("token");
     if (token) {
       Router.push(`/#/?token=${token}`);
-    } else if (Router.path[0].length === 0){
+    } else if (Router.path[0].length === 0) {
       Router.push("/#/");
     }
 

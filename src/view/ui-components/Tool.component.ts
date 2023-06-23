@@ -1,6 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {TOOLS} from "../../utils/constants";
-import {eventBus} from "../../main";
+import { TOOLS } from "../../utils/constants";
+import { eventBus } from "../../main";
 
 interface Props {
   name: tool;
@@ -35,18 +35,19 @@ export class ToolComponent extends AbstractView {
       this.events.click = callback;
     };
     const updateElement = (tool: tool) => {
-      this.state.isActive = this.state.name === tool && this.state.name !== TOOLS.EMPTY;
+      this.state.isActive =
+        this.state.name === tool && this.state.name !== TOOLS.EMPTY;
       this.rerenderElement();
     };
     eventBus.on("Farm:set_tool", updateElement);
   }
 
   setHandlers() {
-      this.element?.addEventListener("click", () => {
-          if (this.events.click) {
-              this.events.click(this.state.name);
-          }
-      });
+    this.element?.addEventListener("click", () => {
+      if (this.events.click) {
+        this.events.click(this.state.name);
+      }
+    });
   }
 
   protected setState(props: Props): void {

@@ -1,4 +1,4 @@
-import {CHARACTERS_NEEDS, TOOLS} from "../utils/constants";
+import { CHARACTERS_NEEDS, TOOLS } from "../utils/constants";
 
 let activeCharacter = "empty";
 let activeStage = 0;
@@ -19,7 +19,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmState> {
           break;
         case TOOLS.BAILER:
           if (activeCharacter === "potato") {
-            activeStage ++;
+            activeStage++;
             activeNeeds = CHARACTERS_NEEDS.GOOD;
           }
           break;

@@ -1,14 +1,14 @@
-import {AbstractWidget} from "../../framework/interface/AbstractWidget";
-import {ToolComponent} from "../ui-components/Tool.component";
-import {eventBus} from "../../main";
-import {TOOLS} from "../../utils/constants";
+import { AbstractWidget } from "../../framework/interface/AbstractWidget";
+import { ToolComponent } from "../ui-components/Tool.component";
+import { eventBus } from "../../main";
+import { TOOLS } from "../../utils/constants";
 
 interface Props {
-    toolsList: Array<tool>;
+  toolsList: Array<tool>;
 }
 
 interface State {
-    toolsList: Props["toolsList"];
+  toolsList: Props["toolsList"];
 }
 
 const createToolsListTemplate = () => `
@@ -18,50 +18,49 @@ const createToolsListTemplate = () => `
 `;
 
 export class ToolsSetWidget extends AbstractWidget {
-    protected components: WidgetComponents = {};
-    protected state: State = {
-        toolsList: [],
+  protected components: WidgetComponents = {};
+  protected state: State = {
+    toolsList: [],
+  };
+
+  constructor(props: Props) {
+    super();
+    this.setState(props);
+    this.initComponents();
+    this.setEvents();
+    this.renderComponents();
+  }
+
+  protected initComponents(): void {
+    this.state.toolsList.forEach((toolName: tool) => {
+      this.components[`Tool_${toolName}`] = new ToolComponent({
+        name: toolName,
+      });
+    });
+  }
+
+  protected renderComponents(): void {
+    Object.keys(this.components).forEach((Component) => {
+      this.mountComponent("tools-list", this.components[Component]);
+    });
+  }
+
+  protected setEvents(): void {
+    this.emits.setChoiceTool = (callback: (data: Concrete) => void) => {
+      this.events.choiceTool = callback;
     };
+    Object.keys(this.components).forEach((Component) => {
+      this.components[Component]?.emits.setClickEvent((name: Concrete) => {
+        this.events.choiceTool(name);
+      });
+    });
+  }
 
-    constructor(props: Props) {
-        super();
-        this.setState(props);
-        this.initComponents();
-        this.setEvents();
-        this.renderComponents();
-    }
+  protected setState(props: Props) {
+    this.state.toolsList = props.toolsList;
+  }
 
-    protected initComponents(): void {
-        this.state.toolsList.forEach((toolName: tool) => {
-            this.components[`Tool_${toolName}`] = new ToolComponent({
-                name: toolName,
-            });
-        });
-    }
-
-    protected renderComponents(): void {
-        Object.keys(this.components).forEach((Component) => {
-            this.mountComponent('tools-list', this.components[Component]);
-        });
-    }
-
-    protected setEvents(): void {
-        this.emits.setChoiceTool = (callback: (data: Concrete) => void) => {
-            this.events.choiceTool = callback;
-        };
-        Object.keys(this.components).forEach((Component) => {
-            this.components[Component]?.emits.setClickEvent((name: Concrete) => {
-                this.events.choiceTool(name);
-            })
-        });
-    }
-
-    protected setState(props: Props) {
-        this.state.toolsList = props.toolsList
-    }
-
-    get template(): string {
-        return createToolsListTemplate();
-    }
-    
+  get template(): string {
+    return createToolsListTemplate();
+  }
 }

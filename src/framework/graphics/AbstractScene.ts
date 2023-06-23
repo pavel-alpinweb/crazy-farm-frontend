@@ -7,7 +7,7 @@ declare global {
   interface SpritesArray {
     [key: string]: Array<SingleSprite>;
   }
-  interface SpritesCollection{
+  interface SpritesCollection {
     [key: string]: SingleSprite;
   }
   interface Container {
@@ -39,7 +39,7 @@ export abstract class AbstractScene {
       view: canvas,
     });
     if (this.scene.renderer.view.style) {
-      this.scene.renderer.view.style.touchAction = 'auto';
+      this.scene.renderer.view.style.touchAction = "auto";
     }
     this.scene.renderer.plugins.interaction.autoPreventDefault = false;
     this.initSprites();

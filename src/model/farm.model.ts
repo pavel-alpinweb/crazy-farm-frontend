@@ -1,4 +1,4 @@
-import {DEFAULT_FARM_STATE, TOOLS} from "../utils/constants";
+import { DEFAULT_FARM_STATE, TOOLS } from "../utils/constants";
 import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
 import { eventBus } from "../main";
@@ -25,8 +25,8 @@ declare global {
   }
 
   interface FarmData {
-    farm: FarmState,
-    activeTool: tool,
+    farm: FarmState;
+    activeTool: tool;
   }
 }
 
