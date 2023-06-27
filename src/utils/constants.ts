@@ -56,9 +56,9 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "central",
       character: {
-        type: "empty",
-        stage: 0,
-        needs: CHARACTERS_NEEDS.GOOD,
+        type: "potato",
+        stage: 1,
+        needs: CHARACTERS_NEEDS.SICKNESS,
       },
     },
   ],
@@ -81,3 +81,6 @@ export const DEFAULT_USER_DATA: UserData = {
   email: "crazyfarm@crazyfarm.crazyfarm",
   password: "crazyfarmpassword",
 };
+
+export const DIALOG_SPRITE_SIZE = 200;
+export const NEEDS_SPRITE_SIZE = 180;

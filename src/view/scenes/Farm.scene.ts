@@ -2,7 +2,7 @@ import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
   CHARACTERS_NEEDS,
   CHARACTERS_SPRITES,
-  DEFAULT_FARM_STATE,
+  DEFAULT_FARM_STATE, DIALOG_SPRITE_SIZE, NEEDS_SPRITE_SIZE,
 } from "../../utils/constants";
 import { eventBus } from "../../main";
 import { DialogSprite } from "../sprites/Dialog.sprite";
@@ -64,17 +64,17 @@ export class FarmScene extends AbstractScene {
     this.needsSprite.hunger = new HungerSprite();
     this.needsSprite.drop = new DropSprite();
 
-    this.needsSprite.bug.width = 100;
-    this.needsSprite.bug.height = 100;
+    this.needsSprite.bug.width = NEEDS_SPRITE_SIZE;
+    this.needsSprite.bug.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.hunger.width = 100;
-    this.needsSprite.hunger.height = 100;
+    this.needsSprite.hunger.width = NEEDS_SPRITE_SIZE;
+    this.needsSprite.hunger.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.drop.width = 100;
-    this.needsSprite.drop.height = 100;
+    this.needsSprite.drop.width = NEEDS_SPRITE_SIZE;
+    this.needsSprite.drop.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.dialog.width = 200;
-    this.needsSprite.dialog.height = 200;
+    this.needsSprite.dialog.width = DIALOG_SPRITE_SIZE;
+    this.needsSprite.dialog.height = DIALOG_SPRITE_SIZE;
   }
 
   protected renderContainers(): void {
