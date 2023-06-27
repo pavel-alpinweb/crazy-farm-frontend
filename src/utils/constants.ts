@@ -6,32 +6,6 @@ import { AdultPotatoSprite } from "../view/sprites/AdultPotato.sprite";
 import { GhostPotatoSprite } from "../view/sprites/GhostPotato.sprite";
 import { EmptyFieldSprite } from "../view/sprites/EmptyField.sprite";
 
-declare global {
-  type need = "GOOD" | "HUNGER" | "SICKNESS" | "THIRST";
-  interface CharactersNeeds {
-    GOOD: "GOOD";
-    HUNGER: "HUNGER";
-    SICKNESS: "SICKNESS";
-    THIRST: "THIRST";
-  }
-
-  type tool =
-    | "shovel"
-    | "bailer"
-    | "fertilizer"
-    | "sprayer"
-    | "seeds"
-    | "empty";
-  interface Tools {
-    SHOVEL: "shovel";
-    BAILER: "bailer";
-    FERTILIZER: "fertilizer";
-    SPRAYER: "sprayer";
-    SEEDS: "seeds";
-    EMPTY: "empty";
-  }
-}
-
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
