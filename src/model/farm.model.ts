@@ -4,10 +4,31 @@ import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSp
 import { eventBus } from "../main";
 
 declare global {
+  type tool =
+      | "shovel"
+      | "bailer"
+      | "fertilizer"
+      | "sprayer"
+      | "seeds"
+      | "empty";
+  interface Tools {
+    SHOVEL: "shovel";
+    BAILER: "bailer";
+    FERTILIZER: "fertilizer";
+    SPRAYER: "sprayer";
+    SEEDS: "seeds";
+    EMPTY: "empty";
+  }
+  type need = "HUNGER" | "SICKNESS" | "THIRST";
+  interface CharactersNeeds {
+    HUNGER: "HUNGER";
+    SICKNESS: "SICKNESS";
+    THIRST: "THIRST";
+  }
   interface Character {
     type: string;
     stage: number;
-    needs: need;
+    needs: Array<need>;
   }
   interface Cell {
     isEmpty: boolean;
