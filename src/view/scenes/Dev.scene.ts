@@ -99,22 +99,7 @@ export class DevScene extends AbstractScene {
           (cont) => cont.name === `${cell.name}-dialog`
         );
 
-        if (dialogContainer && cell.character.needs !== CHARACTERS_NEEDS.GOOD) {
-          this.removeAllSprites(dialogContainer);
-          this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
-
-          switch (cell.character.needs) {
-            case CHARACTERS_NEEDS.HUNGER:
-              this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
-              break;
-            case CHARACTERS_NEEDS.SICKNESS:
-              this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
-              break;
-            case CHARACTERS_NEEDS.THIRST:
-              this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
-              break;
-          }
-        } else if (dialogContainer) {
+        if (dialogContainer) {
           this.removeAllSprites(dialogContainer);
         }
       }

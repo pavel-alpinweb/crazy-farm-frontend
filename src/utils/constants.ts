@@ -10,7 +10,6 @@ export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
 export const CHARACTERS_NEEDS: CharactersNeeds = {
-  GOOD: "GOOD",
   HUNGER: "HUNGER",
   SICKNESS: "SICKNESS",
   THIRST: "THIRST",
@@ -30,9 +29,9 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "central",
       character: {
-        type: "potato",
-        stage: 1,
-        needs: CHARACTERS_NEEDS.SICKNESS,
+        type: "empty",
+        stage: 0,
+        needs: [],
       },
     },
   ],

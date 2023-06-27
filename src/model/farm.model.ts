@@ -19,9 +19,8 @@ declare global {
     SEEDS: "seeds";
     EMPTY: "empty";
   }
-  type need = "GOOD" | "HUNGER" | "SICKNESS" | "THIRST";
+  type need = "HUNGER" | "SICKNESS" | "THIRST";
   interface CharactersNeeds {
-    GOOD: "GOOD";
     HUNGER: "HUNGER";
     SICKNESS: "SICKNESS";
     THIRST: "THIRST";
@@ -29,7 +28,7 @@ declare global {
   interface Character {
     type: string;
     stage: number;
-    needs: need;
+    needs: Array<need>;
   }
   interface Cell {
     isEmpty: boolean;

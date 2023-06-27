@@ -9,6 +9,7 @@ import { DialogSprite } from "../sprites/Dialog.sprite";
 import { BugSprite } from "../sprites/Bug.sprite";
 import { HungerSprite } from "../sprites/Hunger.sprite";
 import { DropSprite } from "../sprites/Drop";
+import DEFAULT_TIMEOUT_INTERVAL = jasmine.DEFAULT_TIMEOUT_INTERVAL;
 
 interface Props {
   farm: FarmState;
@@ -19,6 +20,8 @@ interface State {
 }
 
 export class FarmScene extends AbstractScene {
+  private needIndex = 0;
+  private needsInterval!: NodeJS.Timer;
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
@@ -106,11 +109,33 @@ export class FarmScene extends AbstractScene {
           (cont) => cont.name === `${cell.name}-dialog`
         );
 
-        if (dialogContainer && cell.character.needs !== CHARACTERS_NEEDS.GOOD) {
+        if (dialogContainer && cell.character.needs.length > 1) {
+          this.needIndex = 0;
+          clearInterval(this.needsInterval);
+          this.needsInterval = setInterval(() => {
+            this.removeAllSprites(dialogContainer);
+            this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
+            switch (cell.character?.needs[this.needIndex]) {
+              case CHARACTERS_NEEDS.HUNGER:
+                this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
+                break;
+              case CHARACTERS_NEEDS.SICKNESS:
+                this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
+                break;
+              case CHARACTERS_NEEDS.THIRST:
+                this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
+                break;
+            }
+            if (cell.character) {
+              this.needIndex = this.needIndex === cell.character.needs.length - 1 ? 0 : this.needIndex += 1;
+            }
+          }, 1500);
+        } else if (dialogContainer && cell.character.needs.length === 1) {
+          this.needIndex = 0;
+          clearInterval(this.needsInterval);
           this.removeAllSprites(dialogContainer);
           this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
-
-          switch (cell.character.needs) {
+          switch (cell.character?.needs[this.needIndex]) {
             case CHARACTERS_NEEDS.HUNGER:
               this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
               break;
@@ -122,6 +147,8 @@ export class FarmScene extends AbstractScene {
               break;
           }
         } else if (dialogContainer) {
+          this.needIndex = 0;
+          clearInterval(this.needsInterval);
           this.removeAllSprites(dialogContainer);
         }
       }
