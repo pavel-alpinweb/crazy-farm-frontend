@@ -10,7 +10,6 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
-import {Console} from "inspector";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
