@@ -9,10 +9,12 @@ import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
+import Socket from "../framework/Socket";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
   private readonly userModel: User;
+  private Socket!: Socket;
   private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
@@ -30,10 +32,12 @@ export default class FarmController {
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
             const connectionToken = await FarmService.getJwtForConnection(result.jws);
-            console.log('connectionToken', connectionToken);
+            this.Socket = new Socket(connectionToken.jws);
+            console.log(this.Socket.onOpen());
           } else if (userToken) {
             const connectionToken = await FarmService.getJwtForConnection(userToken);
-            console.log('connectionToken', connectionToken);
+            this.Socket = new Socket(connectionToken.jws);
+            console.log(this.Socket.onOpen());
           } else {
             alert('Пройдите регистрацию');
             Router.push("/#/registration");
