@@ -40,7 +40,7 @@ export default class Service {
   static setToken(value: string) {
     Cookies.set("crazy-farm-jws", value, { expires: 7 });
   }
-  static getToken() {
-    Cookies.get("crazy-farm-jws");
+  static getToken(): string | undefined {
+    return Cookies.get("crazy-farm-jws");
   }
 }
