@@ -8,6 +8,7 @@ import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
+import FarmService from "../services/farm.service";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -28,9 +29,11 @@ export default class FarmController {
             const result = await AuthService.registrationFinalStep(registrationToken);
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
-            console.log('/game/getJwtForConnection');
+            const connectionToken = await FarmService.getJwtForConnection(result.jws);
+            console.log('connectionToken', connectionToken);
           } else if (userToken) {
-            console.log('/game/getJwtForConnection');
+            const connectionToken = await FarmService.getJwtForConnection(userToken);
+            console.log('connectionToken', connectionToken);
           } else {
             alert('Пройдите регистрацию');
             Router.push("/#/registration");
