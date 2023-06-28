@@ -32,20 +32,9 @@ export default class FarmController {
             const result = await AuthService.registrationFinalStep(registrationToken);
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
-            const connectionToken = await FarmService.getJwtForConnection(result.jws);
-            this.Socket = new Socket(connectionToken.jws);
-            this.Socket.onMessage((event: MessageEvent) => {
-              console.log('Полученно сообщение:', event.data);
-            });
-            this.Socket.onClose((event: CloseEvent) => {
-              console.info('Подключение закрыто', event.reason);
-            });
+            this.methods.connectToWebSocketServer(result.jws);
           } else if (userToken) {
-            const connectionToken = await FarmService.getJwtForConnection(userToken);
-            this.Socket = new Socket(connectionToken.jws);
-            this.Socket.onMessage((event: MessageEvent) => {
-              console.log('Полученно сообщение:', event.data);
-            });
+            this.methods.connectToWebSocketServer(userToken);
           } else {
             alert('Пройдите регистрацию');
             Router.push("/#/registration");
@@ -81,6 +70,16 @@ export default class FarmController {
           );
           this.farmModel.setFarmState(farm);
         }
+      },
+      connectToWebSocketServer: async (userToken: string) => {
+        const connectionToken = await FarmService.getJwtForConnection(userToken);
+        this.Socket = new Socket(connectionToken.jws);
+        this.Socket.onMessage((event: MessageEvent) => {
+          console.log('Полученно сообщение:', event.data);
+        });
+        this.Socket.onClose((event: CloseEvent) => {
+          console.info('Подключение закрыто', event.reason);
+        });
       },
       setActiveTool: (tool: tool) => {
         this.farmModel.setActiveTool(tool);
