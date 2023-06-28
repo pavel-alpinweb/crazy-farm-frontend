@@ -10,6 +10,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
+import {Console} from "inspector";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -33,11 +34,18 @@ export default class FarmController {
             Service.setToken(result.jws);
             const connectionToken = await FarmService.getJwtForConnection(result.jws);
             this.Socket = new Socket(connectionToken.jws);
-            console.log(this.Socket.onOpen());
+            this.Socket.onMessage((event: MessageEvent) => {
+              console.log('Полученно сообщение:', event.data);
+            });
+            this.Socket.onClose((event: CloseEvent) => {
+              console.info('Подключение закрыто', event.reason);
+            });
           } else if (userToken) {
             const connectionToken = await FarmService.getJwtForConnection(userToken);
             this.Socket = new Socket(connectionToken.jws);
-            console.log(this.Socket.onOpen());
+            this.Socket.onMessage((event: MessageEvent) => {
+              console.log('Полученно сообщение:', event.data);
+            });
           } else {
             alert('Пройдите регистрацию');
             Router.push("/#/registration");
@@ -58,6 +66,7 @@ export default class FarmController {
         }
       },
       destroy: () => {
+        this.Socket.close();
         this.FarmScreen?.remove();
         this.FarmScreen = null;
         if (appContainer) {
