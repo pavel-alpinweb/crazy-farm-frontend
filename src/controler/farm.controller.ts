@@ -21,13 +21,14 @@ export default class FarmController {
     this.FarmScreen = null;
     this.methods = {
       init: async () => {
-        const token = Router.getParam("token");
+        const registrationToken = Router.getParam("token");
         const userToken = Service.getToken();
         try {
-          if (token) {
-            const result = await AuthService.registrationFinalStep(token);
+          if (registrationToken) {
+            const result = await AuthService.registrationFinalStep(registrationToken);
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
+            console.log('/game/getJwtForConnection');
           } else if (userToken) {
             console.log('/game/getJwtForConnection');
           } else {
