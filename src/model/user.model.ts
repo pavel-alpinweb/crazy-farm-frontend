@@ -8,6 +8,17 @@ declare global {
     email: string;
     password?: string;
   }
+  
+  interface RegistrationData {
+    loggin: string;
+    email: string;
+    password: string;
+  }
+
+  interface LoginData {
+    loggin: string;
+    password: string;
+  }
 }
 
 export default class User {
