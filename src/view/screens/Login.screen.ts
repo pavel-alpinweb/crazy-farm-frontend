@@ -3,7 +3,7 @@ import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { AuthFormWidget } from "../widgets/AuthForm.widget";
 
 interface Props {
-  user: UserData;
+  user: LoginData;
 }
 
 interface State {
@@ -24,10 +24,8 @@ export class LoginScreen extends AbstractScreen {
   protected state: State = {
     title: "Вход",
     user: {
-      userId: "",
       loggin: "",
       password: "",
-      email: "",
     },
   };
   protected components: ScreenComponents = {
@@ -53,7 +51,6 @@ export class LoginScreen extends AbstractScreen {
     this.components.AuthFormWidget = new AuthFormWidget({
       user: {
         loggin: this.state.user.loggin,
-        email: this.state.user.email,
         password: this.state.user.password,
       },
     });

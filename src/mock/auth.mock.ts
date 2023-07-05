@@ -4,7 +4,6 @@ export function getUserDataMock(): Promise<UserData> {
       resolve({
         userId: "BakuardId",
         loggin: "Bakuard",
-        password: "Pelmesh",
         email: "bakuard@pelmesh.bro",
       });
     }, 100);
