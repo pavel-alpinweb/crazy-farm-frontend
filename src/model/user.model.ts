@@ -18,6 +18,12 @@ declare global {
     loggin: string;
     password: string;
   }
+
+  interface AuthData {
+    loggin: string;
+    email?: string;
+    password: string;
+  }
 }
 
 export default class User {

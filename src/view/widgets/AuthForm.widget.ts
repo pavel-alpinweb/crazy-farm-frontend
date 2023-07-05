@@ -1,10 +1,9 @@
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { ButtonComponent } from "../ui-components/Button.component";
 import { AbstractWidget } from "../../framework/interface/AbstractWidget";
-import { eventBus } from "../../main";
 
 interface Props {
-  user: UserData;
+  user: RegistrationData | LoginData;
 }
 
 interface State {
@@ -25,7 +24,6 @@ const createAuthFormTemplate = () => `
 export class AuthFormWidget extends AbstractWidget {
   protected state: State = {
     user: {
-      userId: "",
       loggin: "",
       password: "",
       email: "",
@@ -54,17 +52,19 @@ export class AuthFormWidget extends AbstractWidget {
       isPassword: false,
       icon: "user",
     });
-    this.components.EmailTextInput = new TextInputComponent({
-      value: this.state.user.email,
-      placeholder: "Введите email",
-      isDisabled: false,
-      isError: false,
-      errorText:
-        "Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.",
-      isPassword: false,
-      icon: "envelope",
-    });
-    if (this.state.user.password) {
+    if ('email' in this.state.user) {
+      this.components.EmailTextInput = new TextInputComponent({
+        value: this.state.user.email,
+        placeholder: "Введите email",
+        isDisabled: false,
+        isError: false,
+        errorText:
+            "Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.",
+        isPassword: false,
+        icon: "envelope",
+      });
+    }
+    if ('password' in this.state.user) {
       this.components.PasswordTextInput = new TextInputComponent({
         value: this.state.user.password,
         placeholder: "Введите пароль",
@@ -91,23 +91,24 @@ export class AuthFormWidget extends AbstractWidget {
       }
     });
     this.components.EmailTextInput?.emits.setInputEvent((data: Concrete) => {
-      if (typeof data === "string") {
+      if (typeof data === "string" && 'email' in this.state.user) {
         this.state.user.email = data;
       }
     });
     this.components.FormButton?.emits.setClickEvent(() => {
-      this.events.submit({
-        loggin: this.state.user.loggin,
-        email: this.state.user.email,
-        password: this.state.user.password,
-      });
+      if ('email' in this.state.user && 'password' in this.state.user) {
+        this.events.submit({
+          loggin: this.state.user.loggin,
+          email: this.state.user.email,
+          password: this.state.user.password,
+        });
+      } else if ('password' in this.state.user) {
+        this.events.submit({
+          loggin: this.state.user.loggin,
+          password: this.state.user.password,
+        });
+      }
     });
-    const updateElement = (data: UserData) => {
-      this.state.user = data;
-      this.updateWidget();
-    };
-    eventBus.off("User:update", updateElement);
-    eventBus.on("User:update", updateElement);
   }
   protected renderComponents(): void {
     this.mountComponent("login-input", this.components.LoginTextInput);

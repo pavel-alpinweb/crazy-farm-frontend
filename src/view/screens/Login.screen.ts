@@ -51,7 +51,7 @@ export class LoginScreen extends AbstractScreen {
     this.components.AuthFormWidget = new AuthFormWidget({
       user: {
         loggin: this.state.user.loggin,
-        email: this.state.user.password,
+        password: this.state.user.password,
       },
     });
   }
