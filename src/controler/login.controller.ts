@@ -17,7 +17,10 @@ export class LoginController {
     this.methods = {
       init: () => {
         this.Screen = new LoginScreen(
-          { user: this.userModel.data },
+          { user: {
+              loggin: "",
+              password: "",
+            } },
           this.methods
         );
         appContainer?.insertAdjacentElement(
