@@ -10,12 +10,13 @@ interface State {
   user: Props["user"];
 }
 
-const createAuthFormTemplate = () => `
-<Form class="auth-form" action="#">
+const createAuthFormTemplate = (state: State) => `
+<Form class="auth-form" action="#" autocomplete="off">
     <div class="auth-form__fields">
         <div class="auth-form__input-container" data-slot-login-input></div>
-        <div class="auth-form__input-container" data-slot-email-input></div>
-        <div class="auth-form__input-container" data-slot-password-input></div>
+        ${'email' in state.user ? '<div class="auth-form__input-container" data-slot-email-input></div>' : ''}
+        ${'password' in state.user ? '<div class="auth-form__input-container" data-slot-password-input></div>' : ''}
+              
     </div>
     <div class="auth-form__button-container" data-slot-button></div>
 </Form>
@@ -112,13 +113,13 @@ export class AuthFormWidget extends AbstractWidget {
   }
   protected renderComponents(): void {
     this.mountComponent("login-input", this.components.LoginTextInput);
-    if (this.components.PasswordTextInput) {
-      this.mountComponent("password-input", this.components.PasswordTextInput);
+    if (this.components.EmailTextInput) {
+      this.mountComponent("email-input", this.components.EmailTextInput);
     }
-    this.mountComponent("email-input", this.components.EmailTextInput);
+    this.mountComponent("password-input", this.components.PasswordTextInput);
     this.mountComponent("button", this.components.FormButton);
   }
   get template(): string {
-    return createAuthFormTemplate();
+    return createAuthFormTemplate(this.state);
   }
 }

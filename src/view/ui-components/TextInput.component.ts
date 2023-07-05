@@ -34,9 +34,11 @@ const createTextInputTemplate = (state: State) => `
             }
             "
         type="${state.isPassword ? "password" : "text"}"
+        name="${state.isPassword ? "password" : "text"}"
         ${state.isDisabled ? "disabled" : ""}
         value="${state.value}"
         placeholder="${state.placeholder}"
+        autocomplete="new-password"
     />
     ${
       state.isError
