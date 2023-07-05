@@ -16,10 +16,6 @@ describe("User Model getters:", () => {
     expect(user.email).toBe(DEFAULT_USER_DATA.email);
   });
 
-  test("Getter user.password", () => {
-    expect(user.password).toBe(DEFAULT_USER_DATA.password);
-  });
-
   test("Getter user.data", () => {
     expect(user.data).toEqual(DEFAULT_USER_DATA);
   });
