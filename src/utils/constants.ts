@@ -52,7 +52,6 @@ export const DEFAULT_USER_DATA: UserData = {
   userId: "crazyfarmid",
   loggin: "crazyfarmlogin",
   email: "crazyfarm@crazyfarm.crazyfarm",
-  password: "crazyfarmpassword",
 };
 
 export const DIALOG_SPRITE_SIZE = 200;
