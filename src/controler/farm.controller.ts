@@ -54,7 +54,7 @@ export default class FarmController {
         }
       },
       destroy: () => {
-        this.Socket.close();
+        this.Socket?.close();
         this.FarmScreen?.remove();
         this.FarmScreen = null;
         if (appContainer) {
