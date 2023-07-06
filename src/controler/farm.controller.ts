@@ -71,14 +71,21 @@ export default class FarmController {
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
-        const connectionToken = await FarmService.getJwtForConnection(userToken);
-        this.Socket = new Socket(connectionToken.jws);
-        this.Socket.onMessage((event: MessageEvent) => {
-          console.log('Полученно сообщение:', event.data);
-        });
-        this.Socket.onClose((event: CloseEvent) => {
-          console.info('Подключение закрыто', event.reason);
-        });
+        try {
+          const connectionToken = await FarmService.getJwtForConnection(userToken);
+          this.Socket = new Socket(connectionToken.jws);
+          this.Socket.onMessage((event: MessageEvent) => {
+            console.log('Полученно сообщение:', event.data);
+          });
+          this.Socket.onClose((event: CloseEvent) => {
+            console.info('Подключение закрыто', event.reason);
+          });
+        } catch (error: any) {
+          alert(
+              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+          );
+          Router.push("/#/registration");
+        }
       },
       setActiveTool: (tool: tool) => {
         this.farmModel.setActiveTool(tool);
