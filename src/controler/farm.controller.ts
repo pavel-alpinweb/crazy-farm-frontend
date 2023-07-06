@@ -74,11 +74,11 @@ export default class FarmController {
         try {
           const connectionToken = await FarmService.getJwtForConnection(userToken);
           this.Socket = new Socket(connectionToken.jws);
-          this.Socket.onMessage((event: MessageEvent) => {
-            console.log('Полученно сообщение:', event.data);
+          this.Socket.onMessage((data: Concrete) => {
+            this.farmModel.setFarmState(<FarmState>data);
           });
           this.Socket.onClose((event: CloseEvent) => {
-            console.info('Подключение закрыто', event.reason);
+            console.warn('Подключение закрыто', event.reason);
           });
         } catch (error: any) {
           alert(

@@ -11,7 +11,7 @@ export default class Socket {
     }
     onMessage(callback: (event: MessageEvent) => void): void {
      this.socket.onmessage = (event: MessageEvent): void => {
-         callback(event);
+         callback(JSON.parse(event.data));
      };
     }
     onClose(callback: (event: CloseEvent) => void): void {
