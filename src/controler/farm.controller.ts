@@ -8,10 +8,13 @@ import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
+import FarmService from "../services/farm.service";
+import Socket from "../framework/Socket";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
   private readonly userModel: User;
+  private Socket!: Socket;
   private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
@@ -21,34 +24,39 @@ export default class FarmController {
     this.FarmScreen = null;
     this.methods = {
       init: async () => {
-        this.FarmScreen = new FarmScreen(
-          { farm: farmModel.state },
-          this.methods
-        );
-        const token = Router.getParam("token");
-        if (token) {
-          try {
-            const result = await AuthService.registrationFinalStep(token);
+        const registrationToken = Router.getParam("token");
+        const userToken = Service.getToken();
+        try {
+          if (registrationToken) {
+            const result = await AuthService.registrationFinalStep(
+              registrationToken
+            );
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
-            appContainer?.insertAdjacentElement(
-              AbstractView.positions.BEFOREEND,
-              <Element>this.FarmScreen.element
-            );
-          } catch (error: any) {
-            alert(
-              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-            );
+            this.methods.connectToWebSocketServer(result.jws);
+          } else if (userToken) {
+            this.methods.connectToWebSocketServer(userToken);
+          } else {
+            alert("Пройдите регистрацию");
             Router.push("/#/registration");
           }
-        } else {
+          this.FarmScreen = new FarmScreen(
+            { farm: farmModel.state },
+            this.methods
+          );
           appContainer?.insertAdjacentElement(
             AbstractView.positions.BEFOREEND,
             <Element>this.FarmScreen.element
           );
+        } catch (error: any) {
+          alert(
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+          );
+          Router.push("/#/registration");
         }
       },
       destroy: () => {
+        this.Socket?.close();
         this.FarmScreen?.remove();
         this.FarmScreen = null;
         if (appContainer) {
@@ -62,6 +70,25 @@ export default class FarmController {
             this.farmModel.tool
           );
           this.farmModel.setFarmState(farm);
+        }
+      },
+      connectToWebSocketServer: async (userToken: string) => {
+        try {
+          const connectionToken = await FarmService.getJwtForConnection(
+            userToken
+          );
+          this.Socket = new Socket(connectionToken.jws);
+          this.Socket.onMessage((data: Concrete) => {
+            this.farmModel.setFarmState(<FarmState>data);
+          });
+          this.Socket.onClose((event: CloseEvent) => {
+            console.warn("Подключение закрыто", event.reason);
+          });
+        } catch (error: any) {
+          alert(
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+          );
+          Router.push("/#/registration");
         }
       },
       setActiveTool: (tool: tool) => {

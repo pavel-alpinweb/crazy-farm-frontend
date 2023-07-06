@@ -5,12 +5,12 @@ import { eventBus } from "../main";
 
 declare global {
   type tool =
-      | "shovel"
-      | "bailer"
-      | "fertilizer"
-      | "sprayer"
-      | "seeds"
-      | "empty";
+    | "shovel"
+    | "bailer"
+    | "fertilizer"
+    | "sprayer"
+    | "seeds"
+    | "empty";
   interface Tools {
     SHOVEL: "shovel";
     BAILER: "bailer";

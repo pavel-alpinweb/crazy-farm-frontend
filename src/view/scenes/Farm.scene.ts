@@ -2,14 +2,15 @@ import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
   CHARACTERS_NEEDS,
   CHARACTERS_SPRITES,
-  DEFAULT_FARM_STATE, DIALOG_SPRITE_SIZE, NEEDS_SPRITE_SIZE,
+  DEFAULT_FARM_STATE,
+  DIALOG_SPRITE_SIZE,
+  NEEDS_SPRITE_SIZE,
 } from "../../utils/constants";
 import { eventBus } from "../../main";
 import { DialogSprite } from "../sprites/Dialog.sprite";
 import { BugSprite } from "../sprites/Bug.sprite";
 import { HungerSprite } from "../sprites/Hunger.sprite";
 import { DropSprite } from "../sprites/Drop";
-import DEFAULT_TIMEOUT_INTERVAL = jasmine.DEFAULT_TIMEOUT_INTERVAL;
 
 interface Props {
   farm: FarmState;
@@ -117,7 +118,10 @@ export class FarmScene extends AbstractScene {
             this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
             switch (cell.character?.needs[this.needIndex]) {
               case CHARACTERS_NEEDS.HUNGER:
-                this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
+                this.addSprite(
+                  dialogContainer,
+                  this.needsSprite.hunger?.sprite
+                );
                 break;
               case CHARACTERS_NEEDS.SICKNESS:
                 this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
@@ -127,7 +131,10 @@ export class FarmScene extends AbstractScene {
                 break;
             }
             if (cell.character) {
-              this.needIndex = this.needIndex === cell.character.needs.length - 1 ? 0 : this.needIndex += 1;
+              this.needIndex =
+                this.needIndex === cell.character.needs.length - 1
+                  ? 0
+                  : (this.needIndex += 1);
             }
           }, 1500);
         } else if (dialogContainer && cell.character.needs.length === 1) {

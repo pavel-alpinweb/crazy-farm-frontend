@@ -1,9 +1,5 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
-import {
-  CHARACTERS_NEEDS,
-  CHARACTERS_SPRITES,
-  DEFAULT_FARM_STATE,
-} from "../../utils/constants";
+import { CHARACTERS_SPRITES, DEFAULT_FARM_STATE } from "../../utils/constants";
 import { DialogSprite } from "../sprites/Dialog.sprite";
 import { BugSprite } from "../sprites/Bug.sprite";
 import { HungerSprite } from "../sprites/Hunger.sprite";
