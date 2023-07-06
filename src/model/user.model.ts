@@ -7,7 +7,7 @@ declare global {
     loggin: string;
     email: string;
   }
-  
+
   interface RegistrationData {
     loggin: string;
     email: string;

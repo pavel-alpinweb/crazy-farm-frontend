@@ -1,20 +1,23 @@
-import {AxiosResponse} from "axios";
+import { AxiosResponse } from "axios";
 import Service from "../framework/Service";
 
 declare global {
-    interface Jws {
-        jws: string;
-    }
+  interface Jws {
+    jws: string;
+  }
 }
 
 export default class FarmService {
-    static async getJwtForConnection(token: string): Promise<Jws> {
-        const result: AxiosResponse<Jws> = await Service.get("/game/getJwtForConnection", {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+  static async getJwtForConnection(token: string): Promise<Jws> {
+    const result: AxiosResponse<Jws> = await Service.get(
+      "/game/getJwtForConnection",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
 
-        return result.data;
-    }
+    return result.data;
+  }
 }

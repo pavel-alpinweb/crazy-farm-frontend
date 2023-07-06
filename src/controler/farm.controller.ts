@@ -28,27 +28,29 @@ export default class FarmController {
         const userToken = Service.getToken();
         try {
           if (registrationToken) {
-            const result = await AuthService.registrationFinalStep(registrationToken);
+            const result = await AuthService.registrationFinalStep(
+              registrationToken
+            );
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
             this.methods.connectToWebSocketServer(result.jws);
           } else if (userToken) {
             this.methods.connectToWebSocketServer(userToken);
           } else {
-            alert('Пройдите регистрацию');
+            alert("Пройдите регистрацию");
             Router.push("/#/registration");
           }
           this.FarmScreen = new FarmScreen(
-              { farm: farmModel.state },
-              this.methods
+            { farm: farmModel.state },
+            this.methods
           );
           appContainer?.insertAdjacentElement(
-              AbstractView.positions.BEFOREEND,
-              <Element>this.FarmScreen.element
+            AbstractView.positions.BEFOREEND,
+            <Element>this.FarmScreen.element
           );
         } catch (error: any) {
           alert(
-              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
           Router.push("/#/registration");
         }
@@ -72,17 +74,19 @@ export default class FarmController {
       },
       connectToWebSocketServer: async (userToken: string) => {
         try {
-          const connectionToken = await FarmService.getJwtForConnection(userToken);
+          const connectionToken = await FarmService.getJwtForConnection(
+            userToken
+          );
           this.Socket = new Socket(connectionToken.jws);
           this.Socket.onMessage((data: Concrete) => {
             this.farmModel.setFarmState(<FarmState>data);
           });
           this.Socket.onClose((event: CloseEvent) => {
-            console.warn('Подключение закрыто', event.reason);
+            console.warn("Подключение закрыто", event.reason);
           });
         } catch (error: any) {
           alert(
-              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
           Router.push("/#/registration");
         }

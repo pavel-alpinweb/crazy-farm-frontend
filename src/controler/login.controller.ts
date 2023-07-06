@@ -17,10 +17,12 @@ export class LoginController {
     this.methods = {
       init: () => {
         this.Screen = new LoginScreen(
-          { user: {
+          {
+            user: {
               loggin: "",
               password: "",
-            } },
+            },
+          },
           this.methods
         );
         appContainer?.insertAdjacentElement(

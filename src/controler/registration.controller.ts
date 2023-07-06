@@ -15,11 +15,13 @@ export class RegistrationController {
     this.methods = {
       init: () => {
         this.Screen = new RegistrationScreen(
-          { user: {
+          {
+            user: {
               loggin: "",
               password: "",
               email: "",
-            } },
+            },
+          },
           this.methods
         );
         appContainer?.insertAdjacentElement(
