@@ -9,7 +9,6 @@ import { DialogSprite } from "../sprites/Dialog.sprite";
 import { BugSprite } from "../sprites/Bug.sprite";
 import { HungerSprite } from "../sprites/Hunger.sprite";
 import { DropSprite } from "../sprites/Drop";
-import DEFAULT_TIMEOUT_INTERVAL = jasmine.DEFAULT_TIMEOUT_INTERVAL;
 
 interface Props {
   farm: FarmState;

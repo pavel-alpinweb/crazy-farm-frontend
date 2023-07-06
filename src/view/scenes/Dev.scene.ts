@@ -1,6 +1,5 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
-  CHARACTERS_NEEDS,
   CHARACTERS_SPRITES,
   DEFAULT_FARM_STATE,
 } from "../../utils/constants";
