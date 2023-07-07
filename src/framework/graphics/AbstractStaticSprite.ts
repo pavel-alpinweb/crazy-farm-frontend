@@ -1,12 +1,13 @@
 import * as PIXI from "pixi.js";
+import {STATIC_SPRITE_URL} from "../../utils/constants";
 
 export abstract class AbstractStaticSprite {
-  protected abstract spriteURL: string;
+  protected abstract spriteName: string;
   private texture: PIXI.Texture | null = null;
   private renderedSprite: PIXI.Sprite | null = null;
 
   private render(): PIXI.Sprite | null {
-    this.texture = PIXI.Texture.from(this.spriteURL);
+    this.texture = PIXI.Texture.from(`${STATIC_SPRITE_URL}/${this.spriteName}.sprite.png`);
     const sprite = new PIXI.Sprite(this.texture);
     sprite.anchor.set(0.5);
     return sprite;
