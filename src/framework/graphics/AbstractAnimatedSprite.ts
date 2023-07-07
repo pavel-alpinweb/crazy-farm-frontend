@@ -1,13 +1,18 @@
 import * as PIXI from "pixi.js";
+import { ANIMATED_SPRITE_URL } from "../../utils/constants";
+
 export abstract class AbstractAnimatedSprite {
   private textureArray: Array<PIXI.Texture> = [];
   private renderedSprite: PIXI.AnimatedSprite | null = null;
-  protected abstract spriteFrames: Array<string>;
   protected abstract animationSpeed: number;
+  protected abstract spriteName: string;
+  protected abstract framesNumber: number;
 
   private render(): PIXI.AnimatedSprite | null {
-    for (const frame of this.spriteFrames) {
-      const texture = PIXI.Texture.from(frame);
+    for (let i = 1; i <= this.framesNumber; i++) {
+      const texture = PIXI.Texture.from(
+        `${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}-${i}.frame.png`
+      );
       this.textureArray.push(texture);
     }
     const animatedSprite = new PIXI.AnimatedSprite(this.textureArray);
