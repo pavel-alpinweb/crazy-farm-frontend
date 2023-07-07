@@ -1,5 +1,9 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
-import {CHARACTERS_NEEDS, CHARACTERS_SPRITES, DEFAULT_FARM_STATE} from "../../utils/constants";
+import {
+  CHARACTERS_NEEDS,
+  CHARACTERS_SPRITES,
+  DEFAULT_FARM_STATE,
+} from "../../utils/constants";
 import { DialogSprite } from "../sprites/Dialog.sprite";
 import { BugSprite } from "../sprites/Bug.sprite";
 import { HungerSprite } from "../sprites/Hunger.sprite";
@@ -90,11 +94,11 @@ export class DevScene extends AbstractScene {
       if (cell.character && container) {
         this.removeAllSprites(container);
         const sprite =
-            this.sprites[cell.character?.type][cell.character?.stage];
+          this.sprites[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
 
         const dialogContainer = this.containers.find(
-            (cont) => cont.name === `${cell.name}-dialog`
+          (cont) => cont.name === `${cell.name}-dialog`
         );
 
         if (dialogContainer && cell.character.needs.length > 1) {
@@ -106,8 +110,8 @@ export class DevScene extends AbstractScene {
             switch (cell.character?.needs[this.needIndex]) {
               case CHARACTERS_NEEDS.HUNGER:
                 this.addSprite(
-                    dialogContainer,
-                    this.needsSprite.hunger?.sprite
+                  dialogContainer,
+                  this.needsSprite.hunger?.sprite
                 );
                 break;
               case CHARACTERS_NEEDS.SICKNESS:
@@ -119,9 +123,9 @@ export class DevScene extends AbstractScene {
             }
             if (cell.character) {
               this.needIndex =
-                  this.needIndex === cell.character.needs.length - 1
-                      ? 0
-                      : (this.needIndex += 1);
+                this.needIndex === cell.character.needs.length - 1
+                  ? 0
+                  : (this.needIndex += 1);
             }
           }, 1500);
         } else if (dialogContainer && cell.character.needs.length === 1) {
