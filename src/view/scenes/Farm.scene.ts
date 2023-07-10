@@ -158,6 +158,9 @@ export class FarmScene extends AbstractScene {
           clearInterval(this.needsInterval);
           this.removeAllSprites(dialogContainer);
         }
+      } else if (container) {
+        this.removeAllSprites(container);
+        this.addSprite(container, this.sprites?.empty[0]?.sprite);
       }
     });
   }
