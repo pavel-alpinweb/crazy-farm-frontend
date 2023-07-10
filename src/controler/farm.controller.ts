@@ -38,7 +38,7 @@ export default class FarmController {
             this.methods.connectToWebSocketServer(userToken);
           } else {
             alert("Пройдите регистрацию");
-            Router.push("/#/registration");
+            Router.push("/#/login");
           }
           this.FarmScreen = new FarmScreen(
             { farm: farmModel.state },
@@ -52,7 +52,7 @@ export default class FarmController {
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
-          Router.push("/#/registration");
+          Router.push("/#/login");
         }
       },
       destroy: () => {
@@ -88,7 +88,7 @@ export default class FarmController {
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
-          Router.push("/#/registration");
+          Router.push("/#/login");
         }
       },
       setActiveTool: (tool: tool) => {
