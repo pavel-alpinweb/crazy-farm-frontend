@@ -65,11 +65,7 @@ export default class FarmController {
       },
       updateFarm: async (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
-          const farm: FarmState = await updateFarmState(
-            cell,
-            this.farmModel.tool
-          );
-          this.farmModel.setFarmState(farm);
+          this.Socket.push({ cell, tool: this.farmModel.tool });
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
