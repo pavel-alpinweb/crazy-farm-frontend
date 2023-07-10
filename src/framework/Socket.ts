@@ -9,6 +9,9 @@ export default class Socket {
       callback(event);
     };
   }
+  push(params: Concrete) {
+    this.socket.send(JSON.stringify(params));
+  }
   onMessage(callback: (event: MessageEvent) => void): void {
     this.socket.onmessage = (event: MessageEvent): void => {
       callback(JSON.parse(event.data));

@@ -4,7 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
-import { updateFarmState } from "../mock/farm.mock";
+// import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -38,7 +38,7 @@ export default class FarmController {
             this.methods.connectToWebSocketServer(userToken);
           } else {
             alert("Пройдите регистрацию");
-            Router.push("/#/registration");
+            Router.push("/#/login");
           }
           this.FarmScreen = new FarmScreen(
             { farm: farmModel.state },
@@ -52,7 +52,7 @@ export default class FarmController {
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
-          Router.push("/#/registration");
+          Router.push("/#/login");
         }
       },
       destroy: () => {
@@ -63,13 +63,12 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: async (cell: string) => {
+      updateFarm: (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
-          const farm: FarmState = await updateFarmState(
-            cell,
-            this.farmModel.tool
-          );
-          this.farmModel.setFarmState(farm);
+          this.Socket.push({ cell, tool: this.farmModel.tool });
+          // test farm rendering make function async
+          // const state = await updateFarmState(cell, this.farmModel.tool);
+          // this.farmModel.setFarmState(state);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
@@ -88,7 +87,7 @@ export default class FarmController {
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
-          Router.push("/#/registration");
+          Router.push("/#/login");
         }
       },
       setActiveTool: (tool: tool) => {

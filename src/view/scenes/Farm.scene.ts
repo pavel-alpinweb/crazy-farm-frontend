@@ -110,7 +110,7 @@ export class FarmScene extends AbstractScene {
           (cont) => cont.name === `${cell.name}-dialog`
         );
 
-        if (dialogContainer && cell.character.needs.length > 1) {
+        if (dialogContainer && cell.character.needs.length > 0) {
           this.needIndex = 0;
           clearInterval(this.needsInterval);
           this.needsInterval = setInterval(() => {
@@ -136,28 +136,15 @@ export class FarmScene extends AbstractScene {
                   ? 0
                   : (this.needIndex += 1);
             }
-          }, 1500);
-        } else if (dialogContainer && cell.character.needs.length === 1) {
-          this.needIndex = 0;
-          clearInterval(this.needsInterval);
-          this.removeAllSprites(dialogContainer);
-          this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
-          switch (cell.character?.needs[this.needIndex]) {
-            case CHARACTERS_NEEDS.HUNGER:
-              this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
-              break;
-            case CHARACTERS_NEEDS.SICKNESS:
-              this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
-              break;
-            case CHARACTERS_NEEDS.THIRST:
-              this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
-              break;
-          }
+          }, 1000);
         } else if (dialogContainer) {
           this.needIndex = 0;
           clearInterval(this.needsInterval);
           this.removeAllSprites(dialogContainer);
         }
+      } else if (container) {
+        this.removeAllSprites(container);
+        this.addSprite(container, this.sprites?.empty[0]?.sprite);
       }
     });
   }
