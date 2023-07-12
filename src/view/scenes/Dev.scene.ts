@@ -23,11 +23,11 @@ export class DevScene extends AbstractScene {
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
-  protected sprites: SpritesArray = {
+  protected spritesList: SpritesArray = {
     potato: [],
     empty: [],
   };
-  needsSprite: SpritesCollection = {
+  protected spritesCollection: SpritesCollection = {
     drop: null,
     bug: null,
     hunger: null,
@@ -51,25 +51,25 @@ export class DevScene extends AbstractScene {
   protected initSprites(): void {
     for (const character in CHARACTERS_SPRITES) {
       CHARACTERS_SPRITES[character].forEach((Sprite) => {
-        this.sprites[character].push(new Sprite());
+        this.spritesList[character].push(new Sprite());
       });
     }
-    this.needsSprite.dialog = new DialogSprite();
-    this.needsSprite.bug = new BugSprite();
-    this.needsSprite.hunger = new HungerSprite();
-    this.needsSprite.drop = new DropSprite();
+    this.spritesCollection.dialog = new DialogSprite();
+    this.spritesCollection.bug = new BugSprite();
+    this.spritesCollection.hunger = new HungerSprite();
+    this.spritesCollection.drop = new DropSprite();
 
-    this.needsSprite.bug.width = 100;
-    this.needsSprite.bug.height = 100;
+    this.spritesCollection.bug.width = 100;
+    this.spritesCollection.bug.height = 100;
 
-    this.needsSprite.hunger.width = 100;
-    this.needsSprite.hunger.height = 100;
+    this.spritesCollection.hunger.width = 100;
+    this.spritesCollection.hunger.height = 100;
 
-    this.needsSprite.drop.width = 100;
-    this.needsSprite.drop.height = 100;
+    this.spritesCollection.drop.width = 100;
+    this.spritesCollection.drop.height = 100;
 
-    this.needsSprite.dialog.width = 200;
-    this.needsSprite.dialog.height = 200;
+    this.spritesCollection.dialog.width = 200;
+    this.spritesCollection.dialog.height = 200;
   }
 
   protected renderContainers(): void {
@@ -94,31 +94,31 @@ export class DevScene extends AbstractScene {
       if (cell.character && container) {
         this.removeAllSprites(container);
         const sprite =
-          this.sprites[cell.character?.type][cell.character?.stage];
+          this.spritesList[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
 
         const dialogContainer = this.containers.find(
           (cont) => cont.name === `${cell.name}-dialog`
         );
 
-        if (dialogContainer && cell.character.needs.length > 1) {
+        if (dialogContainer && cell.character.needs.length > 0) {
           this.needIndex = 0;
           clearInterval(this.needsInterval);
           this.needsInterval = setInterval(() => {
             this.removeAllSprites(dialogContainer);
-            this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
+            this.addSprite(dialogContainer, this.spritesCollection.dialog?.sprite);
             switch (cell.character?.needs[this.needIndex]) {
               case CHARACTERS_NEEDS.HUNGER:
                 this.addSprite(
                   dialogContainer,
-                  this.needsSprite.hunger?.sprite
+                  this.spritesCollection.hunger?.sprite
                 );
                 break;
               case CHARACTERS_NEEDS.SICKNESS:
-                this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
+                this.addSprite(dialogContainer, this.spritesCollection.bug?.sprite);
                 break;
               case CHARACTERS_NEEDS.THIRST:
-                this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
+                this.addSprite(dialogContainer, this.spritesCollection.drop?.sprite);
                 break;
             }
             if (cell.character) {
@@ -128,27 +128,14 @@ export class DevScene extends AbstractScene {
                   : (this.needIndex += 1);
             }
           }, 1500);
-        } else if (dialogContainer && cell.character.needs.length === 1) {
-          this.needIndex = 0;
-          clearInterval(this.needsInterval);
-          this.removeAllSprites(dialogContainer);
-          this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
-          switch (cell.character?.needs[this.needIndex]) {
-            case CHARACTERS_NEEDS.HUNGER:
-              this.addSprite(dialogContainer, this.needsSprite.hunger?.sprite);
-              break;
-            case CHARACTERS_NEEDS.SICKNESS:
-              this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
-              break;
-            case CHARACTERS_NEEDS.THIRST:
-              this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
-              break;
-          }
-        } else if (dialogContainer) {
+        }else if (dialogContainer) {
           this.needIndex = 0;
           clearInterval(this.needsInterval);
           this.removeAllSprites(dialogContainer);
         }
+      } else if (container) {
+        this.removeAllSprites(container);
+        this.addSprite(container, this.spritesList?.empty[0]?.sprite);
       }
     });
   }

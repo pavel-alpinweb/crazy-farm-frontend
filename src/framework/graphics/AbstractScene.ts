@@ -23,7 +23,8 @@ export abstract class AbstractScene {
   public emits: Emits = {};
   public scene: PIXI.Application | null = null;
   protected abstract state: object;
-  protected abstract sprites: SpritesArray;
+  protected abstract spritesList: SpritesArray;
+  protected abstract spritesCollection: SpritesCollection;
   protected abstract containers: Containers;
   protected abstract setState(props: object): void;
   protected abstract initSprites(): void;

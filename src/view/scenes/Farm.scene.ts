@@ -26,11 +26,11 @@ export class FarmScene extends AbstractScene {
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
-  protected sprites: SpritesArray = {
+  protected spritesList: SpritesArray = {
     potato: [],
     empty: [],
   };
-  needsSprite: SpritesCollection = {
+  protected spritesCollection: SpritesCollection = {
     drop: null,
     bug: null,
     hunger: null,
@@ -59,26 +59,26 @@ export class FarmScene extends AbstractScene {
   protected initSprites(): void {
     for (const character in CHARACTERS_SPRITES) {
       CHARACTERS_SPRITES[character].forEach((Sprite) => {
-        this.sprites[character].push(new Sprite());
+        this.spritesList[character].push(new Sprite());
       });
     }
 
-    this.needsSprite.dialog = new DialogSprite();
-    this.needsSprite.bug = new BugSprite();
-    this.needsSprite.hunger = new HungerSprite();
-    this.needsSprite.drop = new DropSprite();
+    this.spritesCollection.dialog = new DialogSprite();
+    this.spritesCollection.bug = new BugSprite();
+    this.spritesCollection.hunger = new HungerSprite();
+    this.spritesCollection.drop = new DropSprite();
 
-    this.needsSprite.bug.width = NEEDS_SPRITE_SIZE;
-    this.needsSprite.bug.height = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.bug.width = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.bug.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.hunger.width = NEEDS_SPRITE_SIZE;
-    this.needsSprite.hunger.height = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.drop.width = NEEDS_SPRITE_SIZE;
-    this.needsSprite.drop.height = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.drop.width = NEEDS_SPRITE_SIZE;
+    this.spritesCollection.drop.height = NEEDS_SPRITE_SIZE;
 
-    this.needsSprite.dialog.width = DIALOG_SPRITE_SIZE;
-    this.needsSprite.dialog.height = DIALOG_SPRITE_SIZE;
+    this.spritesCollection.dialog.width = DIALOG_SPRITE_SIZE;
+    this.spritesCollection.dialog.height = DIALOG_SPRITE_SIZE;
   }
 
   protected renderContainers(): void {
@@ -103,7 +103,7 @@ export class FarmScene extends AbstractScene {
       if (cell.character && container) {
         this.removeAllSprites(container);
         const sprite =
-          this.sprites[cell.character?.type][cell.character?.stage];
+          this.spritesList[cell.character?.type][cell.character?.stage];
         this.addSprite(container, sprite?.sprite);
 
         const dialogContainer = this.containers.find(
@@ -115,19 +115,19 @@ export class FarmScene extends AbstractScene {
           clearInterval(this.needsInterval);
           this.needsInterval = setInterval(() => {
             this.removeAllSprites(dialogContainer);
-            this.addSprite(dialogContainer, this.needsSprite.dialog?.sprite);
+            this.addSprite(dialogContainer, this.spritesCollection.dialog?.sprite);
             switch (cell.character?.needs[this.needIndex]) {
               case CHARACTERS_NEEDS.HUNGER:
                 this.addSprite(
                   dialogContainer,
-                  this.needsSprite.hunger?.sprite
+                  this.spritesCollection.hunger?.sprite
                 );
                 break;
               case CHARACTERS_NEEDS.SICKNESS:
-                this.addSprite(dialogContainer, this.needsSprite.bug?.sprite);
+                this.addSprite(dialogContainer, this.spritesCollection.bug?.sprite);
                 break;
               case CHARACTERS_NEEDS.THIRST:
-                this.addSprite(dialogContainer, this.needsSprite.drop?.sprite);
+                this.addSprite(dialogContainer, this.spritesCollection.drop?.sprite);
                 break;
             }
             if (cell.character) {
@@ -144,7 +144,7 @@ export class FarmScene extends AbstractScene {
         }
       } else if (container) {
         this.removeAllSprites(container);
-        this.addSprite(container, this.sprites?.empty[0]?.sprite);
+        this.addSprite(container, this.spritesList?.empty[0]?.sprite);
       }
     });
   }
