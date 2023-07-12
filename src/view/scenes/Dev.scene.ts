@@ -1,13 +1,9 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
   CHARACTERS_NEEDS,
-  CHARACTERS_SPRITES,
   DEFAULT_FARM_STATE,
 } from "../../utils/constants";
-import { DialogSprite } from "../sprites/Dialog.sprite";
-import { BugSprite } from "../sprites/Bug.sprite";
-import { HungerSprite } from "../sprites/Hunger.sprite";
-import { DropSprite } from "../sprites/Drop";
+import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
 
 interface Props {
   farm: FarmState;
@@ -17,9 +13,10 @@ interface State {
   farm: Props["farm"];
 }
 
-export class DevScene extends AbstractScene {
+export class DevScene extends AbstractScene{
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
+  private renderFarmComposition: RenderFarmComposition = new RenderFarmComposition();
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
@@ -49,27 +46,8 @@ export class DevScene extends AbstractScene {
   }
 
   protected initSprites(): void {
-    for (const character in CHARACTERS_SPRITES) {
-      CHARACTERS_SPRITES[character].forEach((Sprite) => {
-        this.spritesList[character].push(new Sprite());
-      });
-    }
-    this.spritesCollection.dialog = new DialogSprite();
-    this.spritesCollection.bug = new BugSprite();
-    this.spritesCollection.hunger = new HungerSprite();
-    this.spritesCollection.drop = new DropSprite();
-
-    this.spritesCollection.bug.width = 100;
-    this.spritesCollection.bug.height = 100;
-
-    this.spritesCollection.hunger.width = 100;
-    this.spritesCollection.hunger.height = 100;
-
-    this.spritesCollection.drop.width = 100;
-    this.spritesCollection.drop.height = 100;
-
-    this.spritesCollection.dialog.width = 200;
-    this.spritesCollection.dialog.height = 200;
+    this.renderFarmComposition.initCharactersSprite();
+    this.renderFarmComposition.initNeedsCharacterSprites();
   }
 
   protected renderContainers(): void {
