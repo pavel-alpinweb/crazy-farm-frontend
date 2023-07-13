@@ -49,6 +49,7 @@ export default class FarmController {
             <Element>this.FarmScreen.element
           );
         } catch (error: any) {
+          console.error('Farm controller init error:', error);
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
