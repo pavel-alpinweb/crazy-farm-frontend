@@ -1,6 +1,5 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
-  CHARACTERS_NEEDS,
   DEFAULT_FARM_STATE,
 } from "../../utils/constants";
 import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
@@ -15,8 +14,6 @@ interface State {
 }
 
 export class DevScene extends AbstractScene{
-  private needIndex = 0;
-  private needsInterval!: NodeJS.Timer;
   private renderFarmComposition!: RenderFarmComposition;
   protected state: State = {
     farm: DEFAULT_FARM_STATE,

@@ -43,6 +43,10 @@ export class RenderFarmComposition {
     },
   ];
 
+  public get containers(): Containers {
+    return this.farmContainers;
+  }
+
   public initCharactersSprite(): void {
     for (const character in CHARACTERS_SPRITES) {
       CHARACTERS_SPRITES[character].forEach((Sprite) => {
@@ -108,7 +112,11 @@ export class RenderFarmComposition {
     const dialogContainer = this.farmContainers.find(
       (cont) => cont.name === `${cell.name}-dialog`
     );
-    this.needIndex = 0;
+    if (dialogContainer) {
+      this.needIndex = 0;
+      this.renderSceneComposition.removeAllSprites(<Container>dialogContainer);
+      clearInterval(this.needsInterval);
+    }
     if (cell.character?.needs.length && dialogContainer) {
       this.needsInterval = setInterval(() => {
         this.renderSceneComposition.removeAllSprites(dialogContainer);
@@ -142,11 +150,7 @@ export class RenderFarmComposition {
               ? 0
               : (this.needIndex += 1);
         }
-      }, 1500);
-    } else if (dialogContainer) {
-      this.needIndex = 0;
-      clearInterval(this.needsInterval);
-      this.renderSceneComposition.removeAllSprites(dialogContainer);
+      }, 1000);
     }
   }
 }
