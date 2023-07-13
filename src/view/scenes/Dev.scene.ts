@@ -18,26 +18,6 @@ export class DevScene extends AbstractScene{
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
-  protected spritesList: SpritesArray = {
-    potato: [],
-    empty: [],
-  };
-  protected spritesCollection: SpritesCollection = {
-    drop: null,
-    bug: null,
-    hunger: null,
-    dialog: null,
-  };
-  protected containers: Containers = [
-    {
-      name: "central",
-      render: null,
-    },
-    {
-      name: "central-dialog",
-      render: null,
-    },
-  ];
   constructor(props: Props) {
     super();
     this.setState(props);
