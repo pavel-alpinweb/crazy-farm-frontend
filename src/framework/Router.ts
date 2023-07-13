@@ -45,7 +45,6 @@ export class Router {
     const route: RouterParams | undefined = this.params.find(
       (item: RouterParams) => item.url === Router.path[0]
     );
-    if (this.controller === route?.controller) return;
     if (route) {
       this.controller?.methods.destroy();
       this.controller = route.controller;
