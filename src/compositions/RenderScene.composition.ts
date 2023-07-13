@@ -1,11 +1,16 @@
 import * as PIXI from "pixi.js";
 
 export class RenderSceneComposition {
-    public renderContainer(container: Container, scene: PIXI.Application): void {
+    private scene!: PIXI.Application;
+
+    constructor(scene: PIXI.Application) {
+        this.scene = scene;
+    }
+    public renderContainer(container: Container): void {
         if (container.render) return;
         else {
             container.render = new PIXI.Container();
-            scene.stage.addChild(container.render);
+            this.scene.stage.addChild(container.render);
         }
     }
 
@@ -33,10 +38,10 @@ export class RenderSceneComposition {
         }
     }
 
-    public centerContainer(container: Container, scene: PIXI.Application): void {
-        if (scene) {
-            this.setContainerX(container, scene.screen.width / 2);
-            this.setContainerY(container, scene.screen.height / 2);
+    public centerContainer(container: Container): void {
+        if (this.scene) {
+            this.setContainerX(container, this.scene.screen.width / 2);
+            this.setContainerY(container, this.scene.screen.height / 2);
         }
     }
 

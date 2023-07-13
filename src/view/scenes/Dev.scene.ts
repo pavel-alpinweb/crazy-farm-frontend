@@ -4,6 +4,7 @@ import {
   DEFAULT_FARM_STATE,
 } from "../../utils/constants";
 import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
+import * as PIXI from "pixi.js";
 
 interface Props {
   farm: FarmState;
@@ -16,7 +17,7 @@ interface State {
 export class DevScene extends AbstractScene{
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
-  private renderFarmComposition: RenderFarmComposition = new RenderFarmComposition();
+  private renderFarmComposition: RenderFarmComposition = new RenderFarmComposition(<PIXI.Application>this.scene);
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };

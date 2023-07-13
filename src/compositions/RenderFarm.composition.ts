@@ -3,8 +3,16 @@ import {DialogSprite} from "../view/sprites/Dialog.sprite";
 import {BugSprite} from "../view/sprites/Bug.sprite";
 import {HungerSprite} from "../view/sprites/Hunger.sprite";
 import {DropSprite} from "../view/sprites/Drop";
+import {RenderSceneComposition} from "./RenderScene.composition";
+import * as PIXI from "pixi.js";
 
 export class RenderFarmComposition {
+    private scene!: PIXI.Application;
+    private renderSceneComposition!: RenderSceneComposition;
+    constructor(scene: PIXI.Application) {
+        this.scene = scene;
+        this.renderSceneComposition = new RenderSceneComposition(this.scene);
+    }
     private readonly charactersSpriteList: SpritesArray = {
         potato: [],
         empty: [],
@@ -53,5 +61,9 @@ export class RenderFarmComposition {
 
         this.needsSpritesCollection.dialog.width = DIALOG_SPRITE_SIZE;
         this.needsSpritesCollection.dialog.height = DIALOG_SPRITE_SIZE;
+    }
+
+    public renderFarmContainers(): void {
+
     }
 }
