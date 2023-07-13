@@ -59,53 +59,7 @@ export class DevScene extends AbstractScene{
   protected renderSprites(): void {
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell);
-      // const container = this.containers.find((cont) => cont.name === cell.name);
-      // if (cell.character && container) {
-      //   this.removeAllSprites(container);
-      //   const sprite =
-      //     this.spritesList[cell.character?.type][cell.character?.stage];
-      //   this.addSprite(container, sprite?.sprite);
-      //
-      //   const dialogContainer = this.containers.find(
-      //     (cont) => cont.name === `${cell.name}-dialog`
-      //   );
-      //
-      //   if (dialogContainer && cell.character.needs.length > 0) {
-      //     this.needIndex = 0;
-      //     clearInterval(this.needsInterval);
-      //     this.needsInterval = setInterval(() => {
-      //       this.removeAllSprites(dialogContainer);
-      //       this.addSprite(dialogContainer, this.spritesCollection.dialog?.sprite);
-      //       switch (cell.character?.needs[this.needIndex]) {
-      //         case CHARACTERS_NEEDS.HUNGER:
-      //           this.addSprite(
-      //             dialogContainer,
-      //             this.spritesCollection.hunger?.sprite
-      //           );
-      //           break;
-      //         case CHARACTERS_NEEDS.SICKNESS:
-      //           this.addSprite(dialogContainer, this.spritesCollection.bug?.sprite);
-      //           break;
-      //         case CHARACTERS_NEEDS.THIRST:
-      //           this.addSprite(dialogContainer, this.spritesCollection.drop?.sprite);
-      //           break;
-      //       }
-      //       if (cell.character) {
-      //         this.needIndex =
-      //           this.needIndex === cell.character.needs.length - 1
-      //             ? 0
-      //             : (this.needIndex += 1);
-      //       }
-      //     }, 1500);
-      //   }else if (dialogContainer) {
-      //     this.needIndex = 0;
-      //     clearInterval(this.needsInterval);
-      //     this.removeAllSprites(dialogContainer);
-      //   }
-      // } else if (container) {
-      //   this.removeAllSprites(container);
-      //   this.addSprite(container, this.spritesList?.empty[0]?.sprite);
-      // }
+      this.renderFarmComposition.renderNeedsSprites(cell);
     });
   }
 

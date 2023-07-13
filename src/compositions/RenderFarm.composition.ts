@@ -1,4 +1,5 @@
 import {
+  CHARACTERS_NEEDS,
   CHARACTERS_SPRITES,
   DIALOG_SPRITE_SIZE,
   NEEDS_SPRITE_SIZE,
@@ -13,6 +14,8 @@ import * as PIXI from "pixi.js";
 export class RenderFarmComposition {
   private scene!: PIXI.Application;
   private renderSceneComposition!: RenderSceneComposition;
+  private needIndex = 0;
+  private needsInterval!: NodeJS.Timer;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -98,6 +101,52 @@ export class RenderFarmComposition {
         container,
         this.charactersSpriteList?.empty[0]?.sprite
       );
+    }
+  }
+
+  public renderNeedsSprites(cell: Cell): void {
+    const dialogContainer = this.farmContainers.find(
+      (cont) => cont.name === `${cell.name}-dialog`
+    );
+    this.needIndex = 0;
+    if (cell.character?.needs.length && dialogContainer) {
+      this.needsInterval = setInterval(() => {
+        this.renderSceneComposition.removeAllSprites(dialogContainer);
+        this.renderSceneComposition.addSprite(
+          dialogContainer,
+          this.needsSpritesCollection.dialog?.sprite
+        );
+        switch (cell.character?.needs[this.needIndex]) {
+          case CHARACTERS_NEEDS.HUNGER:
+            this.renderSceneComposition.addSprite(
+              dialogContainer,
+              this.needsSpritesCollection.hunger?.sprite
+            );
+            break;
+          case CHARACTERS_NEEDS.SICKNESS:
+            this.renderSceneComposition.addSprite(
+              dialogContainer,
+              this.needsSpritesCollection.bug?.sprite
+            );
+            break;
+          case CHARACTERS_NEEDS.THIRST:
+            this.renderSceneComposition.addSprite(
+              dialogContainer,
+              this.needsSpritesCollection.drop?.sprite
+            );
+            break;
+        }
+        if (cell.character) {
+          this.needIndex =
+            this.needIndex === cell.character.needs.length - 1
+              ? 0
+              : (this.needIndex += 1);
+        }
+      }, 1500);
+    } else if (dialogContainer) {
+      this.needIndex = 0;
+      clearInterval(this.needsInterval);
+      this.renderSceneComposition.removeAllSprites(dialogContainer);
     }
   }
 }
