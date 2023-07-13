@@ -33,11 +33,11 @@ export default class FarmController {
             );
             this.userModel.setUserData(result.user, false);
             Service.setToken(result.jws);
-            this.methods.connectToWebSocketServer(result.jws);
+            Router.push("/#/");
           } else if (userToken) {
             this.methods.connectToWebSocketServer(userToken);
           } else {
-            alert("Пройдите регистрацию");
+            alert("Авторизуйтесь");
             Router.push("/#/login");
           }
           this.FarmScreen = new FarmScreen(
@@ -65,7 +65,7 @@ export default class FarmController {
       },
       updateFarm: (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
-          this.Socket.push({ cell, tool: this.farmModel.tool });
+          this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
