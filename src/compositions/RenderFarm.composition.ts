@@ -64,6 +64,18 @@ export class RenderFarmComposition {
     }
 
     public renderFarmContainers(): void {
-
+        this.farmContainers.forEach((container) => {
+            if (container.name !== "central-dialog") {
+                this.renderSceneComposition.renderContainer(container);
+                this.renderSceneComposition.centerContainer(container);
+                this.renderSceneComposition.centerPivotContainer(container);
+            } else {
+                this.renderSceneComposition.renderContainer(container);
+                this.renderSceneComposition.setContainerX(container, 500);
+                this.renderSceneComposition.setContainerY(container, 100);
+                this.renderSceneComposition.setContainerPivotX(container, 0);
+                this.renderSceneComposition.setContainerPivotY(container, 0);
+            }
+        });
     }
 }

@@ -17,7 +17,7 @@ interface State {
 export class DevScene extends AbstractScene{
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
-  private renderFarmComposition: RenderFarmComposition = new RenderFarmComposition(<PIXI.Application>this.scene);
+  private renderFarmComposition!: RenderFarmComposition;
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
   };
@@ -47,24 +47,13 @@ export class DevScene extends AbstractScene{
   }
 
   protected initSprites(): void {
+    this.renderFarmComposition = new RenderFarmComposition(<PIXI.Application>this.scene);
     this.renderFarmComposition.initCharactersSprite();
     this.renderFarmComposition.initNeedsCharacterSprites();
   }
 
   protected renderContainers(): void {
-    this.containers.forEach((container) => {
-      if (container.name !== "central-dialog") {
-        this.renderContainer(container);
-        this.centerContainer(container);
-        this.centerPivotContainer(container);
-      } else {
-        this.renderContainer(container);
-        this.setContainerX(container, 500);
-        this.setContainerY(container, 100);
-        this.setContainerPivotX(container, 0);
-        this.setContainerPivotY(container, 0);
-      }
-    });
+    this.renderFarmComposition.renderFarmContainers();
   }
 
   protected renderSprites(): void {
