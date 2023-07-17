@@ -1,0 +1,36 @@
+{"frames": {
+
+"sprout-potato-1.frame.png":
+{
+	"frame": {"x":0,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"sprout-potato-2.frame.png":
+{
+	"frame": {"x":512,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"sprout-potato-3.frame.png":
+{
+	"frame": {"x":1024,"y":0,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "sprout.png",
+	"format": "RGBA8888",
+	"size": {"w":1536,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b3c70b3787cb02b1fe298ff446552ae8:058a8e4ee9a69967b7729035a191b517:a48747800cc6ab662e3a914fe3425a26$"
+}
+}
