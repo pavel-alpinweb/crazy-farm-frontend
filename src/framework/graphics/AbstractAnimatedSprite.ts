@@ -19,6 +19,11 @@ export abstract class AbstractAnimatedSprite {
         this.textureArray.push(texture);
       }
       animatedSprite = new PIXI.AnimatedSprite(this.textureArray);
+    } else {
+      PIXI.Assets.load(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).then(() => {
+        const animations = PIXI.Assets.cache.get(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).data.animations;
+        animatedSprite = PIXI.AnimatedSprite.fromFrames(animations[this.spriteName]);
+      });
     }
 
     if (animatedSprite) {
