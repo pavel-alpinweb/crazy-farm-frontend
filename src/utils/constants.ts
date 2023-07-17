@@ -28,7 +28,11 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "central",
-      character: null,
+      character: {
+        type: 'potato',
+        needs: [],
+        stage: 1,
+      },
     },
   ],
 };
