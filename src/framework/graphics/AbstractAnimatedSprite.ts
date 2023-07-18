@@ -3,13 +3,13 @@ import { ANIMATED_SPRITE_URL } from "../../utils/constants";
 
 export abstract class AbstractAnimatedSprite {
   private textureArray: Array<PIXI.Texture> = [];
-  private renderedSprite: PIXI.AnimatedSprite | null = null;
+  private renderedSprite: PIXI.AnimatedSprite | null | undefined = null;
   protected abstract animationSpeed: number;
   protected abstract spriteName: string;
   protected isDataSprite = false;
   protected abstract framesNumber: number;
 
-  private render(): PIXI.AnimatedSprite | null {
+  private render(): PIXI.AnimatedSprite | null | undefined {
     let animatedSprite = null;
     if (!this.isDataSprite) {
       for (let i = 1; i <= this.framesNumber; i++) {
@@ -22,6 +22,7 @@ export abstract class AbstractAnimatedSprite {
       animatedSprite.anchor.set(0.5);
       animatedSprite.animationSpeed = this.animationSpeed;
       animatedSprite?.play();
+      return animatedSprite;
     } else {
       PIXI.Assets.load(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).then(() => {
         const animationsData = PIXI.Assets.cache.get(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).data;
@@ -34,18 +35,15 @@ export abstract class AbstractAnimatedSprite {
           animatedSprite.anchor.set(0.5);
           animatedSprite.animationSpeed = this.animationSpeed;
           animatedSprite.play();
-          console.log('AnimatedSprite', animatedSprite);
           return animatedSprite;
         });
       });
     }
-    return animatedSprite;
   }
 
-  public get sprite(): PIXI.AnimatedSprite | null {
+  public get sprite(): PIXI.AnimatedSprite | null | undefined {
     if (!this.renderedSprite) {
       this.renderedSprite = this.render();
-      console.log('renderedSprite', this.renderedSprite);
     }
     return this.renderedSprite;
   }
