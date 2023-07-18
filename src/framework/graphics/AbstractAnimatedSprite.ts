@@ -19,25 +19,33 @@ export abstract class AbstractAnimatedSprite {
         this.textureArray.push(texture);
       }
       animatedSprite = new PIXI.AnimatedSprite(this.textureArray);
-    } else {
-      PIXI.Assets.load(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).then(() => {
-        const animations = PIXI.Assets.cache.get(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).data.animations;
-        animatedSprite = PIXI.AnimatedSprite.fromFrames(animations[this.spriteName]);
-      });
-    }
-
-    if (animatedSprite) {
       animatedSprite.anchor.set(0.5);
       animatedSprite.animationSpeed = this.animationSpeed;
       animatedSprite?.play();
+    } else {
+      PIXI.Assets.load(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).then(() => {
+        const animationsData = PIXI.Assets.cache.get(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.json`).data;
+        const spritesheet = new PIXI.Spritesheet(
+            PIXI.BaseTexture.from(`${ANIMATED_SPRITE_URL}/${this.spriteName}/${this.spriteName}.png`),
+            animationsData
+        );
+        spritesheet.parse().then(() => {
+          animatedSprite = new PIXI.AnimatedSprite(spritesheet.animations[this.spriteName]);
+          animatedSprite.anchor.set(0.5);
+          animatedSprite.animationSpeed = this.animationSpeed;
+          animatedSprite.play();
+          console.log('AnimatedSprite', animatedSprite);
+          return animatedSprite;
+        });
+      });
     }
-
     return animatedSprite;
   }
 
   public get sprite(): PIXI.AnimatedSprite | null {
     if (!this.renderedSprite) {
       this.renderedSprite = this.render();
+      console.log('renderedSprite', this.renderedSprite);
     }
     return this.renderedSprite;
   }
