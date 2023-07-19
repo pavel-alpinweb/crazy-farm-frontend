@@ -60,18 +60,6 @@ export class RenderFarmComposition {
     this.needsSpritesCollection.bug = new BugSprite();
     this.needsSpritesCollection.hunger = new HungerSprite();
     this.needsSpritesCollection.drop = new DropSprite();
-
-    this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.bug.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.drop.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.dialog.width = DIALOG_SPRITE_SIZE;
-    this.needsSpritesCollection.dialog.height = DIALOG_SPRITE_SIZE;
   }
 
   public renderFarmContainers(): void {
@@ -124,24 +112,40 @@ export class RenderFarmComposition {
           dialogContainer,
           await this.needsSpritesCollection.dialog?.sprite()
         );
+        if (this.needsSpritesCollection.dialog) {
+          this.needsSpritesCollection.dialog.width = NEEDS_SPRITE_SIZE;
+          this.needsSpritesCollection.dialog.height = NEEDS_SPRITE_SIZE;
+        }
         switch (cell.character?.needs[this.needIndex]) {
           case CHARACTERS_NEEDS.HUNGER:
             this.renderSceneComposition.addSprite(
               dialogContainer,
               await this.needsSpritesCollection.hunger?.sprite()
             );
+            if (this.needsSpritesCollection.hunger) {
+              this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
+            }
             break;
           case CHARACTERS_NEEDS.SICKNESS:
             this.renderSceneComposition.addSprite(
               dialogContainer,
               await this.needsSpritesCollection.bug?.sprite()
             );
+            if (this.needsSpritesCollection.bug) {
+              this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.bug.height = NEEDS_SPRITE_SIZE;
+            }
             break;
           case CHARACTERS_NEEDS.THIRST:
             this.renderSceneComposition.addSprite(
               dialogContainer,
               await this.needsSpritesCollection.drop?.sprite()
             );
+            if (this.needsSpritesCollection.drop) {
+              this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.drop.height = NEEDS_SPRITE_SIZE;
+            }
             break;
         }
         if (cell.character) {
