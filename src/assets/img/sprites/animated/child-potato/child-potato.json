@@ -1,0 +1,51 @@
+{"frames": {
+
+"child-potato_01.png":
+{
+	"frame": {"x":804,"y":0,"w":386,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":0,"w":386,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"anchor": {"x":0,"y":0}
+},
+"child-potato_02.png":
+{
+	"frame": {"x":0,"y":0,"w":402,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":0,"w":402,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"anchor": {"x":0,"y":0}
+},
+"child-potato_03.png":
+{
+	"frame": {"x":1190,"y":0,"w":370,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":0,"w":370,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"anchor": {"x":0,"y":0}
+},
+"child-potato_04.png":
+{
+	"frame": {"x":402,"y":0,"w":402,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":47,"y":0,"w":402,"h":512},
+	"sourceSize": {"w":512,"h":512},
+	"anchor": {"x":0,"y":0}
+}},
+"animations": {
+	"child-potato": ["child-potato_01.png","child-potato_02.png","child-potato_03.png","child-potato_04.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "child-potato.png",
+	"format": "RGBA8888",
+	"size": {"w":1560,"h":512},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:f4e58a431ac30ff1f53b7e8c7e0a62bb:7a2b87bdea3019cdba4054a2589a351d:1f21f5674944715585b42319f804b6a0$"
+}
+}
