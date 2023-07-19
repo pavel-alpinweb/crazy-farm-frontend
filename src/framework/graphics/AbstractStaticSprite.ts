@@ -15,7 +15,7 @@ export abstract class AbstractStaticSprite {
     return sprite;
   }
 
-  public get sprite(): PIXI.Sprite | null {
+  public sprite(): PIXI.Sprite | null {
     if (!this.renderedSprite) {
       this.renderedSprite = this.render();
     }
@@ -23,14 +23,14 @@ export abstract class AbstractStaticSprite {
   }
 
   public set width(value: number) {
-    if (this.sprite) {
-      this.sprite.width = value;
+    if (this.renderedSprite) {
+      this.renderedSprite.width = value;
     }
   }
 
   public set height(value: number) {
-    if (this.sprite) {
-      this.sprite.height = value;
+    if (this.renderedSprite) {
+      this.renderedSprite.height = value;
     }
   }
 }

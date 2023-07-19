@@ -60,18 +60,6 @@ export class RenderFarmComposition {
     this.needsSpritesCollection.bug = new BugSprite();
     this.needsSpritesCollection.hunger = new HungerSprite();
     this.needsSpritesCollection.drop = new DropSprite();
-
-    this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.bug.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
-    this.needsSpritesCollection.drop.height = NEEDS_SPRITE_SIZE;
-
-    this.needsSpritesCollection.dialog.width = DIALOG_SPRITE_SIZE;
-    this.needsSpritesCollection.dialog.height = DIALOG_SPRITE_SIZE;
   }
 
   public renderFarmContainers(): void {
@@ -90,7 +78,7 @@ export class RenderFarmComposition {
     });
   }
 
-  public renderCharacterSprite(cell: Cell): void {
+  public async renderCharacterSprite(cell: Cell) {
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
@@ -98,17 +86,17 @@ export class RenderFarmComposition {
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
-      this.renderSceneComposition.addSprite(container, sprite?.sprite);
+      this.renderSceneComposition.addSprite(container, await sprite?.sprite());
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
         container,
-        this.charactersSpriteList?.empty[0]?.sprite
+        await this.charactersSpriteList?.empty[0]?.sprite()
       );
     }
   }
 
-  public renderNeedsSprites(cell: Cell): void {
+  public renderNeedsSprites(cell: Cell) {
     const dialogContainer = this.farmContainers.find(
       (cont) => cont.name === `${cell.name}-dialog`
     );
@@ -118,30 +106,46 @@ export class RenderFarmComposition {
       clearInterval(this.needsInterval);
     }
     if (cell.character?.needs.length && dialogContainer) {
-      this.needsInterval = setInterval(() => {
+      this.needsInterval = setInterval(async () => {
         this.renderSceneComposition.removeAllSprites(dialogContainer);
         this.renderSceneComposition.addSprite(
           dialogContainer,
-          this.needsSpritesCollection.dialog?.sprite
+          await this.needsSpritesCollection.dialog?.sprite()
         );
+        if (this.needsSpritesCollection.dialog) {
+          this.needsSpritesCollection.dialog.width = NEEDS_SPRITE_SIZE;
+          this.needsSpritesCollection.dialog.height = NEEDS_SPRITE_SIZE;
+        }
         switch (cell.character?.needs[this.needIndex]) {
           case CHARACTERS_NEEDS.HUNGER:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              this.needsSpritesCollection.hunger?.sprite
+              await this.needsSpritesCollection.hunger?.sprite()
             );
+            if (this.needsSpritesCollection.hunger) {
+              this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
+            }
             break;
           case CHARACTERS_NEEDS.SICKNESS:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              this.needsSpritesCollection.bug?.sprite
+              await this.needsSpritesCollection.bug?.sprite()
             );
+            if (this.needsSpritesCollection.bug) {
+              this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.bug.height = NEEDS_SPRITE_SIZE;
+            }
             break;
           case CHARACTERS_NEEDS.THIRST:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              this.needsSpritesCollection.drop?.sprite
+              await this.needsSpritesCollection.drop?.sprite()
             );
+            if (this.needsSpritesCollection.drop) {
+              this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
+              this.needsSpritesCollection.drop.height = NEEDS_SPRITE_SIZE;
+            }
             break;
         }
         if (cell.character) {
