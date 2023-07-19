@@ -1,50 +1,53 @@
 {"frames": {
 
-"kid-potato-1.frame.png":
+"kid-potato_01.png":
 {
 	"frame": {"x":1318,"y":0,"w":418,"h":497},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":47,"y":15,"w":418,"h":497},
 	"sourceSize": {"w":512,"h":512},
-	"anchor": {"x":0.5,"y":0.5}
+	"anchor": {"x":0,"y":0}
 },
-"kid-potato-2.frame.png":
+"kid-potato_02.png":
 {
 	"frame": {"x":1318,"y":0,"w":418,"h":497},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":47,"y":15,"w":418,"h":497},
 	"sourceSize": {"w":512,"h":512},
-	"anchor": {"x":0.5,"y":0.5}
+	"anchor": {"x":0,"y":0}
 },
-"kid-potato-3.frame.png":
+"kid-potato_03.png":
 {
 	"frame": {"x":450,"y":0,"w":434,"h":497},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":31,"y":15,"w":434,"h":497},
 	"sourceSize": {"w":512,"h":512},
-	"anchor": {"x":0.5,"y":0.5}
+	"anchor": {"x":0,"y":0}
 },
-"kid-potato-4.frame.png":
+"kid-potato_04.png":
 {
 	"frame": {"x":884,"y":0,"w":434,"h":497},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":31,"y":15,"w":434,"h":497},
 	"sourceSize": {"w":512,"h":512},
-	"anchor": {"x":0.5,"y":0.5}
+	"anchor": {"x":0,"y":0}
 },
-"kid-potato-5.frame.png":
+"kid-potato_05.png":
 {
 	"frame": {"x":0,"y":0,"w":450,"h":497},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":15,"y":15,"w":450,"h":497},
 	"sourceSize": {"w":512,"h":512},
-	"anchor": {"x":0.5,"y":0.5}
+	"anchor": {"x":0,"y":0}
 }},
+"animations": {
+	"kid-potato": ["kid-potato_01.png","kid-potato_02.png","kid-potato_03.png","kid-potato_04.png","kid-potato_05.png"]
+},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
@@ -52,6 +55,6 @@
 	"format": "RGBA8888",
 	"size": {"w":1736,"h":497},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:73b8c888aa2b7723266d9ca71e2f9d33:1e22347f0331672d15013013ec135f94:8dc7781c042b62efebffb57ecef0f7f8$"
+	"smartupdate": "$TexturePacker:SmartUpdate:2d631cae1bdcc39ad1049adb4893b6de:1e22347f0331672d15013013ec135f94:8dc7781c042b62efebffb57ecef0f7f8$"
 }
 }
