@@ -23,14 +23,20 @@ export abstract class AbstractStaticSprite {
   }
 
   public set width(value: number) {
-    if (this.renderedSprite) {
-      this.renderedSprite.width = value;
+    if (this.sprite()) {
+      const sprite = this.sprite();
+      if (sprite) {
+        sprite.width = value;
+      }
     }
   }
 
   public set height(value: number) {
-    if (this.renderedSprite) {
-      this.renderedSprite.height = value;
+    if (this.sprite()) {
+      const sprite = this.sprite();
+      if (sprite) {
+        sprite.height = value;
+      }
     }
   }
 }
