@@ -26,6 +26,15 @@ module.exports = {
   module: {
     rules: [
       {
+        oneOf: [
+          {
+            test: /\.svg$/,
+            type: "asset/inline",
+            resourceQuery: /inline/,
+          },
+        ]
+      },
+      {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
