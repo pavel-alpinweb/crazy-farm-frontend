@@ -96,7 +96,7 @@ export class RenderFarmComposition {
     }
   }
 
-  public renderNeedsSprites(cell: Cell) {
+  public renderNeedsSprites(cell: Cell, bundles: object) {
     const dialogContainer = this.farmContainers.find(
       (cont) => cont.name === `${cell.name}-dialog`
     );
@@ -110,7 +110,7 @@ export class RenderFarmComposition {
         this.renderSceneComposition.removeAllSprites(dialogContainer);
         this.renderSceneComposition.addSprite(
           dialogContainer,
-          await this.needsSpritesCollection.dialog?.sprite()
+          await this.needsSpritesCollection.dialog?.sprite(bundles)
         );
         if (this.needsSpritesCollection.dialog) {
           this.needsSpritesCollection.dialog.width = NEEDS_SPRITE_SIZE;
@@ -120,7 +120,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.HUNGER:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.hunger?.sprite()
+              await this.needsSpritesCollection.hunger?.sprite(bundles)
             );
             if (this.needsSpritesCollection.hunger) {
               this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
@@ -130,7 +130,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.SICKNESS:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.bug?.sprite()
+              await this.needsSpritesCollection.bug?.sprite(bundles)
             );
             if (this.needsSpritesCollection.bug) {
               this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
@@ -140,7 +140,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.THIRST:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.drop?.sprite()
+              await this.needsSpritesCollection.drop?.sprite(bundles)
             );
             if (this.needsSpritesCollection.drop) {
               this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;

@@ -41,7 +41,7 @@ export class FarmScene extends AbstractScene {
   protected renderSprites(bundles: object): void {
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell, bundles);
-      this.renderFarmComposition.renderNeedsSprites(cell);
+      this.renderFarmComposition.renderNeedsSprites(cell, bundles);
     });
   }
 
