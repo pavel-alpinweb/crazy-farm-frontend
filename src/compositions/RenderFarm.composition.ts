@@ -78,7 +78,7 @@ export class RenderFarmComposition {
     });
   }
 
-  public async renderCharacterSprite(cell: Cell) {
+  public async renderCharacterSprite(cell: Cell, bundles: object) {
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
@@ -86,12 +86,12 @@ export class RenderFarmComposition {
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
-      this.renderSceneComposition.addSprite(container, await sprite?.sprite());
+      this.renderSceneComposition.addSprite(container, await sprite?.sprite(bundles));
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
         container,
-        await this.charactersSpriteList?.empty[0]?.sprite()
+        await this.charactersSpriteList?.empty[0]?.sprite(bundles)
       );
     }
   }

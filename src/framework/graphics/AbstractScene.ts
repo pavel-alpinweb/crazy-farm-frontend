@@ -28,9 +28,9 @@ export abstract class AbstractScene {
   protected abstract setState(props: object): void;
   protected abstract initSprites(): void;
   protected abstract renderContainers(): void;
-  protected abstract renderSprites(): void;
+  protected abstract renderSprites(bundles: object): void;
   protected abstract setHandlers(): void;
-  protected abstract setEvents(): void;
+  protected abstract setEvents(bundles: object): void;
 
   private render(): Element | null {
     const canvas = document.createElement("canvas");
@@ -45,13 +45,13 @@ export abstract class AbstractScene {
     const manifest: ResolverManifest = {
       bundles: [
         {
-          name: 'land_sprite',
+          name: 'land',
           assets: {
             sprite: `${STATIC_SPRITE_URL}/land.sprite.png`,
           },
         },
         {
-          name: 'sprout_potato',
+          name: 'sprout-potato',
           assets: {
               sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.png`,
               sprite_data: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.json`,
@@ -60,12 +60,12 @@ export abstract class AbstractScene {
       ]
     };
     PIXI.Assets.init({ manifest }).then(() => {
-      PIXI.Assets.loadBundle(manifest.bundles.map(bundle => bundle.name)).then((data) => {
-        console.log('Load bundle', data);
+      PIXI.Assets.loadBundle(manifest.bundles.map(bundle => bundle.name)).then((bundles) => {
+        console.log('Load bundle', bundles);
         this.initSprites();
         this.renderContainers();
-        this.renderSprites();
-        this.setEvents();
+        this.renderSprites(bundles);
+        this.setEvents(bundles);
         this.setHandlers();
       });
     });

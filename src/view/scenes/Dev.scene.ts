@@ -33,9 +33,10 @@ export class DevScene extends AbstractScene{
     this.renderFarmComposition.renderFarmContainers();
   }
 
-  protected renderSprites(): void {
+  protected renderSprites(bundles: object): void {
+    console.log('renderSprites', bundles);
     this.state.farm.containers.forEach((cell) => {
-      this.renderFarmComposition.renderCharacterSprite(cell);
+      this.renderFarmComposition.renderCharacterSprite(cell, bundles);
       this.renderFarmComposition.renderNeedsSprites(cell);
     });
   }
