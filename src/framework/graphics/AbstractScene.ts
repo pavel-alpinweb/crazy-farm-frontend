@@ -2,7 +2,7 @@ import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
 import {ResolverManifest} from "pixi.js";
-import {STATIC_SPRITE_URL} from "../../utils/constants";
+import {ANIMATED_SPRITE_URL, STATIC_SPRITE_URL} from "../../utils/constants";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -45,18 +45,30 @@ export abstract class AbstractScene {
     const manifest: ResolverManifest = {
       bundles: [
         {
-          name: 'land.sprite',
+          name: 'land_sprite',
           assets: {
             sprite: `${STATIC_SPRITE_URL}/land.sprite.png`,
           },
         },
+        {
+          name: 'sprout_potato',
+          assets: {
+              sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.png`,
+              sprite_data: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.json`,
+          },
+        },
       ]
     };
-    this.initSprites();
-    this.renderContainers();
-    this.renderSprites();
-    this.setEvents();
-    this.setHandlers();
+    PIXI.Assets.init({ manifest }).then(() => {
+      PIXI.Assets.loadBundle(manifest.bundles.map(bundle => bundle.name)).then((data) => {
+        console.log('Load bundle', data);
+        this.initSprites();
+        this.renderContainers();
+        this.renderSprites();
+        this.setEvents();
+        this.setHandlers();
+      });
+    });
     return canvas;
   }
 
