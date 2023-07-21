@@ -51,6 +51,17 @@ export abstract class AbstractScene {
           },
         },
         {
+          name: 'drop',
+          assets: {
+            sprite: `${STATIC_SPRITE_URL}/drop.sprite.png`,
+          },
+        },{
+          name: 'dialog',
+          assets: {
+            sprite: `${STATIC_SPRITE_URL}/dialog.sprite.png`,
+          },
+        },
+        {
           name: 'sprout-potato',
           assets: {
               sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.png`,
