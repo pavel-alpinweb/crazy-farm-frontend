@@ -1,6 +1,8 @@
 import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
+import {ResolverManifest} from "pixi.js";
+import {STATIC_SPRITE_URL} from "../../utils/constants";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -40,6 +42,16 @@ export abstract class AbstractScene {
       this.scene.renderer.view.style.touchAction = "auto";
     }
     this.scene.renderer.plugins.interaction.autoPreventDefault = false;
+    const manifest: ResolverManifest = {
+      bundles: [
+        {
+          name: 'land.sprite',
+          assets: {
+            sprite: `${STATIC_SPRITE_URL}/land.sprite.png`,
+          },
+        },
+      ]
+    };
     this.initSprites();
     this.renderContainers();
     this.renderSprites();
