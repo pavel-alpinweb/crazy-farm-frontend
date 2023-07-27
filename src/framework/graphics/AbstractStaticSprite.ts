@@ -1,13 +1,15 @@
 import * as PIXI from "pixi.js";
+import {farmAssetsLoader} from "../../main";
 
 export abstract class AbstractStaticSprite {
   protected abstract spriteName: string;
   private texture: PIXI.Texture | null = null;
   private renderedSprite: PIXI.Sprite | null = null;
+  private readonly bundle: PIXI.ResolverBundle | null = farmAssetsLoader.bundle;
 
   private render(bundles: any | undefined): PIXI.Sprite | null {
     let sprite = null;
-    if (bundles) {
+    if (this.bundle) {
       this.texture = bundles[this.spriteName].sprite;
     }
     if (this.texture) {

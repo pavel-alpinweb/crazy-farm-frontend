@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { ANIMATED_SPRITE_URL } from "../../utils/constants";
+import {farmAssetsLoader} from "../../main";
 
 export abstract class AbstractAnimatedSprite {
   private textureArray: Array<PIXI.Texture> = [];
@@ -7,19 +7,23 @@ export abstract class AbstractAnimatedSprite {
   protected abstract animationSpeed: number;
   protected abstract spriteName: string;
   protected abstract framesNumber: number;
+  private readonly bundle: PIXI.ResolverBundle | null = farmAssetsLoader.bundle;
 
   private async render(bundles: any | undefined): Promise<PIXI.AnimatedSprite | null> {
-    const spritesheet = new PIXI.Spritesheet(
-        bundles[this.spriteName].sprite_sheet,
-        bundles[this.spriteName].sprite_data.data
-    );
-    await spritesheet.parse();
-    const animatedSprite = new PIXI.AnimatedSprite(
-      spritesheet.animations[this.spriteName]
-    );
-    animatedSprite.anchor.set(0.5);
-    animatedSprite.animationSpeed = this.animationSpeed;
-    animatedSprite.play();
+    let animatedSprite = null;
+    if (this.bundle) {
+      const spritesheet = new PIXI.Spritesheet(
+          bundles[this.spriteName].sprite_sheet,
+          bundles[this.spriteName].sprite_data.data
+      );
+      await spritesheet.parse();
+      animatedSprite = new PIXI.AnimatedSprite(
+          spritesheet.animations[this.spriteName]
+      );
+      animatedSprite.anchor.set(0.5);
+      animatedSprite.animationSpeed = this.animationSpeed;
+      animatedSprite.play();
+    }
     return animatedSprite;
   }
 
