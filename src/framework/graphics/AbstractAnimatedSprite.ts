@@ -7,14 +7,15 @@ export abstract class AbstractAnimatedSprite {
   protected abstract animationSpeed: number;
   protected abstract spriteName: string;
   protected abstract framesNumber: number;
-  private readonly bundle: PIXI.ResolverBundle | null = farmAssetsLoader.bundle;
+  private bundle: any | null = null;
 
   private async render(bundles: any | undefined): Promise<PIXI.AnimatedSprite | null> {
     let animatedSprite = null;
+    this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
       const spritesheet = new PIXI.Spritesheet(
-          bundles[this.spriteName].sprite_sheet,
-          bundles[this.spriteName].sprite_data.data
+          this.bundle[this.spriteName].sprite_sheet,
+          this.bundle[this.spriteName].sprite_data.data
       );
       await spritesheet.parse();
       animatedSprite = new PIXI.AnimatedSprite(

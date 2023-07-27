@@ -5,12 +5,13 @@ export abstract class AbstractStaticSprite {
   protected abstract spriteName: string;
   private texture: PIXI.Texture | null = null;
   private renderedSprite: PIXI.Sprite | null = null;
-  private readonly bundle: PIXI.ResolverBundle | null = farmAssetsLoader.bundle;
+  private bundle: any | null = null;
 
-  private render(bundles: any | undefined): PIXI.Sprite | null {
+  private async render(bundles: any | undefined): Promise<PIXI.Sprite | null> {
     let sprite = null;
+    this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
-      this.texture = bundles[this.spriteName].sprite;
+      this.texture = this.bundle[this.spriteName].sprite;
     }
     if (this.texture) {
       sprite = new PIXI.Sprite(this.texture);
@@ -19,9 +20,9 @@ export abstract class AbstractStaticSprite {
     return sprite;
   }
 
-  public sprite(bundles?: object): PIXI.Sprite | null {
+  public async sprite(bundles?: object): Promise<PIXI.Sprite | null> {
     if (!this.renderedSprite) {
-      this.renderedSprite = this.render(bundles);
+      this.renderedSprite = await this.render(bundles);
     }
     return this.renderedSprite;
   }
