@@ -8,8 +8,10 @@ import "./assets/scss/main.scss";
 import { LoginController } from "./controler/login.controller";
 import { RegistrationController } from "./controler/registration.controller";
 import DevRoomController from "./controler/devRoom.controller";
+import {AssetsLoader} from "./framework/graphics/AssetsLoader";
 
 export const eventBus: EventBus = new EventBus();
+export const farmAssetsLoader = new AssetsLoader('./assets/manifests/farm.manifest.ts');
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
 const loginController = new LoginController(userModel);
