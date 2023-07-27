@@ -7,7 +7,7 @@ export abstract class AbstractStaticSprite {
   private renderedSprite: PIXI.Sprite | null = null;
   private bundle: any | null = null;
 
-  private async render(bundles: any | undefined): Promise<PIXI.Sprite | null> {
+  private async render(): Promise<PIXI.Sprite | null> {
     let sprite = null;
     this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
@@ -20,9 +20,9 @@ export abstract class AbstractStaticSprite {
     return sprite;
   }
 
-  public async sprite(bundles?: object): Promise<PIXI.Sprite | null> {
+  public async sprite(): Promise<PIXI.Sprite | null> {
     if (!this.renderedSprite) {
-      this.renderedSprite = await this.render(bundles);
+      this.renderedSprite = await this.render();
     }
     return this.renderedSprite;
   }

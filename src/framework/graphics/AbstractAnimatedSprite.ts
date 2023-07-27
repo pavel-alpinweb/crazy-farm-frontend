@@ -9,7 +9,7 @@ export abstract class AbstractAnimatedSprite {
   protected abstract framesNumber: number;
   private bundle: any | null = null;
 
-  private async render(bundles: any | undefined): Promise<PIXI.AnimatedSprite | null> {
+  private async render(): Promise<PIXI.AnimatedSprite | null> {
     let animatedSprite = null;
     this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
@@ -28,9 +28,9 @@ export abstract class AbstractAnimatedSprite {
     return animatedSprite;
   }
 
-  public async sprite(bundles: any | undefined): Promise<PIXI.AnimatedSprite | null> {
+  public async sprite(): Promise<PIXI.AnimatedSprite | null> {
     if (!this.renderedSprite) {
-      this.renderedSprite = await this.render(bundles);
+      this.renderedSprite = await this.render();
     }
     return this.renderedSprite;
   }

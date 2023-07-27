@@ -27,9 +27,9 @@ export abstract class AbstractScene {
   protected abstract setState(props: object): void;
   protected abstract initSprites(): void;
   protected abstract renderContainers(): void;
-  protected abstract renderSprites(bundles: object): void;
+  protected abstract renderSprites(): void;
   protected abstract setHandlers(): void;
-  protected abstract setEvents(bundles: object): void;
+  protected abstract setEvents(): void;
 
   private render(): Element | null {
     const canvas = document.createElement("canvas");
@@ -43,11 +43,10 @@ export abstract class AbstractScene {
     this.scene.renderer.plugins.interaction.autoPreventDefault = false;
     PIXI.Assets.init({ manifest }).then(() => {
       PIXI.Assets.loadBundle(manifest.bundles.map(bundle => bundle.name)).then((bundles) => {
-        console.log('Load bundle', bundles);
         this.initSprites();
         this.renderContainers();
-        this.renderSprites(bundles);
-        this.setEvents(bundles);
+        this.renderSprites();
+        this.setEvents();
         this.setHandlers();
       });
     });

@@ -38,20 +38,20 @@ export class FarmScene extends AbstractScene {
     this.renderFarmComposition.renderFarmContainers();
   }
 
-  protected renderSprites(bundles: object): void {
+  protected renderSprites(): void {
     this.state.farm.containers.forEach((cell) => {
-      this.renderFarmComposition.renderCharacterSprite(cell, bundles);
-      this.renderFarmComposition.renderNeedsSprites(cell, bundles);
+      this.renderFarmComposition.renderCharacterSprite(cell);
+      this.renderFarmComposition.renderNeedsSprites(cell);
     });
   }
 
-  protected setEvents(bundles: object): void {
+  protected setEvents(): void {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
     };
     const updateFarm = (data: FarmState) => {
       this.state.farm = data;
-      this.renderSprites(bundles);
+      this.renderSprites();
     };
     eventBus.off("Farm:update", updateFarm);
     eventBus.on("Farm:update", updateFarm);

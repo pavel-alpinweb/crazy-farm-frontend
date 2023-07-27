@@ -77,7 +77,7 @@ export class RenderFarmComposition {
     });
   }
 
-  public async renderCharacterSprite(cell: Cell, bundles: object) {
+  public async renderCharacterSprite(cell: Cell) {
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
@@ -85,17 +85,17 @@ export class RenderFarmComposition {
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
-      this.renderSceneComposition.addSprite(container, await sprite?.sprite(bundles));
+      this.renderSceneComposition.addSprite(container, await sprite?.sprite());
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
         container,
-        await this.charactersSpriteList?.empty[0]?.sprite(bundles)
+        await this.charactersSpriteList?.empty[0]?.sprite()
       );
     }
   }
 
-  public renderNeedsSprites(cell: Cell, bundles: object) {
+  public renderNeedsSprites(cell: Cell) {
     const dialogContainer = this.farmContainers.find(
       (cont) => cont.name === `${cell.name}-dialog`
     );
@@ -109,7 +109,7 @@ export class RenderFarmComposition {
         this.renderSceneComposition.removeAllSprites(dialogContainer);
         this.renderSceneComposition.addSprite(
           dialogContainer,
-          await this.needsSpritesCollection.dialog?.sprite(bundles)
+          await this.needsSpritesCollection.dialog?.sprite()
         );
         if (this.needsSpritesCollection.dialog) {
           this.needsSpritesCollection.dialog.width = NEEDS_SPRITE_SIZE;
@@ -119,7 +119,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.HUNGER:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.hunger?.sprite(bundles)
+              await this.needsSpritesCollection.hunger?.sprite()
             );
             if (this.needsSpritesCollection.hunger) {
               this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
@@ -129,7 +129,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.SICKNESS:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.bug?.sprite(bundles)
+              await this.needsSpritesCollection.bug?.sprite()
             );
             if (this.needsSpritesCollection.bug) {
               this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
@@ -139,7 +139,7 @@ export class RenderFarmComposition {
           case CHARACTERS_NEEDS.THIRST:
             this.renderSceneComposition.addSprite(
               dialogContainer,
-              await this.needsSpritesCollection.drop?.sprite(bundles)
+              await this.needsSpritesCollection.drop?.sprite()
             );
             if (this.needsSpritesCollection.drop) {
               this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
