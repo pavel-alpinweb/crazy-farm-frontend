@@ -9,9 +9,10 @@ import { LoginController } from "./controler/login.controller";
 import { RegistrationController } from "./controler/registration.controller";
 import DevRoomController from "./controler/devRoom.controller";
 import {AssetsLoader} from "./framework/graphics/AssetsLoader";
+import {manifest} from "./assets/manifests/farm.manifest";
 
 export const eventBus: EventBus = new EventBus();
-export const farmAssetsLoader = new AssetsLoader('./assets/manifests/farm.manifest.ts');
+export const farmAssetsLoader = new AssetsLoader(manifest);
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
 const loginController = new LoginController(userModel);

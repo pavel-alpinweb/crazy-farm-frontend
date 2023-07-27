@@ -1,7 +1,6 @@
 import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
-import {manifest} from "../../assets/manifests/farm.manifest";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -41,15 +40,11 @@ export abstract class AbstractScene {
       this.scene.renderer.view.style.touchAction = "auto";
     }
     this.scene.renderer.plugins.interaction.autoPreventDefault = false;
-    PIXI.Assets.init({ manifest }).then(() => {
-      PIXI.Assets.loadBundle(manifest.bundles.map(bundle => bundle.name)).then((bundles) => {
-        this.initSprites();
-        this.renderContainers();
-        this.renderSprites();
-        this.setEvents();
-        this.setHandlers();
-      });
-    });
+    this.initSprites();
+    this.renderContainers();
+    this.renderSprites();
+    this.setEvents();
+    this.setHandlers();
     return canvas;
   }
 
