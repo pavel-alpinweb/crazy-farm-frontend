@@ -1,23 +1,28 @@
 import * as PIXI from "pixi.js";
-import { STATIC_SPRITE_URL } from "../../utils/constants";
+import {farmAssetsLoader} from "../../main";
 
 export abstract class AbstractStaticSprite {
   protected abstract spriteName: string;
   private texture: PIXI.Texture | null = null;
   private renderedSprite: PIXI.Sprite | null = null;
+  private bundle: any | null = null;
 
-  private render(): PIXI.Sprite | null {
-    this.texture = PIXI.Texture.from(
-      `${STATIC_SPRITE_URL}/${this.spriteName}.sprite.png`
-    );
-    const sprite = new PIXI.Sprite(this.texture);
-    sprite.anchor.set(0.5);
+  private async render(): Promise<PIXI.Sprite | null> {
+    let sprite = null;
+    this.bundle = await farmAssetsLoader.load();
+    if (this.bundle) {
+      this.texture = this.bundle[this.spriteName].sprite;
+    }
+    if (this.texture) {
+      sprite = new PIXI.Sprite(this.texture);
+      sprite.anchor.set(0.5);
+    }
     return sprite;
   }
 
-  public sprite(): PIXI.Sprite | null {
+  public async sprite(): Promise<PIXI.Sprite | null> {
     if (!this.renderedSprite) {
-      this.renderedSprite = this.render();
+      this.renderedSprite = await this.render();
     }
     return this.renderedSprite;
   }

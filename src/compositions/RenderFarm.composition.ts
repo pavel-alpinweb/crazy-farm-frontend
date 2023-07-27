@@ -1,13 +1,12 @@
 import {
   CHARACTERS_NEEDS,
   CHARACTERS_SPRITES,
-  DIALOG_SPRITE_SIZE,
   NEEDS_SPRITE_SIZE,
 } from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
-import { DropSprite } from "../view/sprites/Drop";
+import { DropSprite } from "../view/sprites/Drop.sprite";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
