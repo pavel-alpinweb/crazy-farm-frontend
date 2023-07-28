@@ -9,33 +9,6 @@ import { EmptyFieldSprite } from "../view/sprites/EmptyField.sprite";
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
-export const CHARACTERS_NEEDS: CharactersNeeds = {
-  HUNGER: "HUNGER",
-  SICKNESS: "SICKNESS",
-  THIRST: "THIRST",
-};
-export const TOOLS: Tools = {
-  SHOVEL: "shovel",
-  BAILER: "bailer",
-  FERTILIZER: "fertilizer",
-  SPRAYER: "sprayer",
-  SEEDS: "seeds",
-  EMPTY: "empty",
-};
-export const DEFAULT_FARM_STATE: FarmState = {
-  containers: [
-    {
-      isEmpty: true,
-      isBlocked: false,
-      name: "central",
-      character: {
-        type: 'empty',
-        stage: 0,
-        needs: [],
-      },
-    },
-  ],
-};
 export const CHARACTERS_SPRITES: CharactersSprites = {
   potato: [
     GroundSprite,

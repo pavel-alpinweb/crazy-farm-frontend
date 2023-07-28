@@ -1,8 +1,7 @@
 import {
   CHARACTERS_NEEDS,
-  CHARACTERS_SPRITES,
-  NEEDS_SPRITE_SIZE,
-} from "../utils/constants";
+} from "../model/farm.model";
+import {CHARACTERS_SPRITES, NEEDS_SPRITE_SIZE} from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";

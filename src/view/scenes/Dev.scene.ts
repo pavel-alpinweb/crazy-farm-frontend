@@ -1,7 +1,7 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import {
   DEFAULT_FARM_STATE,
-} from "../../utils/constants";
+} from "../../model/farm.model";
 import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
 

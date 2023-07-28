@@ -1,5 +1,6 @@
 import { FarmScreen } from "../view/screens/Farm.screen";
-import { appContainer, TOOLS } from "../utils/constants";
+import { appContainer } from "../utils/constants";
+import {TOOLS} from "../model/farm.model";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
