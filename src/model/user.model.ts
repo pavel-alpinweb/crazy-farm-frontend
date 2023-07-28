@@ -57,7 +57,7 @@ export default class User {
     };
   }
 
-  public setUserData(data: UserData, isUpdateUI: boolean) {
+  public setUserData(data: UserData, isUpdateUI = false) {
     this.userLogin = data.loggin;
     this.userEmail = data.email;
     this.userId = data.userId;
