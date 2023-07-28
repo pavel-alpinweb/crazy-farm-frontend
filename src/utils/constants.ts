@@ -48,11 +48,5 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
   empty: [EmptyFieldSprite],
 };
 
-export const DEFAULT_USER_DATA: UserData = {
-  userId: "crazyfarmid",
-  loggin: "crazyfarmlogin",
-  email: "crazyfarm@crazyfarm.crazyfarm",
-};
-
 export const DIALOG_SPRITE_SIZE = 200;
 export const NEEDS_SPRITE_SIZE = 180;
