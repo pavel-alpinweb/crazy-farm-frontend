@@ -1,6 +1,6 @@
 import {EventBus} from "../framework/EventBus";
 
-const eventBus: EventBus = new EventBus();
+export const eventBusExample: EventBus = new EventBus();
 
 const DEFAULT_USER_DATA: UserData = {
     userId: "crazyfarmid",
@@ -19,7 +19,7 @@ export class TestModel {
         this.userEmail = data.email;
         this.userId = data.userId;
         if (isUpdateUI) {
-            eventBus.emit("User:update", {
+            eventBusExample.emit("User:update", {
                 userId: this.userId,
                 loggin: this.userLogin,
                 email: this.userEmail,
