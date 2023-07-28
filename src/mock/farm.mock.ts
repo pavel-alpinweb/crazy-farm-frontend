@@ -1,4 +1,4 @@
-import { CHARACTERS_NEEDS, TOOLS } from "../utils/constants";
+import { TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 
 let activeCharacter = "empty";
 let activeStage = 0;

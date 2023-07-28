@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import {farmAssetsLoader} from "../../main";
+import { farmAssetsLoader } from "../../main";
 
 export abstract class AbstractStaticSprite {
   protected abstract spriteName: string;

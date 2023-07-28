@@ -1,9 +1,6 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
-import {
-  DEFAULT_FARM_STATE,
-} from "../../utils/constants";
-import { eventBus } from "../../main";
-import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
+import { DEFAULT_FARM_STATE, eventBusFarm } from "../../model/farm.model";
+import { RenderFarmComposition } from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
 
 interface Props {
@@ -29,7 +26,9 @@ export class FarmScene extends AbstractScene {
   }
 
   protected initSprites(): void {
-    this.renderFarmComposition = new RenderFarmComposition(<PIXI.Application>this.scene);
+    this.renderFarmComposition = new RenderFarmComposition(
+      <PIXI.Application>this.scene
+    );
     this.renderFarmComposition.initCharactersSprite();
     this.renderFarmComposition.initNeedsCharacterSprites();
   }
@@ -53,8 +52,8 @@ export class FarmScene extends AbstractScene {
       this.state.farm = data;
       this.renderSprites();
     };
-    eventBus.off("Farm:update", updateFarm);
-    eventBus.on("Farm:update", updateFarm);
+    eventBusFarm.off("Farm:update", updateFarm);
+    eventBusFarm.on("Farm:update", updateFarm);
   }
 
   setHandlers() {

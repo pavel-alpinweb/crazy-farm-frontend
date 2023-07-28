@@ -1,22 +1,26 @@
 import User from "./user.model";
-import { DEFAULT_USER_DATA } from "../utils/constants";
 
-describe("User Model getters:", () => {
-  const user = new User();
+describe("User Model:", () => {
+  const userModel = new User();
 
-  test("Getter user.userId", () => {
-    expect(user.id).toBe(DEFAULT_USER_DATA.userId);
+  test("doesn't throw error when User Model constructed", () => {
+    expect(() => {
+      const testMyClass = new User();
+    }).not.toThrowError();
   });
 
-  test("Getter user.login", () => {
-    expect(user.login).toBe(DEFAULT_USER_DATA.loggin);
+  test("method: setUserData", () => {
+    const result: UserData = {
+      userId: "alpinweb",
+      loggin: "alpinweb",
+      email: "alpinweb@yandex.ru",
+    };
+    userModel.setUserData(result);
+    expect(userModel.data).toEqual(result);
   });
 
-  test("Getter user.email", () => {
-    expect(user.email).toBe(DEFAULT_USER_DATA.email);
-  });
-
-  test("Getter user.data", () => {
-    expect(user.data).toEqual(DEFAULT_USER_DATA);
+  test("method: setLoading", () => {
+    userModel.setLoading(true);
+    expect(userModel.loading).toBe(true);
   });
 });

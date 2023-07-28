@@ -1,7 +1,36 @@
-import { DEFAULT_FARM_STATE, TOOLS } from "../utils/constants";
 import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
-import { eventBus } from "../main";
+import { EventBus } from "../framework/EventBus";
+
+export const eventBusFarm: EventBus = new EventBus();
+
+export const TOOLS: Tools = {
+  SHOVEL: "shovel",
+  BAILER: "bailer",
+  FERTILIZER: "fertilizer",
+  SPRAYER: "sprayer",
+  SEEDS: "seeds",
+  EMPTY: "empty",
+};
+export const DEFAULT_FARM_STATE: FarmState = {
+  containers: [
+    {
+      isEmpty: true,
+      isBlocked: false,
+      name: "central",
+      character: {
+        type: "empty",
+        stage: 0,
+        needs: [],
+      },
+    },
+  ],
+};
+export const CHARACTERS_NEEDS: CharactersNeeds = {
+  HUNGER: "HUNGER",
+  SICKNESS: "SICKNESS",
+  THIRST: "THIRST",
+};
 
 declare global {
   type tool =
@@ -71,13 +100,13 @@ export default class FarmModel {
     } else {
       this.initialState.activeTool = TOOLS.EMPTY;
     }
-    eventBus.emit("Farm:set_tool", this.initialState.activeTool);
+    eventBusFarm.emit("Farm:set_tool", this.initialState.activeTool);
   }
 
   public setFarmState(data: FarmState): void {
     if (JSON.stringify(data) !== JSON.stringify(this.state)) {
       this.initialState.farm = data;
-      eventBus.emit("Farm:update", this.initialState.farm);
+      eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }
 }
