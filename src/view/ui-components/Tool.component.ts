@@ -1,6 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {TOOLS} from "../../model/farm.model";
-import {eventBusFarm} from "../../model/farm.model";
+import { TOOLS } from "../../model/farm.model";
+import { eventBusFarm } from "../../model/farm.model";
 
 interface Props {
   name: tool;

@@ -1,6 +1,6 @@
 import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
-import {EventBus} from "../framework/EventBus";
+import { EventBus } from "../framework/EventBus";
 
 export const eventBusFarm: EventBus = new EventBus();
 
@@ -19,7 +19,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "central",
       character: {
-        type: 'empty',
+        type: "empty",
         stage: 0,
         needs: [],
       },

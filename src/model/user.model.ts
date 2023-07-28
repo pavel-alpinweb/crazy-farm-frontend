@@ -1,4 +1,4 @@
-import {EventBus} from "../framework/EventBus";
+import { EventBus } from "../framework/EventBus";
 
 export const eventBusUser: EventBus = new EventBus();
 

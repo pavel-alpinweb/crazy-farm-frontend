@@ -1,5 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {eventBusUser} from "../../model/user.model";
+import { eventBusUser } from "../../model/user.model";
 interface Props {
   title: string;
 }

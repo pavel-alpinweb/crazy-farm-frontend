@@ -1,8 +1,6 @@
 import { AbstractScene } from "../../framework/graphics/AbstractScene";
-import {
-  DEFAULT_FARM_STATE,
-} from "../../model/farm.model";
-import {RenderFarmComposition} from "../../compositions/RenderFarm.composition";
+import { DEFAULT_FARM_STATE } from "../../model/farm.model";
+import { RenderFarmComposition } from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
 
 interface Props {
@@ -13,7 +11,7 @@ interface State {
   farm: Props["farm"];
 }
 
-export class DevScene extends AbstractScene{
+export class DevScene extends AbstractScene {
   private renderFarmComposition!: RenderFarmComposition;
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
@@ -24,7 +22,9 @@ export class DevScene extends AbstractScene{
   }
 
   protected initSprites(): void {
-    this.renderFarmComposition = new RenderFarmComposition(<PIXI.Application>this.scene);
+    this.renderFarmComposition = new RenderFarmComposition(
+      <PIXI.Application>this.scene
+    );
     this.renderFarmComposition.initCharactersSprite();
     this.renderFarmComposition.initNeedsCharacterSprites();
   }

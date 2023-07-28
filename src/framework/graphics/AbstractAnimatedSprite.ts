@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import {farmAssetsLoader} from "../../main";
+import { farmAssetsLoader } from "../../main";
 
 export abstract class AbstractAnimatedSprite {
   private textureArray: Array<PIXI.Texture> = [];
@@ -14,12 +14,12 @@ export abstract class AbstractAnimatedSprite {
     this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
       const spritesheet = new PIXI.Spritesheet(
-          this.bundle[this.spriteName].sprite_sheet,
-          this.bundle[this.spriteName].sprite_data.data
+        this.bundle[this.spriteName].sprite_sheet,
+        this.bundle[this.spriteName].sprite_data.data
       );
       await spritesheet.parse();
       animatedSprite = new PIXI.AnimatedSprite(
-          spritesheet.animations[this.spriteName]
+        spritesheet.animations[this.spriteName]
       );
       animatedSprite.anchor.set(0.5);
       animatedSprite.animationSpeed = this.animationSpeed;

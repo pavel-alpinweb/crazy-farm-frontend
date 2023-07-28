@@ -1,5 +1,5 @@
 import { ANIMATED_SPRITE_URL, STATIC_SPRITE_URL } from "../../utils/constants";
-import {ResolverManifest} from "pixi.js";
+import { ResolverManifest } from "pixi.js";
 
 export const manifest: ResolverManifest = {
   bundles: [
@@ -75,4 +75,4 @@ export const manifest: ResolverManifest = {
       },
     },
   ],
-}
+};

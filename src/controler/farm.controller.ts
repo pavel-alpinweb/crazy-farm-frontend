@@ -1,6 +1,6 @@
 import { FarmScreen } from "../view/screens/Farm.screen";
 import { appContainer } from "../utils/constants";
-import {TOOLS} from "../model/farm.model";
+import { TOOLS } from "../model/farm.model";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
@@ -50,7 +50,7 @@ export default class FarmController {
             <Element>this.FarmScreen.element
           );
         } catch (error: any) {
-          console.error('Farm controller init error:', error);
+          console.error("Farm controller init error:", error);
           alert(
             `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
           );
