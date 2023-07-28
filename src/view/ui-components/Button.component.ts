@@ -1,6 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import { eventBus } from "../../main";
-
+import {eventBusUser} from "../../model/user.model";
 interface Props {
   title: string;
 }
@@ -47,8 +46,8 @@ export class ButtonComponent extends AbstractView {
       this.state.isLoading = value;
       this.rerenderElement();
     };
-    eventBus.off("User:loading", setLoading);
-    eventBus.on("User:loading", setLoading);
+    eventBusUser.off("User:loading", setLoading);
+    eventBusUser.on("User:loading", setLoading);
   }
   get template(): string {
     return createButtonTemplate(this.state);

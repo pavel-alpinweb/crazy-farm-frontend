@@ -1,5 +1,12 @@
-import { eventBus } from "../main";
-import { DEFAULT_USER_DATA } from "../utils/constants";
+import {EventBus} from "../framework/EventBus";
+
+export const eventBusUser: EventBus = new EventBus();
+
+const DEFAULT_USER_DATA: UserData = {
+  userId: "crazyfarmid",
+  loggin: "crazyfarmlogin",
+  email: "crazyfarm@crazyfarm.crazyfarm",
+};
 
 declare global {
   interface UserData {
@@ -55,12 +62,12 @@ export default class User {
     this.userEmail = data.email;
     this.userId = data.userId;
     if (isUpdateUI) {
-      eventBus.emit("User:update", this.data);
+      eventBusUser.emit("User:update", this.data);
     }
   }
 
   public setLoading(value: boolean) {
     this.isLoadingUserData = value;
-    eventBus.emit("User:loading", this.isLoadingUserData);
+    eventBusUser.emit("User:loading", this.isLoadingUserData);
   }
 }
