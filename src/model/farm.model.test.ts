@@ -6,7 +6,7 @@ describe("Farm Model:", () => {
 
   test("doesn't throw error when User Model constructed", () => {
     expect(() => {
-      const testMyClass = new FarmModel();
+      new FarmModel();
     }).not.toThrowError();
   });
 

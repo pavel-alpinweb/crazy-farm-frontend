@@ -5,7 +5,7 @@ describe("User Model:", () => {
 
   test("doesn't throw error when User Model constructed", () => {
     expect(() => {
-      const testMyClass = new User();
+      new User();
     }).not.toThrowError();
   });
 
