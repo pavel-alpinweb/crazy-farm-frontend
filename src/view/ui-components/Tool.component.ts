@@ -16,7 +16,9 @@ const createToolTemplate = (state: State) => `
         class="tool 
         tool--${state.tool.name} 
         ${state.isActive ? "tool--active" : ""}"
-    ></div>
+    >
+        <div class="tool__price">${state.tool.price}</div>
+    </div>
 `;
 
 export class ToolComponent extends AbstractView {
