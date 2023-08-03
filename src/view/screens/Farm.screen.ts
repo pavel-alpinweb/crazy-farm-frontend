@@ -3,6 +3,7 @@ import { FarmScene } from "../scenes/Farm.scene";
 import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
+import {TOOLS_PRICES} from "../../utils/constants";
 
 interface Props {
   farm: FarmState;
@@ -32,24 +33,24 @@ export class FarmScreen extends AbstractScreen {
     farm: DEFAULT_FARM_STATE,
     toolSeedsData: {
       name: TOOLS.SEEDS,
-      price: 3,
+      price: TOOLS_PRICES[TOOLS.SEEDS],
     },
     toolListData: [
       {
         name: TOOLS.SHOVEL,
-        price: 0,
+        price: TOOLS_PRICES[TOOLS.SHOVEL],
       },
       {
         name: TOOLS.BAILER,
-        price: 0,
+        price: TOOLS_PRICES[TOOLS.BAILER],
       },
       {
         name: TOOLS.FERTILIZER,
-        price: 1,
+        price: TOOLS_PRICES[TOOLS.FERTILIZER],
       },
       {
         name: TOOLS.SPRAYER,
-        price: 2,
+        price: TOOLS_PRICES[TOOLS.SPRAYER],
       },
     ],
   };
