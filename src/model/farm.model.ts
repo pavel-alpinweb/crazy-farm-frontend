@@ -40,6 +40,10 @@ declare global {
     | "sprayer"
     | "seeds"
     | "empty";
+  interface ToolData {
+    name: tool;
+    price: number;
+  }
   interface Tools {
     SHOVEL: "shovel";
     BAILER: "bailer";
