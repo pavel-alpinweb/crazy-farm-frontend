@@ -31,7 +31,7 @@ export class ToolsSetWidget extends AbstractWidget {
 
   protected initComponents(): void {
     this.state.toolsList.forEach((tool: ToolData) => {
-      this.components[`Tool_${tool.name}`] = new ToolComponent({tool});
+      this.components[`Tool_${tool.name}`] = new ToolComponent({ tool });
     });
   }
 

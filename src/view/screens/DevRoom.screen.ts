@@ -3,7 +3,7 @@ import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
-import {TOOLS_PRICES} from "../../utils/constants";
+import { TOOLS_PRICES } from "../../utils/constants";
 
 interface State {
   farm: FarmState;
@@ -60,7 +60,9 @@ export class DevRoomScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.MainScene = new DevScene({ farm: this.state.farm });
-    this.components.Tool = new ToolComponent({ tool: this.state.toolSeedsData });
+    this.components.Tool = new ToolComponent({
+      tool: this.state.toolSeedsData,
+    });
     this.components.ToolSet = new ToolsSetWidget({
       toolsList: this.state.toolListData,
     });
