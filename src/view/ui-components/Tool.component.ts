@@ -42,7 +42,9 @@ export class ToolComponent extends AbstractView {
     const updateElement = (tool: tool) => {
       this.state.isActive =
         this.state.tool.name === tool && this.state.tool.name !== TOOLS.EMPTY;
-      this.rerenderElement();
+      this.state.isActive
+        ? this.element?.classList.add("tool--active")
+        : this.element?.classList.remove("tool--active");
     };
     eventBusFarm.on("Farm:set_tool", updateElement);
   }
