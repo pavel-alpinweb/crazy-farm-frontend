@@ -1,11 +1,12 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
-import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
+import {DEFAULT_FARM_STATE, TOOLS} from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 
 interface State {
   farm: FarmState;
+  player: Player;
 }
 
 const createDevRoomScreenTemplate = () => `
@@ -25,6 +26,9 @@ export class DevRoomScreen extends AbstractScreen {
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    player: {
+      cash: 0,
+    },
   };
 
   constructor() {
