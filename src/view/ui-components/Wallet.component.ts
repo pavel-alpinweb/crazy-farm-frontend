@@ -20,6 +20,12 @@ export class WalletComponent extends AbstractView{
         cash: 0,
     };
 
+    constructor(props: Props) {
+        super();
+        this.setState(props);
+        this.setEvents();
+    }
+
     protected setEvents(): void {
         console.warn("Init: WalletComponent Events");
     }
