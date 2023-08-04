@@ -1,9 +1,9 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
-import {DEFAULT_FARM_STATE, TOOLS} from "../../model/farm.model";
+import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
-import {WalletComponent} from "../ui-components/Wallet.component";
+import { WalletComponent } from "../ui-components/Wallet.component";
 
 interface State {
   farm: FarmState;
@@ -46,7 +46,9 @@ export class DevRoomScreen extends AbstractScreen {
     this.components.ToolSet = new ToolsSetWidget({
       toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
     });
-    this.components.Wallet = new WalletComponent({ cash: this.state.player.cash });
+    this.components.Wallet = new WalletComponent({
+      cash: this.state.player.cash,
+    });
   }
 
   protected renderComponents(): void {

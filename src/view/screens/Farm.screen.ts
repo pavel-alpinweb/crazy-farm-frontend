@@ -3,7 +3,7 @@ import { FarmScene } from "../scenes/Farm.scene";
 import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
-import {WalletComponent} from "../ui-components/Wallet.component";
+import { WalletComponent } from "../ui-components/Wallet.component";
 
 interface Props {
   farm: FarmState;
@@ -53,7 +53,9 @@ export class FarmScreen extends AbstractScreen {
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
     });
-    this.components.Wallet = new WalletComponent({ cash: this.state.player.cash });
+    this.components.Wallet = new WalletComponent({
+      cash: this.state.player.cash,
+    });
   }
 
   protected renderComponents(): void {
