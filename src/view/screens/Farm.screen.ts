@@ -3,6 +3,7 @@ import { FarmScene } from "../scenes/Farm.scene";
 import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
+import {WalletComponent} from "../ui-components/Wallet.component";
 
 interface Props {
   farm: FarmState;
@@ -17,6 +18,7 @@ interface State {
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
     <div class="farm-screen__scene" data-slot-scene></div>
+    <div class="farm-screen__wallet" data-slot-wallet></div>
     <div class="farm-screen__aside" data-slot-aside></div>
     <div class="farm-screen__footer" data-slot-footer></div>
 </div>
@@ -27,6 +29,7 @@ export class FarmScreen extends AbstractScreen {
     FarmScene: null,
     Seeds: null,
     ToolsSet: null,
+    Wallet: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
@@ -50,12 +53,14 @@ export class FarmScreen extends AbstractScreen {
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
     });
+    this.components.Wallet = new WalletComponent({ cash: this.state.player.cash });
   }
 
   protected renderComponents(): void {
     this.mountComponent("scene", this.components.FarmScene);
     this.mountComponent("aside", this.components.Seeds);
     this.mountComponent("footer", this.components.ToolsSet);
+    this.mountComponent("wallet", this.components.Wallet);
   }
 
   protected setEvents(): void {
