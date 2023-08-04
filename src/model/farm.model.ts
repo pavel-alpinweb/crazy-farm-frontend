@@ -77,6 +77,9 @@ declare global {
   interface FarmData {
     farm: FarmState;
     activeTool: tool;
+    player: {
+      cash: number;
+    },
   }
 }
 
