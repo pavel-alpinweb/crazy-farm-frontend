@@ -6,10 +6,12 @@ import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 
 interface Props {
   farm: FarmState;
+  player: Player;
 }
 
 interface State {
   farm: Props["farm"];
+  player: Props["player"];
 }
 
 const createFarmScreenTemplate = () => `
@@ -28,6 +30,9 @@ export class FarmScreen extends AbstractScreen {
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    player: {
+      cash: 0,
+    },
   };
 
   constructor(props: Props, methods: Methods) {
@@ -67,6 +72,7 @@ export class FarmScreen extends AbstractScreen {
 
   protected setState(props: Props): void {
     this.state.farm = props.farm;
+    this.state.player = props.player;
   }
 
   get template(): string {

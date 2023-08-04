@@ -98,6 +98,10 @@ export default class FarmModel {
     return this.initialState.farm;
   }
 
+  public get player(): Player {
+    return this.initialState.player;
+  }
+
   public get tool(): tool {
     return this.initialState.activeTool;
   }

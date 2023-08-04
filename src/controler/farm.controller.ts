@@ -42,7 +42,7 @@ export default class FarmController {
             Router.push("/#/login");
           }
           this.FarmScreen = new FarmScreen(
-            { farm: farmModel.state },
+            { farm: farmModel.state, player: farmModel.player },
             this.methods
           );
           appContainer?.insertAdjacentElement(
