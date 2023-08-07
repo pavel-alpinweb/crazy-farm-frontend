@@ -4,6 +4,7 @@ import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { WalletComponent } from "../ui-components/Wallet.component";
+import { TOOLS_PRICES } from "../../utils/constants";
 
 interface Props {
   farm: FarmState;
@@ -12,6 +13,8 @@ interface Props {
 
 interface State {
   farm: Props["farm"];
+  toolSeedsData: ToolData;
+  toolListData: Array<ToolData>;
   player: Props["player"];
 }
 
@@ -33,6 +36,28 @@ export class FarmScreen extends AbstractScreen {
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    toolSeedsData: {
+      name: TOOLS.SEEDS,
+      price: TOOLS_PRICES[TOOLS.SEEDS],
+    },
+    toolListData: [
+      {
+        name: TOOLS.SHOVEL,
+        price: TOOLS_PRICES[TOOLS.SHOVEL],
+      },
+      {
+        name: TOOLS.BAILER,
+        price: TOOLS_PRICES[TOOLS.BAILER],
+      },
+      {
+        name: TOOLS.FERTILIZER,
+        price: TOOLS_PRICES[TOOLS.FERTILIZER],
+      },
+      {
+        name: TOOLS.SPRAYER,
+        price: TOOLS_PRICES[TOOLS.SPRAYER],
+      },
+    ],
     player: {
       cash: 0,
     },
@@ -49,9 +74,11 @@ export class FarmScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.FarmScene = new FarmScene({ farm: this.state.farm });
-    this.components.Seeds = new ToolComponent({ name: TOOLS.SEEDS });
+    this.components.Seeds = new ToolComponent({
+      tool: this.state.toolSeedsData,
+    });
     this.components.ToolsSet = new ToolsSetWidget({
-      toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
+      toolsList: this.state.toolListData,
     });
     this.components.Wallet = new WalletComponent({
       cash: this.state.player.cash,
