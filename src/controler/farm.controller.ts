@@ -36,7 +36,7 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
-            await this.methods.connectToWebSocketServer(userToken);
+            this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },
               this.methods

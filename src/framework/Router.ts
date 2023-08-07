@@ -56,9 +56,9 @@ export class Router {
 
   public init(): void {
     window.addEventListener("hashchange", this.changePageHandler);
-    const token = Router.getParam("token");
-    if (token) {
-      Router.push(`/#/?token=${token}`);
+    const registrationToken = Router.getParam("token");
+    if (registrationToken) {
+      Router.push(`/#/?token=${registrationToken}`);
     } else if (Router.path[0].length === 0) {
       Router.push("/#/");
     }
