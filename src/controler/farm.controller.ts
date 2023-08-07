@@ -38,12 +38,12 @@ export default class FarmController {
           } else if (userToken) {
             await this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
-                { farm: farmModel.state },
-                this.methods
+              { farm: farmModel.state },
+              this.methods
             );
             appContainer?.insertAdjacentElement(
-                AbstractView.positions.BEFOREEND,
-                <Element>this.FarmScreen.element
+              AbstractView.positions.BEFOREEND,
+              <Element>this.FarmScreen.element
             );
           } else {
             alert("Авторизуйтесь");
@@ -56,7 +56,7 @@ export default class FarmController {
             Router.push("/#/login");
           } else {
             alert(
-                `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
             );
           }
         }
