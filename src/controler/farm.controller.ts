@@ -38,7 +38,7 @@ export default class FarmController {
           } else if (userToken) {
             await this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
-              { farm: farmModel.state },
+              { farm: farmModel.state, player: farmModel.player },
               this.methods
             );
             appContainer?.insertAdjacentElement(
