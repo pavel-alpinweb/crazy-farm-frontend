@@ -36,25 +36,29 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
-            this.methods.connectToWebSocketServer(userToken);
+            await this.methods.connectToWebSocketServer(userToken);
+            this.FarmScreen = new FarmScreen(
+                { farm: farmModel.state },
+                this.methods
+            );
+            appContainer?.insertAdjacentElement(
+                AbstractView.positions.BEFOREEND,
+                <Element>this.FarmScreen.element
+            );
           } else {
             alert("Авторизуйтесь");
             Router.push("/#/login");
           }
-          this.FarmScreen = new FarmScreen(
-            { farm: farmModel.state },
-            this.methods
-          );
-          appContainer?.insertAdjacentElement(
-            AbstractView.positions.BEFOREEND,
-            <Element>this.FarmScreen.element
-          );
         } catch (error: any) {
-          console.error("Farm controller init error:", error);
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
-          Router.push("/#/login");
+          console.error("Farm controller init error:", error.response);
+          if (error.response.data.httpErrorCode === 401) {
+            alert("Авторизуйтесь");
+            Router.push("/#/login");
+          } else {
+            alert(
+                `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
+            );
+          }
         }
       },
       destroy: () => {
