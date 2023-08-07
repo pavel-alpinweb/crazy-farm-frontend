@@ -1,11 +1,31 @@
 .tool {
   width: 64px;
-  height: 64px;
-  background-color: #8a8a8a;
+  height: 84px;
+  border-radius: 10px;
+  background-color: #d9d9d9;
   cursor: pointer;
-  background-position: center center;
-  background-size: 85%;
+  background-position: center 7px;
+  background-size: 80%;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  transition: transform 0.3s;
+  &__price {
+    margin-bottom: 7px;
+    font-size: 14px;
+    line-height: 100%;
+    color: #e47c32;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    font-weight: 700;
+    font-family: sans-serif;
+    height: 15px;
+    padding-left: 20px;
+    background: url("/assets/img/icons/money.svg?inline") no-repeat left center;
+    background-size: 90%;
+    display: flex;
+    align-items: center;
+  }
   &--seeds {
     background-image: url("/assets/img/icons/tools/seeds.svg?inline");
   }
@@ -22,6 +42,6 @@
     background-image: url("/assets/img/icons/tools/sprayer.svg?inline");
   }
   &--active {
-    transform: scale(1.5);
+    transform: translateY(-25%);
   }
 }
