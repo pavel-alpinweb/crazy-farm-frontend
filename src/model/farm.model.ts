@@ -97,7 +97,7 @@ declare global {
     activeTool: tool;
     player: Player;
   }
-  
+
   interface FarmResponse {
     containers: Array<Cell>;
     player: Player;

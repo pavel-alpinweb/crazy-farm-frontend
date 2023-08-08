@@ -1,4 +1,4 @@
-import FarmModel, {TOOLS_PRICES} from "./farm.model";
+import FarmModel, { TOOLS_PRICES } from "./farm.model";
 import { TOOLS, CHARACTERS_NEEDS } from "./farm.model";
 
 describe("Farm Model:", () => {

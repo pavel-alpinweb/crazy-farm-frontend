@@ -1,5 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {eventBusFarm} from "../../model/farm.model";
+import { eventBusFarm } from "../../model/farm.model";
 
 interface Props {
   cash: number;

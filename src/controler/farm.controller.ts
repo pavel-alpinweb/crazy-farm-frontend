@@ -84,7 +84,7 @@ export default class FarmController {
           this.Socket = new Socket(connectionToken.jws);
           this.Socket.onMessage((data: Concrete) => {
             // this.farmModel.setFarmState(<FarmState>data);
-            console.log('Get farm state:', data)
+            console.log("Get farm state:", data);
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);
