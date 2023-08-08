@@ -93,4 +93,11 @@ describe("Farm Model:", () => {
     farmModel.setPlayerCash(0);
     expect(farmModel.tool).toBe(TOOLS.EMPTY);
   });
+  test("method setPlayerCash reset active tool to empty if player cash lower than active tool price", () => {
+    const farmModel = new FarmModel();
+
+    farmModel.setActiveTool(TOOLS.SEEDS);
+    farmModel.setPlayerCash(1);
+    expect(farmModel.tool).toBe(TOOLS.EMPTY);
+  });
 });
