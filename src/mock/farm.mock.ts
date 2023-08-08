@@ -17,7 +17,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
           break;
         case TOOLS.BAILER:
           if (activeCharacter === "potato") {
-            activeNeeds = [];
+            activeNeeds = activeNeeds.filter((need) => need !== CHARACTERS_NEEDS.THIRST);
           }
           break;
         default:
