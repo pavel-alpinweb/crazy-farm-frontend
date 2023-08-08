@@ -9,7 +9,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
       switch (tool) {
         case TOOLS.SEEDS:
           activeCharacter = "potato";
-          activeNeeds.push(CHARACTERS_NEEDS.THIRST);
+          activeNeeds = [CHARACTERS_NEEDS.HUNGER, CHARACTERS_NEEDS.THIRST, CHARACTERS_NEEDS.SICKNESS];
           break;
         case TOOLS.SHOVEL:
           activeCharacter = "empty";
