@@ -1,7 +1,6 @@
 import {TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 
 let activeCharacter = "empty";
-let activeStage = 0;
 let activeNeeds: Array<need> = [];
 
 export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse> {
@@ -14,12 +13,10 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
           break;
         case TOOLS.SHOVEL:
           activeCharacter = "empty";
-          activeStage = 0;
           activeNeeds = [];
           break;
         case TOOLS.BAILER:
           if (activeCharacter === "potato") {
-            activeStage++;
             activeNeeds = [];
           }
           break;
@@ -37,7 +34,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
             name: "central",
             character: {
               type: activeCharacter,
-              stage: activeStage,
+              stage: 1,
               needs: activeNeeds,
             },
           },
