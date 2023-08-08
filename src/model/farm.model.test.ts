@@ -58,4 +58,9 @@ describe("Farm Model:", () => {
     farmModel.setFarmState(result);
     expect(farmModel.state).toEqual(result);
   });
+  test("method: setPlayerCash", () => {
+    const result = 1000;
+    farmModel.setPlayerCash(result);
+    expect(farmModel.player.cash).toBe(result);
+  });
 });
