@@ -5,7 +5,6 @@ import { KidPotatoSprite } from "../view/sprites/KidPotato.sprite";
 import { AdultPotatoSprite } from "../view/sprites/AdultPotato.sprite";
 import { GhostPotatoSprite } from "../view/sprites/GhostPotato.sprite";
 import { EmptyFieldSprite } from "../view/sprites/EmptyField.sprite";
-import { TOOLS } from "../model/farm.model";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
