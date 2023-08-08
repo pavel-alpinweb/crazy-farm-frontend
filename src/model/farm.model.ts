@@ -89,7 +89,7 @@ declare global {
   }
   
   interface FarmResponse {
-    farm: FarmState;
+    containers: Array<Cell>;
     player: Player;
   }
 }
