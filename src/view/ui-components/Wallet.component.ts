@@ -1,4 +1,5 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {eventBusFarm} from "../../model/farm.model";
 
 interface Props {
   cash: number;
@@ -27,7 +28,12 @@ export class WalletComponent extends AbstractView {
   }
 
   protected setEvents(): void {
-    console.warn("Init: WalletComponent Events");
+    const updateElement = (cash: number) => {
+      this.state.cash = cash;
+      this.rerenderElement();
+    };
+
+    eventBusFarm.on("Farm:update_wallet", updateElement);
   }
 
   protected setState(props: Props): void {
