@@ -17,8 +17,12 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
           playerCash -= TOOLS_PRICES[TOOLS.SEEDS];
           break;
         case TOOLS.SHOVEL:
+          if (activeCharacter !== "empty") {
+            playerCash += 10;
+          }
           activeCharacter = "empty";
           activeNeeds = [];
+          activeStage = 0;
           break;
         case TOOLS.BAILER:
           if (activeCharacter !== "empty") {
