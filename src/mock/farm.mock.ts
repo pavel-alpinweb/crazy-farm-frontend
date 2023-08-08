@@ -1,4 +1,5 @@
 import {TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
+import {TOOLS_PRICES} from "../utils/constants";
 
 let activeCharacter = "empty";
 let activeNeeds: Array<need> = [];
@@ -11,15 +12,21 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
         case TOOLS.SEEDS:
           activeCharacter = "potato";
           activeNeeds = [CHARACTERS_NEEDS.HUNGER, CHARACTERS_NEEDS.THIRST, CHARACTERS_NEEDS.SICKNESS];
-          playerCash -= 3;
+          playerCash -= TOOLS_PRICES[TOOLS.SEEDS];
           break;
         case TOOLS.SHOVEL:
           activeCharacter = "empty";
           activeNeeds = [];
           break;
         case TOOLS.BAILER:
-          if (activeCharacter === "potato") {
+          if (activeCharacter !== "empty") {
             activeNeeds = activeNeeds.filter((need) => need !== CHARACTERS_NEEDS.THIRST);
+          }
+          break;
+        case TOOLS.FERTILIZER:
+          if (activeCharacter !== "empty") {
+            activeNeeds = activeNeeds.filter((need) => need !== CHARACTERS_NEEDS.HUNGER);
+            playerCash -= TOOLS_PRICES[TOOLS.FERTILIZER];
           }
           break;
         default:
