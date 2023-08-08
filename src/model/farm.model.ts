@@ -99,7 +99,7 @@ export default class FarmModel {
     farm: DEFAULT_FARM_STATE,
     activeTool: TOOLS.EMPTY,
     player: {
-      cash: 1000,
+      cash: 200,
     },
   };
 
@@ -126,7 +126,7 @@ export default class FarmModel {
 
   public setFarmState(data: FarmState): void {
     if (JSON.stringify(data) !== JSON.stringify(this.state)) {
-      this.initialState.farm = data;
+      this.initialState.farm.containers = data.containers;
       eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }

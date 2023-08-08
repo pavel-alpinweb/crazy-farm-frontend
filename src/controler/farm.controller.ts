@@ -72,6 +72,8 @@ export default class FarmController {
           // test farm rendering, make function async
           const state = await updateFarmState(cell, this.farmModel.tool);
           this.farmModel.setFarmState(state);
+          this.farmModel.setPlayerCash(state.player.cash);
+          console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {

@@ -2,6 +2,7 @@ import {TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 
 let activeCharacter = "empty";
 let activeNeeds: Array<need> = [];
+let playerCash = 200;
 
 export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse> {
   return new Promise((resolve) => {
@@ -10,6 +11,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
         case TOOLS.SEEDS:
           activeCharacter = "potato";
           activeNeeds = [CHARACTERS_NEEDS.HUNGER, CHARACTERS_NEEDS.THIRST, CHARACTERS_NEEDS.SICKNESS];
+          playerCash -= 3;
           break;
         case TOOLS.SHOVEL:
           activeCharacter = "empty";
@@ -25,7 +27,7 @@ export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse>
       }
       resolve({
         player: {
-          cash: 0,
+          cash: playerCash,
         },
         containers: [
           {
