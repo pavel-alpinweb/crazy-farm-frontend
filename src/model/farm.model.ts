@@ -125,4 +125,11 @@ export default class FarmModel {
       eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }
+
+  public setPlayerCash(cash: number): void {
+    if (cash !== this.player.cash) {
+      this.initialState.player.cash = cash;
+      eventBusFarm.emit("Farm:update_wallet", this.player.cash);
+    }
+  }
 }
