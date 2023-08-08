@@ -145,7 +145,7 @@ export default class FarmModel {
   public setPlayerCash(cash: number): void {
     if (cash !== this.player.cash) {
       this.initialState.player.cash = cash;
-      if (this.player.cash === 0) {
+      if (this.player.cash === 0 || this.player.cash < TOOLS_PRICES[this.tool]) {
         this.setActiveTool(TOOLS.EMPTY);
       }
       eventBusFarm.emit("Farm:update_wallet", this.player.cash);
