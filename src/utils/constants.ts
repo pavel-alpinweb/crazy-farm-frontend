@@ -24,11 +24,3 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
 
 export const DIALOG_SPRITE_SIZE = 200;
 export const NEEDS_SPRITE_SIZE = 180;
-export const TOOLS_PRICES = {
-  [TOOLS.EMPTY]: 0,
-  [TOOLS.BAILER]: 0,
-  [TOOLS.FERTILIZER]: 1,
-  [TOOLS.SPRAYER]: 2,
-  [TOOLS.SHOVEL]: 0,
-  [TOOLS.SEEDS]: 3,
-};

@@ -13,7 +13,7 @@ export const TOOLS: Tools = {
   EMPTY: "empty",
 };
 
-const TOOLS_PRICES = {
+export const TOOLS_PRICES = {
   [TOOLS.EMPTY]: 0,
   [TOOLS.BAILER]: 0,
   [TOOLS.FERTILIZER]: 1,

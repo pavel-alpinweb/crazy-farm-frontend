@@ -1,5 +1,5 @@
 import {TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
-import {TOOLS_PRICES} from "../utils/constants";
+import {TOOLS_PRICES} from "../model/farm.model";
 
 let activeCharacter = "empty";
 let activeStage = 0;

@@ -3,7 +3,7 @@ import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
-import { TOOLS_PRICES } from "../../utils/constants";
+import {TOOLS_PRICES} from "../../model/farm.model";
 import { WalletComponent } from "../ui-components/Wallet.component";
 
 interface State {
