@@ -87,6 +87,11 @@ declare global {
     activeTool: tool;
     player: Player;
   }
+  
+  interface FarmResponse {
+    farm: FarmState;
+    player: Player;
+  }
 }
 
 export default class FarmModel {
