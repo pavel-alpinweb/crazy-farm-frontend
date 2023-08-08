@@ -12,6 +12,16 @@ export const TOOLS: Tools = {
   SEEDS: "seeds",
   EMPTY: "empty",
 };
+
+const TOOLS_PRICES = {
+  [TOOLS.EMPTY]: 0,
+  [TOOLS.BAILER]: 0,
+  [TOOLS.FERTILIZER]: 1,
+  [TOOLS.SPRAYER]: 2,
+  [TOOLS.SHOVEL]: 0,
+  [TOOLS.SEEDS]: 3,
+};
+
 export const DEFAULT_FARM_STATE: FarmState = {
   containers: [
     {
@@ -99,7 +109,7 @@ export default class FarmModel {
     farm: DEFAULT_FARM_STATE,
     activeTool: TOOLS.EMPTY,
     player: {
-      cash: 200,
+      cash: 10,
     },
   };
 
@@ -116,6 +126,7 @@ export default class FarmModel {
   }
 
   public setActiveTool(tool: tool) {
+    if (this.player.cash < TOOLS_PRICES[tool]) return;
     if (this.initialState.activeTool !== tool) {
       this.initialState.activeTool = tool;
     } else {
@@ -134,6 +145,9 @@ export default class FarmModel {
   public setPlayerCash(cash: number): void {
     if (cash !== this.player.cash) {
       this.initialState.player.cash = cash;
+      if (this.player.cash === 0) {
+        this.setActiveTool(TOOLS.EMPTY);
+      }
       eventBusFarm.emit("Farm:update_wallet", this.player.cash);
     }
   }

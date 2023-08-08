@@ -4,7 +4,7 @@ import {TOOLS_PRICES} from "../utils/constants";
 let activeCharacter = "empty";
 let activeStage = 0;
 let activeNeeds: Array<need> = [];
-let playerCash = 200;
+let playerCash = 10;
 
 export function updateFarmState(cell: string, tool: tool): Promise<FarmResponse> {
   return new Promise((resolve) => {
