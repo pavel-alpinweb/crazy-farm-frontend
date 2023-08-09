@@ -18,6 +18,7 @@ export class RenderFarmComposition {
   }
   private readonly charactersSpriteList: SpritesArray = {
     potato: [],
+    tomato: [],
     empty: [],
   };
 

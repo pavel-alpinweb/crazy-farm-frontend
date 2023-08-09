@@ -3,5 +3,5 @@ import {AbstractAnimatedSprite} from "../../framework/graphics/AbstractAnimatedS
 export class ExplosionTomatoSprite extends AbstractAnimatedSprite{
     protected spriteName = "explosion-tomato";
     protected framesNumber = 2;
-    protected animationSpeed = 0.03;
+    protected animationSpeed = 0.05;
 }

@@ -2,7 +2,7 @@
 
 "sprout-tomato_1.png":
 {
-	"frame": {"x":0,"y":0,"w":450,"h":512},
+	"frame": {"x":1,"y":1,"w":450,"h":512},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":47,"y":0,"w":450,"h":512},
@@ -10,7 +10,7 @@
 },
 "sprout-tomato_2.png":
 {
-	"frame": {"x":884,"y":0,"w":402,"h":512},
+	"frame": {"x":1,"y":1029,"w":402,"h":512},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":63,"y":0,"w":402,"h":512},
@@ -18,7 +18,7 @@
 },
 "sprout-tomato_3.png":
 {
-	"frame": {"x":450,"y":0,"w":434,"h":512},
+	"frame": {"x":1,"y":515,"w":434,"h":512},
 	"rotated": false,
 	"trimmed": true,
 	"spriteSourceSize": {"x":47,"y":0,"w":434,"h":512},
@@ -30,10 +30,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.1",
-	"image": "sprout.png",
+	"image": "sprout-tomato.png",
 	"format": "RGBA8888",
-	"size": {"w":1286,"h":512},
+	"size": {"w":452,"h":1542},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:5723e9c0db1f6559598b195402a00b53:4162b23167424f181d4a1ad21bf01fb1:a48747800cc6ab662e3a914fe3425a26$"
+	"smartupdate": "$TexturePacker:SmartUpdate:b83fca6832490483b2da870ca70cee88:4162b23167424f181d4a1ad21bf01fb1:5e97baa89a0b9d204cd73ab5c2ced6c6$"
 }
 }
