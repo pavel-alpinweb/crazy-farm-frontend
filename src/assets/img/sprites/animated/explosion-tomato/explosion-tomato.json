@@ -1,0 +1,31 @@
+{"frames": {
+
+"explosion-tomato_4.png":
+{
+	"frame": {"x":2,"y":2,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"explosion-tomato_5.png":
+{
+	"frame": {"x":518,"y":2,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"adult-tomato": ["explosion-tomato_4.png","explosion-tomato_5.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "explosion-tomato.png",
+	"format": "RGBA8888",
+	"size": {"w":1032,"h":516},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:4e432d334ffcc8db11a15e0ff7a0dcb7:47211de8b9a1246c0c389cdf0e4f20d6:7e3c3030b96c61f33480182c5c491a98$"
+}
+}

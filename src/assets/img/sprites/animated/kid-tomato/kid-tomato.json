@@ -1,0 +1,39 @@
+{"frames": {
+
+"kid-tomato_1.png":
+{
+	"frame": {"x":2,"y":503,"w":450,"h":481},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":31,"w":450,"h":481},
+	"sourceSize": {"w":512,"h":512}
+},
+"kid-tomato_2.png":
+{
+	"frame": {"x":2,"y":988,"w":450,"h":481},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":31,"w":450,"h":481},
+	"sourceSize": {"w":512,"h":512}
+},
+"kid-tomato_3.png":
+{
+	"frame": {"x":2,"y":2,"w":450,"h":497},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":15,"w":450,"h":497},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"kid-tomato": ["kid-tomato_1.png","kid-tomato_2.png","kid-tomato_3.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "kid-tomato.png",
+	"format": "RGBA8888",
+	"size": {"w":454,"h":1471},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:90de8e7bdbc213e9374c23275c516ac0:238af839efc27a9c5679e25903439f41:aa6c6a3c75cc0b3026ab539ea50fa88d$"
+}
+}

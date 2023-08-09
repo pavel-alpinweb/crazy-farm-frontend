@@ -1,0 +1,31 @@
+{"frames": {
+
+"adult-tomato_1.png":
+{
+	"frame": {"x":1,"y":1,"w":386,"h":417},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":95,"w":386,"h":417},
+	"sourceSize": {"w":512,"h":512}
+},
+"adult-tomato_2.png":
+{
+	"frame": {"x":389,"y":1,"w":386,"h":417},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":95,"w":386,"h":417},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"adult-tomato": ["adult-tomato_1.png","adult-tomato_2.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "adult-tomato.png",
+	"format": "RGBA8888",
+	"size": {"w":776,"h":419},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:64d9a0fbd1df66cf9c43300ffa2a9ab8:9525e8263e61ad9875049f25fe99c242:88268e4b801cd417a95e87d4a8a9478d$"
+}
+}
