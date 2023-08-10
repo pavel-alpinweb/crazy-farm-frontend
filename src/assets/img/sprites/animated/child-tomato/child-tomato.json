@@ -1,39 +1,41 @@
-{"frames": {
-
-"child-tomato_1.png":
 {
-	"frame": {"x":2,"y":2,"w":465,"h":497},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":47,"y":15,"w":465,"h":497},
-	"sourceSize": {"w":512,"h":512}
-},
-"child-tomato_2.png":
-{
-	"frame": {"x":893,"y":2,"w":434,"h":482},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":47,"y":15,"w":434,"h":482},
-	"sourceSize": {"w":512,"h":512}
-},
-"child-tomato_3.png":
-{
-	"frame": {"x":471,"y":2,"w":418,"h":497},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":47,"y":15,"w":418,"h":497},
-	"sourceSize": {"w":512,"h":512}
-}},
-"animations": {
-	"child-tomato": ["child-tomato_1.png","child-tomato_2.png","child-tomato_3.png"]
-},
-"meta": {
-	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.1",
-	"image": "child-tomato.png",
-	"format": "RGBA8888",
-	"size": {"w":1329,"h":501},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:758687a1aa092b126cd798a5cc0ac3fd:41742fba20f14fea34503cb220d23067:81bb9afff59591e3b8a858ff09e1d3ae$"
-}
+  "frames": {
+    "child-tomato_1.png": {
+      "frame": { "x": 2, "y": 2, "w": 465, "h": 497 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 47, "y": 15, "w": 465, "h": 497 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "child-tomato_2.png": {
+      "frame": { "x": 893, "y": 2, "w": 434, "h": 482 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 47, "y": 15, "w": 434, "h": 482 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "child-tomato_3.png": {
+      "frame": { "x": 471, "y": 2, "w": 418, "h": 497 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 47, "y": 15, "w": 418, "h": 497 },
+      "sourceSize": { "w": 512, "h": 512 }
+    }
+  },
+  "animations": {
+    "child-tomato": [
+      "child-tomato_1.png",
+      "child-tomato_2.png",
+      "child-tomato_3.png"
+    ]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "child-tomato.png",
+    "format": "RGBA8888",
+    "size": { "w": 1329, "h": 501 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:758687a1aa092b126cd798a5cc0ac3fd:41742fba20f14fea34503cb220d23067:81bb9afff59591e3b8a858ff09e1d3ae$"
+  }
 }

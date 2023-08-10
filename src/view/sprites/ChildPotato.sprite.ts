@@ -1,4 +1,4 @@
-import {AbstractAnimatedSprite} from "../../framework/graphics/AbstractAnimatedSprite";
+import { AbstractAnimatedSprite } from "../../framework/graphics/AbstractAnimatedSprite";
 
 export class ChildPotatoSprite extends AbstractAnimatedSprite {
   protected spriteName = "child-potato";
