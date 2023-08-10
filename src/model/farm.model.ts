@@ -21,6 +21,11 @@ export const TOOLS_PRICES = {
   [TOOLS.SHOVEL]: 0,
   [TOOLS.SEEDS]: 3,
 };
+export const CHARACTERS_NEEDS: CharactersNeeds = {
+  HUNGER: "HUNGER",
+  SICKNESS: "SICKNESS",
+  THIRST: "THIRST",
+};
 
 export const DEFAULT_FARM_STATE: FarmState = {
   containers: [
@@ -35,11 +40,6 @@ export const DEFAULT_FARM_STATE: FarmState = {
       },
     },
   ],
-};
-export const CHARACTERS_NEEDS: CharactersNeeds = {
-  HUNGER: "HUNGER",
-  SICKNESS: "SICKNESS",
-  THIRST: "THIRST",
 };
 
 declare global {
