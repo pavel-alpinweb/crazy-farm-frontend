@@ -81,6 +81,7 @@ export class RenderFarmComposition {
       (cont) => cont.name === cell.name
     );
     if (cell.character && container) {
+      if (container.render?.children[0] && container.render?.children[0]?.name === "explosion-tomato") return;
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];

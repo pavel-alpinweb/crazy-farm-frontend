@@ -34,8 +34,8 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "central",
       character: {
-        type: "tomato",
-        stage: 5,
+        type: "empty",
+        stage: 0,
         needs: [],
       },
     },
