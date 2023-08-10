@@ -5,7 +5,6 @@ import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
 import { DropSprite } from "../view/sprites/Drop.sprite";
 import { RenderSceneComposition } from "./RenderScene.composition";
-import {farmAssetsLoader} from "../main";
 import * as PIXI from "pixi.js";
 
 export class RenderFarmComposition {
