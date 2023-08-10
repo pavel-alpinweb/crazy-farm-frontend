@@ -23,6 +23,7 @@ export abstract class AbstractAnimatedSprite {
       );
       animatedSprite.anchor.set(0.5);
       animatedSprite.animationSpeed = this.animationSpeed;
+      animatedSprite.name = this.spriteName;
       animatedSprite.play();
     }
     return animatedSprite;

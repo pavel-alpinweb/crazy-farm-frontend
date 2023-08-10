@@ -16,6 +16,7 @@ export abstract class AbstractStaticSprite {
     if (this.texture) {
       sprite = new PIXI.Sprite(this.texture);
       sprite.anchor.set(0.5);
+      sprite.name = this.spriteName;
     }
     return sprite;
   }

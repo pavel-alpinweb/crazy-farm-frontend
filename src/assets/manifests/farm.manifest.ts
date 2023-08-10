@@ -74,5 +74,40 @@ export const manifest: ResolverManifest = {
         sprite_data: `${ANIMATED_SPRITE_URL}/ghost-potato/ghost-potato.json`,
       },
     },
+    {
+      name: "sprout-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-tomato/sprout-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/sprout-tomato/sprout-tomato.json`,
+      },
+    },
+    {
+      name: "child-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/child-tomato/child-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/child-tomato/child-tomato.json`,
+      },
+    },
+    {
+      name: "kid-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/kid-tomato/kid-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/kid-tomato/kid-tomato.json`,
+      },
+    },
+    {
+      name: "adult-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/adult-tomato/adult-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/adult-tomato/adult-tomato.json`,
+      },
+    },
+    {
+      name: "explosion-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.json`,
+      },
+    },
   ],
 };
