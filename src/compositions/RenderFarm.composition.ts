@@ -5,8 +5,8 @@ import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
 import { DropSprite } from "../view/sprites/Drop.sprite";
 import { RenderSceneComposition } from "./RenderScene.composition";
+import {farmAssetsLoader} from "../main";
 import * as PIXI from "pixi.js";
-import {ExplosionTomatoSprite} from "../view/sprites/ExplosionTomato.sprite";
 
 export class RenderFarmComposition {
   private scene!: PIXI.Application;
@@ -85,6 +85,14 @@ export class RenderFarmComposition {
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
       this.renderSceneComposition.addSprite(container, await sprite?.sprite());
+      const explosionSprite = <PIXI.AnimatedSprite>await this.charactersSpriteList.tomato[5]?.sprite();
+      explosionSprite.onLoop = async () => {
+        this.renderSceneComposition.removeAllSprites(container);
+        this.renderSceneComposition.addSprite(
+            container,
+            await this.charactersSpriteList?.empty[0]?.sprite()
+        );
+      };
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
@@ -92,14 +100,6 @@ export class RenderFarmComposition {
         await this.charactersSpriteList?.empty[0]?.sprite()
       );
     }
-  }
-
-  public async setSpritesHandlers() {
-    const explosionSprite = <PIXI.AnimatedSprite>await this.charactersSpriteList.tomato[5]?.sprite();
-    console.log('all frames', explosionSprite);
-    explosionSprite.onLoop = () => {
-      console.log('current loop');
-    };
   }
 
   public renderNeedsSprites(cell: Cell) {
