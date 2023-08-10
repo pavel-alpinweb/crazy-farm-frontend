@@ -47,7 +47,7 @@ export class DevScene extends AbstractScene {
   }
 
   protected setHandlers(): void {
-    console.log("Init: setHandlers");
+    this.renderFarmComposition.setSpritesHandlers();
   }
 
   protected setState(props: Props): void {

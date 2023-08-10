@@ -6,6 +6,7 @@ import { HungerSprite } from "../view/sprites/Hunger.sprite";
 import { DropSprite } from "../view/sprites/Drop.sprite";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
+import {ExplosionTomatoSprite} from "../view/sprites/ExplosionTomato.sprite";
 
 export class RenderFarmComposition {
   private scene!: PIXI.Application;
@@ -91,6 +92,14 @@ export class RenderFarmComposition {
         await this.charactersSpriteList?.empty[0]?.sprite()
       );
     }
+  }
+
+  public async setSpritesHandlers() {
+    const explosionSprite = <PIXI.AnimatedSprite>await this.charactersSpriteList.tomato[5]?.sprite();
+    console.log('all frames', explosionSprite);
+    explosionSprite.onLoop = () => {
+      console.log('current loop');
+    };
   }
 
   public renderNeedsSprites(cell: Cell) {
