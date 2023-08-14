@@ -66,14 +66,14 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: async (cell: string) => {
+      updateFarm: (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
           // this.farmModel.setPlayerCash(state.player.cash);
-          console.log(this.farmModel.player);
+          // console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {

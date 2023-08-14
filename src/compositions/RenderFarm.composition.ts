@@ -17,7 +17,7 @@ export class RenderFarmComposition {
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
   }
   private readonly charactersSpriteList: SpritesArray = {
-    potato: [],
+    Potato: [],
     Tomato: [],
     empty: [],
   };
