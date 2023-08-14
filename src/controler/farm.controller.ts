@@ -47,7 +47,7 @@ export default class FarmController {
             );
           }
         } catch (error: any) {
-          console.error("Farm controller init error:", error.response);
+          console.error("Farm controller init error:", error);
           if (error.response.data.httpErrorCode === 401) {
             alert("Авторизуйтесь");
             Router.push("/#/login");
