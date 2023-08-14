@@ -5,7 +5,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
-import { updateFarmState } from "../mock/farm.mock";
+// import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -68,11 +68,11 @@ export default class FarmController {
       },
       updateFarm: async (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
-          // this.Socket?.push({ cell, tool: this.farmModel.tool });
+          this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
-          const state = await updateFarmState(cell, this.farmModel.tool);
-          this.farmModel.setFarmState(state);
-          this.farmModel.setPlayerCash(state.player.cash);
+          // const state = await updateFarmState(cell, this.farmModel.tool);
+          // this.farmModel.setFarmState(state);
+          // this.farmModel.setPlayerCash(state.player.cash);
           console.log(this.farmModel.player);
         }
       },
@@ -82,9 +82,10 @@ export default class FarmController {
             userToken
           );
           this.Socket = new Socket(connectionToken.jws);
-          this.Socket.onMessage((data: Concrete) => {
-            // this.farmModel.setFarmState(<FarmState>data);
-            console.log("Get farm state:", data);
+          this.Socket.onMessage((data: FarmResponse) => {
+            this.farmModel.setFarmState(data);
+            this.farmModel.setPlayerCash(data.player.cash);
+            // console.log("Get farm state:", data);
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);

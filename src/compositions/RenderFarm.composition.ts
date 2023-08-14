@@ -18,7 +18,7 @@ export class RenderFarmComposition {
   }
   private readonly charactersSpriteList: SpritesArray = {
     potato: [],
-    tomato: [],
+    Tomato: [],
     empty: [],
   };
 
@@ -90,7 +90,7 @@ export class RenderFarmComposition {
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
       this.renderSceneComposition.addSprite(container, await sprite?.sprite());
       const explosionSprite = <PIXI.AnimatedSprite>(
-        await this.charactersSpriteList.tomato[5]?.sprite()
+        await this.charactersSpriteList.Tomato[5]?.sprite()
       );
       explosionSprite.onLoop = async () => {
         if (container.render?.children[0].name === "explosion-tomato") {
