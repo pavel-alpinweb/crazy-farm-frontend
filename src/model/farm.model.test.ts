@@ -18,6 +18,7 @@ describe("Farm Model:", () => {
       "seeds",
       "empty",
     ];
+    farmModel.setPlayerCash(10);
     for (const tool of tools) {
       farmModel.setActiveTool(tool);
       expect(farmModel.tool).toBe(tool);
