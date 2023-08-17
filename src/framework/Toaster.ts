@@ -32,7 +32,7 @@ export class Toaster {
     const $toaster = newElement.firstElementChild;
     this.add(<HTMLElement>$toaster);
     setTimeout(() => {
-        this.remove(<HTMLElement>$toaster);
+      this.remove(<HTMLElement>$toaster);
     }, this.timeout);
   }
 }

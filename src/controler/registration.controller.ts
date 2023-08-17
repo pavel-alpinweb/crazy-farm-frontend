@@ -4,7 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
 import AuthService from "../services/auth.service";
-import {$toaster} from "../main";
+import { $toaster } from "../main";
 
 export class RegistrationController {
   private readonly userModel: User;

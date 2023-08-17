@@ -6,7 +6,7 @@ import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
-import {$toaster} from "../main";
+import { $toaster } from "../main";
 
 export class LoginController {
   private readonly userModel: User;

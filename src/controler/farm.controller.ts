@@ -11,7 +11,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
-import {$toaster} from "../main";
+import { $toaster } from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
