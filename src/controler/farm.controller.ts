@@ -48,12 +48,13 @@ export default class FarmController {
             );
           }
         } catch (error: any) {
-          console.error("Farm controller init error:", error);
           if (error.response.data.httpErrorCode === 401) {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/login");
           } else {
-            $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
+            for (const reason of error.response.data.reasons) {
+              $toaster.show(`${reason}`, false);
+            }
           }
         }
       },
@@ -90,7 +91,9 @@ export default class FarmController {
             console.warn("Подключение закрыто", event.reason);
           });
         } catch (error: any) {
-          $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
           Router.push("/#/login");
         }
       },

@@ -39,7 +39,9 @@ export class LoginController {
           Service.setToken(result.jws);
           Router.push("/#/");
         } catch (error: any) {
-          $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
         } finally {
           this.userModel.setLoading(false);
         }

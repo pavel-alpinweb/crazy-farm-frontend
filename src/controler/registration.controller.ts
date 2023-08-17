@@ -44,7 +44,9 @@ export class RegistrationController {
             await AuthService.registrationFirstStep(data);
           $toaster.show(result, true);
         } catch (error: any) {
-          $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
         } finally {
           this.userModel.setLoading(false);
         }
