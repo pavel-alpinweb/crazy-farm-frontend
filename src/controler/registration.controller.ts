@@ -4,6 +4,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { RegistrationScreen } from "../view/screens/Registration.screen";
 import AuthService from "../services/auth.service";
+import {$toaster} from "../main";
 
 export class RegistrationController {
   private readonly userModel: User;
@@ -41,11 +42,9 @@ export class RegistrationController {
         try {
           const result: successMessage =
             await AuthService.registrationFirstStep(data);
-          alert(result);
+          $toaster.show(result, true);
         } catch (error: any) {
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
+          $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
         } finally {
           this.userModel.setLoading(false);
         }

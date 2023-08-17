@@ -11,6 +11,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
+import {$toaster} from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -49,12 +50,10 @@ export default class FarmController {
         } catch (error: any) {
           console.error("Farm controller init error:", error);
           if (error.response.data.httpErrorCode === 401) {
-            alert("Авторизуйтесь");
+            $toaster.show("Авторизуйтесь", false);
             Router.push("/#/login");
           } else {
-            alert(
-              `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-            );
+            $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
           }
         }
       },
@@ -91,9 +90,7 @@ export default class FarmController {
             console.warn("Подключение закрыто", event.reason);
           });
         } catch (error: any) {
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
+          $toaster.show(`Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`, false);
           Router.push("/#/login");
         }
       },
