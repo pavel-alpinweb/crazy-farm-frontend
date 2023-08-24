@@ -18,6 +18,7 @@ export class RenderFarmComposition {
   }
   private readonly charactersSpriteList: SpritesArray = {
     potato: [],
+    tomato: [],
     empty: [],
   };
 
@@ -79,10 +80,27 @@ export class RenderFarmComposition {
       (cont) => cont.name === cell.name
     );
     if (cell.character && container) {
+      if (
+        container.render?.children[0] &&
+        container.render?.children[0]?.name === "explosion-tomato"
+      )
+        return;
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
       this.renderSceneComposition.addSprite(container, await sprite?.sprite());
+      const explosionSprite = <PIXI.AnimatedSprite>(
+        await this.charactersSpriteList.tomato[5]?.sprite()
+      );
+      explosionSprite.onLoop = async () => {
+        if (container.render?.children[0].name === "explosion-tomato") {
+          this.renderSceneComposition.removeAllSprites(container);
+          this.renderSceneComposition.addSprite(
+            container,
+            await this.charactersSpriteList?.empty[0]?.sprite()
+          );
+        }
+      };
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
