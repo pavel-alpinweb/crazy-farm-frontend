@@ -1,0 +1,41 @@
+{
+  "frames": {
+    "sprout-potato_01.png": {
+      "frame": { "x": 0, "y": 481, "w": 450, "h": 465 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 31, "y": 47, "w": 450, "h": 465 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "sprout-potato_02.png": {
+      "frame": { "x": 0, "y": 946, "w": 434, "h": 449 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 31, "y": 63, "w": 434, "h": 449 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "sprout-potato_03.png": {
+      "frame": { "x": 0, "y": 0, "w": 450, "h": 481 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 31, "y": 31, "w": 450, "h": 481 },
+      "sourceSize": { "w": 512, "h": 512 }
+    }
+  },
+  "animations": {
+    "sprout-potato": [
+      "sprout-potato_01.png",
+      "sprout-potato_02.png",
+      "sprout-potato_03.png"
+    ]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "sprout-potato.png",
+    "format": "RGBA8888",
+    "size": { "w": 450, "h": 1380 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:4f18dfafe08b71f9a77756042a3f12ad:058a8e4ee9a69967b7729035a191b517:810ded1935e636bb37c8801fd027fec3$"
+  }
+}

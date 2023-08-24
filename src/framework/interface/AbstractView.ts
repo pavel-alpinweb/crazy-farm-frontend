@@ -1,5 +1,6 @@
 declare global {
   type Concrete = string | number | boolean | symbol | object;
+  type callback = (...args: any) => void;
   interface RenderPositions {
     BEFOREBEGIN: "beforebegin";
     AFTERBEGIN: "afterbegin";
@@ -14,7 +15,7 @@ declare global {
     [key: string]: (callback: (data: Concrete) => void) => void;
   }
   interface Methods {
-    [key: string]: (...args: any) => void;
+    [key: string]: callback;
   }
 }
 export abstract class AbstractView {

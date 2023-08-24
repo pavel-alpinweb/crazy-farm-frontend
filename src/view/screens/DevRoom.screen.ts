@@ -1,16 +1,22 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
-import { DEFAULT_FARM_STATE, TOOLS } from "../../utils/constants";
+import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
+import { TOOLS_PRICES } from "../../model/farm.model";
+import { WalletComponent } from "../ui-components/Wallet.component";
 
 interface State {
   farm: FarmState;
+  player: Player;
+  toolSeedsData: ToolData;
+  toolListData: Array<ToolData>;
 }
 
 const createDevRoomScreenTemplate = () => `
 <div class="dev-room">
     <div class="dev-room__scene" data-slot-scene></div>
+    <div class="dev-room__wallet" data-slot-wallet></div>
     <div class="dev-room__tool" data-slot-tool></div>
     <div class="dev-room__tool-set" data-slot-tool-set></div>
 </div>
@@ -22,9 +28,35 @@ export class DevRoomScreen extends AbstractScreen {
     MainScene: null,
     Tool: null,
     ToolSet: null,
+    Wallet: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    player: {
+      cash: 1000,
+    },
+    toolSeedsData: {
+      name: TOOLS.SEEDS,
+      price: TOOLS_PRICES[TOOLS.SEEDS],
+    },
+    toolListData: [
+      {
+        name: TOOLS.SHOVEL,
+        price: TOOLS_PRICES[TOOLS.SHOVEL],
+      },
+      {
+        name: TOOLS.BAILER,
+        price: TOOLS_PRICES[TOOLS.BAILER],
+      },
+      {
+        name: TOOLS.FERTILIZER,
+        price: TOOLS_PRICES[TOOLS.FERTILIZER],
+      },
+      {
+        name: TOOLS.SPRAYER,
+        price: TOOLS_PRICES[TOOLS.SPRAYER],
+      },
+    ],
   };
 
   constructor() {
@@ -35,9 +67,14 @@ export class DevRoomScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.MainScene = new DevScene({ farm: this.state.farm });
-    this.components.Tool = new ToolComponent({ name: TOOLS.SEEDS });
+    this.components.Tool = new ToolComponent({
+      tool: this.state.toolSeedsData,
+    });
     this.components.ToolSet = new ToolsSetWidget({
-      toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
+      toolsList: this.state.toolListData,
+    });
+    this.components.Wallet = new WalletComponent({
+      cash: this.state.player.cash,
     });
   }
 
@@ -45,6 +82,7 @@ export class DevRoomScreen extends AbstractScreen {
     this.mountComponent("scene", this.components.MainScene);
     this.mountComponent("tool", this.components.Tool);
     this.mountComponent("tool-set", this.components.ToolSet);
+    this.mountComponent("wallet", this.components.Wallet);
   }
 
   protected setEvents(): void {

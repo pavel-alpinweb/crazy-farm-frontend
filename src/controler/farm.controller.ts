@@ -1,5 +1,6 @@
 import { FarmScreen } from "../view/screens/Farm.screen";
-import { appContainer, TOOLS } from "../utils/constants";
+import { appContainer } from "../utils/constants";
+import { TOOLS } from "../model/farm.model";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
@@ -10,6 +11,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
+import { $toaster } from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -35,24 +37,28 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
-            this.methods.connectToWebSocketServer(userToken);
+            await this.methods.connectToWebSocketServer(userToken);
+            this.FarmScreen = new FarmScreen(
+              { farm: farmModel.state, player: farmModel.player },
+              this.methods
+            );
+            appContainer?.insertAdjacentElement(
+              AbstractView.positions.BEFOREEND,
+              <Element>this.FarmScreen.element
+            );
           } else {
-            alert("Авторизуйтесь");
+            $toaster.show("Авторизуйтесь", false);
             Router.push("/#/login");
           }
-          this.FarmScreen = new FarmScreen(
-            { farm: farmModel.state },
-            this.methods
-          );
-          appContainer?.insertAdjacentElement(
-            AbstractView.positions.BEFOREEND,
-            <Element>this.FarmScreen.element
-          );
         } catch (error: any) {
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
-          Router.push("/#/login");
+          if (error.response.data.httpErrorCode === 401) {
+            $toaster.show("Авторизуйтесь", false);
+            Router.push("/#/login");
+          } else {
+            for (const reason of error.response.data.reasons) {
+              $toaster.show(`${reason}`, false);
+            }
+          }
         }
       },
       destroy: () => {
@@ -66,9 +72,11 @@ export default class FarmController {
       updateFarm: (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
-          // test farm rendering make function async
+          // test farm rendering, make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
+          // this.farmModel.setPlayerCash(state.player.cash);
+          // console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
@@ -77,16 +85,17 @@ export default class FarmController {
             userToken
           );
           this.Socket = new Socket(connectionToken.jws);
-          this.Socket.onMessage((data: Concrete) => {
-            this.farmModel.setFarmState(<FarmState>data);
+          this.Socket.onMessage((data: FarmResponse) => {
+            this.farmModel.setFarmState(data);
+            this.farmModel.setPlayerCash(data.player.cash);
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);
           });
         } catch (error: any) {
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
           Router.push("/#/login");
         }
       },

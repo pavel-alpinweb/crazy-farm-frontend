@@ -1,27 +1,32 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import { TOOLS } from "../../utils/constants";
-import { eventBus } from "../../main";
+import { TOOLS } from "../../model/farm.model";
+import { eventBusFarm } from "../../model/farm.model";
 
 interface Props {
-  name: tool;
+  tool: ToolData;
 }
 
 interface State {
-  name: Props["name"];
+  tool: Props["tool"];
   isActive: boolean;
 }
 
 const createToolTemplate = (state: State) => `
     <div 
         class="tool 
-        tool--${state.name} 
+        tool--${state.tool.name} 
         ${state.isActive ? "tool--active" : ""}"
-    ></div>
+    >
+        <div class="tool__price">${state.tool.price}</div>
+    </div>
 `;
 
 export class ToolComponent extends AbstractView {
   protected state: State = {
-    name: TOOLS.EMPTY,
+    tool: {
+      name: TOOLS.EMPTY,
+      price: 0,
+    },
     isActive: false,
   };
   constructor(props: Props) {
@@ -36,22 +41,24 @@ export class ToolComponent extends AbstractView {
     };
     const updateElement = (tool: tool) => {
       this.state.isActive =
-        this.state.name === tool && this.state.name !== TOOLS.EMPTY;
-      this.rerenderElement();
+        this.state.tool.name === tool && this.state.tool.name !== TOOLS.EMPTY;
+      this.state.isActive
+        ? this.element?.classList.add("tool--active")
+        : this.element?.classList.remove("tool--active");
     };
-    eventBus.on("Farm:set_tool", updateElement);
+    eventBusFarm.on("Farm:set_tool", updateElement);
   }
 
   setHandlers() {
     this.element?.addEventListener("click", () => {
       if (this.events.click) {
-        this.events.click(this.state.name);
+        this.events.click(this.state.tool.name);
       }
     });
   }
 
   protected setState(props: Props): void {
-    this.state.name = props.name;
+    this.state.tool = props.tool;
   }
 
   get template(): string {

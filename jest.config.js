@@ -1,15 +1,15 @@
 module.exports = {
-  roots: ['<rootDir>/src'],
-  transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        useESM: true,
-      },
+    "roots": [
+        "<rootDir>/src"
     ],
-  },
-  extensionsToTreatAsEsm: ['.ts'],
-  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-  moduleFileExtensions: ['ts', 'js', 'json'],
-  "moduleDirectories": ["node_modules", "src"],
+    "testMatch": [
+        "**/__tests__/**/*.+(ts|tsx|js)",
+        "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+        "^.+\\.(ts|tsx)$": "ts-jest"
+    },
+    "moduleNameMapper": {
+        '\\.(css|scss)$': 'identity-obj-proxy'
+    },
 }
