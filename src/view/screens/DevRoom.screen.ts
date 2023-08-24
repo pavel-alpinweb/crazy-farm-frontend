@@ -3,9 +3,12 @@ import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
+import { TOOLS_PRICES } from "../../utils/constants";
 
 interface State {
   farm: FarmState;
+  toolSeedsData: ToolData;
+  toolListData: Array<ToolData>;
 }
 
 const createDevRoomScreenTemplate = () => `
@@ -25,6 +28,28 @@ export class DevRoomScreen extends AbstractScreen {
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    toolSeedsData: {
+      name: TOOLS.SEEDS,
+      price: TOOLS_PRICES[TOOLS.SEEDS],
+    },
+    toolListData: [
+      {
+        name: TOOLS.SHOVEL,
+        price: TOOLS_PRICES[TOOLS.SHOVEL],
+      },
+      {
+        name: TOOLS.BAILER,
+        price: TOOLS_PRICES[TOOLS.BAILER],
+      },
+      {
+        name: TOOLS.FERTILIZER,
+        price: TOOLS_PRICES[TOOLS.FERTILIZER],
+      },
+      {
+        name: TOOLS.SPRAYER,
+        price: TOOLS_PRICES[TOOLS.SPRAYER],
+      },
+    ],
   };
 
   constructor() {
@@ -35,9 +60,11 @@ export class DevRoomScreen extends AbstractScreen {
 
   protected initComponents(): void {
     this.components.MainScene = new DevScene({ farm: this.state.farm });
-    this.components.Tool = new ToolComponent({ name: TOOLS.SEEDS });
+    this.components.Tool = new ToolComponent({
+      tool: this.state.toolSeedsData,
+    });
     this.components.ToolSet = new ToolsSetWidget({
-      toolsList: [TOOLS.SHOVEL, TOOLS.BAILER, TOOLS.FERTILIZER, TOOLS.SPRAYER],
+      toolsList: this.state.toolListData,
     });
   }
 

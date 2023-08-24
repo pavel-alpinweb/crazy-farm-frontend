@@ -1,9 +1,8 @@
 declare global {
   interface Listeners {
-    [key: string]: [] | (callback[]);
+    [key: string]: [] | callback[];
   }
 }
-
 
 export class EventBus {
   private listeners: Listeners = {};
