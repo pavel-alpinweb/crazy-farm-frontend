@@ -4,7 +4,7 @@ import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { WalletComponent } from "../ui-components/Wallet.component";
-import { TOOLS_PRICES } from "../../utils/constants";
+import { TOOLS_PRICES } from "../../model/farm.model";
 
 interface Props {
   farm: FarmState;
