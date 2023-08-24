@@ -1,0 +1,26 @@
+.toaster {
+  width: 100%;
+  max-width: 75vw;
+  padding: 10px;
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  font-family: sans-serif;
+  max-height: 90px;
+  overflow: auto;
+  margin-bottom: 10px;
+  &--success {
+    background: #3bad37;
+  }
+  &--error {
+    background: #ff4848;
+  }
+}
+
+.toaster-container {
+  position: fixed;
+  bottom: 53px;
+  left: 0;
+  right: 0;
+}

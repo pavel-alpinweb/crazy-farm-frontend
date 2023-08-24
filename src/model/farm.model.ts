@@ -109,7 +109,7 @@ export default class FarmModel {
     farm: DEFAULT_FARM_STATE,
     activeTool: TOOLS.EMPTY,
     player: {
-      cash: 10,
+      cash: 0,
     },
   };
 

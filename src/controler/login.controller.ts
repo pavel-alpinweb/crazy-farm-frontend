@@ -6,6 +6,7 @@ import { LoginScreen } from "../view/screens/Login.screen";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
+import { $toaster } from "../main";
 
 export class LoginController {
   private readonly userModel: User;
@@ -38,9 +39,9 @@ export class LoginController {
           Service.setToken(result.jws);
           Router.push("/#/");
         } catch (error: any) {
-          alert(
-            `Error ${error.response.data.httpErrorCode}: ${error.response.data.httpStatus}`
-          );
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
         } finally {
           this.userModel.setLoading(false);
         }

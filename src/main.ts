@@ -1,6 +1,5 @@
 import User from "./model/user.model";
 import { Router } from "./framework/Router";
-import { EventBus } from "./framework/EventBus";
 import FarmController from "./controler/farm.controller";
 import Error404ScreenController from "./controler/404.controller";
 import FarmModel from "./model/farm.model";
@@ -10,8 +9,9 @@ import { RegistrationController } from "./controler/registration.controller";
 import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
+import { Toaster } from "./framework/Toaster";
 
-export const eventBus: EventBus = new EventBus();
+export const $toaster = new Toaster(3000);
 export const farmAssetsLoader = new AssetsLoader(manifest);
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
