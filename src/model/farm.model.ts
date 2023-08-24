@@ -78,9 +78,14 @@ declare global {
     >;
   }
 
+  interface Player {
+    cash: number;
+  }
+
   interface FarmData {
     farm: FarmState;
     activeTool: tool;
+    player: Player;
   }
 }
 
@@ -88,10 +93,17 @@ export default class FarmModel {
   private initialState: FarmData = {
     farm: DEFAULT_FARM_STATE,
     activeTool: TOOLS.EMPTY,
+    player: {
+      cash: 1000,
+    },
   };
 
   public get state(): FarmState {
     return this.initialState.farm;
+  }
+
+  public get player(): Player {
+    return this.initialState.player;
   }
 
   public get tool(): tool {
