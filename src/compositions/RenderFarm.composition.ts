@@ -12,6 +12,9 @@ export class RenderFarmComposition {
   private renderSceneComposition!: RenderSceneComposition;
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
+  private readonly ROWS_COUNT:number = 1;
+  private readonly COLS_COUNT:number  = 1;
+  private readonly CELL_SIZE:number  = 90;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
