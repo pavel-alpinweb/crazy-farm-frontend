@@ -101,12 +101,18 @@ export class RenderFarmComposition {
           );
         }
       };
+
+      this.renderSceneComposition.setContainerWidth(container, 90);
+      this.renderSceneComposition.setContainerHeight(container, 90);
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
         container,
         await this.charactersSpriteList?.empty[0]?.sprite()
       );
+
+      this.renderSceneComposition.setContainerWidth(container, 90);
+      this.renderSceneComposition.setContainerHeight(container, 90);
     }
   }
 
