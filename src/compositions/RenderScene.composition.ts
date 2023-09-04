@@ -14,6 +14,18 @@ export class RenderSceneComposition {
     }
   }
 
+  public setContainerWidth(container: Container, width: number) {
+    if (container.render) {
+      container.render.width = width;
+    }
+  }
+
+  public setContainerHeight(container: Container, height: number) {
+    if (container.render) {
+      container.render.height = height;
+    }
+  }
+
   public setContainerX(container: Container, x: number): void {
     if (container.render) {
       container.render.x = x;
