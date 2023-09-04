@@ -46,6 +46,9 @@ export default class FarmController {
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
+          } else {
+            $toaster.show("Авторизуйтесь", false);
+            Router.push("/#/login");
           }
         } catch (error: any) {
           if (error.response.data.httpErrorCode === 401) {
@@ -85,7 +88,6 @@ export default class FarmController {
           this.Socket.onMessage((data: FarmResponse) => {
             this.farmModel.setFarmState(data);
             this.farmModel.setPlayerCash(data.player.cash);
-            // console.log("Get farm state:", data);
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);
