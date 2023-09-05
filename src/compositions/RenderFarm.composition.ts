@@ -14,7 +14,8 @@ export class RenderFarmComposition {
   private needsInterval!: NodeJS.Timer;
   private readonly ROWS_COUNT:number = 1;
   private readonly COLS_COUNT:number  = 4;
-  private readonly CELL_SIZE:number  = 90;
+  private readonly CELL_SIZE:number  = 150;
+  private readonly CELL_GAP: number = 10;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -68,8 +69,10 @@ export class RenderFarmComposition {
   public renderFarmContainers(): void {
     this.farmContainers.forEach((container) => {
       if (container.name !== "central-dialog") {
+        const [x, y] = container.name.split("-").map((value) => Number(value));
         this.renderSceneComposition.renderContainer(container);
-        this.renderSceneComposition.centerContainer(container);
+        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE + (this.CELL_GAP * x));
+        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
         this.renderSceneComposition.renderContainer(container);
@@ -108,8 +111,8 @@ export class RenderFarmComposition {
         }
       };
 
-      this.renderSceneComposition.setContainerWidth(container, 90);
-      this.renderSceneComposition.setContainerHeight(container, 90);
+      this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
+      this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     } else if (container) {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
