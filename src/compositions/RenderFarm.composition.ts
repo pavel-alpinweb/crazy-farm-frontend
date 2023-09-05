@@ -32,16 +32,7 @@ export class RenderFarmComposition {
     dialog: null,
   };
 
-  private readonly farmContainers: Containers = [
-    {
-      name: "central",
-      render: null,
-    },
-    {
-      name: "central-dialog",
-      render: null,
-    },
-  ];
+  private readonly farmContainers: Containers = [];
 
   public get containers(): Containers {
     return this.farmContainers;
