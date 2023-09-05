@@ -32,7 +32,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
     {
       isEmpty: true,
       isBlocked: false,
-      name: "central",
+      name: "0-0",
       character: {
         type: "empty",
         stage: 0,
