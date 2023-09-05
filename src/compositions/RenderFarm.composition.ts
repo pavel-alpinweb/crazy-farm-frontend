@@ -8,7 +8,7 @@ import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
 export class RenderFarmComposition {
-  private scene!: PIXI.Application;
+  private readonly scene!: PIXI.Application;
   private renderSceneComposition!: RenderSceneComposition;
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
@@ -120,8 +120,8 @@ export class RenderFarmComposition {
         await this.charactersSpriteList?.empty[0]?.sprite()
       );
 
-      this.renderSceneComposition.setContainerWidth(container, 90);
-      this.renderSceneComposition.setContainerHeight(container, 90);
+      this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
+      this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
   }
 
