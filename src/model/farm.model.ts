@@ -39,6 +39,36 @@ export const DEFAULT_FARM_STATE: FarmState = {
         needs: [],
       },
     },
+    {
+      isEmpty: true,
+      isBlocked: false,
+      name: "1-0",
+      character: {
+        type: "empty",
+        stage: 0,
+        needs: [],
+      },
+    },
+    {
+      isEmpty: true,
+      isBlocked: false,
+      name: "2-0",
+      character: {
+        type: "empty",
+        stage: 0,
+        needs: [],
+      },
+    },
+    {
+      isEmpty: true,
+      isBlocked: false,
+      name: "3-0",
+      character: {
+        type: "empty",
+        stage: 0,
+        needs: [],
+      },
+    },
   ],
 };
 
