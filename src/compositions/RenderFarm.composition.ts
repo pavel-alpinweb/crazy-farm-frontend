@@ -54,6 +54,14 @@ export class RenderFarmComposition {
   }
 
   public initFarmContainers(): void {
+    for (let y = 0; y < this.ROWS_COUNT; y++) {
+      for (let x = 0; x < this.COLS_COUNT; x++) {
+        this.containers.push({
+          name: `${x}-${y}`,
+          render: null,
+        });
+      }
+    }
     console.log('initFarmContainers', this.containers);
   }
 
