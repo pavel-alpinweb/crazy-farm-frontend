@@ -12,7 +12,7 @@ export class RenderFarmComposition {
   private renderSceneComposition!: RenderSceneComposition;
   private needIndex = 0;
   private needsInterval!: NodeJS.Timer;
-  private readonly ROWS_COUNT:number = 1;
+  private readonly ROWS_COUNT:number = 3;
   private readonly COLS_COUNT:number  = 4;
   private readonly CELL_SIZE:number  = 150;
   private readonly CELL_GAP: number = 10;
