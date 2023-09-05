@@ -30,6 +30,7 @@ export class DevScene extends AbstractScene {
   }
 
   protected renderContainers(): void {
+    this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
   }
 

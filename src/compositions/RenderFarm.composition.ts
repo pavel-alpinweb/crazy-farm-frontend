@@ -53,6 +53,10 @@ export class RenderFarmComposition {
     this.needsSpritesCollection.drop = new DropSprite();
   }
 
+  public initFarmContainers(): void {
+    console.log('initFarmContainers', this.containers);
+  }
+
   public renderFarmContainers(): void {
     this.farmContainers.forEach((container) => {
       if (container.name !== "central-dialog") {
