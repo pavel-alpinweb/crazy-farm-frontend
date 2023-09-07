@@ -89,6 +89,15 @@ export class RenderFarmComposition {
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
+    const [x, y] = cell.name.split("-").map((value) => Number(value));
+    const isEvenCellX = x % 2 === 0;
+    const isEvenCellY = y % 2 === 0;
+    let emptySprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined;
+    if (isEvenCellX && isEvenCellY || !isEvenCellX && !isEvenCellY) {
+      emptySprite = await this.charactersSpriteList?.empty[0]?.sprite();
+    } else {
+      emptySprite = await this.charactersSpriteList?.empty[1]?.sprite();
+    }
     if (cell.character && container) {
       if (
         container.render?.children[0] &&
@@ -107,7 +116,7 @@ export class RenderFarmComposition {
           this.renderSceneComposition.removeAllSprites(container);
           this.renderSceneComposition.addSprite(
             container,
-            await this.charactersSpriteList?.empty[0]?.sprite()
+            emptySprite
           );
         }
       };
@@ -118,7 +127,7 @@ export class RenderFarmComposition {
       this.renderSceneComposition.removeAllSprites(container);
       this.renderSceneComposition.addSprite(
         container,
-        await this.charactersSpriteList?.empty[0]?.sprite()
+        emptySprite
       );
 
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);

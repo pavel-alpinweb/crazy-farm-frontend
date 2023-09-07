@@ -34,6 +34,18 @@ export const manifest: ResolverManifest = {
       },
     },
     {
+      name: "dark-field",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/dark-field.sprite.png`,
+      },
+    },
+    {
+      name: "light-field",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/light-field.sprite.png`,
+      },
+    },
+    {
       name: "land",
       assets: {
         sprite: `${STATIC_SPRITE_URL}/land.sprite.png`,
