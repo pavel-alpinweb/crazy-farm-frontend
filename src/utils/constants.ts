@@ -34,5 +34,5 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
   empty: [EmptyFieldSprite],
 };
 
-export const DIALOG_SPRITE_SIZE = 200;
-export const NEEDS_SPRITE_SIZE = 180;
+export const DIALOG_SPRITE_SIZE = 70;
+export const NEEDS_SPRITE_SIZE = 400;

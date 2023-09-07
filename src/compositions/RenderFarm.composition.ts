@@ -1,5 +1,5 @@
 import { CHARACTERS_NEEDS } from "../model/farm.model";
-import { CHARACTERS_SPRITES, NEEDS_SPRITE_SIZE } from "../utils/constants";
+import {CHARACTERS_SPRITES, DIALOG_SPRITE_SIZE, NEEDS_SPRITE_SIZE} from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
@@ -61,25 +61,26 @@ export class RenderFarmComposition {
           name: `${x}-${y}`,
           render: null,
         });
+        this.containers.push({
+          name: `${x}-${y}-dialog`,
+          render: null,
+        });
       }
     }
-    console.log('initFarmContainers', this.containers);
   }
 
   public renderFarmContainers(): void {
     this.farmContainers.forEach((container) => {
-      if (container.name !== "central-dialog") {
-        const [x, y] = container.name.split("-").map((value) => Number(value));
-        this.renderSceneComposition.renderContainer(container);
+      const [x, y] = container.name.split("-").map((value) => Number(value));
+      this.renderSceneComposition.renderContainer(container);
+      if (container.name.search('dialog') === -1) {
         this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE + (this.CELL_GAP * x));
         this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
-        this.renderSceneComposition.renderContainer(container);
-        this.renderSceneComposition.setContainerX(container, 500);
-        this.renderSceneComposition.setContainerY(container, 100);
-        this.renderSceneComposition.setContainerPivotX(container, 0);
-        this.renderSceneComposition.setContainerPivotY(container, 0);
+        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.2 + (this.CELL_GAP * x));
+        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 2 + (this.CELL_GAP * y));
+        this.renderSceneComposition.centerPivotContainer(container);
       }
     });
   }
@@ -125,7 +126,7 @@ export class RenderFarmComposition {
     }
   }
 
-  public renderNeedsSprites(cell: Cell) {
+  public async renderNeedsSprites(cell: Cell) {
     const dialogContainer = this.farmContainers.find(
       (cont) => cont.name === `${cell.name}-dialog`
     );
@@ -135,15 +136,16 @@ export class RenderFarmComposition {
       clearInterval(this.needsInterval);
     }
     if (cell.character?.needs.length && dialogContainer) {
-      this.needsInterval = setInterval(async () => {
-        this.renderSceneComposition.removeAllSprites(dialogContainer);
-        this.renderSceneComposition.addSprite(
+      this.renderSceneComposition.addSprite(
           dialogContainer,
           await this.needsSpritesCollection.dialog?.sprite()
-        );
-        if (this.needsSpritesCollection.dialog) {
-          this.needsSpritesCollection.dialog.width = NEEDS_SPRITE_SIZE;
-          this.needsSpritesCollection.dialog.height = NEEDS_SPRITE_SIZE;
+      );
+      this.renderSceneComposition.setContainerWidth(dialogContainer, DIALOG_SPRITE_SIZE);
+      this.renderSceneComposition.setContainerHeight(dialogContainer, DIALOG_SPRITE_SIZE);
+      this.needsInterval = setInterval(async () => {
+        const needsSprite = dialogContainer.render?.children[1];
+        if (needsSprite) {
+          this.renderSceneComposition.removeSprite(dialogContainer, <PIXI.Sprite>needsSprite);
         }
         switch (cell.character?.needs[this.needIndex]) {
           case CHARACTERS_NEEDS.HUNGER:
