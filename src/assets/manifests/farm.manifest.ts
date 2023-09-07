@@ -28,12 +28,6 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "empty-field",
-      assets: {
-        sprite: `${STATIC_SPRITE_URL}/empty-field.sprite.png`,
-      },
-    },
-    {
       name: "dark-field",
       assets: {
         sprite: `${STATIC_SPRITE_URL}/dark-field.sprite.png`,
