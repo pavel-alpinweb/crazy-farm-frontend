@@ -36,7 +36,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       character: {
         type: "potato",
         stage: 2,
-        needs: [],
+        needs: [CHARACTERS_NEEDS.HUNGER, CHARACTERS_NEEDS.SICKNESS, CHARACTERS_NEEDS.THIRST],
       },
     },
     {
@@ -136,7 +136,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       character: {
         type: "potato",
         stage: 4,
-        needs: [],
+        needs: [CHARACTERS_NEEDS.HUNGER, CHARACTERS_NEEDS.SICKNESS, CHARACTERS_NEEDS.THIRST],
       },
     },
     {
