@@ -201,7 +201,15 @@ export default class FarmModel {
     if (
       JSON.stringify(data.containers) !== JSON.stringify(this.state.containers)
     ) {
-      this.initialState.farm.containers = data.containers;
+      for (const cell of data.containers) {
+        const modelCell = this.initialState.farm.containers.find((c) => c.name === cell.name);
+        if (modelCell) {
+          modelCell.name = cell.name;
+          modelCell.character = cell.character;
+          modelCell.isEmpty = cell.isEmpty;
+          modelCell.isBlocked = cell.isBlocked;
+        }
+      }
       eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }
