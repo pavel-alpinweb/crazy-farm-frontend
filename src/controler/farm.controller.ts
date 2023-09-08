@@ -75,10 +75,10 @@ export default class FarmController {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
           // this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
+          console.log('click!', cell);
           const state = await updateFarmState(cell, this.farmModel.tool);
           this.farmModel.setFarmState(state);
           this.farmModel.setPlayerCash(state.player.cash);
-          console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
@@ -88,8 +88,8 @@ export default class FarmController {
           );
           this.Socket = new Socket(connectionToken.jws);
           this.Socket.onMessage((data: FarmResponse) => {
-            this.farmModel.setFarmState(data);
-            this.farmModel.setPlayerCash(data.player.cash);
+            // this.farmModel.setFarmState(data);
+            // this.farmModel.setPlayerCash(data.player.cash);
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);

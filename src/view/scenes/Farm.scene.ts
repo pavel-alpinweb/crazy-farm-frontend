@@ -58,22 +58,17 @@ export class FarmScene extends AbstractScene {
   }
 
   setHandlers() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    const centralContainer = this.renderFarmComposition.containers.find(
-      (container) => container.name === "central"
-    );
-    if (centralContainer) {
+    for (const container of this.renderFarmComposition.containers) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      centralContainer.render.eventMode = "static";
+      container.render.eventMode = "static";
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
-      centralContainer.render.on("pointerdown", () => {
+      container.render.on("pointerdown", () => {
         if (this.events.click) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
-          this.events.click(centralContainer.name);
+          this.events.click(container.name);
         }
       });
     }
