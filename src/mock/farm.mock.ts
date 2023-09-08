@@ -4,7 +4,7 @@ import { TOOLS_PRICES } from "../model/farm.model";
 let activeCharacter = "empty";
 let activeStage = 0;
 let activeNeeds: Array<need> = [];
-let playerCash = 10;
+let playerCash = 50;
 
 export function updateFarmState(
   cell: string,
@@ -14,8 +14,8 @@ export function updateFarmState(
     setTimeout(() => {
       switch (tool) {
         case TOOLS.SEEDS:
-          activeCharacter = "potato";
-          activeStage = 1;
+          activeCharacter = "tomato";
+          activeStage = 4;
           activeNeeds = [
             CHARACTERS_NEEDS.HUNGER,
             CHARACTERS_NEEDS.THIRST,
@@ -65,7 +65,7 @@ export function updateFarmState(
           {
             isEmpty: false,
             isBlocked: false,
-            name: "central",
+            name: cell,
             character: {
               type: activeCharacter,
               stage: activeStage,
