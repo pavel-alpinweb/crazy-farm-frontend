@@ -34,6 +34,7 @@ export class FarmScene extends AbstractScene {
   }
 
   protected renderContainers(): void {
+    this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
   }
 
@@ -66,15 +67,15 @@ export class FarmScene extends AbstractScene {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       centralContainer.render.eventMode = "static";
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      centralContainer.render.on("pointerdown", () => {
+        if (this.events.click) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          this.events.click(centralContainer.name);
+        }
+      });
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    centralContainer.render.on("pointerdown", () => {
-      if (this.events.click) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        this.events.click(centralContainer.name);
-      }
-    });
   }
 }

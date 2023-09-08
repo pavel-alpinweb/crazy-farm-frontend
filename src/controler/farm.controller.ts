@@ -5,7 +5,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
-// import { updateFarmState } from "../mock/farm.mock";
+import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -51,7 +51,9 @@ export default class FarmController {
             Router.push("/#/login");
           }
         } catch (error: any) {
-          if (error.response.data.httpErrorCode === 401) {
+          if (!error.response) {
+            console.error('farm controller error:', error);
+          } else if (error?.response?.data?.httpErrorCode === 401) {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/login");
           } else {
@@ -69,14 +71,14 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: (cell: string) => {
+      updateFarm: async (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
-          this.Socket?.push({ cell, tool: this.farmModel.tool });
+          // this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
-          // const state = await updateFarmState(cell, this.farmModel.tool);
-          // this.farmModel.setFarmState(state);
-          // this.farmModel.setPlayerCash(state.player.cash);
-          // console.log(this.farmModel.player);
+          const state = await updateFarmState(cell, this.farmModel.tool);
+          this.farmModel.setFarmState(state);
+          this.farmModel.setPlayerCash(state.player.cash);
+          console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
