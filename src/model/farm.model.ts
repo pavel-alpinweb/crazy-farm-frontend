@@ -198,10 +198,12 @@ export default class FarmModel {
   }
 
   public setFarmState(data: FarmState): void {
+    console.log('setFarmState: data', data.containers);
+    console.log('setFarmState: state', this.state.containers);
     if (
       JSON.stringify(data.containers) !== JSON.stringify(this.state.containers)
     ) {
-      this.initialState.farm.containers = data.containers;
+      this.initialState.farm.containers = JSON.parse(JSON.stringify(data.containers));
       eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }
