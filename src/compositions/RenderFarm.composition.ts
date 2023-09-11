@@ -20,13 +20,13 @@ export class RenderFarmComposition {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
   }
-  private readonly charactersSpriteList: SpritesArray = {
+  private charactersSpriteList: SpritesArray = {
     potato: [],
     tomato: [],
     empty: [],
   };
 
-  private readonly needsSpritesCollection: SpritesCollection = {
+  private needsSpritesCollection: SpritesCollection = {
     drop: null,
     bug: null,
     hunger: null,
@@ -40,6 +40,11 @@ export class RenderFarmComposition {
   }
 
   public initCharactersSprite(): void {
+    this.charactersSpriteList = {
+      potato: [],
+      tomato: [],
+      empty: [],
+    };
     for (const character in CHARACTERS_SPRITES) {
       CHARACTERS_SPRITES[character].forEach((Sprite) => {
         this.charactersSpriteList[character].push(new Sprite());
@@ -48,6 +53,12 @@ export class RenderFarmComposition {
   }
 
   public initNeedsCharacterSprites(): void {
+    this.needsSpritesCollection = {
+      drop: null,
+      bug: null,
+      hunger: null,
+      dialog: null,
+    };
     this.needsSpritesCollection.dialog = new DialogSprite();
     this.needsSpritesCollection.bug = new BugSprite();
     this.needsSpritesCollection.hunger = new HungerSprite();
@@ -86,6 +97,8 @@ export class RenderFarmComposition {
   }
 
   public async renderCharacterSprite(cell: Cell) {
+    this.initCharactersSprite();
+    this.initNeedsCharacterSprites();
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
