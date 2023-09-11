@@ -1,10 +1,12 @@
 import { TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 import { TOOLS_PRICES } from "../model/farm.model";
+import {DEFAULT_FARM_STATE} from "../model/farm.model";
 
 let activeCharacter = "empty";
 let activeStage = 0;
 let activeNeeds: Array<need> = [];
 let playerCash = 50;
+const mutatedState = JSON.parse(JSON.stringify(DEFAULT_FARM_STATE));
 
 export function updateFarmState(
   cell: string,
@@ -57,22 +59,19 @@ export function updateFarmState(
         default:
           break;
       }
+      const modelCell = mutatedState.containers.find((c: any) => c.name === cell);
+      if (modelCell) {
+        modelCell.character ={
+          type: activeCharacter,
+          stage: activeStage,
+          needs: activeNeeds,
+        };
+      }
       resolve({
         player: {
           cash: playerCash,
         },
-        containers: [
-          {
-            isEmpty: false,
-            isBlocked: false,
-            name: cell,
-            character: {
-              type: activeCharacter,
-              stage: activeStage,
-              needs: activeNeeds,
-            },
-          },
-        ],
+        containers: mutatedState.containers,
       });
     }, 2000);
   });
