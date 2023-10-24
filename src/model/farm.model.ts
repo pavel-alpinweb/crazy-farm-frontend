@@ -100,7 +100,11 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "0-0",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 5,
+        needs: [],
+      },
     },
     {
       isEmpty: true,
@@ -119,7 +123,11 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "2-0",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 5,
+        needs: [],
+      },
     },
     {
       isEmpty: true,
