@@ -1,6 +1,6 @@
 import { TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 import { TOOLS_PRICES } from "../model/farm.model";
-import {DEFAULT_FARM_STATE} from "../model/farm.model";
+import { DEFAULT_FARM_STATE } from "../model/farm.model";
 
 let activeCharacter: string | null = null;
 let activeStage = 0;
@@ -59,9 +59,11 @@ export function updateFarmState(
         default:
           break;
       }
-      const modelCell = mutatedState.containers.find((c: any) => c.name === cell);
+      const modelCell = mutatedState.containers.find(
+        (c: any) => c.name === cell
+      );
       if (modelCell) {
-        modelCell.character ={
+        modelCell.character = {
           type: activeCharacter,
           stage: activeStage,
           needs: activeNeeds,

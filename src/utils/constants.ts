@@ -9,8 +9,8 @@ import { ChildTomatoSprite } from "../view/sprites/ChildTomato.sprite";
 import { KidTomatoSprite } from "../view/sprites/KidTomato.sprite";
 import { AdultTomatoSprite } from "../view/sprites/AdultTomato.sprite";
 import { ExplosionTomatoSprite } from "../view/sprites/ExplosionTomato.sprite";
-import {DarkFieldSprite} from "../view/sprites/DarkField.sprite";
-import {LightFieldSprite} from "../view/sprites/LightField.sprite";
+import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
+import { LightFieldSprite } from "../view/sprites/LightField.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";

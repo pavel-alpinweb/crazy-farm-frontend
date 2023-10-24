@@ -32,7 +32,7 @@ export abstract class AbstractAnimatedSprite {
           if (animatedSprite instanceof PIXI.AnimatedSprite) {
             animatedSprite.destroy();
           }
-        }
+        };
       }
     }
     return animatedSprite;

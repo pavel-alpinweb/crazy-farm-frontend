@@ -53,7 +53,7 @@ export default class FarmController {
           }
         } catch (error: any) {
           if (!error.response) {
-            console.error('farm controller error:', error);
+            console.error("farm controller error:", error);
           } else if (error?.response?.data?.httpErrorCode === 401) {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/login");

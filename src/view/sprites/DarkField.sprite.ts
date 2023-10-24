@@ -1,5 +1,5 @@
-import {AbstractStaticSprite} from "../../framework/graphics/AbstractStaticSprite";
+import { AbstractStaticSprite } from "../../framework/graphics/AbstractStaticSprite";
 
-export class DarkFieldSprite extends AbstractStaticSprite{
-    protected spriteName = 'dark-field';
+export class DarkFieldSprite extends AbstractStaticSprite {
+  protected spriteName = "dark-field";
 }

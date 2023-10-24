@@ -4,12 +4,12 @@ import { EventBus } from "../framework/EventBus";
 
 declare global {
   type tool =
-      | "shovel"
-      | "bailer"
-      | "fertilizer"
-      | "sprayer"
-      | "seeds"
-      | "empty";
+    | "shovel"
+    | "bailer"
+    | "fertilizer"
+    | "sprayer"
+    | "seeds"
+    | "empty";
   interface ToolData {
     name: tool;
     price: number;
@@ -45,7 +45,7 @@ declare global {
   }
   interface CharactersSprites {
     [key: string]: Array<
-        { new (): AbstractStaticSprite } | { new (): AbstractAnimatedSprite }
+      { new (): AbstractStaticSprite } | { new (): AbstractAnimatedSprite }
     >;
   }
 
@@ -206,7 +206,9 @@ export default class FarmModel {
     if (
       JSON.stringify(data.containers) !== JSON.stringify(this.state.containers)
     ) {
-      this.initialState.farm.containers = JSON.parse(JSON.stringify(data.containers));
+      this.initialState.farm.containers = JSON.parse(
+        JSON.stringify(data.containers)
+      );
       eventBusFarm.emit("Farm:update", this.initialState.farm);
     }
   }

@@ -1,18 +1,18 @@
-import {CHARACTERS_SPRITES} from "../utils/constants";
+import { CHARACTERS_SPRITES } from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
 import { DropSprite } from "../view/sprites/Drop.sprite";
-import {NEEDS_SPRITES_NAMES} from "../utils/constants";
+import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
   private renderSceneComposition!: RenderSceneComposition;
-  private readonly ROWS_COUNT:number = 3;
-  private readonly COLS_COUNT:number  = 4;
-  private readonly CELL_SIZE:number  = 150;
+  private readonly ROWS_COUNT: number = 3;
+  private readonly COLS_COUNT: number = 4;
+  private readonly CELL_SIZE: number = 150;
   private readonly CELL_GAP: number = 15;
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
@@ -85,13 +85,25 @@ export class RenderFarmComposition {
     this.farmContainers.forEach((container) => {
       const [x, y] = container.name.split("-").map((value) => Number(value));
       this.renderSceneComposition.renderContainer(container);
-      if (container.name.search('dialog') === -1) {
-        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.scene.screen.width / 4.8 + (this.CELL_GAP * x));
-        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.scene.screen.height / 4 + (this.CELL_GAP * y));
+      if (container.name.search("dialog") === -1) {
+        this.renderSceneComposition.setContainerX(
+          container,
+          x * this.CELL_SIZE + this.scene.screen.width / 4.8 + this.CELL_GAP * x
+        );
+        this.renderSceneComposition.setContainerY(
+          container,
+          y * this.CELL_SIZE + this.scene.screen.height / 4 + this.CELL_GAP * y
+        );
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
-        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.4 + (this.CELL_GAP * x));
-        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 3 + (this.CELL_GAP * y));
+        this.renderSceneComposition.setContainerX(
+          container,
+          x * this.CELL_SIZE + this.CELL_SIZE * 1.4 + this.CELL_GAP * x
+        );
+        this.renderSceneComposition.setContainerY(
+          container,
+          y * this.CELL_SIZE + this.CELL_SIZE / 3 + this.CELL_GAP * y
+        );
         this.renderSceneComposition.centerPivotContainer(container);
       }
     });
@@ -106,16 +118,13 @@ export class RenderFarmComposition {
     const isEvenCellX = x % 2 === 0;
     const isEvenCellY = y % 2 === 0;
     let emptySprite: PIXI.Sprite | PIXI.AnimatedSprite | null | undefined;
-    if (isEvenCellX && isEvenCellY || !isEvenCellX && !isEvenCellY) {
+    if ((isEvenCellX && isEvenCellY) || (!isEvenCellX && !isEvenCellY)) {
       emptySprite = await this.charactersSpriteList?.empty[0]?.sprite();
     } else {
       emptySprite = await this.charactersSpriteList?.empty[1]?.sprite();
     }
     if (container?.render?.children.length === 0) {
-      this.renderSceneComposition.addSprite(
-          container,
-          emptySprite
-      );
+      this.renderSceneComposition.addSprite(container, emptySprite);
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
@@ -123,8 +132,9 @@ export class RenderFarmComposition {
       if (container.render?.children?.length === 2) {
         this.renderSceneComposition.removeChildren(container, 1);
       }
-      const sprite =
-        await this.charactersSpriteList[cell.character?.type][cell.character?.stage]?.sprite();
+      const sprite = await this.charactersSpriteList[cell.character?.type][
+        cell.character?.stage
+      ]?.sprite();
       if (sprite) {
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
@@ -143,25 +153,36 @@ export class RenderFarmComposition {
     }
     if (cell.character?.needs.length && dialogContainer) {
       this.renderSceneComposition.addSprite(
-          dialogContainer,
-          await this.needsSpritesCollection.dialog?.sprite()
+        dialogContainer,
+        await this.needsSpritesCollection.dialog?.sprite()
       );
-      this.renderSceneComposition.setContainerWidth(dialogContainer, this.DIALOG_SPRITE_SIZE);
-      this.renderSceneComposition.setContainerHeight(dialogContainer, this.DIALOG_SPRITE_SIZE);
+      this.renderSceneComposition.setContainerWidth(
+        dialogContainer,
+        this.DIALOG_SPRITE_SIZE
+      );
+      this.renderSceneComposition.setContainerHeight(
+        dialogContainer,
+        this.DIALOG_SPRITE_SIZE
+      );
 
-      for (let needIndex = 0; needIndex < cell.character?.needs.length; needIndex++) {
+      for (
+        let needIndex = 0;
+        needIndex < cell.character?.needs.length;
+        needIndex++
+      ) {
         this.initNeedsCharacterSprites();
-        const spriteName = NEEDS_SPRITES_NAMES[cell.character?.needs[needIndex]];
+        const spriteName =
+          NEEDS_SPRITES_NAMES[cell.character?.needs[needIndex]];
         const sprite = await this.needsSpritesCollection[spriteName]?.sprite();
         if (sprite) {
           sprite.width = this.NEEDS_SPRITE_SIZE;
           sprite.height = this.NEEDS_SPRITE_SIZE;
-          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE * ((cell.character?.needs.length - 1) / 2) - 25;
+          sprite.x +=
+            needIndex * this.NEEDS_GAP -
+            this.DIALOG_SPRITE_SIZE * ((cell.character?.needs.length - 1) / 2) -
+            25;
         }
-        this.renderSceneComposition.addSprite(
-            dialogContainer,
-            sprite
-        );
+        this.renderSceneComposition.addSprite(dialogContainer, sprite);
       }
     }
   }

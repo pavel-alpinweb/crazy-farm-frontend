@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import {DEFAULT_FARM_STATE} from "../model/farm.model";
+import { DEFAULT_FARM_STATE } from "../model/farm.model";
 
 export class RenderSceneComposition {
   private scene!: PIXI.Application;
