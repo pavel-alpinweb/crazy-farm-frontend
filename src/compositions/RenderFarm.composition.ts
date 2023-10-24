@@ -13,7 +13,7 @@ export class RenderFarmComposition {
   private readonly ROWS_COUNT:number = 3;
   private readonly COLS_COUNT:number  = 4;
   private readonly CELL_SIZE:number  = 150;
-  private readonly CELL_GAP: number = 5;
+  private readonly CELL_GAP: number = 15;
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
@@ -90,8 +90,8 @@ export class RenderFarmComposition {
         this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.scene.screen.height / 4 + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
-        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.3 + (this.CELL_GAP * x));
-        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 1.9 + (this.CELL_GAP * y));
+        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.4 + (this.CELL_GAP * x));
+        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 3 + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       }
     });
@@ -111,22 +111,24 @@ export class RenderFarmComposition {
     } else {
       emptySprite = await this.charactersSpriteList?.empty[1]?.sprite();
     }
-    if (cell.character && container) {
-      this.renderSceneComposition.removeAllSprites(container);
-      const sprite =
-        this.charactersSpriteList[cell.character?.type][cell.character?.stage];
-      this.renderSceneComposition.addSprite(container, await sprite?.sprite());
-
-      this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
-      this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
-    } else if (container) {
-      this.renderSceneComposition.removeAllSprites(container);
+    if (container?.render?.children.length === 0) {
       this.renderSceneComposition.addSprite(
-        container,
-        emptySprite
+          container,
+          emptySprite
       );
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
+    }
+    if (cell.character && container) {
+      if (container.render?.children?.length === 2) {
+        this.renderSceneComposition.removeChildren(container, 1);
+      }
+      const sprite =
+        await this.charactersSpriteList[cell.character?.type][cell.character?.stage]?.sprite();
+      if (sprite) {
+        this.renderSceneComposition.addSprite(container, sprite);
+        sprite.y -= 200;
+      }
     }
   }
 

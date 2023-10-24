@@ -133,7 +133,11 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "3-0",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 4,
+        needs: [CHARACTERS_NEEDS.THIRST],
+      },
     },
     {
       isEmpty: true,
@@ -197,13 +201,21 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "2-2",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 4,
+        needs: [],
+      },
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "3-2",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 5,
+        needs: [],
+      },
     },
   ],
 };

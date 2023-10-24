@@ -86,4 +86,8 @@ export class RenderSceneComposition {
   public removeAllSprites(container: Container) {
     container.render?.removeChildren();
   }
+
+  public removeChildren(container: Container, index: number) {
+    container.render?.removeChildren(index);
+  }
 }
