@@ -100,72 +100,37 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "0-0",
-      character: {
-        type: 'tomato',
-        stage: 5,
-        needs: [],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "1-0",
-      character: {
-        type: 'potato',
-        stage: 1,
-        needs: [
-          CHARACTERS_NEEDS.THIRST,
-          CHARACTERS_NEEDS.HUNGER,
-        ],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "2-0",
-      character: {
-        type: 'tomato',
-        stage: 5,
-        needs: [],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "3-0",
-      character: {
-        type: 'tomato',
-        stage: 4,
-        needs: [CHARACTERS_NEEDS.THIRST],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "0-1",
-      character: {
-        type: 'potato',
-        stage: 1,
-        needs: [
-          CHARACTERS_NEEDS.THIRST,
-          CHARACTERS_NEEDS.SICKNESS,
-          CHARACTERS_NEEDS.HUNGER,
-        ],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "1-1",
-      character: {
-        type: 'potato',
-        stage: 1,
-        needs: [
-          CHARACTERS_NEEDS.THIRST,
-          CHARACTERS_NEEDS.SICKNESS,
-          CHARACTERS_NEEDS.HUNGER,
-        ],
-      },
+      character: null,
     },
     {
       isEmpty: true,
@@ -183,13 +148,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "0-2",
-      character: {
-        type: 'potato',
-        stage: 4,
-        needs: [
-          CHARACTERS_NEEDS.HUNGER,
-        ],
-      },
+      character: null,
     },
     {
       isEmpty: true,
@@ -201,21 +160,13 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "2-2",
-      character: {
-        type: 'tomato',
-        stage: 4,
-        needs: [],
-      },
+      character: null,
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "3-2",
-      character: {
-        type: 'potato',
-        stage: 5,
-        needs: [],
-      },
+      character: null,
     },
   ],
 };

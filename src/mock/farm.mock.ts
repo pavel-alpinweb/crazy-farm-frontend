@@ -2,7 +2,7 @@ import { TOOLS, CHARACTERS_NEEDS } from "../model/farm.model";
 import { TOOLS_PRICES } from "../model/farm.model";
 import {DEFAULT_FARM_STATE} from "../model/farm.model";
 
-let activeCharacter = "empty";
+let activeCharacter: string | null = null;
 let activeStage = 0;
 let activeNeeds: Array<need> = [];
 let playerCash = 50;
@@ -29,7 +29,7 @@ export function updateFarmState(
           if (activeCharacter !== "empty") {
             playerCash += 10;
           }
-          activeCharacter = "empty";
+          activeCharacter = null;
           activeNeeds = [];
           activeStage = 0;
           break;
