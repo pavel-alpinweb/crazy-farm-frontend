@@ -1,21 +1,20 @@
-import { CHARACTERS_NEEDS } from "../model/farm.model";
 import {CHARACTERS_SPRITES, DIALOG_SPRITE_SIZE, NEEDS_SPRITE_SIZE} from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
 import { DropSprite } from "../view/sprites/Drop.sprite";
+import {NEEDS_SPRITES_NAMES} from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
   private renderSceneComposition!: RenderSceneComposition;
-  private needIndex = 0;
-  private needsInterval!: NodeJS.Timer;
   private readonly ROWS_COUNT:number = 3;
   private readonly COLS_COUNT:number  = 4;
   private readonly CELL_SIZE:number  = 150;
   private readonly CELL_GAP: number = 5;
+  private readonly NEEDS_GAP: number = 300;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -98,7 +97,6 @@ export class RenderFarmComposition {
 
   public async renderCharacterSprite(cell: Cell) {
     this.initCharactersSprite();
-    this.initNeedsCharacterSprites();
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
     );
@@ -152,9 +150,7 @@ export class RenderFarmComposition {
       (cont) => cont.name === `${cell.name}-dialog`
     );
     if (dialogContainer) {
-      this.needIndex = 0;
       this.renderSceneComposition.removeAllSprites(<Container>dialogContainer);
-      clearInterval(this.needsInterval);
     }
     if (cell.character?.needs.length && dialogContainer) {
       this.renderSceneComposition.addSprite(
@@ -163,50 +159,21 @@ export class RenderFarmComposition {
       );
       this.renderSceneComposition.setContainerWidth(dialogContainer, DIALOG_SPRITE_SIZE);
       this.renderSceneComposition.setContainerHeight(dialogContainer, DIALOG_SPRITE_SIZE);
-      this.needsInterval = setInterval(async () => {
-        const needsSprite = dialogContainer.render?.children[1];
-        if (needsSprite) {
-          this.renderSceneComposition.removeSprite(dialogContainer, <PIXI.Sprite>needsSprite);
+
+      for (let needIndex = 0; needIndex < cell.character?.needs.length; needIndex++) {
+        this.initNeedsCharacterSprites();
+        const spriteName = NEEDS_SPRITES_NAMES[cell.character?.needs[needIndex]];
+        const sprite = await this.needsSpritesCollection[spriteName]?.sprite();
+        if (sprite) {
+          sprite.width = NEEDS_SPRITE_SIZE;
+          sprite.height = NEEDS_SPRITE_SIZE;
+          sprite.x += needIndex * this.NEEDS_GAP;
         }
-        switch (cell.character?.needs[this.needIndex]) {
-          case CHARACTERS_NEEDS.HUNGER:
-            this.renderSceneComposition.addSprite(
-              dialogContainer,
-              await this.needsSpritesCollection.hunger?.sprite()
-            );
-            if (this.needsSpritesCollection.hunger) {
-              this.needsSpritesCollection.hunger.width = NEEDS_SPRITE_SIZE;
-              this.needsSpritesCollection.hunger.height = NEEDS_SPRITE_SIZE;
-            }
-            break;
-          case CHARACTERS_NEEDS.SICKNESS:
-            this.renderSceneComposition.addSprite(
-              dialogContainer,
-              await this.needsSpritesCollection.bug?.sprite()
-            );
-            if (this.needsSpritesCollection.bug) {
-              this.needsSpritesCollection.bug.width = NEEDS_SPRITE_SIZE;
-              this.needsSpritesCollection.bug.height = NEEDS_SPRITE_SIZE;
-            }
-            break;
-          case CHARACTERS_NEEDS.THIRST:
-            this.renderSceneComposition.addSprite(
-              dialogContainer,
-              await this.needsSpritesCollection.drop?.sprite()
-            );
-            if (this.needsSpritesCollection.drop) {
-              this.needsSpritesCollection.drop.width = NEEDS_SPRITE_SIZE;
-              this.needsSpritesCollection.drop.height = NEEDS_SPRITE_SIZE;
-            }
-            break;
-        }
-        if (cell.character) {
-          this.needIndex =
-            this.needIndex === cell.character.needs.length - 1
-              ? 0
-              : (this.needIndex += 1);
-        }
-      }, 1000);
+        this.renderSceneComposition.addSprite(
+            dialogContainer,
+            sprite
+        );
+      }
     }
   }
 }

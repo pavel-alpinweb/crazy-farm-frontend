@@ -2,6 +2,73 @@ import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite
 import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
 import { EventBus } from "../framework/EventBus";
 
+declare global {
+  type tool =
+      | "shovel"
+      | "bailer"
+      | "fertilizer"
+      | "sprayer"
+      | "seeds"
+      | "empty";
+  interface ToolData {
+    name: tool;
+    price: number;
+  }
+  interface Tools {
+    SHOVEL: "shovel";
+    BAILER: "bailer";
+    FERTILIZER: "fertilizer";
+    SPRAYER: "sprayer";
+    SEEDS: "seeds";
+    EMPTY: "empty";
+  }
+  type need = "HUNGER" | "SICKNESS" | "THIRST";
+  type needSprite = "bug" | "hunger" | "drop";
+  interface CharactersNeeds {
+    HUNGER: "HUNGER";
+    SICKNESS: "SICKNESS";
+    THIRST: "THIRST";
+  }
+  interface Character {
+    type: string;
+    stage: number;
+    needs: Array<need>;
+  }
+  interface Cell {
+    isEmpty: boolean;
+    isBlocked: boolean;
+    name: string;
+    character: Character | null;
+  }
+  interface FarmState {
+    containers: Array<Cell>;
+  }
+  interface CharactersSprites {
+    [key: string]: Array<
+        { new (): AbstractStaticSprite } | { new (): AbstractAnimatedSprite }
+    >;
+  }
+
+  interface Player {
+    cash: number;
+  }
+
+  interface FarmData {
+    farm: FarmState;
+    activeTool: tool;
+    player: Player;
+  }
+
+  interface FarmResponse {
+    containers: Array<Cell>;
+    player: Player;
+  }
+
+  type NeedsSpritesNames = {
+    [key in need]: needSprite;
+  };
+}
+
 export const eventBusFarm: EventBus = new EventBus();
 
 export const TOOLS: Tools = {
@@ -39,7 +106,14 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "1-0",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 1,
+        needs: [
+          CHARACTERS_NEEDS.THIRST,
+          CHARACTERS_NEEDS.HUNGER,
+        ],
+      },
     },
     {
       isEmpty: true,
@@ -71,7 +145,15 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "1-1",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 1,
+        needs: [
+          CHARACTERS_NEEDS.THIRST,
+          CHARACTERS_NEEDS.SICKNESS,
+          CHARACTERS_NEEDS.HUNGER,
+        ],
+      },
     },
     {
       isEmpty: true,
@@ -89,7 +171,15 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "0-2",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 1,
+        needs: [
+          CHARACTERS_NEEDS.SICKNESS,
+          CHARACTERS_NEEDS.THIRST,
+          CHARACTERS_NEEDS.HUNGER,
+        ],
+      },
     },
     {
       isEmpty: true,
@@ -111,68 +201,6 @@ export const DEFAULT_FARM_STATE: FarmState = {
     },
   ],
 };
-
-declare global {
-  type tool =
-    | "shovel"
-    | "bailer"
-    | "fertilizer"
-    | "sprayer"
-    | "seeds"
-    | "empty";
-  interface ToolData {
-    name: tool;
-    price: number;
-  }
-  interface Tools {
-    SHOVEL: "shovel";
-    BAILER: "bailer";
-    FERTILIZER: "fertilizer";
-    SPRAYER: "sprayer";
-    SEEDS: "seeds";
-    EMPTY: "empty";
-  }
-  type need = "HUNGER" | "SICKNESS" | "THIRST";
-  interface CharactersNeeds {
-    HUNGER: "HUNGER";
-    SICKNESS: "SICKNESS";
-    THIRST: "THIRST";
-  }
-  interface Character {
-    type: string;
-    stage: number;
-    needs: Array<need>;
-  }
-  interface Cell {
-    isEmpty: boolean;
-    isBlocked: boolean;
-    name: string;
-    character: Character | null;
-  }
-  interface FarmState {
-    containers: Array<Cell>;
-  }
-  interface CharactersSprites {
-    [key: string]: Array<
-      { new (): AbstractStaticSprite } | { new (): AbstractAnimatedSprite }
-    >;
-  }
-
-  interface Player {
-    cash: number;
-  }
-
-  interface FarmData {
-    farm: FarmState;
-    activeTool: tool;
-    player: Player;
-  }
-
-  interface FarmResponse {
-    containers: Array<Cell>;
-    player: Player;
-  }
-}
 
 export default class FarmModel {
   private initialState: FarmData = {

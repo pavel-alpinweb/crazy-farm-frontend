@@ -35,5 +35,11 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
   empty: [DarkFieldSprite, LightFieldSprite],
 };
 
+export const NEEDS_SPRITES_NAMES: NeedsSpritesNames = {
+  HUNGER: "hunger",
+  SICKNESS: "bug",
+  THIRST: "drop",
+};
+
 export const DIALOG_SPRITE_SIZE = 70;
 export const NEEDS_SPRITE_SIZE = 400;
