@@ -183,8 +183,6 @@ export const DEFAULT_FARM_STATE: FarmState = {
         type: 'potato',
         stage: 4,
         needs: [
-          CHARACTERS_NEEDS.SICKNESS,
-          CHARACTERS_NEEDS.THIRST,
           CHARACTERS_NEEDS.HUNGER,
         ],
       },

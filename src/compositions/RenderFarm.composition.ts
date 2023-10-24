@@ -14,9 +14,9 @@ export class RenderFarmComposition {
   private readonly COLS_COUNT:number  = 4;
   private readonly CELL_SIZE:number  = 150;
   private readonly CELL_GAP: number = 5;
-  private readonly NEEDS_GAP: number = 120;
+  private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
-  private readonly NEEDS_SPRITE_SIZE: number = 220;
+  private readonly NEEDS_SPRITE_SIZE: number = 230;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -169,7 +169,7 @@ export class RenderFarmComposition {
         if (sprite) {
           sprite.width = this.NEEDS_SPRITE_SIZE;
           sprite.height = this.NEEDS_SPRITE_SIZE;
-          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE;
+          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE * (cell.character?.needs.length * 0.4);
         }
         this.renderSceneComposition.addSprite(
             dialogContainer,
