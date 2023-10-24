@@ -112,27 +112,10 @@ export class RenderFarmComposition {
       emptySprite = await this.charactersSpriteList?.empty[1]?.sprite();
     }
     if (cell.character && container) {
-      if (
-        container.render?.children[0] &&
-        container.render?.children[0]?.name === "explosion-tomato"
-      )
-        return;
       this.renderSceneComposition.removeAllSprites(container);
       const sprite =
         this.charactersSpriteList[cell.character?.type][cell.character?.stage];
       this.renderSceneComposition.addSprite(container, await sprite?.sprite());
-      const explosionSprite = <PIXI.AnimatedSprite>(
-        await this.charactersSpriteList.tomato[5]?.sprite()
-      );
-      explosionSprite.onLoop = async () => {
-        if (container.render?.children[0].name === "explosion-tomato") {
-          this.renderSceneComposition.removeAllSprites(container);
-          this.renderSceneComposition.addSprite(
-            container,
-            emptySprite
-          );
-        }
-      };
 
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
