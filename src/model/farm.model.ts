@@ -57,7 +57,15 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "0-1",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 1,
+        needs: [
+          CHARACTERS_NEEDS.THIRST,
+          CHARACTERS_NEEDS.SICKNESS,
+          CHARACTERS_NEEDS.HUNGER,
+        ],
+      },
     },
     {
       isEmpty: true,
@@ -198,8 +206,6 @@ export default class FarmModel {
   }
 
   public setFarmState(data: FarmState): void {
-    console.log('setFarmState: data', data.containers);
-    console.log('setFarmState: state', this.state.containers);
     if (
       JSON.stringify(data.containers) !== JSON.stringify(this.state.containers)
     ) {
