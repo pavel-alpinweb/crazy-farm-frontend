@@ -169,7 +169,7 @@ export class RenderFarmComposition {
         if (sprite) {
           sprite.width = this.NEEDS_SPRITE_SIZE;
           sprite.height = this.NEEDS_SPRITE_SIZE;
-          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE * (cell.character?.needs.length * 0.4);
+          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE * ((cell.character?.needs.length - 1) / 2) - 25;
         }
         this.renderSceneComposition.addSprite(
             dialogContainer,
