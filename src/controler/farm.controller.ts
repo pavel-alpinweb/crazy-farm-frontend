@@ -37,7 +37,7 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
-            // await this.methods.connectToWebSocketServer(userToken);
+            await this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },
               this.methods
@@ -72,13 +72,13 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: async (cell: string) => {
+      updateFarm: (cell: string) => {
         if (this.farmModel.tool !== TOOLS.EMPTY) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
-          const state = await updateFarmState(cell, this.farmModel.tool);
-          this.farmModel.setFarmState(state);
-          this.farmModel.setPlayerCash(state.player.cash);
+          // const state = await updateFarmState(cell, this.farmModel.tool);
+          // this.farmModel.setFarmState(state);
+          // this.farmModel.setPlayerCash(state.player.cash);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {

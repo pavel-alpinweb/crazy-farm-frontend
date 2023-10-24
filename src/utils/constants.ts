@@ -23,6 +23,8 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     KidPotatoSprite,
     AdultPotatoSprite,
     GhostPotatoSprite,
+    GhostPotatoSprite,
+    ExplosionTomatoSprite,
   ],
   tomato: [
     GroundSprite,
@@ -30,6 +32,9 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ChildTomatoSprite,
     KidTomatoSprite,
     AdultTomatoSprite,
+    ExplosionTomatoSprite,
+    ExplosionTomatoSprite,
+    ExplosionTomatoSprite,
     ExplosionTomatoSprite,
   ],
   empty: [DarkFieldSprite, LightFieldSprite],
