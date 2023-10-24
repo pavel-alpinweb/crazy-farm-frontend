@@ -40,6 +40,3 @@ export const NEEDS_SPRITES_NAMES: NeedsSpritesNames = {
   SICKNESS: "bug",
   THIRST: "drop",
 };
-
-export const DIALOG_SPRITE_SIZE = 70;
-export const NEEDS_SPRITE_SIZE = 400;

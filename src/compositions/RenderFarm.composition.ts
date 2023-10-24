@@ -1,4 +1,4 @@
-import {CHARACTERS_SPRITES, DIALOG_SPRITE_SIZE, NEEDS_SPRITE_SIZE} from "../utils/constants";
+import {CHARACTERS_SPRITES} from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
@@ -14,7 +14,9 @@ export class RenderFarmComposition {
   private readonly COLS_COUNT:number  = 4;
   private readonly CELL_SIZE:number  = 150;
   private readonly CELL_GAP: number = 5;
-  private readonly NEEDS_GAP: number = 300;
+  private readonly NEEDS_GAP: number = 120;
+  private readonly DIALOG_SPRITE_SIZE: number = 100;
+  private readonly NEEDS_SPRITE_SIZE: number = 220;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -88,8 +90,8 @@ export class RenderFarmComposition {
         this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.scene.screen.height / 4 + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
-        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.2 + (this.CELL_GAP * x));
-        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 2 + (this.CELL_GAP * y));
+        this.renderSceneComposition.setContainerX(container, (x * this.CELL_SIZE) + this.CELL_SIZE * 1.3 + (this.CELL_GAP * x));
+        this.renderSceneComposition.setContainerY(container, (y * this.CELL_SIZE) + this.CELL_SIZE / 1.9 + (this.CELL_GAP * y));
         this.renderSceneComposition.centerPivotContainer(container);
       }
     });
@@ -157,17 +159,17 @@ export class RenderFarmComposition {
           dialogContainer,
           await this.needsSpritesCollection.dialog?.sprite()
       );
-      this.renderSceneComposition.setContainerWidth(dialogContainer, DIALOG_SPRITE_SIZE);
-      this.renderSceneComposition.setContainerHeight(dialogContainer, DIALOG_SPRITE_SIZE);
+      this.renderSceneComposition.setContainerWidth(dialogContainer, this.DIALOG_SPRITE_SIZE);
+      this.renderSceneComposition.setContainerHeight(dialogContainer, this.DIALOG_SPRITE_SIZE);
 
       for (let needIndex = 0; needIndex < cell.character?.needs.length; needIndex++) {
         this.initNeedsCharacterSprites();
         const spriteName = NEEDS_SPRITES_NAMES[cell.character?.needs[needIndex]];
         const sprite = await this.needsSpritesCollection[spriteName]?.sprite();
         if (sprite) {
-          sprite.width = NEEDS_SPRITE_SIZE;
-          sprite.height = NEEDS_SPRITE_SIZE;
-          sprite.x += needIndex * this.NEEDS_GAP;
+          sprite.width = this.NEEDS_SPRITE_SIZE;
+          sprite.height = this.NEEDS_SPRITE_SIZE;
+          sprite.x += (needIndex * this.NEEDS_GAP) - this.DIALOG_SPRITE_SIZE;
         }
         this.renderSceneComposition.addSprite(
             dialogContainer,

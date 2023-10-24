@@ -173,7 +173,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       name: "0-2",
       character: {
         type: 'potato',
-        stage: 1,
+        stage: 4,
         needs: [
           CHARACTERS_NEEDS.SICKNESS,
           CHARACTERS_NEEDS.THIRST,
