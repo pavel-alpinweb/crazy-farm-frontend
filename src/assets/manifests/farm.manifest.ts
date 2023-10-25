@@ -109,10 +109,10 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "explosion-tomato",
+      name: "explosion",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion/explosion.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion/explosion.json`,
       },
     },
     {
