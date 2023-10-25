@@ -143,5 +143,12 @@ export const manifest: ResolverManifest = {
         sprite_data: `${ANIMATED_SPRITE_URL}/explosion-adult-tomato/explosion-adult-tomato.json`,
       },
     },
+    {
+      name: "withered-tomato-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-tomato-sprout/withered-tomato-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-tomato-sprout/withered-tomato-sprout.json`,
+      },
+    },
   ],
 };

@@ -1,5 +1,6 @@
 import { GroundSprite } from "../view/sprites/Ground.sprite";
 import { SproutPotatoSprite } from "../view/sprites/SproutPotato.sprite";
+import {WitheredTomatoSprout} from "../view/sprites/WitheredTomatoSprout";
 import { ChildPotatoSprite } from "../view/sprites/ChildPotato.sprite";
 import { KidPotatoSprite } from "../view/sprites/KidPotato.sprite";
 import { AdultPotatoSprite } from "../view/sprites/AdultPotato.sprite";
@@ -26,7 +27,7 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ChildPotatoSprite,
     KidPotatoSprite,
     AdultPotatoSprite,
-    GhostPotatoSprite,
+    WitheredTomatoSprout,
     GhostPotatoSprite,
     MiniExplosionSprite,
   ],

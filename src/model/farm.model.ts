@@ -108,7 +108,7 @@ export const DEFAULT_FARM_STATE: FarmState = {
       name: "1-0",
       character: {
         type: 'potato',
-        stage: 7,
+        stage: 5,
         needs: [],
       },
     },
