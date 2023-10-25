@@ -107,8 +107,8 @@ export const DEFAULT_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "1-0",
       character: {
-        type: 'tomato',
-        stage: 9,
+        type: 'potato',
+        stage: 7,
         needs: [],
       },
     },

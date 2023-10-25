@@ -116,6 +116,13 @@ export const manifest: ResolverManifest = {
       },
     },
     {
+      name: "mini-explosion",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/mini-explosion/mini-explosion.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/mini-explosion/mini-explosion.json`,
+      },
+    },
+    {
       name: "explosion-child-tomato",
       assets: {
         sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-child-tomato/explosion-child-tomato.png`,

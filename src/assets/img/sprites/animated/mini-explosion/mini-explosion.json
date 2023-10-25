@@ -1,0 +1,87 @@
+{"frames": {
+
+"mini-explosion_1.png":
+{
+	"frame": {"x":1,"y":1466,"w":162,"h":162},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":175,"y":175,"w":162,"h":162},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_2.png":
+{
+	"frame": {"x":165,"y":1466,"w":162,"h":162},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":175,"y":175,"w":162,"h":162},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_3.png":
+{
+	"frame": {"x":515,"y":889,"w":386,"h":386},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":63,"w":386,"h":386},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_4.png":
+{
+	"frame": {"x":500,"y":1277,"w":386,"h":370},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":63,"w":386,"h":370},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_5.png":
+{
+	"frame": {"x":515,"y":469,"w":418,"h":402},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":47,"w":418,"h":402},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_6.png":
+{
+	"frame": {"x":515,"y":1,"w":466,"h":402},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":47,"w":466,"h":402},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_7.png":
+{
+	"frame": {"x":1,"y":1,"w":512,"h":512},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":512,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_8.png":
+{
+	"frame": {"x":1,"y":515,"w":512,"h":497},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":0,"y":15,"w":512,"h":497},
+	"sourceSize": {"w":512,"h":512}
+},
+"mini-explosion_9.png":
+{
+	"frame": {"x":1,"y":1014,"w":450,"h":497},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":0,"w":450,"h":497},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"mini-explosion": ["mini-explosion_1.png","mini-explosion_2.png","mini-explosion_3.png","mini-explosion_4.png","mini-explosion_5.png","mini-explosion_6.png","mini-explosion_7.png","mini-explosion_8.png","mini-explosion_9.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "mini-explosion.png",
+	"format": "RGBA8888",
+	"size": {"w":918,"h":1648},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:8cfac3a0f837025e8040ca26dcee0770:44da5f805f743a993c3e08a519a93a0f:3b3983d91e8e80291f5d3ed6505fa48f$"
+}
+}
