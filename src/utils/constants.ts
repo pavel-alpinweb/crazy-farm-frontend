@@ -9,7 +9,7 @@ import { ChildTomatoSprite } from "../view/sprites/ChildTomato.sprite";
 import { KidTomatoSprite } from "../view/sprites/KidTomato.sprite";
 import { AdultTomatoSprite } from "../view/sprites/AdultTomato.sprite";
 import { ExplosionTomatoSprite } from "../view/sprites/ExplosionTomato.sprite";
-import {ExplosionChildTomatoSprite} from "../view/sprites/ExplosionKidTomato.sprite";
+import {ExplosionChildTomatoSprite} from "../view/sprites/ExplosionChildTomato.sprite";
 import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
 import { LightFieldSprite } from "../view/sprites/LightField.sprite";
 
