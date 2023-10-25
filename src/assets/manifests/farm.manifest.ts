@@ -150,5 +150,12 @@ export const manifest: ResolverManifest = {
         sprite_data: `${ANIMATED_SPRITE_URL}/withered-tomato-sprout/withered-tomato-sprout.json`,
       },
     },
+    {
+      name: "withered-potato-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.json`,
+      },
+    },
   ],
 };
