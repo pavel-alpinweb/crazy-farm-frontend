@@ -1,0 +1,97 @@
+{
+  "frames": {
+    "explosion-child-tomato_01.png": {
+      "frame": { "x": 421, "y": 1029, "w": 402, "h": 465 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 47, "y": 47, "w": 402, "h": 465 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_02.png": {
+      "frame": { "x": 1, "y": 1, "w": 512, "h": 512 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_03.png": {
+      "frame": { "x": 825, "y": 1029, "w": 226, "h": 226 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 143, "y": 143, "w": 226, "h": 226 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_04.png": {
+      "frame": { "x": 1, "y": 1029, "w": 450, "h": 418 },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 31, "y": 47, "w": 450, "h": 418 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_05.png": {
+      "frame": { "x": 1, "y": 515, "w": 512, "h": 512 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_06.png": {
+      "frame": { "x": 1053, "y": 999, "w": 466, "h": 466 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 15, "y": 31, "w": 466, "h": 466 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_07.png": {
+      "frame": { "x": 1029, "y": 1, "w": 512, "h": 497 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 15, "w": 512, "h": 497 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_08.png": {
+      "frame": { "x": 1029, "y": 500, "w": 512, "h": 497 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 0, "y": 15, "w": 512, "h": 497 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_09.png": {
+      "frame": { "x": 515, "y": 1, "w": 512, "h": 512 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "explosion-child-tomato_10.png": {
+      "frame": { "x": 515, "y": 515, "w": 512, "h": 512 },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": { "x": 0, "y": 0, "w": 512, "h": 512 },
+      "sourceSize": { "w": 512, "h": 512 }
+    }
+  },
+  "animations": {
+    "explosion-child-tomato": [
+      "explosion-child-tomato_01.png",
+      "explosion-child-tomato_02.png",
+      "explosion-child-tomato_03.png",
+      "explosion-child-tomato_04.png",
+      "explosion-child-tomato_05.png",
+      "explosion-child-tomato_06.png",
+      "explosion-child-tomato_07.png",
+      "explosion-child-tomato_08.png",
+      "explosion-child-tomato_09.png",
+      "explosion-child-tomato_10.png"
+    ]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "explosion-child-tomato.png",
+    "format": "RGBA8888",
+    "size": { "w": 1542, "h": 1495 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:926c64d6b0197f653e1eab1af10d56ff:22964bf5602fed75f4aba1be859147df:b2f3ac81050053ec24d8b97b5b3ec2c1$"
+  }
+}
