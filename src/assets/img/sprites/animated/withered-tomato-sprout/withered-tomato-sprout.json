@@ -1,47 +1,49 @@
-{"frames": {
-
-"withered-tomato-sprout_1.png":
 {
-	"frame": {"x":405,"y":1,"w":386,"h":449},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":63,"y":63,"w":386,"h":449},
-	"sourceSize": {"w":512,"h":512}
-},
-"withered-tomato-sprout_2.png":
-{
-	"frame": {"x":793,"y":1,"w":386,"h":449},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":63,"y":63,"w":386,"h":449},
-	"sourceSize": {"w":512,"h":512}
-},
-"withered-tomato-sprout_3.png":
-{
-	"frame": {"x":405,"y":1,"w":386,"h":449},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":63,"y":63,"w":386,"h":449},
-	"sourceSize": {"w":512,"h":512}
-},
-"withered-tomato-sprout_4.png":
-{
-	"frame": {"x":1,"y":1,"w":402,"h":449},
-	"rotated": false,
-	"trimmed": true,
-	"spriteSourceSize": {"x":63,"y":63,"w":402,"h":449},
-	"sourceSize": {"w":512,"h":512}
-}},
-"animations": {
-	"withered-tomato-sprout": ["withered-tomato-sprout_1.png","withered-tomato-sprout_2.png","withered-tomato-sprout_3.png","withered-tomato-sprout_4.png"]
-},
-"meta": {
-	"app": "https://www.codeandweb.com/texturepacker",
-	"version": "1.1",
-	"image": "withered-tomato-sprout.png",
-	"format": "RGBA8888",
-	"size": {"w":1180,"h":451},
-	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:1df0a530574a886024251e4fe679203e:3bbf7d2d1b523bea3eefdec879a79f26:a22ad8e0bb6afc57da4cdac513a8b6ea$"
-}
+  "frames": {
+    "withered-tomato-sprout_1.png": {
+      "frame": { "x": 405, "y": 1, "w": 386, "h": 449 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 63, "y": 63, "w": 386, "h": 449 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "withered-tomato-sprout_2.png": {
+      "frame": { "x": 793, "y": 1, "w": 386, "h": 449 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 63, "y": 63, "w": 386, "h": 449 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "withered-tomato-sprout_3.png": {
+      "frame": { "x": 405, "y": 1, "w": 386, "h": 449 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 63, "y": 63, "w": 386, "h": 449 },
+      "sourceSize": { "w": 512, "h": 512 }
+    },
+    "withered-tomato-sprout_4.png": {
+      "frame": { "x": 1, "y": 1, "w": 402, "h": 449 },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": { "x": 63, "y": 63, "w": 402, "h": 449 },
+      "sourceSize": { "w": 512, "h": 512 }
+    }
+  },
+  "animations": {
+    "withered-tomato-sprout": [
+      "withered-tomato-sprout_1.png",
+      "withered-tomato-sprout_2.png",
+      "withered-tomato-sprout_3.png",
+      "withered-tomato-sprout_4.png"
+    ]
+  },
+  "meta": {
+    "app": "https://www.codeandweb.com/texturepacker",
+    "version": "1.1",
+    "image": "withered-tomato-sprout.png",
+    "format": "RGBA8888",
+    "size": { "w": 1180, "h": 451 },
+    "scale": "1",
+    "smartupdate": "$TexturePacker:SmartUpdate:1df0a530574a886024251e4fe679203e:3bbf7d2d1b523bea3eefdec879a79f26:a22ad8e0bb6afc57da4cdac513a8b6ea$"
+  }
 }

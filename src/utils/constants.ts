@@ -1,7 +1,7 @@
 import { GroundSprite } from "../view/sprites/Ground.sprite";
 import { SproutPotatoSprite } from "../view/sprites/SproutPotato.sprite";
-import {WitheredTomatoSproutSprite} from "../view/sprites/WitheredTomatoSprout.sprite";
-import {WitheredPotatoSproutSprite} from "../view/sprites/WitheredPotatoSprite.sprite";
+import { WitheredTomatoSproutSprite } from "../view/sprites/WitheredTomatoSprout.sprite";
+import { WitheredPotatoSproutSprite } from "../view/sprites/WitheredPotatoSprite.sprite";
 import { ChildPotatoSprite } from "../view/sprites/ChildPotato.sprite";
 import { KidPotatoSprite } from "../view/sprites/KidPotato.sprite";
 import { AdultPotatoSprite } from "../view/sprites/AdultPotato.sprite";
@@ -11,10 +11,10 @@ import { ChildTomatoSprite } from "../view/sprites/ChildTomato.sprite";
 import { KidTomatoSprite } from "../view/sprites/KidTomato.sprite";
 import { AdultTomatoSprite } from "../view/sprites/AdultTomato.sprite";
 import { ExplosionSprite } from "../view/sprites/Explosion.sprite";
-import {ExplosionChildTomatoSprite} from "../view/sprites/ExplosionChildTomato.sprite";
-import {ExplosionKidTomatoSprite} from "../view/sprites/ExplosionKidTomato.sprite";
-import {ExplosionAdultTomatoSprite} from "../view/sprites/ExplosionAdultTomato.sprite";
-import {MiniExplosionSprite} from "../view/sprites/MiniExplosion.sprite";
+import { ExplosionChildTomatoSprite } from "../view/sprites/ExplosionChildTomato.sprite";
+import { ExplosionKidTomatoSprite } from "../view/sprites/ExplosionKidTomato.sprite";
+import { ExplosionAdultTomatoSprite } from "../view/sprites/ExplosionAdultTomato.sprite";
+import { MiniExplosionSprite } from "../view/sprites/MiniExplosion.sprite";
 import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
 import { LightFieldSprite } from "../view/sprites/LightField.sprite";
 
