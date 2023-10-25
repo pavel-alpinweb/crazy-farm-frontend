@@ -122,5 +122,12 @@ export const manifest: ResolverManifest = {
         sprite_data: `${ANIMATED_SPRITE_URL}/explosion-child-tomato/explosion-child-tomato.json`,
       },
     },
+    {
+      name: "explosion-kid-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-kid-tomato/explosion-kid-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-kid-tomato/explosion-kid-tomato.json`,
+      },
+    },
   ],
 };

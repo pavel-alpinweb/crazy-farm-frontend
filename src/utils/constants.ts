@@ -10,6 +10,7 @@ import { KidTomatoSprite } from "../view/sprites/KidTomato.sprite";
 import { AdultTomatoSprite } from "../view/sprites/AdultTomato.sprite";
 import { ExplosionTomatoSprite } from "../view/sprites/ExplosionTomato.sprite";
 import {ExplosionChildTomatoSprite} from "../view/sprites/ExplosionChildTomato.sprite";
+import {ExplosionKidTomatoSprite} from "../view/sprites/ExplosionKidTomato.sprite";
 import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
 import { LightFieldSprite } from "../view/sprites/LightField.sprite";
 
@@ -33,8 +34,9 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ChildTomatoSprite,
     KidTomatoSprite,
     AdultTomatoSprite,
+    ExplosionTomatoSprite,
     ExplosionChildTomatoSprite,
-    ExplosionChildTomatoSprite,
+    ExplosionKidTomatoSprite,
     ExplosionTomatoSprite,
     ExplosionTomatoSprite,
   ],
