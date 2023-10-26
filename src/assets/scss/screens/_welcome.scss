@@ -1,0 +1,49 @@
+.welcome-screen {
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg") no-repeat center bottom;
+  background-size: 100%;
+  &__top {
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 45px auto 0;
+  }
+  &__middle {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 53px;
+    left: 0;
+    right: 0;
+  }
+  &__character {
+    position: relative;
+  }
+  &__text {
+    width: 221px;
+    height: 193px;
+    background: url("/assets/img/illustrations/cloud.png");
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 159px;
+    left: 60px;
+    padding: 0 10px;
+  }
+  &__bottom {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

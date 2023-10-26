@@ -66,9 +66,6 @@ export class AuthFormWidget extends AbstractWidget {
         value: this.state.user.email,
         placeholder: "Введите email",
         isDisabled: false,
-        isError: false,
-        errorText:
-          "Текст с описанием ошибки. Это может быть многострочный прокручиваемый текст.",
         isPassword: false,
         icon: "envelope",
       });

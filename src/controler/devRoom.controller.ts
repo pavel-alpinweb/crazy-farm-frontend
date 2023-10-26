@@ -2,10 +2,12 @@ import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { appContainer } from "../utils/constants";
 import { DevRoomScreen } from "../view/screens/DevRoom.screen";
 import { AbstractView } from "../framework/interface/AbstractView";
+import {Toaster} from "../framework/Toaster";
 
 export default class DevRoomController {
   private DevRoomScreen: AbstractScreen | null;
   public methods: Methods = {};
+  private $testToaster = new Toaster(1000);
 
   constructor() {
     this.DevRoomScreen = null;
@@ -16,6 +18,8 @@ export default class DevRoomController {
           AbstractView.positions.BEFOREEND,
           <Element>this.DevRoomScreen.element
         );
+        this.$testToaster.show("Авторизуйтесь", false);
+        this.$testToaster.show("Авторизуйтесь", true);
       },
       destroy: () => {
         this.DevRoomScreen?.remove();

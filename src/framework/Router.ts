@@ -3,6 +3,8 @@ import Error404ScreenController from "../controler/404.controller";
 import { LoginController } from "../controler/login.controller";
 import { RegistrationController } from "../controler/registration.controller";
 import DevRoomController from "../controler/devRoom.controller";
+import WelcomeController from "../controler/welcome.controller";
+import RegistrationWaysController from "../controler/registrationWays.controller";
 
 declare global {
   type controller =
@@ -10,7 +12,9 @@ declare global {
     | Error404ScreenController
     | LoginController
     | RegistrationController
-    | DevRoomController;
+    | RegistrationWaysController
+    | DevRoomController
+    | WelcomeController;
   interface RouterParams {
     url: string;
     controller: controller;
