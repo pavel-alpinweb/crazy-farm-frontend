@@ -1,5 +1,5 @@
 .button {
-  background: #4286F5;
+  background: #4286f5;
   border: 3px solid #000;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   width: 100%;
@@ -23,17 +23,17 @@
     transform: scale(1);
   }
   &.green {
-    background: #4CAF50;
+    background: #4caf50;
   }
   &.brown {
     color: #000;
-    border-color: #723E19;
-    background: #EAB54F;
+    border-color: #723e19;
+    background: #eab54f;
   }
   &.left {
     padding-left: 30px;
     background-image: url("/assets/img/icons/left.svg?inline");
-    background-repeat:  no-repeat;
+    background-repeat: no-repeat;
     background-position: 10px center;
     background-size: 18px;
   }

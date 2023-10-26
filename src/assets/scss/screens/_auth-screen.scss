@@ -4,7 +4,8 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg") no-repeat center bottom;
+  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg")
+    no-repeat center bottom;
   background-size: 100%;
   &__header {
     position: absolute;

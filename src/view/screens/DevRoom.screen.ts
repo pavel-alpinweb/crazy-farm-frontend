@@ -1,12 +1,12 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
-import { DEFAULT_FARM_STATE, TOOLS } from "../../model/farm.model";
 import { DevScene } from "../scenes/Dev.scene";
 import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { WalletComponent } from "../ui-components/Wallet.component";
-import {TextInputComponent} from "../ui-components/TextInput.component";
-import {PageHeaderComponent} from "../ui-components/PageHeader.component";
+import { TextInputComponent } from "../ui-components/TextInput.component";
+import { PageHeaderComponent } from "../ui-components/PageHeader.component";
+import { TEST_FARM_STATE, TOOLS } from "../../model/devRoom.model";
 
 interface State {
   farm: FarmState;
@@ -56,7 +56,7 @@ export class DevRoomScreen extends AbstractScreen {
     PageHeader: null,
   };
   protected state: State = {
-    farm: DEFAULT_FARM_STATE,
+    farm: TEST_FARM_STATE,
     player: {
       cash: 1000,
     },
@@ -102,13 +102,13 @@ export class DevRoomScreen extends AbstractScreen {
       cash: this.state.player.cash,
     });
     this.components.TextInput = new TextInputComponent({
-      value: '',
-      placeholder: '***',
-      icon: 'user',
+      value: "",
+      placeholder: "***",
+      icon: "user",
       isPassword: false,
     });
     this.components.PageHeader = new PageHeaderComponent({
-      title: 'Регистрация',
+      title: "Регистрация",
     });
   }
 
