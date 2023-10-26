@@ -2,6 +2,7 @@ import User from "./model/user.model";
 import { Router } from "./framework/Router";
 import FarmController from "./controler/farm.controller";
 import Error404ScreenController from "./controler/404.controller";
+import WelcomeController from "./controler/welcome.controller";
 import FarmModel from "./model/farm.model";
 import "./assets/scss/main.scss";
 import { LoginController } from "./controler/login.controller";
@@ -20,11 +21,16 @@ const registrationController = new RegistrationController(userModel);
 const farmController = new FarmController(farmModel, userModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
+const welcomeController = new WelcomeController();
 
 const params: Array<RouterParams> = [
   {
     url: "/",
     controller: farmController,
+  },
+  {
+    url: "/welcome",
+    controller: welcomeController,
   },
   {
     url: "/login",
