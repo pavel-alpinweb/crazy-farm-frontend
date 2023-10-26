@@ -6,6 +6,7 @@ import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { WalletComponent } from "../ui-components/Wallet.component";
 import {TextInputComponent} from "../ui-components/TextInput.component";
+import {PageHeaderComponent} from "../ui-components/PageHeader.component";
 
 interface State {
   farm: FarmState;
@@ -22,10 +23,10 @@ const createDevRoomScreenTemplate = () => `
      <div class="dev-room__ui-kit">
         <h1 class="dev-room__heading">Ui Kit</h1>
         <div class="dev-room__ui-kit__wrapper">
-            <div class="dev-room__wallet" data-slot-wallet></div>
-            <div class="dev-room__tool" data-slot-tool></div>
-            <div class="dev-room__tool-set" data-slot-tool-set></div>
-            <div class="dev-room__buttons">
+            <div class="dev-room__ui-kit__item" data-slot-wallet></div>
+            <div class="dev-room__ui-kit__item" data-slot-tool></div>
+            <div class="dev-room__ui-kit__item" data-slot-tool-set></div>
+            <div class="dev-room__ui-kit__item">
                 <button class="button">Action</button>
                 <br>
                 <br>
@@ -37,7 +38,8 @@ const createDevRoomScreenTemplate = () => `
                 <br>
                 <button class="button green big">Action</button>
             </div>
-            <div class="dev-room__input" data-slot-input></div>
+            <div class="dev-room__ui-kit__item" data-slot-input></div>
+            <div class="dev-room__ui-kit__item" data-slot-header></div>
         </div>
      </div>
 </div>
@@ -51,6 +53,7 @@ export class DevRoomScreen extends AbstractScreen {
     ToolSet: null,
     Wallet: null,
     TextInput: null,
+    PageHeader: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
@@ -104,6 +107,9 @@ export class DevRoomScreen extends AbstractScreen {
       icon: 'user',
       isPassword: false,
     });
+    this.components.PageHeader = new PageHeaderComponent({
+      title: 'Регистрация',
+    });
   }
 
   protected renderComponents(): void {
@@ -112,6 +118,7 @@ export class DevRoomScreen extends AbstractScreen {
     this.mountComponent("tool-set", this.components.ToolSet);
     this.mountComponent("wallet", this.components.Wallet);
     this.mountComponent("input", this.components.TextInput);
+    this.mountComponent("header", this.components.PageHeader);
   }
 
   protected setEvents(): void {
