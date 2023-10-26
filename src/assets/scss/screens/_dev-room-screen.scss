@@ -1,0 +1,13 @@
+.dev-room {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__heading {
+    font-size: 36px;
+  }
+  &__ui-kit {
+    &__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
