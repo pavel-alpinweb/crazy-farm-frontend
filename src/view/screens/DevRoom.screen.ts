@@ -24,6 +24,18 @@ const createDevRoomScreenTemplate = () => `
             <div class="dev-room__wallet" data-slot-wallet></div>
             <div class="dev-room__tool" data-slot-tool></div>
             <div class="dev-room__tool-set" data-slot-tool-set></div>
+            <div class="dev-room__buttons">
+                <button class="button">Action</button>
+                <br>
+                <br>
+                <button class="button green">Action</button>
+                <br>
+                <br>
+                <button class="button brown">Action</button>
+                <br>
+                <br>
+                <button class="button green big">Action</button>
+            </div>
         </div>
      </div>
 </div>
