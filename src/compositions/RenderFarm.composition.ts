@@ -17,6 +17,11 @@ export class RenderFarmComposition {
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
+  private readonly CORRECT_CELL_X_NUMBER: number = 4.8;
+  private readonly CORRECT_CELL_Y_NUMBER: number = 4;
+  private readonly CORRECT_DIALOG_X_NUMBER: number = 1.4;
+  private readonly CORRECT_DIALOG_Y_NUMBER: number = 3;
+  private readonly CORRECT_NEED_X_NUMBER: number = 25;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -88,21 +93,21 @@ export class RenderFarmComposition {
       if (container.name.search("dialog") === -1) {
         this.renderSceneComposition.setContainerX(
           container,
-          x * this.CELL_SIZE + this.scene.screen.width / 4.8 + this.CELL_GAP * x
+          x * this.CELL_SIZE + this.scene.screen.width / this.CORRECT_CELL_X_NUMBER + this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
           container,
-          y * this.CELL_SIZE + this.scene.screen.height / 4 + this.CELL_GAP * y
+          y * this.CELL_SIZE + this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER + this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
         this.renderSceneComposition.setContainerX(
           container,
-          x * this.CELL_SIZE + this.CELL_SIZE * 1.4 + this.CELL_GAP * x
+          x * this.CELL_SIZE + this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER + this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
           container,
-          y * this.CELL_SIZE + this.CELL_SIZE / 3 + this.CELL_GAP * y
+          y * this.CELL_SIZE + this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER + this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       }
@@ -180,7 +185,7 @@ export class RenderFarmComposition {
           sprite.x +=
             needIndex * this.NEEDS_GAP -
             this.DIALOG_SPRITE_SIZE * ((cell.character?.needs.length - 1) / 2) -
-            25;
+            this.CORRECT_NEED_X_NUMBER;
         }
         this.renderSceneComposition.addSprite(dialogContainer, sprite);
       }
