@@ -16,7 +16,7 @@ const createWelcomeScreenTamplate = () => `
             <img src="/assets/img/illustrations/sprout.png" alt="potato">
         </div>
         <div class="welcome-screen__bottom">
-            <a class="button big green" href="/#/registration">Зарегистрироваться</a>
+            <a class="button big green" href="/#/registration-ways">Зарегистрироваться</a>
         </div>
     </div>
 `;

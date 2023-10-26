@@ -7,6 +7,7 @@ import FarmModel from "./model/farm.model";
 import "./assets/scss/main.scss";
 import { LoginController } from "./controler/login.controller";
 import { RegistrationController } from "./controler/registration.controller";
+import RegistrationWaysController from "./controler/registrationWays.controller";
 import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
@@ -22,6 +23,7 @@ const farmController = new FarmController(farmModel, userModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
 const welcomeController = new WelcomeController();
+const registrationWaysController = new RegistrationWaysController();
 
 const params: Array<RouterParams> = [
   {
@@ -39,6 +41,10 @@ const params: Array<RouterParams> = [
   {
     url: "/registration",
     controller: registrationController,
+  },
+  {
+    url: "/registration-ways",
+    controller: registrationWaysController,
   },
   {
     url: "/dev-room",
