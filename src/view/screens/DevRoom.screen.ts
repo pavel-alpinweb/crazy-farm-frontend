@@ -5,6 +5,7 @@ import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { WalletComponent } from "../ui-components/Wallet.component";
+import {TextInputComponent} from "../ui-components/TextInput.component";
 
 interface State {
   farm: FarmState;
@@ -36,6 +37,7 @@ const createDevRoomScreenTemplate = () => `
                 <br>
                 <button class="button green big">Action</button>
             </div>
+            <div class="dev-room__input" data-slot-input></div>
         </div>
      </div>
 </div>
@@ -48,6 +50,7 @@ export class DevRoomScreen extends AbstractScreen {
     Tool: null,
     ToolSet: null,
     Wallet: null,
+    TextInput: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
@@ -95,6 +98,12 @@ export class DevRoomScreen extends AbstractScreen {
     this.components.Wallet = new WalletComponent({
       cash: this.state.player.cash,
     });
+    this.components.TextInput = new TextInputComponent({
+      value: '',
+      placeholder: '***',
+      icon: 'user',
+      isPassword: false,
+    });
   }
 
   protected renderComponents(): void {
@@ -102,6 +111,7 @@ export class DevRoomScreen extends AbstractScreen {
     this.mountComponent("tool", this.components.Tool);
     this.mountComponent("tool-set", this.components.ToolSet);
     this.mountComponent("wallet", this.components.Wallet);
+    this.mountComponent("input", this.components.TextInput);
   }
 
   protected setEvents(): void {
