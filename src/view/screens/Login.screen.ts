@@ -15,7 +15,9 @@ const createAuthScreenTemplate = () => `
 <div class="auth-screen">
     <div class="auth-screen__header" data-slot-header></div>
     <div class="auth-screen__content" data-slot-content></div>
-    <div class="auth-screen__footer"><a class="auth-screen__link" href="/#/registration">Зарегистрироваться</a></div>
+    <div class="auth-screen__footer">
+        <a class="button brown" href="/#/welcome">Назад</a>
+    </div>
 </div>
 `;
 

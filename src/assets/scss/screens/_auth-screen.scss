@@ -1,17 +1,19 @@
 .auth-screen {
-  &__header {
-    padding: 20px;
-    border-bottom: 1px solid #000000;
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg") no-repeat center bottom;
+  background-size: 100%;
   &__content {
     padding: 20px 20px 0;
     margin-bottom: 10px;
+    margin-top: auto;
   }
   &__footer {
+    margin-top: auto;
     padding: 0 20px 20px;
-  }
-  &__link {
-    text-decoration: none;
-    color: #ff5c00;
+    max-width: 160px;
   }
 }
