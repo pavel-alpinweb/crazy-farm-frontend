@@ -2,7 +2,17 @@ import {AbstractStaticScreen} from "../../framework/interface/AbstractStaticScre
 
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
-        <h1>Welcome</h1>
+        <div class="welcome-screen__top">
+            <button class="button">Войти через Google</button>
+            <a class="button brown" href="/#/login">Войти через почту</a>
+        </div>
+        <div class="welcome-screen__middle">
+            <img src="/assets/img/illustrations/potato.png" alt="potato">
+            <img src="/assets/img/illustrations/sprout.png" alt="potato">
+        </div>
+        <div class="welcome-screen__bottom">
+            <a class="button big green" href="/#/registration">Зарегистрироваться</a>
+        </div>
     </div>
 `;
 
