@@ -1,4 +1,4 @@
-import {AbstractStaticScreen} from "../../framework/interface/AbstractStaticScreen";
+import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
 
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
@@ -21,8 +21,8 @@ const createWelcomeScreenTamplate = () => `
     </div>
 `;
 
-export class WelcomeScreen extends AbstractStaticScreen{
-    get template(): string {
-        return createWelcomeScreenTamplate();
-    }
+export class WelcomeScreen extends AbstractStaticScreen {
+  get template(): string {
+    return createWelcomeScreenTamplate();
+  }
 }

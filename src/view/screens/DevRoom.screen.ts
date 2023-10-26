@@ -4,9 +4,9 @@ import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { WalletComponent } from "../ui-components/Wallet.component";
-import {TextInputComponent} from "../ui-components/TextInput.component";
-import {PageHeaderComponent} from "../ui-components/PageHeader.component";
-import {TEST_FARM_STATE, TOOLS} from "../../model/devRoom.model";
+import { TextInputComponent } from "../ui-components/TextInput.component";
+import { PageHeaderComponent } from "../ui-components/PageHeader.component";
+import { TEST_FARM_STATE, TOOLS } from "../../model/devRoom.model";
 
 interface State {
   farm: FarmState;
@@ -102,13 +102,13 @@ export class DevRoomScreen extends AbstractScreen {
       cash: this.state.player.cash,
     });
     this.components.TextInput = new TextInputComponent({
-      value: '',
-      placeholder: '***',
-      icon: 'user',
+      value: "",
+      placeholder: "***",
+      icon: "user",
       isPassword: false,
     });
     this.components.PageHeader = new PageHeaderComponent({
-      title: 'Регистрация',
+      title: "Регистрация",
     });
   }
 
