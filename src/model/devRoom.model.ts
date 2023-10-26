@@ -1,7 +1,3 @@
-import { AbstractStaticSprite } from "../framework/graphics/AbstractStaticSprite";
-import { AbstractAnimatedSprite } from "../framework/graphics/AbstractAnimatedSprite";
-import { EventBus } from "../framework/EventBus";
-
 export const TOOLS: Tools = {
     SHOVEL: "shovel",
     BAILER: "bailer",
