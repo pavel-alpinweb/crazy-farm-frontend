@@ -16,7 +16,7 @@ const createAuthScreenTemplate = () => `
     <div class="auth-screen__header" data-slot-header></div>
     <div class="auth-screen__content" data-slot-content></div>
     <div class="auth-screen__footer">
-        <a class="button brown" href="/#/welcome">Назад</a>
+        <a class="button brown left" href="/#/welcome">Назад</a>
     </div>
 </div>
 `;
