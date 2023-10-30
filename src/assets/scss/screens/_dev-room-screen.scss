@@ -1,0 +1,15 @@
+.dev-room {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  &__heading {
+    font-size: 36px;
+  }
+  &__ui-kit {
+    padding: 20px;
+    &__wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 10px;
+    }
+  }
+}

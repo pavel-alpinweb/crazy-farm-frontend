@@ -5,7 +5,6 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
-// import { updateFarmState } from "../mock/farm.mock";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -42,18 +41,21 @@ export default class FarmController {
               { farm: farmModel.state, player: farmModel.player },
               this.methods
             );
+            this.farmModel.setPlayerCash(50);
             appContainer?.insertAdjacentElement(
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
           } else {
             $toaster.show("Авторизуйтесь", false);
-            Router.push("/#/login");
+            Router.push("/#/welcome");
           }
         } catch (error: any) {
-          if (error.response.data.httpErrorCode === 401) {
+          if (!error.response) {
+            console.error("farm controller error:", error);
+          } else if (error?.response?.data?.httpErrorCode === 401) {
             $toaster.show("Авторизуйтесь", false);
-            Router.push("/#/login");
+            Router.push("/#/welcome");
           } else {
             for (const reason of error.response.data.reasons) {
               $toaster.show(`${reason}`, false);
@@ -76,7 +78,6 @@ export default class FarmController {
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
           // this.farmModel.setPlayerCash(state.player.cash);
-          // console.log(this.farmModel.player);
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
@@ -96,7 +97,7 @@ export default class FarmController {
           for (const reason of error.response.data.reasons) {
             $toaster.show(`${reason}`, false);
           }
-          Router.push("/#/login");
+          Router.push("/#/welcome");
         }
       },
       setActiveTool: (tool: tool) => {
