@@ -9,7 +9,7 @@ const getRegistrationWaysTemplate = () => `
     </div>
     <div class="auth-screen__content">
         <div class="auth-screen__btn-list">
-            <button class="button">Войти через Google</button>
+<!--            <button class="button">Войти через Google</button>-->
             <a class="button brown" href="/#/registration">Через почту</a>
             <a class="button green" href="/#/login">Войти</a>
         </div>

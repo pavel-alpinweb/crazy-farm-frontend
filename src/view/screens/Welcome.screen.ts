@@ -3,7 +3,7 @@ import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticSc
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
         <div class="welcome-screen__top">
-            <button class="button">Войти через Google</button>
+<!--            <button class="button">Войти через Google</button>-->
             <a class="button brown" href="/#/login">Войти через почту</a>
         </div>
         <div class="welcome-screen__middle">
