@@ -8,9 +8,10 @@ export abstract class AbstractAnimatedSprite {
   protected abstract spriteName: string;
   protected abstract framesNumber: number;
   private bundle: any | null = null;
+  protected isLoop = true;
 
   private async render(): Promise<PIXI.AnimatedSprite | null> {
-    let animatedSprite = null;
+    let animatedSprite: PIXI.AnimatedSprite | null = null;
     this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
       const spritesheet = new PIXI.Spritesheet(
@@ -24,7 +25,15 @@ export abstract class AbstractAnimatedSprite {
       animatedSprite.anchor.set(0.5);
       animatedSprite.animationSpeed = this.animationSpeed;
       animatedSprite.name = this.spriteName;
+      animatedSprite.loop = this.isLoop;
       animatedSprite.play();
+      if (!this.isLoop) {
+        animatedSprite.onComplete = () => {
+          if (animatedSprite instanceof PIXI.AnimatedSprite) {
+            animatedSprite.destroy();
+          }
+        };
+      }
     }
     return animatedSprite;
   }

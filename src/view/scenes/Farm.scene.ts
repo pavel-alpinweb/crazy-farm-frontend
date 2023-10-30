@@ -2,6 +2,7 @@ import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { DEFAULT_FARM_STATE, eventBusFarm } from "../../model/farm.model";
 import { RenderFarmComposition } from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
+import { farmAssetsLoader } from "../../main";
 
 interface Props {
   farm: FarmState;
@@ -34,10 +35,12 @@ export class FarmScene extends AbstractScene {
   }
 
   protected renderContainers(): void {
+    this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
   }
 
-  protected renderSprites(): void {
+  protected async renderSprites(): Promise<void> {
+    await farmAssetsLoader.load();
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell);
       this.renderFarmComposition.renderNeedsSprites(cell);
@@ -57,24 +60,19 @@ export class FarmScene extends AbstractScene {
   }
 
   setHandlers() {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    const centralContainer = this.renderFarmComposition.containers.find(
-      (container) => container.name === "central"
-    );
-    if (centralContainer) {
+    for (const container of this.renderFarmComposition.containers) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      centralContainer.render.eventMode = "static";
+      container.render.eventMode = "static";
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //@ts-ignore
+      container.render.on("pointerdown", () => {
+        if (this.events.click) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          //@ts-ignore
+          this.events.click(container.name);
+        }
+      });
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    //@ts-ignore
-    centralContainer.render.on("pointerdown", () => {
-      if (this.events.click) {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        //@ts-ignore
-        this.events.click(centralContainer.name);
-      }
-    });
   }
 }
