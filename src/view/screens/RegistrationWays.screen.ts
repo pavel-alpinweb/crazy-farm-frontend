@@ -1,4 +1,4 @@
-import {AbstractStaticScreen} from "../../framework/interface/AbstractStaticScreen";
+import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
 
 const getRegistrationWaysTemplate = () => `
 <div class="auth-screen">
@@ -17,8 +17,8 @@ const getRegistrationWaysTemplate = () => `
 </div>
 `;
 
-export class RegistrationWaysScreen extends AbstractStaticScreen{
-    get template(): string {
-        return getRegistrationWaysTemplate();
-    }
+export class RegistrationWaysScreen extends AbstractStaticScreen {
+  get template(): string {
+    return getRegistrationWaysTemplate();
+  }
 }
