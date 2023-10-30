@@ -109,10 +109,52 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "explosion-tomato",
+      name: "explosion",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-tomato/explosion-tomato.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion/explosion.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion/explosion.json`,
+      },
+    },
+    {
+      name: "mini-explosion",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/mini-explosion/mini-explosion.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/mini-explosion/mini-explosion.json`,
+      },
+    },
+    {
+      name: "explosion-child-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-child-tomato/explosion-child-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-child-tomato/explosion-child-tomato.json`,
+      },
+    },
+    {
+      name: "explosion-kid-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-kid-tomato/explosion-kid-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-kid-tomato/explosion-kid-tomato.json`,
+      },
+    },
+    {
+      name: "explosion-adult-tomato",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/explosion-adult-tomato/explosion-adult-tomato.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/explosion-adult-tomato/explosion-adult-tomato.json`,
+      },
+    },
+    {
+      name: "withered-tomato-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-tomato-sprout/withered-tomato-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-tomato-sprout/withered-tomato-sprout.json`,
+      },
+    },
+    {
+      name: "withered-potato-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.json`,
       },
     },
   ],
