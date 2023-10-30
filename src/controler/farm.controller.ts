@@ -48,14 +48,14 @@ export default class FarmController {
             );
           } else {
             $toaster.show("Авторизуйтесь", false);
-            Router.push("/#/login");
+            Router.push("/#/welcome");
           }
         } catch (error: any) {
           if (!error.response) {
             console.error("farm controller error:", error);
           } else if (error?.response?.data?.httpErrorCode === 401) {
             $toaster.show("Авторизуйтесь", false);
-            Router.push("/#/login");
+            Router.push("/#/welcome");
           } else {
             for (const reason of error.response.data.reasons) {
               $toaster.show(`${reason}`, false);
@@ -97,7 +97,7 @@ export default class FarmController {
           for (const reason of error.response.data.reasons) {
             $toaster.show(`${reason}`, false);
           }
-          Router.push("/#/login");
+          Router.push("/#/welcome");
         }
       },
       setActiveTool: (tool: tool) => {
