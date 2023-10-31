@@ -10,7 +10,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
-import { $toaster } from "../main";
+import {$toaster, farmAssetsLoader, $loader} from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -36,12 +36,13 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
+            $loader.show();
+            await farmAssetsLoader.load();
             await this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },
               this.methods
             );
-            this.farmModel.setPlayerCash(50);
             appContainer?.insertAdjacentElement(
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
@@ -89,6 +90,7 @@ export default class FarmController {
           this.Socket.onMessage((data: FarmResponse) => {
             this.farmModel.setFarmState(data);
             this.farmModel.setPlayerCash(data.player.cash);
+            $loader.remove();
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);

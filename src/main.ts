@@ -11,9 +11,11 @@ import RegistrationWaysController from "./controler/registrationWays.controller"
 import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
-import { Toaster } from "./framework/Toaster";
+import { Toaster } from "./framework/interface/Toaster";
+import {Loader} from "./framework/interface/Loader";
 
 export const $toaster = new Toaster(3000);
+export const $loader = new Loader(1000);
 export const farmAssetsLoader = new AssetsLoader(manifest);
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
