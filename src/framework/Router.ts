@@ -60,13 +60,14 @@ export class Router {
 
   public init(): void {
     window.addEventListener("hashchange", this.changePageHandler);
+    if (Router.path[0].length === 0) {
+      Router.push("/#/");
+    } else {
+      window.onload = this.changePageHandler;
+    }
     const registrationToken = Router.getParam("token");
     if (registrationToken) {
       Router.push(`/#/?token=${registrationToken}`);
-    } else if (Router.path[0].length === 0) {
-      Router.push("/#/");
     }
-
-    this.changePageHandler();
   }
 }
