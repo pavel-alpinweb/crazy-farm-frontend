@@ -15,7 +15,7 @@ import { Toaster } from "./framework/interface/Toaster";
 import {Loader} from "./framework/interface/Loader";
 
 export const $toaster = new Toaster(3000);
-export const $loader = new Loader();
+export const $loader = new Loader(1000);
 export const farmAssetsLoader = new AssetsLoader(manifest);
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();

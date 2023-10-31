@@ -22,6 +22,12 @@
   height: 100%;
   background: #78710e url("/assets/img/illustrations/texture-sprite-grass.png") repeat;
   background-size: 50%;
+  opacity: 1;
+  transition: opacity;
+  transition-timing-function: ease-in;
+  &.fade {
+    opacity: 0;
+  }
   &__title {
     position: absolute;
     top: 10px;

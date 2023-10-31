@@ -1,17 +1,22 @@
-const template = () => `
+const template = (fadeTime: number) => `
     <div class="loader">
         <div class="loader__title">Loading...</div>
         <div class="loader__animation"></div>
+        <style>
+            .loader {
+                transition-duration: ${fadeTime / 1000}s;
+            }
+        </style>
     </div>
 `;
 
 export class Loader {
     private $loaderContainer!: null | HTMLElement;
     private $loader!: HTMLElement;
-    private isStateLoading = false;
+    private readonly fadeTime!: number;
 
-    public get isLoading() {
-        return this.isStateLoading;
+    constructor(time: number) {
+        this.fadeTime = time;
     }
 
     private add() {
@@ -25,12 +30,15 @@ export class Loader {
     }
 
     public remove() {
-        this.$loader.remove();
+        this.$loader.classList.add('fade');
+        setTimeout(() => {
+            this.$loader.remove();
+        }, this.fadeTime);
     }
 
     public show() {
         const newElement = document.createElement("div");
-        newElement.innerHTML = template();
+        newElement.innerHTML = template(this.fadeTime);
         this.$loader = <HTMLElement>newElement.firstElementChild;
         this.add();
     }
