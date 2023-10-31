@@ -41,7 +41,6 @@ export default class FarmController {
               { farm: farmModel.state, player: farmModel.player },
               this.methods
             );
-            this.farmModel.setPlayerCash(50);
             appContainer?.insertAdjacentElement(
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element

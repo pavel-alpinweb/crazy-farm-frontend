@@ -11,7 +11,7 @@ import RegistrationWaysController from "./controler/registrationWays.controller"
 import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
-import { Toaster } from "./framework/Toaster";
+import { Toaster } from "./framework/interface/Toaster";
 
 export const $toaster = new Toaster(3000);
 export const farmAssetsLoader = new AssetsLoader(manifest);

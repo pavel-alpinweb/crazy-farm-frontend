@@ -2,7 +2,7 @@ import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import { appContainer } from "../utils/constants";
 import { DevRoomScreen } from "../view/screens/DevRoom.screen";
 import { AbstractView } from "../framework/interface/AbstractView";
-import { Toaster } from "../framework/Toaster";
+import { Toaster } from "../framework/interface/Toaster";
 
 export default class DevRoomController {
   private DevRoomScreen: AbstractScreen | null;
