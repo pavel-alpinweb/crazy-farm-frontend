@@ -1,6 +1,7 @@
 const template = () => `
     <div class="loader">
-        <div class="loader__animation">Loading...</div>
+        <div class="loader__title">Loading...</div>
+        <div class="loader__animation"></div>
     </div>
 `;
 
