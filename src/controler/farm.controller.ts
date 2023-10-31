@@ -10,7 +10,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
-import { $toaster } from "../main";
+import {$toaster, farmAssetsLoader} from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -36,6 +36,7 @@ export default class FarmController {
             Service.setToken(result.jws);
             Router.push("/#/");
           } else if (userToken) {
+            await farmAssetsLoader.load();
             await this.methods.connectToWebSocketServer(userToken);
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },

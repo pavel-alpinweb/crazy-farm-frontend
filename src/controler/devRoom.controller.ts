@@ -3,6 +3,7 @@ import { appContainer } from "../utils/constants";
 import { DevRoomScreen } from "../view/screens/DevRoom.screen";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { Toaster } from "../framework/interface/Toaster";
+import {farmAssetsLoader} from "../main";
 
 export default class DevRoomController {
   private DevRoomScreen: AbstractScreen | null;
@@ -12,7 +13,8 @@ export default class DevRoomController {
   constructor() {
     this.DevRoomScreen = null;
     this.methods = {
-      init: () => {
+      init: async () => {
+        await farmAssetsLoader.load();
         this.DevRoomScreen = new DevRoomScreen();
         appContainer?.insertAdjacentElement(
           AbstractView.positions.BEFOREEND,

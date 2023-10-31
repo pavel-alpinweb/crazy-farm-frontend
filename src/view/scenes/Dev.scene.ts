@@ -36,7 +36,6 @@ export class DevScene extends AbstractScene {
   }
 
   protected async renderSprites(): Promise<void> {
-    await farmAssetsLoader.load();
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell);
       this.renderFarmComposition.renderNeedsSprites(cell);
