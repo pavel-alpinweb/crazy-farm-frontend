@@ -1,5 +1,12 @@
-import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
+import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {$t} from "../../utils/helpers";
+
+interface State {
+  language: language;
+  loginButtonText: string;
+  signInButtonText: string;
+  welcomeText: string;
+}
 
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
@@ -22,8 +29,47 @@ const createWelcomeScreenTamplate = () => `
     </div>
 `;
 
-export class WelcomeScreen extends AbstractStaticScreen {
+export class WelcomeScreen extends AbstractScreen {
   get template(): string {
     return createWelcomeScreenTamplate();
+  }
+
+  protected components: ScreenComponents = {
+    EnterButtonComponent: null,
+    RegistrationButtonComponent: null,
+    SignInButtonComponent: null,
+  };
+  protected controllerMethods: Methods;
+  protected state: State = {
+    language: 'en',
+    loginButtonText: 'Войти через почту',
+    signInButtonText: 'Зарегистрироваться',
+    welcomeText: 'Фермер, стой! Выбери портал, через который ты войдешь!',
+  };
+
+  constructor(methods: Methods) {
+    super();
+    this.controllerMethods = methods;
+  }
+
+  protected initComponents(): void {
+    console.warn('initComponents');
+  }
+
+  protected renderComponents(): void {
+    console.warn('renderComponents');
+  }
+
+  protected setEvents(): void {
+    console.warn('setEvents');
+  }
+
+  protected setState(): void {
+    this.state = {
+      language: 'en',
+      loginButtonText: 'Войти через почту',
+      signInButtonText: 'Зарегистрироваться',
+      welcomeText: $t("welcome"),
+    };
   }
 }

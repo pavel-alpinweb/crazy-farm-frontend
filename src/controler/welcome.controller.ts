@@ -10,7 +10,7 @@ export default class WelcomeController {
     this.WelcomeScreen = null;
     this.methods = {
       init: () => {
-        this.WelcomeScreen = new WelcomeScreen();
+        this.WelcomeScreen = new WelcomeScreen(this.methods);
         appContainer?.insertAdjacentElement(
           AbstractView.positions.BEFOREEND,
           <Element>this.WelcomeScreen.element
