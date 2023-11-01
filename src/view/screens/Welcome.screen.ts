@@ -1,8 +1,13 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {$t} from "../../utils/helpers";
+import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
+
+interface Props {
+  language: language;
+}
 
 interface State {
-  language: language;
+  language: Props["language"];
   loginButtonText: string;
   signInButtonText: string;
   welcomeText: string;
@@ -10,6 +15,7 @@ interface State {
 
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
+        <div class="welcome-screen__language" data-slot-language></div>
         <div class="welcome-screen__top">
 <!--            <button class="button">Войти через Google</button>-->
             <a class="button brown" href="/#/login">Войти через почту</a>
@@ -35,6 +41,7 @@ export class WelcomeScreen extends AbstractScreen {
   }
 
   protected components: ScreenComponents = {
+    LanguageSwitcherComponent: null,
     EnterButtonComponent: null,
     RegistrationButtonComponent: null,
     SignInButtonComponent: null,
@@ -47,26 +54,32 @@ export class WelcomeScreen extends AbstractScreen {
     welcomeText: 'Фермер, стой! Выбери портал, через который ты войдешь!',
   };
 
-  constructor(methods: Methods) {
+  constructor(props: Props, methods: Methods) {
     super();
     this.controllerMethods = methods;
+    this.setState(props);
+    this.initComponents();
+    this.renderComponents();
+    this.setEvents();
   }
 
   protected initComponents(): void {
-    console.warn('initComponents');
+    this.components.LanguageSwitcherComponent = new LanguageSwitcherComponent({
+      activeLanguage: this.state.language,
+    });
   }
 
   protected renderComponents(): void {
-    console.warn('renderComponents');
+    this.mountComponent("language", this.components.LanguageSwitcherComponent);
   }
 
   protected setEvents(): void {
     console.warn('setEvents');
   }
 
-  protected setState(): void {
+  protected setState(props: Props): void {
     this.state = {
-      language: 'en',
+      language: props.language,
       loginButtonText: 'Войти через почту',
       signInButtonText: 'Зарегистрироваться',
       welcomeText: $t("welcome"),

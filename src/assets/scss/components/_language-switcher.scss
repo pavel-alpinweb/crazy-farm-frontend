@@ -1,0 +1,32 @@
+.language-switcher {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  line-height: 100%;
+  background: #eab54f;
+  border: 3px solid #723e19;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  font-size: 16px;
+  padding: 0 10px;
+  color: #000;
+  position: relative;
+  &__current {
+    margin: auto;
+    text-transform: uppercase;
+  }
+  &__menu {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    background: #eab54f;
+    border: 3px solid #723e19;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  &__item {
+    width: 100%;
+    padding: 10px 0;
+  }
+}

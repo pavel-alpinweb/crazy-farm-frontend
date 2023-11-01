@@ -28,7 +28,7 @@ const registrationController = new RegistrationController(userModel);
 const farmController = new FarmController(farmModel, userModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
-const welcomeController = new WelcomeController();
+const welcomeController = new WelcomeController(userModel);
 const registrationWaysController = new RegistrationWaysController();
 
 const params: Array<RouterParams> = [
