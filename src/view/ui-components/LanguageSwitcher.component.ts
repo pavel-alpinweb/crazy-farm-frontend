@@ -1,4 +1,6 @@
 import {AbstractView} from "../../framework/interface/AbstractView";
+import {eventBusUser} from "../../model/user.model";
+import {$t} from "../../utils/helpers";
 
 interface Props {
     activeLanguage: language;
@@ -51,6 +53,15 @@ export class LanguageSwitcherComponent extends AbstractView {
                 }
             });
         });
+
+        const setLanguage = (value: language) => {
+            this.state.language = value;
+            this.rerenderElement();
+            console.log($t("welcome"));
+        };
+
+        eventBusUser.off("User:language", setLanguage);
+        eventBusUser.on("User:language", setLanguage);
     }
 
     protected setState(props: Props): void {

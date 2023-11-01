@@ -21,6 +21,9 @@ export default class WelcomeController {
           <Element>this.WelcomeScreen.element
         );
       },
+      setLanguage: (value: language) => {
+        this.userModel.setUserLanguage(value);
+      },
       destroy: () => {
         this.WelcomeScreen?.remove();
         this.WelcomeScreen = null;

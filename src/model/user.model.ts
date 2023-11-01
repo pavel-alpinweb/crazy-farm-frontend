@@ -1,4 +1,5 @@
 import { EventBus } from "../framework/EventBus";
+import i18next from "i18next";
 
 export const eventBusUser: EventBus = new EventBus();
 
@@ -76,5 +77,11 @@ export default class User {
   public setLoading(value: boolean) {
     this.isLoadingUserData = value;
     eventBusUser.emit("User:loading", this.isLoadingUserData);
+  }
+
+  public async setUserLanguage(value: language) {
+    await i18next.changeLanguage(value);
+    this.userLanguage = value;
+    eventBusUser.emit("User:language", this.userLanguage);
   }
 }
