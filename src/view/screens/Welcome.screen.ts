@@ -1,4 +1,5 @@
 import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
+import {$t} from "../../utils/helpers";
 
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
@@ -10,7 +11,7 @@ const createWelcomeScreenTamplate = () => `
             <div class="welcome-screen__character">
                 <img src="/assets/img/illustrations/potato.png" alt="potato">
                 <div class="welcome-screen__text">
-                    Фермер, стой! Выбери портал, через который ты войдешь!
+                    ${ $t("welcome") }
                 </div>
             </div>
             <img src="/assets/img/illustrations/sprout.png" alt="potato">
