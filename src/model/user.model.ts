@@ -25,6 +25,8 @@ declare global {
     loggin: string;
     password: string;
   }
+
+  type language = 'en' | 'ru';
 }
 
 export default class User {
@@ -32,6 +34,7 @@ export default class User {
   private userLogin = DEFAULT_USER_DATA.loggin;
   private userEmail = DEFAULT_USER_DATA.email;
   private isLoadingUserData = false;
+  private userLanguage: language = 'ru';
 
   public get id(): string | undefined {
     if (this.userId) {
@@ -47,6 +50,10 @@ export default class User {
 
   public get loading(): boolean {
     return this.isLoadingUserData;
+  }
+
+  public get language(): language {
+    return this.userLanguage;
   }
 
   public get data(): UserData {
