@@ -1,5 +1,6 @@
 import {AbstractView} from "../../framework/interface/AbstractView";
 import {$t} from "../../utils/helpers";
+import {eventBusUser} from "../../model/user.model";
 
 interface Props {
     text: string;
@@ -33,7 +34,13 @@ export class WelcomeTextComponent extends AbstractView{
     }
 
     protected setEvents(): void {
-        console.warn('setEvents');
+        const setLanguage = () => {
+            this.state.text = $t("welcome");
+            this.rerenderElement();
+        };
+
+        eventBusUser.off("User:language", setLanguage);
+        eventBusUser.on("User:language", setLanguage);
     }
 
     protected setState(props: Props): void {
