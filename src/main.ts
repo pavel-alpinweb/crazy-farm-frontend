@@ -12,11 +12,15 @@ import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
 import { Toaster } from "./framework/interface/Toaster";
-import {Loader} from "./framework/interface/Loader";
+import { Loader } from "./framework/interface/Loader";
+import i18next from "i18next";
+import en from "./localization/en.json";
+import ru from "./localization/ru.json";
 
 export const $toaster = new Toaster(3000);
 export const $loader = new Loader(1000);
 export const farmAssetsLoader = new AssetsLoader(manifest);
+
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
 const loginController = new LoginController(userModel);
@@ -24,7 +28,7 @@ const registrationController = new RegistrationController(userModel);
 const farmController = new FarmController(farmModel, userModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
-const welcomeController = new WelcomeController();
+const welcomeController = new WelcomeController(userModel);
 const registrationWaysController = new RegistrationWaysController();
 
 const params: Array<RouterParams> = [
@@ -59,4 +63,19 @@ const params: Array<RouterParams> = [
 ];
 
 const router: Router = new Router(params);
-router.init();
+i18next
+  .init({
+    lng: "ru",
+    debug: true,
+    resources: {
+      en: {
+        translation: en,
+      },
+      ru: {
+        translation: ru,
+      },
+    },
+  })
+  .then(() => {
+    router.init();
+  });

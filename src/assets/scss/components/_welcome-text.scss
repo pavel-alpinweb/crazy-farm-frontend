@@ -1,0 +1,25 @@
+.welcome-text {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  &__character {
+    position: relative;
+  }
+  &__text {
+    width: 221px;
+    height: 193px;
+    background: url("/assets/img/illustrations/cloud.png");
+    font-size: 16px;
+    text-align: center;
+    font-weight: 500;
+    color: #000;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 159px;
+    left: 60px;
+    padding: 0 10px;
+  }
+}

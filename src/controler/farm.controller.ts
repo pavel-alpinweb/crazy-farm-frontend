@@ -10,7 +10,7 @@ import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
-import {$toaster, farmAssetsLoader, $loader} from "../main";
+import { $toaster, farmAssetsLoader, $loader } from "../main";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -66,6 +66,7 @@ export default class FarmController {
       },
       destroy: () => {
         this.Socket?.close();
+        $loader.remove();
         this.FarmScreen?.remove();
         this.FarmScreen = null;
         if (appContainer) {
