@@ -74,7 +74,9 @@ export class WelcomeScreen extends AbstractScreen {
   }
 
   protected setEvents(): void {
-    console.warn('setEvents');
+    this.components.LanguageSwitcherComponent?.emits.setClickEvent((lang: Concrete) => {
+      console.log('click!', lang);
+    });
   }
 
   protected setState(props: Props): void {
