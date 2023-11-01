@@ -1,6 +1,7 @@
 import {AbstractScreen} from "../../framework/interface/AbstractScreen";
 import {$t} from "../../utils/helpers";
 import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
+import {WelcomeTextComponent} from "../ui-components/WelcomeText.component";
 
 interface Props {
   language: language;
@@ -20,15 +21,7 @@ const createWelcomeScreenTamplate = () => `
 <!--            <button class="button">Войти через Google</button>-->
             <a class="button brown" href="/#/login">Войти через почту</a>
         </div>
-        <div class="welcome-screen__middle">
-            <div class="welcome-screen__character">
-                <img src="/assets/img/illustrations/potato.png" alt="potato">
-                <div class="welcome-screen__text">
-                    ${ $t("welcome") }
-                </div>
-            </div>
-            <img src="/assets/img/illustrations/sprout.png" alt="potato">
-        </div>
+        <div class="welcome-screen__middle" data-slot-message></div>
         <div class="welcome-screen__bottom">
             <a class="button big green" href="/#/registration-ways">Зарегистрироваться</a>
         </div>
@@ -45,6 +38,7 @@ export class WelcomeScreen extends AbstractScreen {
     EnterButtonComponent: null,
     RegistrationButtonComponent: null,
     SignInButtonComponent: null,
+    welcomeTextComponent: null,
   };
   protected controllerMethods: Methods;
   protected state: State = {
@@ -67,10 +61,14 @@ export class WelcomeScreen extends AbstractScreen {
     this.components.LanguageSwitcherComponent = new LanguageSwitcherComponent({
       activeLanguage: this.state.language,
     });
+    this.components.welcomeTextComponent = new WelcomeTextComponent({
+      text: this.state.welcomeText,
+    });
   }
 
   protected renderComponents(): void {
     this.mountComponent("language", this.components.LanguageSwitcherComponent);
+    this.mountComponent("message", this.components.welcomeTextComponent);
   }
 
   protected setEvents(): void {
