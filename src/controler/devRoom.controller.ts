@@ -3,7 +3,7 @@ import { appContainer } from "../utils/constants";
 import { DevRoomScreen } from "../view/screens/DevRoom.screen";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { Toaster } from "../framework/interface/Toaster";
-import {farmAssetsLoader, $loader} from "../main";
+import { farmAssetsLoader, $loader } from "../main";
 
 export default class DevRoomController {
   private DevRoomScreen: AbstractScreen | null;

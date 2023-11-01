@@ -12,7 +12,7 @@ import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
 import { Toaster } from "./framework/interface/Toaster";
-import {Loader} from "./framework/interface/Loader";
+import { Loader } from "./framework/interface/Loader";
 import i18next from "i18next";
 import en from "./localization/en.json";
 import ru from "./localization/ru.json";
@@ -63,17 +63,19 @@ const params: Array<RouterParams> = [
 ];
 
 const router: Router = new Router(params);
-i18next.init({
-  lng: 'ru',
-  debug: true,
-  resources: {
-    en: {
-      translation: en,
+i18next
+  .init({
+    lng: "ru",
+    debug: true,
+    resources: {
+      en: {
+        translation: en,
+      },
+      ru: {
+        translation: ru,
+      },
     },
-    ru: {
-      translation: ru,
-    },
-  },
-}).then(() => {
-  router.init();
-});
+  })
+  .then(() => {
+    router.init();
+  });

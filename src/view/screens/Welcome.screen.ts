@@ -1,7 +1,7 @@
-import {AbstractScreen} from "../../framework/interface/AbstractScreen";
-import {$t} from "../../utils/helpers";
-import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
-import {WelcomeTextComponent} from "../ui-components/WelcomeText.component";
+import { AbstractScreen } from "../../framework/interface/AbstractScreen";
+import { $t } from "../../utils/helpers";
+import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
+import { WelcomeTextComponent } from "../ui-components/WelcomeText.component";
 
 interface Props {
   language: language;
@@ -42,10 +42,10 @@ export class WelcomeScreen extends AbstractScreen {
   };
   protected controllerMethods: Methods;
   protected state: State = {
-    language: 'en',
-    loginButtonText: 'Войти через почту',
-    signInButtonText: 'Зарегистрироваться',
-    welcomeText: 'Фермер, стой! Выбери портал, через который ты войдешь!',
+    language: "en",
+    loginButtonText: "Войти через почту",
+    signInButtonText: "Зарегистрироваться",
+    welcomeText: "Фермер, стой! Выбери портал, через который ты войдешь!",
   };
 
   constructor(props: Props, methods: Methods) {
@@ -72,16 +72,18 @@ export class WelcomeScreen extends AbstractScreen {
   }
 
   protected setEvents(): void {
-    this.components.LanguageSwitcherComponent?.emits.setClickEvent((lang: Concrete) => {
-      this.controllerMethods.setLanguage(lang);
-    });
+    this.components.LanguageSwitcherComponent?.emits.setClickEvent(
+      (lang: Concrete) => {
+        this.controllerMethods.setLanguage(lang);
+      }
+    );
   }
 
   protected setState(props: Props): void {
     this.state = {
       language: props.language,
-      loginButtonText: 'Войти через почту',
-      signInButtonText: 'Зарегистрироваться',
+      loginButtonText: "Войти через почту",
+      signInButtonText: "Зарегистрироваться",
       welcomeText: $t("welcome"),
     };
   }

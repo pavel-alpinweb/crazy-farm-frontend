@@ -13,9 +13,12 @@ export default class WelcomeController {
     this.userModel = userModel;
     this.methods = {
       init: () => {
-        this.WelcomeScreen = new WelcomeScreen({
-          language: this.userModel.language,
-        }, this.methods);
+        this.WelcomeScreen = new WelcomeScreen(
+          {
+            language: this.userModel.language,
+          },
+          this.methods
+        );
         appContainer?.insertAdjacentElement(
           AbstractView.positions.BEFOREEND,
           <Element>this.WelcomeScreen.element
