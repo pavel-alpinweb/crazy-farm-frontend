@@ -2,7 +2,6 @@ import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { DEFAULT_FARM_STATE } from "../../model/farm.model";
 import { RenderFarmComposition } from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
-import { farmAssetsLoader } from "../../main";
 
 interface Props {
   farm: FarmState;
@@ -36,7 +35,6 @@ export class DevScene extends AbstractScene {
   }
 
   protected async renderSprites(): Promise<void> {
-    await farmAssetsLoader.load();
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell);
       this.renderFarmComposition.renderNeedsSprites(cell);

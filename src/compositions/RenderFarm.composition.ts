@@ -93,21 +93,29 @@ export class RenderFarmComposition {
       if (container.name.search("dialog") === -1) {
         this.renderSceneComposition.setContainerX(
           container,
-          x * this.CELL_SIZE + this.scene.screen.width / this.CORRECT_CELL_X_NUMBER + this.CELL_GAP * x
+          x * this.CELL_SIZE +
+            this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
+            this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
           container,
-          y * this.CELL_SIZE + this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER + this.CELL_GAP * y
+          y * this.CELL_SIZE +
+            this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
+            this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
         this.renderSceneComposition.setContainerX(
           container,
-          x * this.CELL_SIZE + this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER + this.CELL_GAP * x
+          x * this.CELL_SIZE +
+            this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER +
+            this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
           container,
-          y * this.CELL_SIZE + this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER + this.CELL_GAP * y
+          y * this.CELL_SIZE +
+            this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER +
+            this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       }

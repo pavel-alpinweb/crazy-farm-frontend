@@ -1,0 +1,13 @@
+{
+  "welcome": "Farmer, stop! Pick the portal you’re coming through!",
+  "send": "Send",
+  "emailPlaceholder": "Type email...",
+  "loginPlaceholder": "Type login...",
+  "passwordPlaceholder": "Type password...",
+  "registration": "Registration",
+  "enter": "Login",
+  "back": "Back",
+  "byEmail": "By email",
+  "loginByEmail": "Login by email",
+  "signIn": "Sign In"
+}

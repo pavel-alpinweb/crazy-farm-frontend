@@ -1,6 +1,7 @@
 // Common modules
 @import "common/_reset.scss";
 @import "common/_toaster.scss";
+@import "common/_loader.scss";
 @import "common/_typography.scss";
 
 // UI Components
@@ -9,6 +10,8 @@
 @import "components/_page-header.scss";
 @import "components/_tool.scss";
 @import "components/_wallet.scss";
+@import "components/_language-switcher.scss";
+@import "components/_welcome-text.scss";
 
 // Widgets
 @import "widgets/auth-form";

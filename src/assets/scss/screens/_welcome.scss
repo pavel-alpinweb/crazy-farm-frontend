@@ -13,32 +13,16 @@
     gap: 15px;
     margin: 45px auto 0;
   }
+  &__language {
+    position: fixed;
+    top: 45px;
+    right: 5px;
+  }
   &__middle {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
     position: absolute;
     bottom: 53px;
     left: 0;
     right: 0;
-  }
-  &__character {
-    position: relative;
-  }
-  &__text {
-    width: 221px;
-    height: 193px;
-    background: url("/assets/img/illustrations/cloud.png");
-    font-size: 16px;
-    text-align: center;
-    font-weight: 500;
-    color: #000;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    bottom: 159px;
-    left: 60px;
-    padding: 0 10px;
   }
   &__bottom {
     width: 100%;
