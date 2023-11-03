@@ -109,7 +109,7 @@ export class DevRoomScreen extends AbstractScreen {
       translationKey: "loginPlaceholder",
     });
     this.components.PageHeader = new PageHeaderComponent({
-      title: "Регистрация",
+      translationKey: "registration",
     });
   }
 

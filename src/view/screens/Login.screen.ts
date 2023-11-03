@@ -48,7 +48,7 @@ export class LoginScreen extends AbstractScreen {
   }
   protected initComponents(): void {
     this.components.PageHeaderComponent = new PageHeaderComponent({
-      title: this.state.title,
+      translationKey: "enter",
     });
     this.components.AuthFormWidget = new AuthFormWidget({
       user: {

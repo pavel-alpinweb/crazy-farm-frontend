@@ -3,5 +3,7 @@
   "send": "Отправить",
   "emailPlaceholder": "Введите email...",
   "loginPlaceholder": "Введите логин...",
-  "passwordPlaceholder": "Введите пароль..."
+  "passwordPlaceholder": "Введите пароль...",
+  "registration": "Регистрация",
+  "enter": "Логин"
 }

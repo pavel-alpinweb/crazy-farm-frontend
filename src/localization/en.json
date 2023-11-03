@@ -3,5 +3,7 @@
   "send": "Send",
   "emailPlaceholder": "Type email...",
   "loginPlaceholder": "Type login...",
-  "passwordPlaceholder": "Type password..."
+  "passwordPlaceholder": "Type password...",
+  "registration": "Registration",
+  "enter": "Login"
 }

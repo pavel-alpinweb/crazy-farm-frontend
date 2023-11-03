@@ -8,7 +8,7 @@ interface State {
   isLoading: boolean;
   isDisabled: boolean;
   title: string;
-  translationKey: Props["translationKey"],
+  translationKey: Props["translationKey"];
 }
 
 const createButtonTemplate = (state: State) => `

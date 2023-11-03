@@ -1,11 +1,14 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {$t} from "../../utils/helpers";
+import {eventBusUser} from "../../model/user.model";
 
 interface Props {
-  title: string;
+  translationKey: string;
 }
 
 interface State {
-  title: Props["title"];
+  title: string;
+  translationKey: Props["translationKey"];
 }
 
 const createPageHeaderTemplate = (state: State) => `
@@ -17,6 +20,7 @@ const createPageHeaderTemplate = (state: State) => `
 export class PageHeaderComponent extends AbstractView {
   protected state: State = {
     title: "",
+    translationKey: "",
   };
   constructor(props: Props) {
     super();
@@ -24,12 +28,19 @@ export class PageHeaderComponent extends AbstractView {
     this.setEvents();
   }
   protected setState(props: Props) {
-    this.state = props;
+    this.state.title = $t(props.translationKey);
+    this.state.translationKey = props.translationKey;
   }
   protected setEvents(): void {
     this.emits.setClickEvent = (callback: (data: Concrete) => void) => {
       this.events.click = callback;
     };
+    const setLanguage = () => {
+      this.state.title = $t(this.state.translationKey);
+      this.rerenderElement();
+    };
+    eventBusUser.off("User:language", setLanguage);
+    eventBusUser.on("User:language", setLanguage);
   }
   setHandlers() {
     this.element?.addEventListener("click", (event) => {

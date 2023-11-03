@@ -49,7 +49,7 @@ export class RegistrationScreen extends AbstractScreen {
   }
   protected initComponents(): void {
     this.components.PageHeaderComponent = new PageHeaderComponent({
-      title: this.state.title,
+      translationKey: "registration",
     });
     this.components.AuthFormWidget = new AuthFormWidget({
       user: this.state.user,
