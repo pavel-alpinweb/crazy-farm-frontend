@@ -2,7 +2,7 @@ import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { $t } from "../../utils/helpers";
 import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
 import { WelcomeTextComponent } from "../ui-components/WelcomeText.component";
-import {LinkButtonComponent} from "../ui-components/LinkButton.component";
+import { LinkButtonComponent } from "../ui-components/LinkButton.component";
 
 interface Props {
   language: language;
@@ -60,14 +60,14 @@ export class WelcomeScreen extends AbstractScreen {
       text: $t("welcome"),
     });
     this.components.EnterButtonComponent = new LinkButtonComponent({
-      link: '/#/login',
-      translationKey: 'loginByEmail',
-      classes: 'brown',
+      link: "/#/login",
+      translationKey: "loginByEmail",
+      classes: "brown",
     });
     this.components.SignInButtonComponent = new LinkButtonComponent({
-      link: '/#/registration-ways',
-      translationKey: 'signIn',
-      classes: 'big green',
+      link: "/#/registration-ways",
+      translationKey: "signIn",
+      classes: "big green",
     });
   }
 

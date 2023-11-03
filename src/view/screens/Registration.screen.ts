@@ -1,7 +1,7 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { AuthFormWidget } from "../widgets/AuthForm.widget";
-import {LinkButtonComponent} from "../ui-components/LinkButton.component";
+import { LinkButtonComponent } from "../ui-components/LinkButton.component";
 
 interface Props {
   user: RegistrationData;
@@ -55,9 +55,9 @@ export class RegistrationScreen extends AbstractScreen {
       user: this.state.user,
     });
     this.components.BackLinkComponent = new LinkButtonComponent({
-      link: '/#/welcome',
-      translationKey: 'back',
-      classes: 'brown left',
+      link: "/#/welcome",
+      translationKey: "back",
+      classes: "brown left",
     });
   }
 

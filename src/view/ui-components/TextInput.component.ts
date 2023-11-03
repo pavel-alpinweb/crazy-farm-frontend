@@ -1,6 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {$t} from "../../utils/helpers";
-import {eventBusUser} from "../../model/user.model";
+import { $t } from "../../utils/helpers";
+import { eventBusUser } from "../../model/user.model";
 
 interface Props {
   value: string;
@@ -48,7 +48,7 @@ export class TextInputComponent extends AbstractView {
     isDisabled: false,
     isPassword: false,
     icon: null,
-    translationKey: '',
+    translationKey: "",
   };
   constructor(props: Props) {
     super();

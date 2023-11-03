@@ -1,6 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { eventBusUser } from "../../model/user.model";
-import {$t} from "../../utils/helpers";
+import { $t } from "../../utils/helpers";
 interface Props {
   translationKey: string;
 }
@@ -24,7 +24,7 @@ export class ButtonComponent extends AbstractView {
     isLoading: false,
     isDisabled: false,
     title: "Отправить",
-    translationKey: '',
+    translationKey: "",
   };
   constructor(props: Props) {
     super();

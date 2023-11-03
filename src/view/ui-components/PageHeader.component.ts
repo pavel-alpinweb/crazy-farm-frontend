@@ -1,6 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import {$t} from "../../utils/helpers";
-import {eventBusUser} from "../../model/user.model";
+import { $t } from "../../utils/helpers";
+import { eventBusUser } from "../../model/user.model";
 
 interface Props {
   translationKey: string;

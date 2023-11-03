@@ -1,5 +1,5 @@
 import { AbstractStaticScreen } from "../../framework/interface/AbstractStaticScreen";
-import {$t} from "../../utils/helpers";
+import { $t } from "../../utils/helpers";
 
 const getRegistrationWaysTemplate = () => `
 <div class="auth-screen">
