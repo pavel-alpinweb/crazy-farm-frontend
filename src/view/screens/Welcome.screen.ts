@@ -2,7 +2,6 @@ import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { $t } from "../../utils/helpers";
 import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
 import { WelcomeTextComponent } from "../ui-components/WelcomeText.component";
-import {eventBusUser} from "../../model/user.model";
 import {LinkButtonComponent} from "../ui-components/LinkButton.component";
 
 interface Props {
