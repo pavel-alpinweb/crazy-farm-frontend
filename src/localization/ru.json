@@ -5,5 +5,7 @@
   "loginPlaceholder": "Введите логин...",
   "passwordPlaceholder": "Введите пароль...",
   "registration": "Регистрация",
-  "enter": "Логин"
+  "enter": "Войти",
+  "back": "Назад",
+  "byEmail": "Через почту"
 }

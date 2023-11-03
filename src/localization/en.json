@@ -5,5 +5,7 @@
   "loginPlaceholder": "Type login...",
   "passwordPlaceholder": "Type password...",
   "registration": "Registration",
-  "enter": "Login"
+  "enter": "Login",
+  "back": "Back",
+  "byEmail": "By email"
 }
