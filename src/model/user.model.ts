@@ -35,7 +35,7 @@ export default class User {
   private userLogin = DEFAULT_USER_DATA.loggin;
   private userEmail = DEFAULT_USER_DATA.email;
   private isLoadingUserData = false;
-  private userLanguage: language = "ru";
+  private userLanguage: language = "en";
 
   public get id(): string | undefined {
     if (this.userId) {

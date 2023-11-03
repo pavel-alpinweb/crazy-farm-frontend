@@ -65,7 +65,7 @@ const params: Array<RouterParams> = [
 const router: Router = new Router(params);
 i18next
   .init({
-    lng: "ru",
+    lng: "en",
     debug: true,
     resources: {
       en: {

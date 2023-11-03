@@ -2,6 +2,8 @@ import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { $t } from "../../utils/helpers";
 import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
 import { WelcomeTextComponent } from "../ui-components/WelcomeText.component";
+import {eventBusUser} from "../../model/user.model";
+import {LinkButtonComponent} from "../ui-components/LinkButton.component";
 
 interface Props {
   language: language;
@@ -17,14 +19,9 @@ interface State {
 const createWelcomeScreenTamplate = () => `
     <div class="welcome-screen">
         <div class="welcome-screen__language" data-slot-language></div>
-        <div class="welcome-screen__top">
-<!--            <button class="button">Войти через Google</button>-->
-            <a class="button brown" href="/#/login">Войти через почту</a>
-        </div>
+        <div class="welcome-screen__top" data-slot-top></div>
         <div class="welcome-screen__middle" data-slot-message></div>
-        <div class="welcome-screen__bottom">
-            <a class="button big green" href="/#/registration-ways">Зарегистрироваться</a>
-        </div>
+        <div class="welcome-screen__bottom" data-slot-bottom></div>
     </div>
 `;
 
@@ -36,16 +33,15 @@ export class WelcomeScreen extends AbstractScreen {
   protected components: ScreenComponents = {
     LanguageSwitcherComponent: null,
     EnterButtonComponent: null,
-    RegistrationButtonComponent: null,
     SignInButtonComponent: null,
     welcomeTextComponent: null,
   };
   protected controllerMethods: Methods;
   protected state: State = {
     language: "en",
-    loginButtonText: "Войти через почту",
-    signInButtonText: "Зарегистрироваться",
-    welcomeText: "Фермер, стой! Выбери портал, через который ты войдешь!",
+    loginButtonText: $t("loginByEmail"),
+    signInButtonText: $t("signIn"),
+    welcomeText: $t("welcome"),
   };
 
   constructor(props: Props, methods: Methods) {
@@ -61,14 +57,26 @@ export class WelcomeScreen extends AbstractScreen {
     this.components.LanguageSwitcherComponent = new LanguageSwitcherComponent({
       activeLanguage: this.state.language,
     });
-    this.components.welcomeTextComponent = new WelcomeTextComponent({
-      text: this.state.welcomeText,
+    this.components.WelcomeTextComponent = new WelcomeTextComponent({
+      text: $t("welcome"),
+    });
+    this.components.EnterButtonComponent = new LinkButtonComponent({
+      link: '/#/login',
+      translationKey: 'loginByEmail',
+      classes: 'brown',
+    });
+    this.components.SignInButtonComponent = new LinkButtonComponent({
+      link: '/#/registration-ways',
+      translationKey: 'signIn',
+      classes: 'big green',
     });
   }
 
   protected renderComponents(): void {
     this.mountComponent("language", this.components.LanguageSwitcherComponent);
-    this.mountComponent("message", this.components.welcomeTextComponent);
+    this.mountComponent("top", this.components.EnterButtonComponent);
+    this.mountComponent("message", this.components.WelcomeTextComponent);
+    this.mountComponent("bottom", this.components.SignInButtonComponent);
   }
 
   protected setEvents(): void {
@@ -82,8 +90,8 @@ export class WelcomeScreen extends AbstractScreen {
   protected setState(props: Props): void {
     this.state = {
       language: props.language,
-      loginButtonText: "Войти через почту",
-      signInButtonText: "Зарегистрироваться",
+      loginButtonText: $t("loginByEmail"),
+      signInButtonText: $t("signIn"),
       welcomeText: $t("welcome"),
     };
   }

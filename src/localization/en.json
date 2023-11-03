@@ -7,5 +7,7 @@
   "registration": "Registration",
   "enter": "Login",
   "back": "Back",
-  "byEmail": "By email"
+  "byEmail": "By email",
+  "loginByEmail": "Login by email",
+  "signIn": "Sign In"
 }
