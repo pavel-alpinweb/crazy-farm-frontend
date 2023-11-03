@@ -1,4 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
+import {$t} from "../../utils/helpers";
+import {eventBusUser} from "../../model/user.model";
 
 interface Props {
   value: string;
@@ -6,6 +8,7 @@ interface Props {
   isDisabled?: boolean;
   icon?: string;
   isPassword: boolean;
+  translationKey: string;
 }
 
 interface State {
@@ -14,6 +17,7 @@ interface State {
   isPassword: Props["isPassword"];
   isDisabled: boolean | Props["isDisabled"];
   icon: null | Props["icon"];
+  translationKey: Props["translationKey"];
 }
 
 const createTextInputTemplate = (state: State) => `
@@ -44,6 +48,7 @@ export class TextInputComponent extends AbstractView {
     isDisabled: false,
     isPassword: false,
     icon: null,
+    translationKey: '',
   };
   constructor(props: Props) {
     super();
@@ -51,16 +56,24 @@ export class TextInputComponent extends AbstractView {
   }
   protected setState(props: Props) {
     this.state.value = props.value;
-    this.state.placeholder = props.placeholder;
+    this.state.placeholder = $t(props.translationKey);
     this.state.isPassword = props.isPassword;
     this.state.isDisabled = props.isDisabled;
     this.state.icon = props.icon;
+    this.state.translationKey = props.translationKey;
     this.setEvents();
   }
   protected setEvents() {
     this.emits.setInputEvent = (callback: (data: Concrete) => void) => {
       this.events.input = callback;
     };
+
+    const setLanguage = () => {
+      this.state.placeholder = $t(this.state.translationKey);
+      this.rerenderElement();
+    };
+    eventBusUser.off("User:language", setLanguage);
+    eventBusUser.on("User:language", setLanguage);
   }
   setHandlers() {
     this.element?.addEventListener("input", (event) => {

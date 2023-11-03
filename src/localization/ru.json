@@ -1,4 +1,7 @@
 {
   "welcome": "Фермер, стой! Выбери портал, через который ты войдешь!",
-  "send": "Отправить"
+  "send": "Отправить",
+  "emailPlaceholder": "Введите email...",
+  "loginPlaceholder": "Введите логин...",
+  "passwordPlaceholder": "Введите пароль..."
 }

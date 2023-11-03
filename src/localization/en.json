@@ -1,4 +1,7 @@
 {
   "welcome": "Farmer, stop! Pick the portal you’re coming through!",
-  "send": "Send"
+  "send": "Send",
+  "emailPlaceholder": "Type email...",
+  "loginPlaceholder": "Type login...",
+  "passwordPlaceholder": "Type password..."
 }
