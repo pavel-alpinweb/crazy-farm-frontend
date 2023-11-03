@@ -1,12 +1,14 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { eventBusUser } from "../../model/user.model";
+import {$t} from "../../utils/helpers";
 interface Props {
-  title: string;
+  translationKey: string;
 }
 interface State {
   isLoading: boolean;
   isDisabled: boolean;
-  title: Props["title"];
+  title: string;
+  translationKey: Props["translationKey"],
 }
 
 const createButtonTemplate = (state: State) => `
@@ -22,6 +24,7 @@ export class ButtonComponent extends AbstractView {
     isLoading: false,
     isDisabled: false,
     title: "Отправить",
+    translationKey: '',
   };
   constructor(props: Props) {
     super();
@@ -29,7 +32,8 @@ export class ButtonComponent extends AbstractView {
     this.setEvents();
   }
   protected setState(props: Props) {
-    this.state.title = props.title;
+    this.state.title = $t(props.translationKey);
+    this.state.translationKey = props.translationKey;
   }
 
   protected setEvents(): void {
@@ -46,6 +50,13 @@ export class ButtonComponent extends AbstractView {
       this.state.isLoading = value;
       this.rerenderElement();
     };
+    const setLanguage = () => {
+      this.state.title = $t(this.state.translationKey);
+      this.rerenderElement();
+    };
+
+    eventBusUser.off("User:language", setLanguage);
+    eventBusUser.on("User:language", setLanguage);
     eventBusUser.off("User:loading", setLoading);
     eventBusUser.on("User:loading", setLoading);
   }

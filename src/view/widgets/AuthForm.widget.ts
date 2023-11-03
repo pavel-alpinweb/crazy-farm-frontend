@@ -79,7 +79,7 @@ export class AuthFormWidget extends AbstractWidget {
       });
     }
     this.components.FormButton = new ButtonComponent({
-      title: "Отправить",
+      translationKey: "send",
     });
   }
   protected setEvents(): void {
