@@ -106,9 +106,10 @@ export class DevRoomScreen extends AbstractScreen {
       placeholder: "***",
       icon: "user",
       isPassword: false,
+      translationKey: "loginPlaceholder",
     });
     this.components.PageHeader = new PageHeaderComponent({
-      title: "Регистрация",
+      translationKey: "registration",
     });
   }
 

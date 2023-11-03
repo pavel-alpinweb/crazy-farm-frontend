@@ -16,6 +16,7 @@ import { Loader } from "./framework/interface/Loader";
 import i18next from "i18next";
 import en from "./localization/en.json";
 import ru from "./localization/ru.json";
+import Cookies from "js-cookie";
 
 export const $toaster = new Toaster(3000);
 export const $loader = new Loader(1000);
@@ -63,9 +64,11 @@ const params: Array<RouterParams> = [
 ];
 
 const router: Router = new Router(params);
+const lang = Cookies.get("crazy-farm-lang") ?? "en";
+
 i18next
   .init({
-    lng: "ru",
+    lng: lang,
     debug: true,
     resources: {
       en: {

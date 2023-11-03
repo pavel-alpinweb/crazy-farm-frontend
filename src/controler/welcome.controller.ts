@@ -2,6 +2,7 @@ import { WelcomeScreen } from "../view/screens/Welcome.screen";
 import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import User from "../model/user.model";
+import Cookies from "js-cookie";
 
 export default class WelcomeController {
   private readonly userModel: User;
@@ -12,7 +13,9 @@ export default class WelcomeController {
     this.WelcomeScreen = null;
     this.userModel = userModel;
     this.methods = {
-      init: () => {
+      init: async () => {
+        const lang = Cookies.get("crazy-farm-lang") ?? "en";
+        await this.methods.setLanguage(<language>lang);
         this.WelcomeScreen = new WelcomeScreen(
           {
             language: this.userModel.language,

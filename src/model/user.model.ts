@@ -1,5 +1,6 @@
 import { EventBus } from "../framework/EventBus";
 import i18next from "i18next";
+import Cookies from "js-cookie";
 
 export const eventBusUser: EventBus = new EventBus();
 
@@ -35,7 +36,7 @@ export default class User {
   private userLogin = DEFAULT_USER_DATA.loggin;
   private userEmail = DEFAULT_USER_DATA.email;
   private isLoadingUserData = false;
-  private userLanguage: language = "ru";
+  private userLanguage: language = "en";
 
   public get id(): string | undefined {
     if (this.userId) {
@@ -82,6 +83,7 @@ export default class User {
   public async setUserLanguage(value: language) {
     await i18next.changeLanguage(value);
     this.userLanguage = value;
+    Cookies.set("crazy-farm-lang", value, { expires: 7 });
     eventBusUser.emit("User:language", this.userLanguage);
   }
 }
