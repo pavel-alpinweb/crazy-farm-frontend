@@ -152,8 +152,6 @@ export class RenderFarmComposition {
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
       }
-    } else if (container) {
-      this.renderSceneComposition.removeChildren(container, 1);
     }
   }
 
