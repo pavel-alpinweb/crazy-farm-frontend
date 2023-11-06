@@ -30,10 +30,12 @@ export class Loader {
   }
 
   public remove() {
-    this.$loader.classList.add("fade");
-    setTimeout(() => {
-      this.$loader.remove();
-    }, this.fadeTime);
+    if (this.$loader) {
+      this.$loader.classList.add("fade");
+      setTimeout(() => {
+        this.$loader.remove();
+      }, this.fadeTime);
+    }
   }
 
   public show() {
