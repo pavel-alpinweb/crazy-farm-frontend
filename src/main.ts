@@ -69,7 +69,7 @@ const lang = Cookies.get("crazy-farm-lang") ?? "en";
 i18next
   .init({
     lng: lang,
-    debug: true,
+    debug: false,
     resources: {
       en: {
         translation: en,
