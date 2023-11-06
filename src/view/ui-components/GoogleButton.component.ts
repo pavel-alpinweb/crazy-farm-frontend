@@ -23,6 +23,12 @@ export class GoogleButtonComponent extends AbstractView{
         clientId: GOOGLE_CLIENT_ID,
     };
 
+    constructor(props: Props) {
+        super();
+        this.setState(props);
+        this.setEvents();
+    }
+
     protected setEvents(): void {
         console.warn('setEvents');
     }

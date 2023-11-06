@@ -10,7 +10,7 @@ export default class RegistrationWaysController {
     this.RegistrationWaysScreen = null;
     this.methods = {
       init: () => {
-        this.RegistrationWaysScreen = new RegistrationWaysScreen();
+        this.RegistrationWaysScreen = new RegistrationWaysScreen(this.methods);
         appContainer?.insertAdjacentElement(
           AbstractView.positions.BEFOREEND,
           <Element>this.RegistrationWaysScreen.element
