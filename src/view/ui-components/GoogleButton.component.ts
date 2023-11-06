@@ -32,6 +32,20 @@ export class GoogleButtonComponent extends AbstractView{
     protected setEvents(): void {
         console.warn('setEvents');
     }
+    setHandlers() {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        google?.accounts.id.initialize({
+            client_id: this.state.clientId,
+            callback: () => { console.log("Init Google!") },
+        });
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        google.accounts.id.renderButton(
+            this.element,
+            { theme: this.state.theme, size: this.state.size }
+        );
+    }
 
     protected setState(props: Props): void {
         this.state.size = props.size;
