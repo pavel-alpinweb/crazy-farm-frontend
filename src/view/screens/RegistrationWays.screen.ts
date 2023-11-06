@@ -64,7 +64,11 @@ export class RegistrationWaysScreen extends AbstractScreen {
   }
 
   protected setEvents(): void {
-    console.warn('setEvents');
+    this.components.GoogleButtonComponent?.emits.setCredentialResponseEvent(
+        async (response: any) => {
+          this.controllerMethods.sendGoogleCredential(response.credential);
+        }
+    );
   }
 
   protected setState(): void {

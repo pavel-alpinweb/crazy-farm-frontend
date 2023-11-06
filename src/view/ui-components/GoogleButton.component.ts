@@ -30,14 +30,20 @@ export class GoogleButtonComponent extends AbstractView{
     }
 
     protected setEvents(): void {
-        console.warn('setEvents');
+        this.emits.setCredentialResponseEvent = (callback: (data: Concrete) => void) => {
+            this.events.credentailResponseHandler = callback;
+        }
     }
     setHandlers() {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         google?.accounts.id.initialize({
             client_id: this.state.clientId,
-            callback: () => { console.log("Init Google!") },
+            callback: (response: Concrete) => {
+                if (this.events.credentailResponseHandler) {
+                    this.events.credentailResponseHandler(response);
+                }
+            },
         });
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
