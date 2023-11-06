@@ -52,4 +52,17 @@ export default class AuthService {
     );
     return result.data;
   }
+
+  static async GoogleEnter(credential: string): Promise<UserResponse> {
+    const result: AxiosResponse<UserResponse> = await Service.post(
+        "/users/enter/google",
+        {},
+        {
+          headers: {
+            Authorization: credential,
+          },
+        }
+    );
+    return result.data;
+  }
 }
