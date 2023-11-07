@@ -15,6 +15,10 @@ declare global {
     render: PIXI.Container | null;
   }
   type Containers = Array<Container>;
+
+  interface Decoration {
+    [key: string]: [number, number],
+  }
 }
 
 export abstract class AbstractScene {

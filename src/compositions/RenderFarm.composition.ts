@@ -7,12 +7,6 @@ import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
-enum Woodlands {
-  "tree-right",
-  "tree-left",
-  "bush-right",
-  "bush-left",
-}
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
@@ -44,6 +38,13 @@ export class RenderFarmComposition {
     bug: null,
     hunger: null,
     dialog: null,
+  };
+
+  private Woodlands: Decoration = {
+    "tree-right": [0, 0],
+    "tree-left": [0, 0],
+    "bush-right": [0, 0],
+    "bush-left": [0, 0],
   };
 
   private readonly farmContainers: Containers = [];
@@ -100,15 +101,22 @@ export class RenderFarmComposition {
   }
 
   public initWoodlandsContainers(): void {
-    for (const item in Woodlands) {
-      const value = Woodlands[item];
-      if (typeof value === "string") {
-        this.woodlandContainers.push({
-          name: value,
-          render: null,
-        });
-      }
+    for (const item in this.Woodlands) {
+      this.woodlandContainers.push({
+        name: item,
+        render: null,
+      });
     }
+  }
+
+  public renderWoodlandsContainers(): void {
+    this.woodContainers.forEach((container) => {
+      const [x, y] = this.Woodlands[container.name];
+      this.renderSceneComposition.renderContainer(container);
+      this.renderSceneComposition.setContainerX(container, x);
+      this.renderSceneComposition.setContainerY(container, y);
+      this.renderSceneComposition.centerPivotContainer(container);
+    });
   }
 
   public renderFarmContainers(): void {

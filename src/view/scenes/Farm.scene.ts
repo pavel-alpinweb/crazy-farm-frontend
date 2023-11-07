@@ -29,15 +29,16 @@ export class FarmScene extends AbstractScene {
     this.renderFarmComposition = new RenderFarmComposition(
       <PIXI.Application>this.scene
     );
-    this.renderFarmComposition.initWoodlandsContainers();
     this.renderFarmComposition.initCharactersSprite();
     this.renderFarmComposition.initNeedsCharacterSprites();
-    console.log('Containers', this.renderFarmComposition.woodContainers);
   }
 
   protected renderContainers(): void {
+    this.renderFarmComposition.initWoodlandsContainers();
+    this.renderFarmComposition.renderWoodlandsContainers();
     this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
+    console.log('Containers', this.renderFarmComposition.woodContainers);
   }
 
   protected async renderSprites(): Promise<void> {
