@@ -1,4 +1,4 @@
-import { CHARACTERS_SPRITES } from "../utils/constants";
+import {CHARACTERS_SPRITES, DECORATION_SPRITES} from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
@@ -83,6 +83,13 @@ export class RenderFarmComposition {
     this.needsSpritesCollection.bug = new BugSprite();
     this.needsSpritesCollection.hunger = new HungerSprite();
     this.needsSpritesCollection.drop = new DropSprite();
+  }
+
+  public renderDecorationSprites(): void {
+    this.woodContainers.forEach(async (container) => {
+      const DecorationSprite = new DECORATION_SPRITES[container.name]();
+      this.renderSceneComposition.addSprite(container, await DecorationSprite?.sprite());
+    });
   }
 
   public initFarmContainers(): void {
