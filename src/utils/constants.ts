@@ -17,19 +17,20 @@ import { ExplosionAdultTomatoSprite } from "../view/sprites/ExplosionAdultTomato
 import { MiniExplosionSprite } from "../view/sprites/MiniExplosion.sprite";
 import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
 import { LightFieldSprite } from "../view/sprites/LightField.sprite";
-import {TreeRightSprite} from "../view/sprites/TreeRight.sprite";
-import {TreeLeftSprite} from "../view/sprites/TreeLeft.sprite";
-import {BushRightSprite} from "../view/sprites/BushRight.sprite";
-import {BushLeftSprite} from "../view/sprites/BushLeft.sprite";
-import {FenceLeftVerticalSprite} from "../view/sprites/FenceLeftVertical.sprite";
-import {FenceTopHorizontalSprite} from "../view/sprites/FenceTopHorizontal";
-import {FenceRightVerticalSprite} from "../view/sprites/FenceRightVertical.sprite";
-import {FenceBottomHorizontalSprite} from "../view/sprites/FenceBottomHorizontal";
+import { TreeRightSprite } from "../view/sprites/TreeRight.sprite";
+import { TreeLeftSprite } from "../view/sprites/TreeLeft.sprite";
+import { BushRightSprite } from "../view/sprites/BushRight.sprite";
+import { BushLeftSprite } from "../view/sprites/BushLeft.sprite";
+import { FenceLeftVerticalSprite } from "../view/sprites/FenceLeftVertical.sprite";
+import { FenceTopHorizontalSprite } from "../view/sprites/FenceTopHorizontal";
+import { FenceRightVerticalSprite } from "../view/sprites/FenceRightVertical.sprite";
+import { FenceBottomHorizontalSprite } from "../view/sprites/FenceBottomHorizontal";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
-export const GOOGLE_CLIENT_ID = "980604727750-6al4lq2c0i0113f4vdimbhh7l1l6o2lj.apps.googleusercontent.com";
+export const GOOGLE_CLIENT_ID =
+  "980604727750-6al4lq2c0i0113f4vdimbhh7l1l6o2lj.apps.googleusercontent.com";
 export const CHARACTERS_SPRITES: CharactersSprites = {
   potato: [
     GroundSprite,

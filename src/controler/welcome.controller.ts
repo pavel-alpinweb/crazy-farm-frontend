@@ -5,8 +5,8 @@ import User from "../model/user.model";
 import Cookies from "js-cookie";
 import AuthService from "../services/auth.service";
 import Service from "../framework/Service";
-import {Router} from "../framework/Router";
-import {$toaster} from "../main";
+import { Router } from "../framework/Router";
+import { $toaster } from "../main";
 
 export default class WelcomeController {
   private readonly userModel: User;

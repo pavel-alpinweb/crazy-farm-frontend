@@ -1,7 +1,7 @@
 import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
-import {AbstractTilingSprite} from "./AbstractTilingSprite";
+import { AbstractTilingSprite } from "./AbstractTilingSprite";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -18,11 +18,13 @@ declare global {
   type Containers = Array<Container>;
 
   interface DecorationContainer {
-    [key: string]: [number, number, number, number], // x, y, with, height
+    [key: string]: [number, number, number, number]; // x, y, with, height
   }
 
   interface DecorationSprite {
-    [key: string]: { new (): AbstractStaticSprite } | { new (): AbstractTilingSprite },
+    [key: string]:
+      | { new (): AbstractStaticSprite }
+      | { new (): AbstractTilingSprite };
   }
 }
 

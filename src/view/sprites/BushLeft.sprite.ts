@@ -1,5 +1,5 @@
-import {AbstractStaticSprite} from "../../framework/graphics/AbstractStaticSprite";
+import { AbstractStaticSprite } from "../../framework/graphics/AbstractStaticSprite";
 
-export class BushLeftSprite extends AbstractStaticSprite{
-    protected spriteName = "bush-left";
+export class BushLeftSprite extends AbstractStaticSprite {
+  protected spriteName = "bush-left";
 }

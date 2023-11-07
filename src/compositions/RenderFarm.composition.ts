@@ -1,4 +1,4 @@
-import {CHARACTERS_SPRITES, DECORATION_SPRITES} from "../utils/constants";
+import { CHARACTERS_SPRITES, DECORATION_SPRITES } from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
@@ -6,8 +6,7 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
-import {Layer} from "@pixi/layers";
-
+import { Layer } from "@pixi/layers";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
@@ -95,9 +94,18 @@ export class RenderFarmComposition {
     this.woodContainers.forEach(async (container) => {
       const [x, y, width, height] = this.Woodlands[container.name];
       const DecorationSprite = new DECORATION_SPRITES[container.name]();
-      this.renderSceneComposition.addSprite(container, await DecorationSprite?.sprite());
-      this.renderSceneComposition.setContainerWidth(container, width / this.CORRECT_DECORATION_SIZE_NUMBER);
-      this.renderSceneComposition.setContainerHeight(container, height / this.CORRECT_DECORATION_SIZE_NUMBER);
+      this.renderSceneComposition.addSprite(
+        container,
+        await DecorationSprite?.sprite()
+      );
+      this.renderSceneComposition.setContainerWidth(
+        container,
+        width / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
+      this.renderSceneComposition.setContainerHeight(
+        container,
+        height / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
     });
   }
 

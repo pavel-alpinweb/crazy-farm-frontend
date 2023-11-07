@@ -1,6 +1,6 @@
 import { AbstractScreen } from "../../framework/interface/AbstractScreen";
 import { $t } from "../../utils/helpers";
-import {GoogleButtonComponent} from "../ui-components/GoogleButton.component";
+import { GoogleButtonComponent } from "../ui-components/GoogleButton.component";
 
 interface State {
   registrationByEmailText: string;
@@ -38,9 +38,9 @@ export class RegistrationWaysScreen extends AbstractScreen {
   };
   protected controllerMethods: Methods;
   protected state: State = {
-    registrationByEmailText: '',
-    signInText: '',
-    backButtonText: '',
+    registrationByEmailText: "",
+    signInText: "",
+    backButtonText: "",
   };
 
   constructor(methods: Methods) {
@@ -65,9 +65,9 @@ export class RegistrationWaysScreen extends AbstractScreen {
 
   protected setEvents(): void {
     this.components.GoogleButtonComponent?.emits.setCredentialResponseEvent(
-        async (response: any) => {
-          this.controllerMethods.sendGoogleCredential(response.credential);
-        }
+      async (response: any) => {
+        this.controllerMethods.sendGoogleCredential(response.credential);
+      }
     );
   }
 

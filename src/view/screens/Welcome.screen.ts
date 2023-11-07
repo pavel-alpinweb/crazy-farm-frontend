@@ -3,8 +3,8 @@ import { $t } from "../../utils/helpers";
 import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
 import { WelcomeTextComponent } from "../ui-components/WelcomeText.component";
 import { LinkButtonComponent } from "../ui-components/LinkButton.component";
-import {GoogleButtonComponent} from "../ui-components/GoogleButton.component";
-import {AbstractView} from "../../framework/interface/AbstractView";
+import { GoogleButtonComponent } from "../ui-components/GoogleButton.component";
+import { AbstractView } from "../../framework/interface/AbstractView";
 
 interface Props {
   language: language;
@@ -81,7 +81,11 @@ export class WelcomeScreen extends AbstractScreen {
   protected renderComponents(): void {
     this.mountComponent("language", this.components.LanguageSwitcherComponent);
     this.mountComponent("top", this.components.EnterButtonComponent);
-    this.mountComponent("top", this.components.GoogleButtonComponent, AbstractView.positions.AFTERBEGIN);
+    this.mountComponent(
+      "top",
+      this.components.GoogleButtonComponent,
+      AbstractView.positions.AFTERBEGIN
+    );
     this.mountComponent("message", this.components.WelcomeTextComponent);
     this.mountComponent("bottom", this.components.SignInButtonComponent);
   }
@@ -93,9 +97,9 @@ export class WelcomeScreen extends AbstractScreen {
       }
     );
     this.components.GoogleButtonComponent?.emits.setCredentialResponseEvent(
-        async (response: any) => {
-          this.controllerMethods.sendGoogleCredential(response.credential);
-        }
+      async (response: any) => {
+        this.controllerMethods.sendGoogleCredential(response.credential);
+      }
     );
   }
 
