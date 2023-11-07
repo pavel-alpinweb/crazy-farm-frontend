@@ -43,10 +43,12 @@ export class RenderFarmComposition {
   };
 
   private Woodlands: DecorationContainer = {
-    "tree-right": [900, 200, 912, 1536],
-    "tree-left": [80, 400, 1040, 1840],
-    "bush-right": [800, 720, 1280, 1280],
-    "bush-left": [300, 750, 1040, 944],
+    "fence-left": [108, 0, 64, 512 * 12],
+    "fence-top": [500, 0, 512 * 6, 272 * 2],
+    "tree-right": [950, 200, 912, 1536],
+    "tree-left": [60, 400, 1040, 1840],
+    "bush-right": [800, 770, 1280, 1280],
+    "bush-left": [300, 800, 1040, 944],
   };
 
   private readonly farmContainers: Containers = [];

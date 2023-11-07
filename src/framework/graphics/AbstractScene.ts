@@ -45,8 +45,8 @@ export abstract class AbstractScene {
       background: "#78710e",
       backgroundAlpha: 0,
       view: canvas,
-      width: 980,
-      height: 850,
+      width: 1000,
+      height: 900,
     });
     if (this.scene.renderer.view.style) {
       this.scene.renderer.view.style.touchAction = "auto";

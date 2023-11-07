@@ -21,6 +21,8 @@ import {TreeRightSprite} from "../view/sprites/TreeRight.sprite";
 import {TreeLeftSprite} from "../view/sprites/TreeLeft.sprite";
 import {BushRightSprite} from "../view/sprites/BushRight.sprite";
 import {BushLeftSprite} from "../view/sprites/BushLeft.sprite";
+import {FenceLeftVerticalSprite} from "../view/sprites/FenceLeftVertical.sprite";
+import {FenceTopHorizontalSprite} from "../view/sprites/FenceTopHorizontal";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
@@ -57,6 +59,8 @@ export const DECORATION_SPRITES: DecorationSprite = {
   "tree-left": TreeLeftSprite,
   "bush-right": BushRightSprite,
   "bush-left": BushLeftSprite,
+  "fence-left": FenceLeftVerticalSprite,
+  "fence-top": FenceTopHorizontalSprite,
 };
 
 export const NEEDS_SPRITES_NAMES: NeedsSpritesNames = {
