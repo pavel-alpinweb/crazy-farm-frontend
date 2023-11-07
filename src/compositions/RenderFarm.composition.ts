@@ -7,6 +7,13 @@ import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 
+enum Woodlands {
+  "tree-right",
+  "tree-left",
+  "bush-right",
+  "bush-left",
+}
+
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
   private renderSceneComposition!: RenderSceneComposition;
@@ -41,8 +48,14 @@ export class RenderFarmComposition {
 
   private readonly farmContainers: Containers = [];
 
+  private readonly woodlandContainers: Containers = [];
+
   public get containers(): Containers {
     return this.farmContainers;
+  }
+
+  public get woodContainers(): Containers {
+    return this.woodlandContainers;
   }
 
   public initCharactersSprite(): void {
@@ -80,6 +93,18 @@ export class RenderFarmComposition {
         });
         this.containers.push({
           name: `${x}-${y}-dialog`,
+          render: null,
+        });
+      }
+    }
+  }
+
+  public initWoodlandsContainers(): void {
+    for (const item in Woodlands) {
+      const value = Woodlands[item];
+      if (typeof value === "string") {
+        this.woodlandContainers.push({
+          name: value,
           render: null,
         });
       }
