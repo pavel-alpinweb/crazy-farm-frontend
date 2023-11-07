@@ -6,7 +6,6 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
-import { Layer } from "@pixi/layers";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
