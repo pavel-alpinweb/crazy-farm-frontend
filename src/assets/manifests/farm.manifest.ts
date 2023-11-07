@@ -46,6 +46,18 @@ export const manifest: ResolverManifest = {
       },
     },
     {
+      name: "fence-left-vertical",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-left-vertical.sprite.png`,
+      },
+    },
+    {
+      name: "fence-top-horizontal",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-top-horizontal.sprite.png`,
+      },
+    },
+    {
       name: "tree-right",
       assets: {
         sprite: `${STATIC_SPRITE_URL}/tree-right.sprite.png`,
