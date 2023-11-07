@@ -33,7 +33,8 @@ export abstract class AbstractScene {
   private render(): Element | null {
     const canvas = document.createElement("canvas");
     this.scene = new PIXI.Application({
-      background: "#1099bb",
+      background: "#78710e",
+      backgroundAlpha: 0,
       view: canvas,
     });
     if (this.scene.renderer.view.style) {
