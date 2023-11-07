@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
+import {AbstractTilingSprite} from "./AbstractTilingSprite";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -21,7 +22,7 @@ declare global {
   }
 
   interface DecorationSprite {
-    [key: string]: { new (): AbstractStaticSprite },
+    [key: string]: { new (): AbstractStaticSprite } | { new (): AbstractTilingSprite },
   }
 }
 
