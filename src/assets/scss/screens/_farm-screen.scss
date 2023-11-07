@@ -1,5 +1,5 @@
 .farm-screen {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   height: auto;
   background: #78710e url("/assets/img/illustrations/texture-sprite-grass.png");
@@ -12,7 +12,7 @@
   &:before {
     content: '';
     display: block;
-    width: 100vw;
+    width: 100%;
     min-height: 25vh;
     background: url("/assets/img/illustrations/house.png") no-repeat top center;
     background-size: 80%;
@@ -32,7 +32,7 @@
   }
   &__aside {
     position: fixed;
-    left: 0;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -43,7 +43,7 @@
   }
   &__footer {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
   }
