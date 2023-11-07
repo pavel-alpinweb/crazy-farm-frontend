@@ -2,10 +2,10 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import { RegistrationWaysScreen } from "../view/screens/RegistrationWays.screen";
 import User from "../model/user.model";
-import {$toaster} from "../main";
+import { $toaster } from "../main";
 import AuthService from "../services/auth.service";
 import Service from "../framework/Service";
-import {Router} from "../framework/Router";
+import { Router } from "../framework/Router";
 
 export default class RegistrationWaysController {
   private readonly userModel: User;

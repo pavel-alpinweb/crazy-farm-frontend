@@ -46,6 +46,54 @@ export const manifest: ResolverManifest = {
       },
     },
     {
+      name: "fence-left-vertical",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-left-vertical.sprite.png`,
+      },
+    },
+    {
+      name: "fence-top-horizontal",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-top-horizontal.sprite.png`,
+      },
+    },
+    {
+      name: "fence-right-vertical",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-right-vertical.sprite.png`,
+      },
+    },
+    {
+      name: "fence-bottom-horizontal",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-bottom-horizontal.sprite.png`,
+      },
+    },
+    {
+      name: "tree-right",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/tree-right.sprite.png`,
+      },
+    },
+    {
+      name: "tree-left",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/tree-left.sprite.png`,
+      },
+    },
+    {
+      name: "bush-right",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/bush-right.sprite.png`,
+      },
+    },
+    {
+      name: "bush-left",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/bush-left.sprite.png`,
+      },
+    },
+    {
       name: "sprout-potato",
       assets: {
         sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.png`,

@@ -34,11 +34,18 @@ export class FarmScene extends AbstractScene {
   }
 
   protected renderContainers(): void {
+    this.renderFarmComposition.initWoodlandsContainers();
+    this.renderFarmComposition.renderWoodlandsContainers();
     this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
   }
 
   protected async renderSprites(): Promise<void> {
+    await this.renderFarmCells();
+    this.renderFarmComposition.renderDecorationSprites();
+  }
+
+  private async renderFarmCells(): Promise<void> {
     this.state.farm.containers.forEach((cell) => {
       this.renderFarmComposition.renderCharacterSprite(cell);
       this.renderFarmComposition.renderNeedsSprites(cell);
@@ -51,7 +58,7 @@ export class FarmScene extends AbstractScene {
     };
     const updateFarm = (data: FarmState) => {
       this.state.farm = data;
-      this.renderSprites();
+      this.renderFarmCells();
     };
     eventBusFarm.off("Farm:update", updateFarm);
     eventBusFarm.on("Farm:update", updateFarm);

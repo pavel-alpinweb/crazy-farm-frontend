@@ -1,4 +1,4 @@
-import { CHARACTERS_SPRITES } from "../utils/constants";
+import { CHARACTERS_SPRITES, DECORATION_SPRITES } from "../utils/constants";
 import { DialogSprite } from "../view/sprites/Dialog.sprite";
 import { BugSprite } from "../view/sprites/Bug.sprite";
 import { HungerSprite } from "../view/sprites/Hunger.sprite";
@@ -17,11 +17,12 @@ export class RenderFarmComposition {
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
-  private readonly CORRECT_CELL_X_NUMBER: number = 4.8;
+  private readonly CORRECT_CELL_X_NUMBER: number = 4;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
-  private readonly CORRECT_DIALOG_X_NUMBER: number = 1.4;
-  private readonly CORRECT_DIALOG_Y_NUMBER: number = 3;
+  private readonly CORRECT_DIALOG_X_NUMBER: number = 2;
+  private readonly CORRECT_DIALOG_Y_NUMBER: number = 1;
   private readonly CORRECT_NEED_X_NUMBER: number = 25;
+  private readonly CORRECT_DECORATION_SIZE_NUMBER = 4;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -39,10 +40,27 @@ export class RenderFarmComposition {
     dialog: null,
   };
 
+  private Woodlands: DecorationContainer = {
+    "fence-left": [108, 0, 64, 512 * 12],
+    "fence-top": [500, 0, 512 * 6, 272 * 2],
+    "fence-right": [878, 9, 64, 512 * 12],
+    "fence-bottom": [483, 795, 512 * 6, 272],
+    "tree-right": [950, 200, 912, 1536],
+    "tree-left": [60, 400, 1040, 1840],
+    "bush-right": [900, 850, 1280, 1280],
+    "bush-left": [300, 850, 1040, 944],
+  };
+
   private readonly farmContainers: Containers = [];
+
+  private readonly woodlandContainers: Containers = [];
 
   public get containers(): Containers {
     return this.farmContainers;
+  }
+
+  public get woodContainers(): Containers {
+    return this.woodlandContainers;
   }
 
   public initCharactersSprite(): void {
@@ -71,6 +89,25 @@ export class RenderFarmComposition {
     this.needsSpritesCollection.drop = new DropSprite();
   }
 
+  public renderDecorationSprites(): void {
+    this.woodContainers.forEach(async (container) => {
+      const [x, y, width, height] = this.Woodlands[container.name];
+      const DecorationSprite = new DECORATION_SPRITES[container.name]();
+      this.renderSceneComposition.addSprite(
+        container,
+        await DecorationSprite?.sprite()
+      );
+      this.renderSceneComposition.setContainerWidth(
+        container,
+        width / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
+      this.renderSceneComposition.setContainerHeight(
+        container,
+        height / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
+    });
+  }
+
   public initFarmContainers(): void {
     for (let y = 0; y < this.ROWS_COUNT; y++) {
       for (let x = 0; x < this.COLS_COUNT; x++) {
@@ -84,6 +121,25 @@ export class RenderFarmComposition {
         });
       }
     }
+  }
+
+  public initWoodlandsContainers(): void {
+    for (const item in this.Woodlands) {
+      this.woodlandContainers.push({
+        name: item,
+        render: null,
+      });
+    }
+  }
+
+  public renderWoodlandsContainers(): void {
+    this.woodContainers.forEach((container) => {
+      const [x, y] = this.Woodlands[container.name];
+      this.renderSceneComposition.renderContainer(container);
+      this.renderSceneComposition.setContainerX(container, x);
+      this.renderSceneComposition.setContainerY(container, y);
+      this.renderSceneComposition.centerPivotContainer(container);
+    });
   }
 
   public renderFarmContainers(): void {
