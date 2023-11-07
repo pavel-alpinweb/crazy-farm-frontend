@@ -17,6 +17,10 @@ import { ExplosionAdultTomatoSprite } from "../view/sprites/ExplosionAdultTomato
 import { MiniExplosionSprite } from "../view/sprites/MiniExplosion.sprite";
 import { DarkFieldSprite } from "../view/sprites/DarkField.sprite";
 import { LightFieldSprite } from "../view/sprites/LightField.sprite";
+import {TreeRightSprite} from "../view/sprites/TreeRight.sprite";
+import {TreeLeftSprite} from "../view/sprites/TreeLeft.sprite";
+import {BushRightSprite} from "../view/sprites/BushRight.sprite";
+import {BushLeftSprite} from "../view/sprites/BushLeft.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
@@ -46,6 +50,13 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ExplosionSprite,
   ],
   empty: [DarkFieldSprite, LightFieldSprite],
+};
+
+export const DECORATION_SPRITES: DecorationSprite = {
+  "tree-right": TreeRightSprite,
+  "tree-left": TreeLeftSprite,
+  "bush-right": BushRightSprite,
+  "bush-left": BushLeftSprite,
 };
 
 export const NEEDS_SPRITES_NAMES: NeedsSpritesNames = {

@@ -40,7 +40,7 @@ export class RenderFarmComposition {
     dialog: null,
   };
 
-  private Woodlands: Decoration = {
+  private Woodlands: DecorationContainer = {
     "tree-right": [0, 0],
     "tree-left": [0, 0],
     "bush-right": [0, 0],

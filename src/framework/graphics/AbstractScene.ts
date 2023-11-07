@@ -16,8 +16,12 @@ declare global {
   }
   type Containers = Array<Container>;
 
-  interface Decoration {
+  interface DecorationContainer {
     [key: string]: [number, number],
+  }
+
+  interface DecorationSprite {
+    [key: string]: { new (): AbstractStaticSprite },
   }
 }
 
