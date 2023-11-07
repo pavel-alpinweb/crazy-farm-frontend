@@ -1,6 +1,6 @@
 export default class Socket {
   private socket!: WebSocket;
-  private readonly BASE_SOCKET_URL = "ws://crazyfarm.herokuapp.com";
+  private readonly BASE_SOCKET_URL = "wss://crazyfarm.herokuapp.com";
   constructor(jwt: string) {
     this.socket = new WebSocket(`${this.BASE_SOCKET_URL}/game?token=${jwt}`);
   }
