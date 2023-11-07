@@ -46,7 +46,7 @@ export abstract class AbstractScene {
       backgroundAlpha: 0,
       view: canvas,
       width: 1000,
-      height: 900,
+      height: 1000,
     });
     if (this.scene.renderer.view.style) {
       this.scene.renderer.view.style.touchAction = "auto";
