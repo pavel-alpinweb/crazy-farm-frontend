@@ -6,6 +6,7 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
+import {Layer} from "@pixi/layers";
 
 
 export class RenderFarmComposition {
@@ -18,11 +19,12 @@ export class RenderFarmComposition {
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
-  private readonly CORRECT_CELL_X_NUMBER: number = 4.8;
+  private readonly CORRECT_CELL_X_NUMBER: number = 4;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
-  private readonly CORRECT_DIALOG_X_NUMBER: number = 1.4;
+  private readonly CORRECT_DIALOG_X_NUMBER: number = 2;
   private readonly CORRECT_DIALOG_Y_NUMBER: number = 3;
   private readonly CORRECT_NEED_X_NUMBER: number = 25;
+  private readonly CORRECT_DECORATION_SIZE_NUMBER = 4;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
     this.renderSceneComposition = new RenderSceneComposition(this.scene);
@@ -41,10 +43,10 @@ export class RenderFarmComposition {
   };
 
   private Woodlands: DecorationContainer = {
-    "tree-right": [0, 0],
-    "tree-left": [0, 0],
-    "bush-right": [0, 0],
-    "bush-left": [0, 0],
+    "tree-right": [900, 200, 912, 1536],
+    "tree-left": [80, 400, 1040, 1840],
+    "bush-right": [800, 720, 1280, 1280],
+    "bush-left": [300, 750, 1040, 944],
   };
 
   private readonly farmContainers: Containers = [];
@@ -87,8 +89,11 @@ export class RenderFarmComposition {
 
   public renderDecorationSprites(): void {
     this.woodContainers.forEach(async (container) => {
+      const [x, y, width, height] = this.Woodlands[container.name];
       const DecorationSprite = new DECORATION_SPRITES[container.name]();
       this.renderSceneComposition.addSprite(container, await DecorationSprite?.sprite());
+      this.renderSceneComposition.setContainerWidth(container, width / this.CORRECT_DECORATION_SIZE_NUMBER);
+      this.renderSceneComposition.setContainerHeight(container, height / this.CORRECT_DECORATION_SIZE_NUMBER);
     });
   }
 

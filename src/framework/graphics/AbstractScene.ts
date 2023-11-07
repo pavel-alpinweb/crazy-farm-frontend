@@ -17,7 +17,7 @@ declare global {
   type Containers = Array<Container>;
 
   interface DecorationContainer {
-    [key: string]: [number, number],
+    [key: string]: [number, number, number, number], // x, y, with, height
   }
 
   interface DecorationSprite {
@@ -44,6 +44,8 @@ export abstract class AbstractScene {
       background: "#78710e",
       backgroundAlpha: 0,
       view: canvas,
+      width: 980,
+      height: 850,
     });
     if (this.scene.renderer.view.style) {
       this.scene.renderer.view.style.touchAction = "auto";

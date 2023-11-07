@@ -42,8 +42,8 @@ export class FarmScene extends AbstractScene {
   }
 
   protected async renderSprites(): Promise<void> {
-    this.renderFarmComposition.renderDecorationSprites();
     await this.renderFarmCells();
+    this.renderFarmComposition.renderDecorationSprites();
   }
 
   private async renderFarmCells(): Promise<void> {
