@@ -9,5 +9,11 @@
   "back": "Back",
   "byEmail": "By email",
   "loginByEmail": "Login by email",
-  "signIn": "Sign In"
+  "signIn": "Sign In",
+  "tools": {
+    "shovel": "Common shovel",
+    "bailer": "Common bailer",
+    "fertilizer": "Common fertilizer",
+    "sprayer": "Common sprayer"
+  }
 }
