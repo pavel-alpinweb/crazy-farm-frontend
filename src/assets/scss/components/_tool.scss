@@ -49,4 +49,7 @@
   &--highlight {
     filter: contrast(140%);
   }
+  &--blocked {
+    filter: grayscale(100%);
+  }
 }
