@@ -14,6 +14,10 @@
     "shovel": "Common shovel",
     "bailer": "Common bailer",
     "fertilizer": "Common fertilizer",
-    "sprayer": "Common sprayer"
+    "sprayer": "Common sprayer",
+    "almanacActions": {
+      "show": "Show",
+      "close": "All understand!"
+    }
   }
 }

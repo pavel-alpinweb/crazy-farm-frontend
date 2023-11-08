@@ -18,7 +18,7 @@ const createAlmanacTemplate = (state: State) => `
         <div class="almanac__text">${ $t(state.currentTextKey) }</div>
         <div class="almanac__buttons">
             ${ state.currentActions.map((button) => `
-                <button class="button green" data-action-${button}>${button}</button> 
+                <button class="button green" data-action-${button}>${ $t(`almanacActions.${button}`) }</button> 
             `).join('')}
         </div>
     </div>
