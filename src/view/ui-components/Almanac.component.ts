@@ -1,20 +1,8 @@
 import {AbstractView} from "../../framework/interface/AbstractView";
 import {$t} from "../../utils/helpers";
 
-interface Props {
-    isActive: AlmanacState["isActive"];
-    currentTextKey: AlmanacState["currentTextKey"];
-    currentActions: AlmanacState["currentActions"];
-}
-
-interface State {
-    isActive: Props["isActive"];
-    currentTextKey: Props["currentTextKey"];
-    currentActions: Props["currentActions"];
-}
-
-const createAlmanacTemplate = (state: State) => `
-    <div class="almanac ${state.isActive ? 'active' : ''}">
+const createAlmanacTemplate = (state: AlmanacState) => `
+    <div class="almanac ${state.isShow ? 'active' : ''}">
         <div class="almanac__text">${ $t(state.currentTextKey) }</div>
         <div class="almanac__buttons">
             ${ state.currentActions.map((button) => `
@@ -25,12 +13,13 @@ const createAlmanacTemplate = (state: State) => `
 `;
 
 export class AlmanacComponent extends AbstractView {
-    protected state: State = {
+    protected state: AlmanacState = {
         isActive: false,
+        isShow: false,
         currentTextKey: 'tools.shovel',
         currentActions: ['show', 'close'],
     };
-    constructor(props: Props) {
+    constructor(props: AlmanacState) {
         super();
         this.setState(props);
         this.setEvents();
@@ -40,7 +29,7 @@ export class AlmanacComponent extends AbstractView {
         console.warn('setEvents: AlmanacComponent');
     }
 
-    protected setState(props: Props): void {
+    protected setState(props: AlmanacState): void {
         this.state = props;
     }
 

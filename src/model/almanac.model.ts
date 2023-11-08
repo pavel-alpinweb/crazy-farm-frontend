@@ -3,6 +3,7 @@ declare global {
 
     interface AlmanacState {
         isActive: boolean;
+        isShow: boolean;
         currentTextKey: string;
         currentActions: AlmanacAction[];
     }
@@ -13,6 +14,7 @@ declare global {
 export class AlmanacModel {
     private almanacState: AlmanacState = {
         isActive: false,
+        isShow: false,
         currentTextKey: '',
         currentActions: ['show', 'close'],
     };
