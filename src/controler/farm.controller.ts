@@ -5,6 +5,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
+import { AlmanacModel } from "../model/almanac.model";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -15,13 +16,19 @@ import { $toaster, farmAssetsLoader, $loader } from "../main";
 export default class FarmController {
   private readonly farmModel: FarmModel;
   private readonly userModel: User;
+  private readonly almanacModel: AlmanacModel;
   private Socket!: Socket;
   private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
-  constructor(farmModel: FarmModel, userModel: User) {
+  constructor(
+    farmModel: FarmModel,
+    userModel: User,
+    almanacModel: AlmanacModel
+  ) {
     this.farmModel = farmModel;
     this.userModel = userModel;
+    this.almanacModel = almanacModel;
     this.FarmScreen = null;
     this.methods = {
       init: async () => {
@@ -74,12 +81,22 @@ export default class FarmController {
         }
       },
       updateFarm: (cell: string) => {
-        if (this.farmModel.tool !== TOOLS.EMPTY) {
+        if (
+          this.farmModel.tool !== TOOLS.EMPTY &&
+          !this.almanacModel.state.isActive
+        ) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
           // this.farmModel.setPlayerCash(state.player.cash);
+        } else if (this.almanacModel.state.isActive) {
+          const cellData = this.farmModel.state.containers.find(
+            (c) => c.name === cell
+          );
+          if (cellData) {
+            this.almanacModel.setAlmanacDataForCharacter(cellData);
+          }
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
@@ -104,7 +121,20 @@ export default class FarmController {
         }
       },
       setActiveTool: (tool: tool) => {
-        this.farmModel.setActiveTool(tool);
+        if (this.almanacModel.state.isActive) {
+          this.almanacModel.setAlmanacDataForTools(tool);
+        } else {
+          this.farmModel.setActiveTool(tool);
+        }
+      },
+      toggleAlmanac: () => {
+        this.almanacModel.toggleAlmanac();
+      },
+      activateAlmanac: () => {
+        this.almanacModel.activateAlmanac();
+      },
+      deactivateAlmanac: () => {
+        this.almanacModel.deactivateAlmanac();
       },
     };
   }

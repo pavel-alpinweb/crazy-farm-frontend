@@ -9,7 +9,8 @@ declare global {
     | "fertilizer"
     | "sprayer"
     | "seeds"
-    | "empty";
+    | "empty"
+    | "almanac";
   interface ToolData {
     name: tool;
     price: number;
@@ -21,6 +22,7 @@ declare global {
     SPRAYER: "sprayer";
     SEEDS: "seeds";
     EMPTY: "empty";
+    ALMANAC: "almanac";
   }
   type need = "HUNGER" | "SICKNESS" | "THIRST";
   type needSprite = "bug" | "hunger" | "drop";
@@ -78,10 +80,12 @@ export const TOOLS: Tools = {
   SPRAYER: "sprayer",
   SEEDS: "seeds",
   EMPTY: "empty",
+  ALMANAC: "almanac",
 };
 
 export const TOOLS_PRICES = {
   [TOOLS.EMPTY]: 0,
+  [TOOLS.ALMANAC]: 0,
   [TOOLS.BAILER]: 0,
   [TOOLS.FERTILIZER]: 1,
   [TOOLS.SPRAYER]: 2,

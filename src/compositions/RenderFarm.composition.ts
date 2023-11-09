@@ -178,7 +178,7 @@ export class RenderFarmComposition {
     });
   }
 
-  public async renderCharacterSprite(cell: Cell) {
+  public async renderCharacterSprite(cell: Cell, isAlmanacActive: boolean) {
     this.initCharactersSprite();
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
@@ -197,7 +197,7 @@ export class RenderFarmComposition {
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
-    if (cell.character && container) {
+    if (cell.character && container?.render) {
       if (container.render?.children?.length === 2) {
         this.renderSceneComposition.removeChildren(container, 1);
       }
@@ -210,6 +210,24 @@ export class RenderFarmComposition {
       }
     } else if (container && container.render?.children?.length === 2) {
       this.renderSceneComposition.removeChildren(container, 1);
+    }
+
+    /* Cell state filters */
+    if (container?.render && isAlmanacActive) {
+      const colorMatrix = new PIXI.ColorMatrixFilter();
+      container.render.filters = [colorMatrix];
+      let count = 0;
+      this.scene.ticker.add(() => {
+        count += 0.05;
+        colorMatrix.contrast(Math.sin(count) * 0.3, false);
+      });
+      // colorMatrix.greyscale(0.5, true);
+    } else if (container?.render) {
+      const colorMatrix = new PIXI.ColorMatrixFilter();
+      container.render.filters = [colorMatrix];
+      this.scene.ticker.remove(() => {
+        colorMatrix.reset();
+      });
     }
   }
 

@@ -5,6 +5,8 @@ import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { WalletComponent } from "../ui-components/Wallet.component";
 import { TOOLS_PRICES } from "../../model/farm.model";
+import { AbstractView } from "../../framework/interface/AbstractView";
+import { AlmanacComponent } from "../ui-components/Almanac.component";
 
 interface Props {
   farm: FarmState;
@@ -14,6 +16,7 @@ interface Props {
 interface State {
   farm: Props["farm"];
   toolSeedsData: ToolData;
+  toolAlmanacData: ToolData;
   toolListData: Array<ToolData>;
   player: Props["player"];
 }
@@ -31,6 +34,8 @@ export class FarmScreen extends AbstractScreen {
   protected components: ScreenComponents = {
     FarmScene: null,
     Seeds: null,
+    AlmanacTrigger: null,
+    Almanac: null,
     ToolsSet: null,
     Wallet: null,
   };
@@ -39,6 +44,10 @@ export class FarmScreen extends AbstractScreen {
     toolSeedsData: {
       name: TOOLS.SEEDS,
       price: TOOLS_PRICES[TOOLS.SEEDS],
+    },
+    toolAlmanacData: {
+      name: TOOLS.ALMANAC,
+      price: TOOLS_PRICES[TOOLS.ALMANAC],
     },
     toolListData: [
       {
@@ -77,6 +86,15 @@ export class FarmScreen extends AbstractScreen {
     this.components.Seeds = new ToolComponent({
       tool: this.state.toolSeedsData,
     });
+    this.components.AlmanacTrigger = new ToolComponent({
+      tool: this.state.toolAlmanacData,
+    });
+    this.components.Almanac = new AlmanacComponent({
+      isShow: false,
+      isActive: false,
+      currentActions: [],
+      currentTextKey: "almanacDefault",
+    });
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: this.state.toolListData,
     });
@@ -88,7 +106,17 @@ export class FarmScreen extends AbstractScreen {
   protected renderComponents(): void {
     this.mountComponent("scene", this.components.FarmScene);
     this.mountComponent("aside", this.components.Seeds);
+    this.mountComponent(
+      "aside",
+      this.components.AlmanacTrigger,
+      AbstractView.positions.BEFOREEND
+    );
     this.mountComponent("footer", this.components.ToolsSet);
+    this.mountComponent(
+      "footer",
+      this.components.Almanac,
+      AbstractView.positions.BEFOREEND
+    );
     this.mountComponent("wallet", this.components.Wallet);
   }
 
@@ -99,8 +127,17 @@ export class FarmScreen extends AbstractScreen {
     this.components.Seeds?.emits.setClickEvent((tool: Concrete) => {
       this.controllerMethods.setActiveTool(tool);
     });
+    this.components.AlmanacTrigger?.emits.setClickEvent(() => {
+      this.controllerMethods.toggleAlmanac();
+    });
     this.components.ToolsSet?.emits.setChoiceTool((tool: Concrete) => {
       this.controllerMethods.setActiveTool(tool);
+    });
+    this.components.Almanac?.emits.setUnderstandClickEvent(() => {
+      this.controllerMethods.deactivateAlmanac();
+    });
+    this.components.Almanac?.emits.setActivateClickEvent(() => {
+      this.controllerMethods.activateAlmanac();
     });
   }
 

@@ -5,6 +5,7 @@ export const TOOLS: Tools = {
   SPRAYER: "sprayer",
   SEEDS: "seeds",
   EMPTY: "empty",
+  ALMANAC: "almanac",
 };
 
 export const TEST_FARM_STATE: FarmState = {

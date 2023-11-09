@@ -1,0 +1,27 @@
+.almanac {
+  position: fixed;
+  bottom: 10px;
+  left: -100vw;
+  border: 3px solid #723e19;
+  background: #eab54f;
+  color: #000;
+  height: 200px;
+  width: 98vw;
+  transform: translateX(-50%);
+  line-height: 40px;
+  font-size: 16px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  transition: left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  &.active {
+    left: 50%;
+  }
+  &__buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+  }
+}
