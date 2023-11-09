@@ -55,4 +55,18 @@ export class AlmanacModel {
         eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
         eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
+
+    public setAlmanacDataForCharacter(cell: Cell): void {
+        this.almanacState.currentActions = ['show', 'close'];
+        this.almanacState.isShow = true;
+        this.almanacState.isActive = false;
+        if (cell.character) {
+            this.almanacState.currentTextKey =
+                `character.${cell.character.type}.${cell.character.stage}`;
+        } else {
+            this.almanacState.currentTextKey = 'character.empty'
+        }
+        eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
+        eventBusAlmanac.emit("Almanac:toggleView", this.state);
+    }
 }

@@ -77,12 +77,17 @@ export default class FarmController {
         }
       },
       updateFarm: (cell: string) => {
-        if (this.farmModel.tool !== TOOLS.EMPTY) {
+        if (this.farmModel.tool !== TOOLS.EMPTY && !this.almanacModel.state.isActive) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
           // this.farmModel.setPlayerCash(state.player.cash);
+        } else if (this.almanacModel.state.isActive) {
+          const cellData = this.farmModel.state.containers.find((c) => c.name === cell);
+          if (cellData) {
+            this.almanacModel.setAlmanacDataForCharacter(cellData);
+          }
         }
       },
       connectToWebSocketServer: async (userToken: string) => {
