@@ -126,9 +126,8 @@ export class FarmScreen extends AbstractScreen {
       this.controllerMethods.setActiveTool(tool);
     });
     this.components.Almanac?.emits.setUnderstandClickEvent(() => {
-      this.controllerMethods.toggleAlmanac();
+      this.controllerMethods.deactivateAlmanac();
     });
-
     this.components.Almanac?.emits.setActivateClickEvent(() => {
       this.controllerMethods.activateAlmanac();
     });

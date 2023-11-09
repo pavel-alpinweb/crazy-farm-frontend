@@ -18,7 +18,7 @@ export class AlmanacModel {
         isActive: false,
         isShow: false,
         currentTextKey: 'tools.shovel',
-        currentActions: [],
+        currentActions: ['show', 'close'],
     };
 
     public get state(): AlmanacState {
@@ -34,7 +34,16 @@ export class AlmanacModel {
     public activateAlmanac(): void {
         this.almanacState.currentActions = ['show', 'close'];
         this.almanacState.isShow = false;
+        this.almanacState.isActive = true;
+        eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
+        eventBusAlmanac.emit("Almanac:toggleView", this.state);
+    }
+
+    public deactivateAlmanac(): void {
+        this.almanacState.currentActions = [];
+        this.almanacState.isShow = false;
         this.almanacState.isActive = false;
-        eventBusAlmanac.emit("Almanac:activate", this.state);
+        eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
+        eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
 }

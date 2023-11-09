@@ -43,19 +43,9 @@ export class AlmanacComponent extends AbstractView {
                 this.rerenderElement();
             }, 1100);
         };
-        const activate = (data: AlmanacState) => {
-            this.state = data;
-            this.element?.classList.remove("active");
-            setTimeout(() => {
-                this.rerenderElement();
-            }, 1100);
-        };
 
         eventBusAlmanac.off("Almanac:toggleView", toggleView);
         eventBusAlmanac.on("Almanac:toggleView", toggleView);
-
-        eventBusAlmanac.off("Almanac:activate", activate);
-        eventBusAlmanac.on("Almanac:activate", activate);
     }
 
     setHandlers() {
