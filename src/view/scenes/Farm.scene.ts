@@ -9,12 +9,14 @@ interface Props {
 
 interface State {
   farm: Props["farm"];
+  isAlmanacActive: boolean;
 }
 
 export class FarmScene extends AbstractScene {
   private renderFarmComposition!: RenderFarmComposition;
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    isAlmanacActive: false,
   };
   constructor(props: Props) {
     super();
@@ -41,13 +43,13 @@ export class FarmScene extends AbstractScene {
   }
 
   protected async renderSprites(): Promise<void> {
-    await this.renderFarmCells();
+    await this.renderFarmCells(this.state.isAlmanacActive);
     this.renderFarmComposition.renderDecorationSprites();
   }
 
-  private async renderFarmCells(): Promise<void> {
+  private async renderFarmCells(isAlmanacActive: boolean): Promise<void> {
     this.state.farm.containers.forEach((cell) => {
-      this.renderFarmComposition.renderCharacterSprite(cell);
+      this.renderFarmComposition.renderCharacterSprite(cell, isAlmanacActive);
       this.renderFarmComposition.renderNeedsSprites(cell);
     });
   }
@@ -58,7 +60,7 @@ export class FarmScene extends AbstractScene {
     };
     const updateFarm = (data: FarmState) => {
       this.state.farm = data;
-      this.renderFarmCells();
+      this.renderFarmCells(this.state.isAlmanacActive);
     };
     eventBusFarm.off("Farm:update", updateFarm);
     eventBusFarm.on("Farm:update", updateFarm);
