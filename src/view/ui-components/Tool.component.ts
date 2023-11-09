@@ -22,7 +22,7 @@ const createToolTemplate = (state: State) => `
         ${state.isBlocked ? "tool--blocked" : ""}
         ${state.isActive ? "tool--highlight" : ""}"
     >
-        <div class="tool__price">${state.tool.price}</div>
+         ${state.tool.name !== "almanac" ? `<div class="tool__price">${state.tool.price}</div>` : ''}
     </div>
 `;
 

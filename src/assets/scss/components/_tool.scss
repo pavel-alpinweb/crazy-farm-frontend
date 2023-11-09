@@ -50,7 +50,8 @@
     box-shadow: 7px 28px 2px 1px rgba(0, 0, 0, .75);
   }
   &--highlight {
-    filter: contrast(140%);
+    filter: contrast(120%);
+    box-shadow: 0 0 2px 5px rgba(#fff, .75);
   }
   &--blocked {
     filter: grayscale(100%);
