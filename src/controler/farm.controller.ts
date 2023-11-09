@@ -107,7 +107,11 @@ export default class FarmController {
         }
       },
       setActiveTool: (tool: tool) => {
-        this.farmModel.setActiveTool(tool);
+        if (this.almanacModel.state.isActive) {
+          this.almanacModel.setAlmanacDataForTools(tool);
+        } else {
+          this.farmModel.setActiveTool(tool);
+        }
       },
       toggleAlmanac: () => {
         this.almanacModel.toggleAlmanac();

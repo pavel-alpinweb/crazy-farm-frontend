@@ -46,4 +46,13 @@ export class AlmanacModel {
         eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
         eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
+
+    public setAlmanacDataForTools(tool: tool): void {
+        this.almanacState.currentActions = ['show', 'close'];
+        this.almanacState.isShow = true;
+        this.almanacState.isActive = false;
+        this.almanacState.currentTextKey = `tools.${tool}`;
+        eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
+        eventBusAlmanac.emit("Almanac:toggleView", this.state);
+    }
 }

@@ -64,7 +64,7 @@ export class ToolComponent extends AbstractView {
 
   setHandlers() {
     this.element?.addEventListener("click", () => {
-      if (this.events.click && !this.state.isHighLight && !this.state.isBlocked) {
+      if (this.events.click && !this.state.isBlocked) {
         this.events.click(this.state.tool.name);
       }
     });
