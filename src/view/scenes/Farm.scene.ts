@@ -2,6 +2,7 @@ import { AbstractScene } from "../../framework/graphics/AbstractScene";
 import { DEFAULT_FARM_STATE, eventBusFarm } from "../../model/farm.model";
 import { RenderFarmComposition } from "../../compositions/RenderFarm.composition";
 import * as PIXI from "pixi.js";
+import {eventBusAlmanac} from "../../model/almanac.model";
 
 interface Props {
   farm: FarmState;
@@ -62,8 +63,16 @@ export class FarmScene extends AbstractScene {
       this.state.farm = data;
       this.renderFarmCells(this.state.isAlmanacActive);
     };
+    const setAlmanacState = (value: boolean) => {
+      this.state.isAlmanacActive = value;
+      this.renderFarmCells(this.state.isAlmanacActive);
+    };
+
     eventBusFarm.off("Farm:update", updateFarm);
     eventBusFarm.on("Farm:update", updateFarm);
+
+    eventBusAlmanac.off("Almanac:activate", setAlmanacState);
+    eventBusAlmanac.on("Almanac:activate", setAlmanacState);
   }
 
   setHandlers() {
