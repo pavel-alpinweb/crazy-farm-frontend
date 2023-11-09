@@ -112,6 +112,9 @@ export default class FarmController {
       toggleAlmanac: () => {
         this.almanacModel.toggleAlmanac();
       },
+      activateAlmanac: () => {
+        this.almanacModel.activateAlmanac();
+      },
     };
   }
 }

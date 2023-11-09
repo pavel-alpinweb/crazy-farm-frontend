@@ -30,4 +30,11 @@ export class AlmanacModel {
         this.almanacState.isShow = !this.almanacState.isShow;
         eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
+
+    public activateAlmanac(): void {
+        this.almanacState.currentActions = ['show', 'close'];
+        this.almanacState.isShow = false;
+        this.almanacState.isActive = false;
+        eventBusAlmanac.emit("Almanac:activate", this.state);
+    }
 }

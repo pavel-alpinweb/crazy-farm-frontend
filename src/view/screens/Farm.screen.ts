@@ -125,6 +125,13 @@ export class FarmScreen extends AbstractScreen {
     this.components.ToolsSet?.emits.setChoiceTool((tool: Concrete) => {
       this.controllerMethods.setActiveTool(tool);
     });
+    this.components.Almanac?.emits.setUnderstandClickEvent(() => {
+      this.controllerMethods.toggleAlmanac();
+    });
+
+    this.components.Almanac?.emits.setActivateClickEvent(() => {
+      this.controllerMethods.activateAlmanac();
+    });
   }
 
   protected setState(props: Props): void {

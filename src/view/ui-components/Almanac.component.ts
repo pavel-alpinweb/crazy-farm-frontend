@@ -27,17 +27,51 @@ export class AlmanacComponent extends AbstractView {
     }
 
     protected setEvents(): void {
-        const updateAlmanac = (data: AlmanacState) => {
+        this.emits.setUnderstandClickEvent = (callback: (data: Concrete) => void) => {
+            this.events.clickUnderstand = callback;
+        };
+        this.emits.setActivateClickEvent = (callback: (data: Concrete) => void) => {
+            this.events.clickActivate = callback;
+        };
+
+        const toggleView = (data: AlmanacState) => {
             this.state = data;
             this.state.isShow
                 ? this.element?.classList.add("active")
                 : this.element?.classList.remove("active");
             setTimeout(() => {
                 this.rerenderElement();
-            }, 1000);
-        }
-        eventBusAlmanac.off("Almanac:toggleView", updateAlmanac);
-        eventBusAlmanac.on("Almanac:toggleView", updateAlmanac);
+            }, 1100);
+        };
+        const activate = (data: AlmanacState) => {
+            this.state = data;
+            this.element?.classList.remove("active");
+            setTimeout(() => {
+                this.rerenderElement();
+            }, 1100);
+        };
+
+        eventBusAlmanac.off("Almanac:toggleView", toggleView);
+        eventBusAlmanac.on("Almanac:toggleView", toggleView);
+
+        eventBusAlmanac.off("Almanac:activate", activate);
+        eventBusAlmanac.on("Almanac:activate", activate);
+    }
+
+    setHandlers() {
+        const understandButton = this.element?.querySelector('[data-action-close]');
+        const activateButton = this.element?.querySelector('[data-action-show]');
+
+        understandButton?.addEventListener("click", () => {
+            if (this.events.clickUnderstand) {
+                this.events.clickUnderstand(false);
+            }
+        });
+        activateButton?.addEventListener("click", () => {
+            if (this.events.clickActivate) {
+                this.events.clickActivate(true);
+            }
+        });
     }
 
     protected setState(props: AlmanacState): void {
