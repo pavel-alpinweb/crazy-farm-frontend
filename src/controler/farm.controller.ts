@@ -5,6 +5,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
+import {AlmanacModel} from "../model/almanac.model";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -15,13 +16,15 @@ import { $toaster, farmAssetsLoader, $loader } from "../main";
 export default class FarmController {
   private readonly farmModel: FarmModel;
   private readonly userModel: User;
+  private readonly almanacModel: AlmanacModel;
   private Socket!: Socket;
   private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
-  constructor(farmModel: FarmModel, userModel: User) {
+  constructor(farmModel: FarmModel, userModel: User, almanacModel: AlmanacModel) {
     this.farmModel = farmModel;
     this.userModel = userModel;
+    this.almanacModel = almanacModel;
     this.FarmScreen = null;
     this.methods = {
       init: async () => {
