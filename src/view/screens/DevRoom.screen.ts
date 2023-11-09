@@ -117,7 +117,7 @@ export class DevRoomScreen extends AbstractScreen {
     this.components.AlmanacComponent = new AlmanacComponent({
       isActive: true,
       isShow: true,
-      currentTextKey: "tools.shovel",
+      currentTextKey: "almanacDefault",
       currentActions: ["show", "close"],
     });
   }

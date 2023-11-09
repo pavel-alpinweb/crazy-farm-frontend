@@ -17,7 +17,7 @@ export class AlmanacComponent extends AbstractView {
     protected state: AlmanacState = {
         isActive: false,
         isShow: false,
-        currentTextKey: 'tools.shovel',
+        currentTextKey: 'almanacDefault',
         currentActions: ['show', 'close'],
     };
     constructor(props: AlmanacState) {

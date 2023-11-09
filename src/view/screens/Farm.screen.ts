@@ -93,7 +93,7 @@ export class FarmScreen extends AbstractScreen {
       isShow: false,
       isActive: false,
       currentActions: [],
-      currentTextKey: 'tools.shovel',
+      currentTextKey: 'almanacDefault',
     });
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: this.state.toolListData,

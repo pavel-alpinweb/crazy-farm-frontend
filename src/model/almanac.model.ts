@@ -17,7 +17,7 @@ export class AlmanacModel {
     private almanacState: AlmanacState = {
         isActive: false,
         isShow: false,
-        currentTextKey: 'tools.shovel',
+        currentTextKey: 'almanacDefault',
         currentActions: ['show', 'close'],
     };
 
@@ -35,6 +35,7 @@ export class AlmanacModel {
         this.almanacState.currentActions = ['show', 'close'];
         this.almanacState.isShow = false;
         this.almanacState.isActive = true;
+        this.almanacState.currentTextKey = '';
         eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
         eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
@@ -43,6 +44,7 @@ export class AlmanacModel {
         this.almanacState.currentActions = [];
         this.almanacState.isShow = false;
         this.almanacState.isActive = false;
+        this.almanacState.currentTextKey = 'almanacDefault';
         eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
         eventBusAlmanac.emit("Almanac:toggleView", this.state);
     }
