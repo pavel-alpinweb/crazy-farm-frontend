@@ -5,6 +5,7 @@ import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { WalletComponent } from "../ui-components/Wallet.component";
 import { TOOLS_PRICES } from "../../model/farm.model";
+import {AbstractView} from "../../framework/interface/AbstractView";
 
 interface Props {
   farm: FarmState;
@@ -14,6 +15,7 @@ interface Props {
 interface State {
   farm: Props["farm"];
   toolSeedsData: ToolData;
+  toolAlmanacData: ToolData;
   toolListData: Array<ToolData>;
   player: Props["player"];
 }
@@ -31,6 +33,7 @@ export class FarmScreen extends AbstractScreen {
   protected components: ScreenComponents = {
     FarmScene: null,
     Seeds: null,
+    Almanac: null,
     ToolsSet: null,
     Wallet: null,
   };
@@ -39,6 +42,10 @@ export class FarmScreen extends AbstractScreen {
     toolSeedsData: {
       name: TOOLS.SEEDS,
       price: TOOLS_PRICES[TOOLS.SEEDS],
+    },
+    toolAlmanacData: {
+      name: TOOLS.ALMANAC,
+      price: TOOLS_PRICES[TOOLS.ALMANAC],
     },
     toolListData: [
       {
@@ -77,6 +84,9 @@ export class FarmScreen extends AbstractScreen {
     this.components.Seeds = new ToolComponent({
       tool: this.state.toolSeedsData,
     });
+    this.components.Almanac = new ToolComponent({
+      tool: this.state.toolAlmanacData,
+    });
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: this.state.toolListData,
     });
@@ -88,6 +98,7 @@ export class FarmScreen extends AbstractScreen {
   protected renderComponents(): void {
     this.mountComponent("scene", this.components.FarmScene);
     this.mountComponent("aside", this.components.Seeds);
+    this.mountComponent("aside", this.components.Almanac, AbstractView.positions.BEFOREEND);
     this.mountComponent("footer", this.components.ToolsSet);
     this.mountComponent("wallet", this.components.Wallet);
   }
