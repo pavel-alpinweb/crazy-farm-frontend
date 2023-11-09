@@ -109,6 +109,9 @@ export default class FarmController {
       setActiveTool: (tool: tool) => {
         this.farmModel.setActiveTool(tool);
       },
+      toggleAlmanac: () => {
+        this.almanacModel.toggleAlmanac();
+      },
     };
   }
 }

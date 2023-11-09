@@ -1,5 +1,6 @@
 import {AbstractView} from "../../framework/interface/AbstractView";
 import {$t} from "../../utils/helpers";
+import {eventBusAlmanac} from "../../model/almanac.model";
 
 const createAlmanacTemplate = (state: AlmanacState) => `
     <div class="almanac ${state.isShow ? 'active' : ''}">
@@ -26,7 +27,17 @@ export class AlmanacComponent extends AbstractView {
     }
 
     protected setEvents(): void {
-        console.warn('setEvents: AlmanacComponent');
+        const updateAlmanac = (data: AlmanacState) => {
+            this.state = data;
+            this.state.isShow
+                ? this.element?.classList.add("active")
+                : this.element?.classList.remove("active");
+            setTimeout(() => {
+                this.rerenderElement();
+            }, 1000);
+        }
+        eventBusAlmanac.off("Almanac:toggleView", updateAlmanac);
+        eventBusAlmanac.on("Almanac:toggleView", updateAlmanac);
     }
 
     protected setState(props: AlmanacState): void {
