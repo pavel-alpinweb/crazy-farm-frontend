@@ -5,7 +5,7 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { AbstractScreen } from "../framework/interface/AbstractScreen";
 import FarmModel from "../model/farm.model";
 import User from "../model/user.model";
-import {AlmanacModel} from "../model/almanac.model";
+import { AlmanacModel } from "../model/almanac.model";
 import { Router } from "../framework/Router";
 import Service from "../framework/Service";
 import AuthService from "../services/auth.service";
@@ -21,7 +21,11 @@ export default class FarmController {
   private FarmScreen: AbstractScreen | null;
   public methods: Methods = {};
 
-  constructor(farmModel: FarmModel, userModel: User, almanacModel: AlmanacModel) {
+  constructor(
+    farmModel: FarmModel,
+    userModel: User,
+    almanacModel: AlmanacModel
+  ) {
     this.farmModel = farmModel;
     this.userModel = userModel;
     this.almanacModel = almanacModel;
@@ -77,14 +81,19 @@ export default class FarmController {
         }
       },
       updateFarm: (cell: string) => {
-        if (this.farmModel.tool !== TOOLS.EMPTY && !this.almanacModel.state.isActive) {
+        if (
+          this.farmModel.tool !== TOOLS.EMPTY &&
+          !this.almanacModel.state.isActive
+        ) {
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
           // const state = await updateFarmState(cell, this.farmModel.tool);
           // this.farmModel.setFarmState(state);
           // this.farmModel.setPlayerCash(state.player.cash);
         } else if (this.almanacModel.state.isActive) {
-          const cellData = this.farmModel.state.containers.find((c) => c.name === cell);
+          const cellData = this.farmModel.state.containers.find(
+            (c) => c.name === cell
+          );
           if (cellData) {
             this.almanacModel.setAlmanacDataForCharacter(cellData);
           }

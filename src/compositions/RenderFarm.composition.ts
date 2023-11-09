@@ -222,7 +222,6 @@ export class RenderFarmComposition {
         colorMatrix.contrast(Math.sin(count) * 0.3, false);
       });
       // colorMatrix.greyscale(0.5, true);
-
     } else if (container?.render) {
       const colorMatrix = new PIXI.ColorMatrixFilter();
       container.render.filters = [colorMatrix];

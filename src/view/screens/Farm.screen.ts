@@ -5,8 +5,8 @@ import { ToolComponent } from "../ui-components/Tool.component";
 import { ToolsSetWidget } from "../widgets/ToolsSet.widget";
 import { WalletComponent } from "../ui-components/Wallet.component";
 import { TOOLS_PRICES } from "../../model/farm.model";
-import {AbstractView} from "../../framework/interface/AbstractView";
-import {AlmanacComponent} from "../ui-components/Almanac.component";
+import { AbstractView } from "../../framework/interface/AbstractView";
+import { AlmanacComponent } from "../ui-components/Almanac.component";
 
 interface Props {
   farm: FarmState;
@@ -93,7 +93,7 @@ export class FarmScreen extends AbstractScreen {
       isShow: false,
       isActive: false,
       currentActions: [],
-      currentTextKey: 'almanacDefault',
+      currentTextKey: "almanacDefault",
     });
     this.components.ToolsSet = new ToolsSetWidget({
       toolsList: this.state.toolListData,
@@ -106,9 +106,17 @@ export class FarmScreen extends AbstractScreen {
   protected renderComponents(): void {
     this.mountComponent("scene", this.components.FarmScene);
     this.mountComponent("aside", this.components.Seeds);
-    this.mountComponent("aside", this.components.AlmanacTrigger, AbstractView.positions.BEFOREEND);
+    this.mountComponent(
+      "aside",
+      this.components.AlmanacTrigger,
+      AbstractView.positions.BEFOREEND
+    );
     this.mountComponent("footer", this.components.ToolsSet);
-    this.mountComponent("footer", this.components.Almanac, AbstractView.positions.BEFOREEND);
+    this.mountComponent(
+      "footer",
+      this.components.Almanac,
+      AbstractView.positions.BEFOREEND
+    );
     this.mountComponent("wallet", this.components.Wallet);
   }
 

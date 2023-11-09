@@ -17,7 +17,7 @@ import i18next from "i18next";
 import en from "./localization/en.json";
 import ru from "./localization/ru.json";
 import Cookies from "js-cookie";
-import {AlmanacModel} from "./model/almanac.model";
+import { AlmanacModel } from "./model/almanac.model";
 
 export const $toaster = new Toaster(3000);
 export const $loader = new Loader(1000);

@@ -7,7 +7,7 @@ import { WalletComponent } from "../ui-components/Wallet.component";
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { TEST_FARM_STATE, TOOLS } from "../../model/devRoom.model";
-import {AlmanacComponent} from "../ui-components/Almanac.component";
+import { AlmanacComponent } from "../ui-components/Almanac.component";
 
 interface State {
   farm: FarmState;

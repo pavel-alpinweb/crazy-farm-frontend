@@ -1,7 +1,7 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { TOOLS } from "../../model/farm.model";
 import { eventBusFarm } from "../../model/farm.model";
-import {eventBusAlmanac} from "../../model/almanac.model";
+import { eventBusAlmanac } from "../../model/almanac.model";
 
 interface Props {
   tool: ToolData;
@@ -22,7 +22,11 @@ const createToolTemplate = (state: State) => `
         ${state.isBlocked ? "tool--blocked" : ""}
         ${state.isActive ? "tool--highlight" : ""}"
     >
-         ${state.tool.name !== "almanac" ? `<div class="tool__price">${state.tool.price}</div>` : ''}
+         ${
+           state.tool.name !== "almanac"
+             ? `<div class="tool__price">${state.tool.price}</div>`
+             : ""
+         }
     </div>
 `;
 
@@ -52,7 +56,7 @@ export class ToolComponent extends AbstractView {
       this.updateClassList();
     };
     const highlightElement = (value: boolean) => {
-      if (this.state.tool.name === 'almanac') return;
+      if (this.state.tool.name === "almanac") return;
       this.state.isHighLight = value;
       this.state.isActive = false;
       this.state.isBlocked = false;
@@ -72,14 +76,14 @@ export class ToolComponent extends AbstractView {
 
   private updateClassList(): void {
     this.state.isActive
-        ? this.element?.classList.add("tool--active")
-        : this.element?.classList.remove("tool--active");
+      ? this.element?.classList.add("tool--active")
+      : this.element?.classList.remove("tool--active");
     this.state.isHighLight
-        ? this.element?.classList.add("tool--highlight")
-        : this.element?.classList.remove("tool--highlight");
+      ? this.element?.classList.add("tool--highlight")
+      : this.element?.classList.remove("tool--highlight");
     this.state.isBlocked
-        ? this.element?.classList.add("tool--blocked")
-        : this.element?.classList.remove("tool--blocked");
+      ? this.element?.classList.add("tool--blocked")
+      : this.element?.classList.remove("tool--blocked");
   }
 
   protected setState(props: Props): void {
