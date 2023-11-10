@@ -178,7 +178,7 @@ export class RenderFarmComposition {
     });
   }
 
-  public async renderCharacterSprite(cell: Cell, isAlmanacActive: boolean) {
+  public async renderCharacterSprite(cell: Cell, isAlmanacActive: boolean, isTutorialActive: boolean) {
     this.initCharactersSprite();
     const container = this.farmContainers.find(
       (cont) => cont.name === cell.name
@@ -214,7 +214,7 @@ export class RenderFarmComposition {
 
     /* Cell state filters */
     const colorMatrix = new PIXI.ColorMatrixFilter();
-    if (container?.render && isAlmanacActive && !cell.isBlocked) {
+    if (container?.render && (isAlmanacActive || isTutorialActive) && !cell.isBlocked) {
       container.render.filters = [colorMatrix];
       let count = 0;
       this.scene.ticker.add(() => {

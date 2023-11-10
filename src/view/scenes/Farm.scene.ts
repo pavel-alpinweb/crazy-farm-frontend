@@ -11,6 +11,7 @@ interface Props {
 interface State {
   farm: Props["farm"];
   isAlmanacActive: boolean;
+  isTutorialActive: boolean;
 }
 
 export class FarmScene extends AbstractScene {
@@ -18,6 +19,7 @@ export class FarmScene extends AbstractScene {
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
     isAlmanacActive: false,
+    isTutorialActive: false,
   };
   constructor(props: Props) {
     super();
@@ -44,13 +46,13 @@ export class FarmScene extends AbstractScene {
   }
 
   protected async renderSprites(): Promise<void> {
-    await this.renderFarmCells(this.state.isAlmanacActive);
+    await this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     this.renderFarmComposition.renderDecorationSprites();
   }
 
-  private async renderFarmCells(isAlmanacActive: boolean): Promise<void> {
+  private async renderFarmCells(isAlmanacActive: boolean, isTutorialActive: boolean): Promise<void> {
     this.state.farm.containers.forEach((cell) => {
-      this.renderFarmComposition.renderCharacterSprite(cell, isAlmanacActive);
+      this.renderFarmComposition.renderCharacterSprite(cell, isAlmanacActive, isTutorialActive);
       this.renderFarmComposition.renderNeedsSprites(cell);
     });
   }
@@ -61,11 +63,16 @@ export class FarmScene extends AbstractScene {
     };
     const updateFarm = (data: FarmState) => {
       this.state.farm = data;
-      this.renderFarmCells(this.state.isAlmanacActive);
+      this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
     const setAlmanacState = (value: boolean) => {
       this.state.isAlmanacActive = value;
-      this.renderFarmCells(this.state.isAlmanacActive);
+      this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
+    };
+
+    const setTutorialState = (data: Tutorial) => {
+      this.state.isTutorialActive = data.isActive;
+      this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
 
     eventBusFarm.off("Farm:update", updateFarm);
@@ -73,6 +80,9 @@ export class FarmScene extends AbstractScene {
 
     eventBusAlmanac.off("Almanac:activate", setAlmanacState);
     eventBusAlmanac.on("Almanac:activate", setAlmanacState);
+
+    eventBusAlmanac.off("Tutorial:update", setTutorialState);
+    eventBusAlmanac.on("Tutorial:update", setTutorialState);
   }
 
   setHandlers() {
