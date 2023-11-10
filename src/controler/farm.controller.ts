@@ -12,6 +12,7 @@ import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
 import { $toaster, farmAssetsLoader, $loader } from "../main";
+import { updateTutorial } from "../mock/tutorial.mock";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -45,7 +46,12 @@ export default class FarmController {
           } else if (userToken) {
             $loader.show();
             await farmAssetsLoader.load();
-            await this.methods.connectToWebSocketServer(userToken);
+            // await this.methods.connectToWebSocketServer(userToken);
+            // test farm rendering
+            const state = await updateTutorial("1-0", this.farmModel.tool);
+            this.farmModel.setFarmState(state);
+            this.farmModel.setPlayerCash(state.player.cash);
+            $loader.remove();
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },
               this.methods
@@ -54,6 +60,15 @@ export default class FarmController {
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
+            if (
+                (state.tutorial && state.tutorial.isActive &&
+                    state.tutorial.currentStep !==
+                    this.almanacModel.tutorial.currentStep) ||
+                (state.tutorial && state.tutorial.isActive &&
+                    this.almanacModel.tutorial.currentStep === 1)
+            ) {
+              this.almanacModel.setTutorialState(state.tutorial);
+            }
           } else {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/welcome");
@@ -80,16 +95,25 @@ export default class FarmController {
           appContainer.innerHTML = "";
         }
       },
-      updateFarm: (cell: string) => {
+      updateFarm: async (cell: string) => {
         if (
           this.farmModel.tool !== TOOLS.EMPTY &&
           !this.almanacModel.state.isActive
         ) {
-          this.Socket?.push({ cell, tool: this.farmModel.tool });
+          // this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
-          // const state = await updateFarmState(cell, this.farmModel.tool);
-          // this.farmModel.setFarmState(state);
-          // this.farmModel.setPlayerCash(state.player.cash);
+          const state = await updateTutorial(cell, this.farmModel.tool);
+          this.farmModel.setFarmState(state);
+          this.farmModel.setPlayerCash(state.player.cash);
+          if (
+            (state.tutorial.isActive &&
+              state.tutorial.currentStep !==
+                this.almanacModel.tutorial.currentStep) ||
+            (state.tutorial.isActive &&
+              this.almanacModel.tutorial.currentStep === 1)
+          ) {
+            this.almanacModel.setTutorialState(state.tutorial);
+          }
         } else if (this.almanacModel.state.isActive) {
           const cellData = this.farmModel.state.containers.find(
             (c) => c.name === cell

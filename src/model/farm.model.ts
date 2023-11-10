@@ -64,6 +64,7 @@ declare global {
   interface FarmResponse {
     containers: Array<Cell>;
     player: Player;
+    tutorial: Tutorial;
   }
 
   type NeedsSpritesNames = {
