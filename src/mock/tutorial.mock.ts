@@ -4,6 +4,7 @@ const tutorialFarmStateCells: Array<Cell> = JSON.parse(JSON.stringify(DEFAULT_FA
     if (cell.name !== "0-1") {
         cell.isBlocked = true;
     }
+    return cell;
 });
 const playerCash = 1000;
 
