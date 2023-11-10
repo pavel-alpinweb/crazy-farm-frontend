@@ -9,6 +9,12 @@ declare global {
     currentTextKey: string;
     currentActions: AlmanacAction[];
   }
+
+  interface Tutorial {
+    isActive: boolean;
+    currentStep: number;
+    blockedTools: Array<tool>;
+  }
 }
 
 export const eventBusAlmanac: EventBus = new EventBus();
@@ -21,8 +27,18 @@ export class AlmanacModel {
     currentActions: ["show", "close"],
   };
 
+  private tutorialState: Tutorial = {
+    isActive: false,
+    currentStep: 0,
+    blockedTools: [],
+  };
+
   public get state(): AlmanacState {
     return this.almanacState;
+  }
+
+  public get tutorial(): Tutorial{
+    return this.tutorialState;
   }
 
   public toggleAlmanac(): void {

@@ -74,6 +74,11 @@ export function updateFarmState(
           cash: playerCash,
         },
         containers: mutatedState.containers,
+        tutorial: {
+          isActive: false,
+          currentStep: 0,
+          blockedTools: [],
+        },
       });
     }, 2000);
   });
