@@ -60,6 +60,7 @@ export default class FarmController {
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
+            this.almanacModel.setTutorialState(state.tutorial);
           } else {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/welcome");

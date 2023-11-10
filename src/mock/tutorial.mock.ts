@@ -19,12 +19,12 @@ export function updateTutorial(
                     cash: playerCash,
                 },
                 tutorial: {
-                    isActive: false,
+                    isActive: true,
                     currentStep: 0,
                     blockedTools: [],
                 },
                 containers: tutorialFarmStateCells,
             });
-        }, 2000);
+        }, 1000);
     });
 }

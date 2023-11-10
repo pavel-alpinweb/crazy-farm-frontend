@@ -42,8 +42,11 @@ export class AlmanacModel {
   }
 
   public toggleAlmanac(): void {
-    this.almanacState.currentActions = ["show", "close"];
     this.almanacState.isShow = !this.almanacState.isShow;
+    if (this.tutorial.isActive) {
+      this.almanacState.currentTextKey = `tutorial.${this.tutorialState.currentStep}`;
+      this.almanacState.currentActions = ["close"];
+    }
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
   }
 
@@ -57,10 +60,10 @@ export class AlmanacModel {
   }
 
   public deactivateAlmanac(): void {
-    this.almanacState.currentActions = [];
     this.almanacState.isShow = false;
     this.almanacState.isActive = false;
     this.almanacState.currentTextKey = "almanacDefault";
+    this.almanacState.currentActions = [];
     eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
   }
@@ -85,5 +88,15 @@ export class AlmanacModel {
     }
     eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
+  }
+
+  public setTutorialState(state: Tutorial): void {
+    this.tutorialState = state;
+    this.almanacState.isShow = true;
+    this.almanacState.isActive = false;
+    this.almanacState.currentTextKey = `tutorial.${this.tutorialState.currentStep}`;
+    this.almanacState.currentActions = ["close"];
+    eventBusAlmanac.emit("Almanac:toggleView", this.state);
+    eventBusAlmanac.emit("Tutorial:update", this.tutorialState);
   }
 }
