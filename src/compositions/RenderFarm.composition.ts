@@ -213,17 +213,18 @@ export class RenderFarmComposition {
     }
 
     /* Cell state filters */
-    if (container?.render && isAlmanacActive) {
-      const colorMatrix = new PIXI.ColorMatrixFilter();
+    const colorMatrix = new PIXI.ColorMatrixFilter();
+    if (container?.render && isAlmanacActive && !cell.isBlocked) {
       container.render.filters = [colorMatrix];
       let count = 0;
       this.scene.ticker.add(() => {
         count += 0.05;
         colorMatrix.contrast(Math.sin(count) * 0.3, false);
       });
-      // colorMatrix.greyscale(0.5, true);
+    } else if (cell.isBlocked && container?.render) {
+      container.render.filters = [colorMatrix];
+      colorMatrix.greyscale(0.5, true);
     } else if (container?.render) {
-      const colorMatrix = new PIXI.ColorMatrixFilter();
       container.render.filters = [colorMatrix];
       this.scene.ticker.remove(() => {
         colorMatrix.reset();

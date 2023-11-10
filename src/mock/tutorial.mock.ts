@@ -1,7 +1,7 @@
 import {DEFAULT_FARM_STATE} from "../model/farm.model";
 
 const tutorialFarmStateCells: Array<Cell> = JSON.parse(JSON.stringify(DEFAULT_FARM_STATE.containers)).map((cell: Cell) => {
-    if (cell.name !== "0-1") {
+    if (cell.name !== "1-0") {
         cell.isBlocked = true;
     }
     return cell;
