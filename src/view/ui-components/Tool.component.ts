@@ -67,22 +67,28 @@ export class ToolComponent extends AbstractView {
     };
 
     const blockedElement = (tutorial: Tutorial) => {
-      if (tutorial.isActive && this.state.tool.name !== "almanac") {
+      if (this.state.tool.name !== "almanac" && tutorial.isActive) {
         this.state.isTutorialActive = tutorial.isActive;
         if (tutorial.blockedTools.includes(this.state.tool.name)) {
           this.state.isBlocked = true;
+          this.state.isActive = false;
         } else {
           this.state.isHighLight = true;
+          this.state.isBlocked = false;
         }
-      } else {
-        this.state.isHighLight = false;
-        this.state.isBlocked = false;
       }
+      this.updateClassList();
+    };
+    const endTutorial = () => {
+      this.state.isTutorialActive = false;
+      this.state.isBlocked = false;
+      this.state.isHighLight = false;
       this.updateClassList();
     };
     eventBusFarm.on("Farm:set_tool", updateElement);
     eventBusAlmanac.on("Almanac:activate", highlightElement);
     eventBusAlmanac.on("Tutorial:update", blockedElement);
+    eventBusAlmanac.on("Tutorial:end", endTutorial);
   }
 
   setHandlers() {

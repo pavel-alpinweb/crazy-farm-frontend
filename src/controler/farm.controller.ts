@@ -12,7 +12,7 @@ import AuthService from "../services/auth.service";
 import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
 import { $toaster, farmAssetsLoader, $loader } from "../main";
-import {updateTutorial} from "../mock/tutorial.mock";
+import { updateTutorial } from "../mock/tutorial.mock";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -48,7 +48,7 @@ export default class FarmController {
             await farmAssetsLoader.load();
             // await this.methods.connectToWebSocketServer(userToken);
             // test farm rendering
-            const state = await updateTutorial("0-0", this.farmModel.tool);
+            const state = await updateTutorial("1-0", this.farmModel.tool);
             this.farmModel.setFarmState(state);
             this.farmModel.setPlayerCash(state.player.cash);
             $loader.remove();
@@ -60,7 +60,15 @@ export default class FarmController {
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
-            this.almanacModel.setTutorialState(state.tutorial);
+            if (
+                (state.tutorial && state.tutorial.isActive &&
+                    state.tutorial.currentStep !==
+                    this.almanacModel.tutorial.currentStep) ||
+                (state.tutorial && state.tutorial.isActive &&
+                    this.almanacModel.tutorial.currentStep === 1)
+            ) {
+              this.almanacModel.setTutorialState(state.tutorial);
+            }
           } else {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/welcome");
@@ -97,6 +105,15 @@ export default class FarmController {
           const state = await updateTutorial(cell, this.farmModel.tool);
           this.farmModel.setFarmState(state);
           this.farmModel.setPlayerCash(state.player.cash);
+          if (
+            (state.tutorial.isActive &&
+              state.tutorial.currentStep !==
+                this.almanacModel.tutorial.currentStep) ||
+            (state.tutorial.isActive &&
+              this.almanacModel.tutorial.currentStep === 1)
+          ) {
+            this.almanacModel.setTutorialState(state.tutorial);
+          }
         } else if (this.almanacModel.state.isActive) {
           const cellData = this.farmModel.state.containers.find(
             (c) => c.name === cell

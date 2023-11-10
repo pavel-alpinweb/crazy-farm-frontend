@@ -198,7 +198,8 @@ export class RenderFarmComposition {
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
     if (cell.character && container?.render) {
-      if (container.render?.children?.length === 2) {
+      console.log('container', container.render?.children?.length);
+      if (container.render?.children?.length >= 2) {
         this.renderSceneComposition.removeChildren(container, 1);
       }
       const sprite = await this.charactersSpriteList[cell.character?.type][
@@ -208,7 +209,7 @@ export class RenderFarmComposition {
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
       }
-    } else if (container && container.render?.children?.length === 2) {
+    } else if (container && <number>container.render?.children?.length >= 2) {
       this.renderSceneComposition.removeChildren(container, 1);
     }
 

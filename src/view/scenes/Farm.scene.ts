@@ -66,12 +66,18 @@ export class FarmScene extends AbstractScene {
       this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
     const setAlmanacState = (value: boolean) => {
+      if (this.state.isTutorialActive) return;
       this.state.isAlmanacActive = value;
       this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
 
     const setTutorialState = (data: Tutorial) => {
       this.state.isTutorialActive = data.isActive;
+      this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
+    };
+
+    const endTutorial = () => {
+      this.state.isTutorialActive = false;
       this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
 
@@ -83,6 +89,9 @@ export class FarmScene extends AbstractScene {
 
     eventBusAlmanac.off("Tutorial:update", setTutorialState);
     eventBusAlmanac.on("Tutorial:update", setTutorialState);
+
+    eventBusAlmanac.off("Tutorial:end", endTutorial);
+    eventBusAlmanac.on("Tutorial:end", endTutorial);
   }
 
   setHandlers() {
