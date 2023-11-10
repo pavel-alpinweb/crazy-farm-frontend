@@ -7,6 +7,13 @@ const tutorialFarmStateCells: Array<Cell> = JSON.parse(JSON.stringify(DEFAULT_FA
     return cell;
 });
 const playerCash = 1000;
+const blockedTools: Array<tool> = [
+    "shovel",
+    "bailer",
+    "fertilizer",
+    "sprayer",
+    // "seeds",
+];
 
 export function updateTutorial(
     cell: string,
@@ -21,7 +28,7 @@ export function updateTutorial(
                 tutorial: {
                     isActive: true,
                     currentStep: 0,
-                    blockedTools: [],
+                    blockedTools,
                 },
                 containers: tutorialFarmStateCells,
             });

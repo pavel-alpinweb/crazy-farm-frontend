@@ -12,6 +12,7 @@ interface State {
   isActive: boolean;
   isHighLight: boolean;
   isBlocked: boolean;
+  isTutorialActive: boolean;
 }
 
 const createToolTemplate = (state: State) => `
@@ -39,6 +40,7 @@ export class ToolComponent extends AbstractView {
     isActive: false,
     isHighLight: false,
     isBlocked: false,
+    isTutorialActive: false,
   };
   constructor(props: Props) {
     super();
@@ -57,13 +59,30 @@ export class ToolComponent extends AbstractView {
     };
     const highlightElement = (value: boolean) => {
       if (this.state.tool.name === "almanac") return;
+      if (this.state.isTutorialActive) return;
       this.state.isHighLight = value;
       this.state.isActive = false;
       this.state.isBlocked = false;
       this.updateClassList();
     };
+
+    const blockedElement = (tutorial: Tutorial) => {
+      if (tutorial.isActive && this.state.tool.name !== "almanac") {
+        this.state.isTutorialActive = tutorial.isActive;
+        if (tutorial.blockedTools.includes(this.state.tool.name)) {
+          this.state.isBlocked = true;
+        } else {
+          this.state.isHighLight = true;
+        }
+      } else {
+        this.state.isHighLight = false;
+        this.state.isBlocked = false;
+      }
+      this.updateClassList();
+    };
     eventBusFarm.on("Farm:set_tool", updateElement);
     eventBusAlmanac.on("Almanac:activate", highlightElement);
+    eventBusAlmanac.on("Tutorial:update", blockedElement);
   }
 
   setHandlers() {
