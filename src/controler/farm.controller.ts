@@ -100,20 +100,20 @@ export default class FarmController {
           this.farmModel.tool !== TOOLS.EMPTY &&
           !this.almanacModel.state.isActive
         ) {
-          // this.Socket?.push({ cell, tool: this.farmModel.tool });
+          this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
-          const state = await updateTutorial(cell, this.farmModel.tool);
-          this.farmModel.setFarmState(state);
-          this.farmModel.setPlayerCash(state.player.cash);
-          if (
-            (state.tutorial.isActive &&
-              state.tutorial.currentStep !==
-                this.almanacModel.tutorial.currentStep) ||
-            (state.tutorial.isActive &&
-              this.almanacModel.tutorial.currentStep === 1)
-          ) {
-            this.almanacModel.setTutorialState(state.tutorial);
-          }
+          // const state = await updateTutorial(cell, this.farmModel.tool);
+          // this.farmModel.setFarmState(state);
+          // this.farmModel.setPlayerCash(state.player.cash);
+          // if (
+          //   (state.tutorial.isActive &&
+          //     state.tutorial.currentStep !==
+          //       this.almanacModel.tutorial.currentStep) ||
+          //   (state.tutorial.isActive &&
+          //     this.almanacModel.tutorial.currentStep === 1)
+          // ) {
+          //   this.almanacModel.setTutorialState(state.tutorial);
+          // }
         } else if (this.almanacModel.state.isActive) {
           const cellData = this.farmModel.state.containers.find(
             (c) => c.name === cell

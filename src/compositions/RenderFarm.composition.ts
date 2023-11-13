@@ -6,6 +6,7 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
+import {DropShadowFilter} from "@pixi/filter-drop-shadow";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
@@ -92,10 +93,17 @@ export class RenderFarmComposition {
   public renderDecorationSprites(): void {
     this.woodContainers.forEach(async (container) => {
       const [x, y, width, height] = this.Woodlands[container.name];
-      const DecorationSprite = new DECORATION_SPRITES[container.name]();
+      const DecorationSprite = await new DECORATION_SPRITES[container.name]().sprite();
+      if (DecorationSprite) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        DecorationSprite.filters = [new DropShadowFilter({
+          offset: {x: 20, y: 20},
+        })];
+      }
       this.renderSceneComposition.addSprite(
         container,
-        await DecorationSprite?.sprite()
+        DecorationSprite
       );
       this.renderSceneComposition.setContainerWidth(
         container,
@@ -198,7 +206,6 @@ export class RenderFarmComposition {
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
     if (cell.character && container?.render) {
-      console.log('container', container.render?.children?.length);
       if (container.render?.children?.length >= 2) {
         this.renderSceneComposition.removeChildren(container, 1);
       }
@@ -206,6 +213,11 @@ export class RenderFarmComposition {
         cell.character?.stage
       ]?.sprite();
       if (sprite) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        sprite.filters = [new DropShadowFilter({
+          offset: {x: 20, y: 10},
+        })];
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
       }
