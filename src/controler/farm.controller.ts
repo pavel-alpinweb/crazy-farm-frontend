@@ -46,12 +46,12 @@ export default class FarmController {
           } else if (userToken) {
             $loader.show();
             await farmAssetsLoader.load();
-            // await this.methods.connectToWebSocketServer(userToken);
+            await this.methods.connectToWebSocketServer(userToken);
             // test farm rendering
-            const state = await updateTutorial("1-0", this.farmModel.tool);
-            this.farmModel.setFarmState(state);
-            this.farmModel.setPlayerCash(state.player.cash);
-            $loader.remove();
+            // const state = await updateTutorial("1-0", this.farmModel.tool);
+            // this.farmModel.setFarmState(state);
+            // this.farmModel.setPlayerCash(state.player.cash);
+            // $loader.remove();
             this.FarmScreen = new FarmScreen(
               { farm: farmModel.state, player: farmModel.player },
               this.methods
@@ -60,15 +60,15 @@ export default class FarmController {
               AbstractView.positions.BEFOREEND,
               <Element>this.FarmScreen.element
             );
-            if (
-                (state.tutorial && state.tutorial.isActive &&
-                    state.tutorial.currentStep !==
-                    this.almanacModel.tutorial.currentStep) ||
-                (state.tutorial && state.tutorial.isActive &&
-                    this.almanacModel.tutorial.currentStep === 1)
-            ) {
-              this.almanacModel.setTutorialState(state.tutorial);
-            }
+            // if (
+            //     (state.tutorial && state.tutorial.isActive &&
+            //         state.tutorial.currentStep !==
+            //         this.almanacModel.tutorial.currentStep) ||
+            //     (state.tutorial && state.tutorial.isActive &&
+            //         this.almanacModel.tutorial.currentStep === 1)
+            // ) {
+            //   this.almanacModel.setTutorialState(state.tutorial);
+            // }
           } else {
             $toaster.show("Авторизуйтесь", false);
             Router.push("/#/welcome");
@@ -132,6 +132,15 @@ export default class FarmController {
           this.Socket.onMessage((data: FarmResponse) => {
             this.farmModel.setFarmState(data);
             this.farmModel.setPlayerCash(data.player.cash);
+            if (
+                (data.tutorial && data.tutorial.isActive &&
+                    data.tutorial.currentStep !==
+                    this.almanacModel.tutorial.currentStep) ||
+                (data.tutorial && data.tutorial.isActive &&
+                    this.almanacModel.tutorial.currentStep === 1)
+            ) {
+              this.almanacModel.setTutorialState(data.tutorial);
+            }
             $loader.remove();
           });
           this.Socket.onClose((event: CloseEvent) => {
