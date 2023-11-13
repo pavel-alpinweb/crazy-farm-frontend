@@ -8,6 +8,7 @@ interface TutorialStep {
 }
 
 const tutorialState: Array<TutorialStep> = [
+    // шаг 0, его мы пропускаем
     {
         cell: {
             isEmpty: false,
@@ -19,6 +20,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: false,
         needTools: [],
     },
+    // шаг 1, пустая ячейка, все ячейки кроме той что указана блокированы, блокируются все инструменты кроме зерен
     {
         cell: {
             isEmpty: true,
@@ -35,6 +37,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["seeds"],
     },
+    // шаг 2, кучка земли, все ячейки кроме той что указан блокированы, блокируются все инструменты кроме лейки
     {
         cell: {
             isEmpty: false,
@@ -55,6 +58,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["bailer"],
     },
+    // шаг 3, росток картошки с жаждой, все ячейки кроме той что указан блокированы, блокируются все инструменты кроме лейки
     {
         cell: {
             isEmpty: false,
@@ -75,6 +79,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["bailer"],
     },
+    // шаг 4, младенец картошки с голодом и болензнью, все ячейки кроме той что указан блокированы, блокируются все инструменты кроме удобрений и распылителя
     {
         cell: {
             isEmpty: false,
@@ -94,6 +99,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["fertilizer", "sprayer"],
     },
+    // шаг 5, картошка ребенок со всеми потребностями, все ячейки кроме той что указан блокированы, блокируются все инструменты кроме удобрений, распылителя и лейки
     {
         cell: {
             isEmpty: false,
@@ -112,6 +118,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["bailer", "fertilizer", "sprayer"],
     },
+    // шаг 6, взрослая картошка без потребностей, все ячейки кроме той что указан блокированы, блокируются все инструменты кроме лопаты
     {
         cell: {
             isEmpty: false,
@@ -132,6 +139,7 @@ const tutorialState: Array<TutorialStep> = [
         isActive: true,
         needTools: ["shovel"],
     },
+    // шаг 7, финальный шаг, перменная isActive все еще true, но игра уже в нормальном режиме, во всех последющих сообщениях, переменная isActive = false
     {
         cell: {
             isEmpty: false,
