@@ -103,12 +103,14 @@ export class FarmScene extends AbstractScene {
       container.render.eventMode = "static";
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
-      container.render.on("pointerdown", () => {
+      container.render.on("pointerdown", (event) => {
         if (this.events.click) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
+
+          this.renderFarmComposition.addParticleEffect(container.name, "bailer", event);
           this.events.click(container.name);
-          console.log("click container", container.name);
+          console.log(container);
         }
       });
     }

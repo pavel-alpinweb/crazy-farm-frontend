@@ -14,10 +14,20 @@ export class RenderSceneComposition {
     }
   }
 
-  public renderEffectContainer(container: EffectContainer): void {
+  public renderEffectContainer(container: Container): void {
     if (container.render) return;
     else {
-      container.render = new PIXI.ParticleContainer();
+      // container.render = new PIXI.ParticleContainer(500, {
+      //   scale: true,
+      //   position: true,
+      //   rotation: true,
+      //   uvs: true,
+      //   alpha: true,
+      // });
+      container.render = new PIXI.Container();
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      container.render.eventMode = "none";
       this.scene.stage.addChild(container.render);
     }
   }

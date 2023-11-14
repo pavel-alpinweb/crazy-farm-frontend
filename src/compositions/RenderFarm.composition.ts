@@ -6,6 +6,8 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
+import * as particles from "@pixi/particle-emitter"
+import bailer from "../assets/particle-emitters/bailer.json"
 import {DropShadowFilter} from "@pixi/filter-drop-shadow";
 
 export class RenderFarmComposition {
@@ -85,8 +87,6 @@ export class RenderFarmComposition {
     this.effContainers.forEach((container) => {
       const [x, y] = container.name.split("-").map((value) => Number(value));
       this.renderSceneComposition.renderEffectContainer(container);
-      this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
-      this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerX(
           container,
           x * this.CELL_SIZE +
@@ -170,6 +170,58 @@ export class RenderFarmComposition {
         this.renderSceneComposition.centerPivotContainer(container);
       }
     });
+  }
+
+  public addParticleEffect(name: string, tool: tool, event: PIXI.FederatedPointerEvent): void {
+    const container = this.effContainers.find((container) => container.name.search(name));
+    const [x, y] = name.split("-").map((value) => Number(value));
+    let emitter: particles.Emitter | undefined;
+    if (container && container.render) {
+      switch (tool) {
+        case "bailer":
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          emitter = new particles.Emitter(container.render, bailer);
+          break;
+        case "fertilizer":
+          break;
+        case "sprayer":
+          break;
+        default:
+          break;
+      }
+      if (emitter) {
+        // Calculate the current time
+        let elapsed = Date.now();
+
+        const update = () =>
+        {
+          requestAnimationFrame(update);
+
+          const now = Date.now();
+          emitter?.update((now - elapsed) * 0.001);
+          elapsed = now;
+        };
+        console.log('coords', {
+          x,
+          y,
+        });
+        const xCoord = x === 0 && y === 0 ? event.screenX - 150 * 2 : event.screenX - 150;
+        const yCoord = event.screenY - 150;
+        emitter.emit = true;
+        emitter.resetPositionTracking();
+        emitter.updateOwnerPos(xCoord, yCoord);
+        update();
+        setTimeout(() => {
+          emitter?.destroy();
+        }, 500);
+      }
+    }
+  }
+
+  public clearParticleEffect(name: string) {
+    const container = this.effContainers.find((container) => container.name.search(name));
+    if (container) this.renderSceneComposition.removeAllSprites(container);
   }
 
   public initCharactersSprite(): void {
