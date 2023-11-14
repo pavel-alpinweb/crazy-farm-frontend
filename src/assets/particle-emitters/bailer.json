@@ -1,11 +1,11 @@
 {
 	"lifetime": {
-		"min": 1,
-		"max": 1
+		"min": 0.25,
+		"max": 0.5
 	},
-	"frequency": 0.01,
+	"frequency": 0.001,
 	"emitterLifetime": 0,
-	"maxParticles": 50,
+	"maxParticles": 100,
 	"addAtBack": false,
 	"pos": {
 		"x": 0,
@@ -13,16 +13,45 @@
 	},
 	"behaviors": [
 		{
-			"type": "alphaStatic",
+			"type": "alpha",
 			"config": {
-				"alpha": 0.5
+				"alpha": {
+					"list": [
+						{
+							"time": 0,
+							"value": 1
+						},
+						{
+							"time": 1,
+							"value": 0.8
+						}
+					]
+				}
 			}
 		},
 		{
 			"type": "moveSpeedStatic",
 			"config": {
-				"min": 200,
-				"max": 200
+				"min": 300,
+				"max": 300
+			}
+		},
+		{
+			"type": "scale",
+			"config": {
+				"scale": {
+					"list": [
+						{
+							"time": 0,
+							"value": 0.5
+						},
+						{
+							"time": 1,
+							"value": 1
+						}
+					]
+				},
+				"minMult": 1
 			}
 		},
 		{
@@ -32,47 +61,46 @@
 					"list": [
 						{
 							"time": 0,
-							"value": "43a2d1"
+							"value": "ffffff"
 						},
 						{
 							"time": 1,
-							"value": "ffffff"
+							"value": "9ff3ff"
 						}
 					]
 				}
 			}
 		},
 		{
-			"type": "scaleStatic",
+			"type": "rotation",
 			"config": {
-				"min": 1,
-				"max": 1
-			}
-		},
-		{
-			"type": "rotationStatic",
-			"config": {
-				"min": 90,
-				"max": 90
+				"accel": 0,
+				"minSpeed": 0,
+				"maxSpeed": 0,
+				"minStart": 30,
+				"maxStart": 150
 			}
 		},
 		{
 			"type": "textureRandom",
 			"config": {
 				"textures": [
-					"./assets/img/particles/rain.png"
+					"./assets/img/particles/sparks.png"
 				]
 			}
 		},
 		{
 			"type": "spawnShape",
 			"config": {
-				"type": "rect",
+				"type": "torus",
 				"data": {
-					"x": -175,
-					"y": -175,
+					"x": -100,
+					"y": -170,
 					"w": 150,
-					"h": 10
+					"h": 150,
+					"radius": 0,
+					"innerRadius": 0,
+					"affectRotation": false
 				}
 			}
 		}
