@@ -108,7 +108,7 @@ export class FarmScene extends AbstractScene {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
 
-          this.renderFarmComposition.addParticleEffect(container.name, "bailer", event);
+          this.renderFarmComposition.addParticleEffect(container.name, "fertilizer", event);
           this.events.click(container.name);
           console.log(container);
         }

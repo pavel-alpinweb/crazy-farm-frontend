@@ -1,0 +1,93 @@
+{
+  "lifetime": {
+    "min": 2,
+    "max": 1.8
+  },
+  "frequency": 0.01,
+  "emitterLifetime": 0,
+  "maxParticles": 100,
+  "addAtBack": true,
+  "pos": {
+    "x": 0,
+    "y": 0
+  },
+  "behaviors": [
+    {
+      "type": "alpha",
+      "config": {
+        "alpha": {
+          "list": [
+            {
+              "time": 0,
+              "value": 1
+            },
+            {
+              "time": 1,
+              "value": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "moveSpeedStatic",
+      "config": {
+        "min": 10,
+        "max": 10
+      }
+    },
+    {
+      "type": "color",
+      "config": {
+        "color": {
+          "list": [
+            {
+              "time": 0,
+              "value": "6bff61"
+            },
+            {
+              "time": 1,
+              "value": "d8ff4a"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "rotationStatic",
+      "config": {
+        "min": 0,
+        "max": 360
+      }
+    },
+    {
+      "type": "blendMode",
+      "config": {
+        "blendMode": "screen"
+      }
+    },
+    {
+      "type": "textureRandom",
+      "config": {
+        "textures": [
+          "./assets/img/particles/gas.png"
+        ]
+      }
+    },
+    {
+      "type": "spawnShape",
+      "config": {
+        "type": "torus",
+        "data": {
+          "x": -75,
+          "y": -150,
+          "w": 20,
+          "h": 10,
+          "radius": 75,
+          "innerRadius": 0,
+          "affectRotation": false
+        }
+      }
+    }
+  ]
+}
