@@ -83,9 +83,22 @@ export class RenderFarmComposition {
 
   public renderEffectContainers(): void {
     this.effContainers.forEach((container) => {
+      const [x, y] = container.name.split("-").map((value) => Number(value));
       this.renderSceneComposition.renderEffectContainer(container);
       this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
+      this.renderSceneComposition.setContainerX(
+          container,
+          x * this.CELL_SIZE +
+          this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
+          this.CELL_GAP * x
+      );
+      this.renderSceneComposition.setContainerY(
+          container,
+          y * this.CELL_SIZE +
+          this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
+          this.CELL_GAP * y
+      );
     });
   }
 

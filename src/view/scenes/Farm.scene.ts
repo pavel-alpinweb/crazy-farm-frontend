@@ -108,6 +108,7 @@ export class FarmScene extends AbstractScene {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
           this.events.click(container.name);
+          console.log("click container", container.name);
         }
       });
     }
