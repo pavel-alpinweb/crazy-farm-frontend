@@ -8,6 +8,7 @@ import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
 import * as particles from "@pixi/particle-emitter"
 import bailer from "../assets/particle-emitters/bailer.json"
+import sprayer from "../assets/particle-emitters/sprayer.json"
 import fertilizer from "../assets/particle-emitters/fertilizer.json"
 import {DropShadowFilter} from "@pixi/filter-drop-shadow";
 
@@ -190,6 +191,9 @@ export class RenderFarmComposition {
           emitter = new particles.Emitter(container.render, fertilizer);
           break;
         case "sprayer":
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          emitter = new particles.Emitter(container.render, sprayer);
           break;
         default:
           break;
