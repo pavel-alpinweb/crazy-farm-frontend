@@ -15,6 +15,12 @@ declare global {
     name: string;
     render: PIXI.Container | null;
   }
+
+  interface EffectContainer {
+    name: string;
+    render: PIXI.ParticleContainer | null;
+  }
+
   type Containers = Array<Container>;
 
   interface DecorationContainer {

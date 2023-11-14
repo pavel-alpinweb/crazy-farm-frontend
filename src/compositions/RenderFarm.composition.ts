@@ -56,12 +56,107 @@ export class RenderFarmComposition {
 
   private readonly woodlandContainers: Containers = [];
 
+  private readonly effectsContainers: Array<EffectContainer> = [];
+
   public get containers(): Containers {
     return this.farmContainers;
   }
 
   public get woodContainers(): Containers {
     return this.woodlandContainers;
+  }
+
+  public get effContainers(): Array<EffectContainer> {
+    return this.effectsContainers;
+  }
+
+  public initEffectContainers(): void {
+    for (let y = 0; y < this.ROWS_COUNT; y++) {
+      for (let x = 0; x < this.COLS_COUNT; x++) {
+        this.effContainers.push({
+          name: `${x}-${y}-effect`,
+          render: null,
+        });
+      }
+    }
+  }
+
+  public renderEffectContainers(): void {
+    this.effContainers.forEach((container) => {
+      this.renderSceneComposition.renderEffectContainer(container);
+      this.renderSceneComposition.setContainerWidth(container, this.CELL_SIZE);
+      this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
+    });
+  }
+
+  public initFarmContainers(): void {
+    for (let y = 0; y < this.ROWS_COUNT; y++) {
+      for (let x = 0; x < this.COLS_COUNT; x++) {
+        this.containers.push({
+          name: `${x}-${y}`,
+          render: null,
+        });
+        this.containers.push({
+          name: `${x}-${y}-dialog`,
+          render: null,
+        });
+      }
+    }
+  }
+
+  public initWoodlandsContainers(): void {
+    for (const item in this.Woodlands) {
+      this.woodlandContainers.push({
+        name: item,
+        render: null,
+      });
+    }
+  }
+
+  public renderWoodlandsContainers(): void {
+    this.woodContainers.forEach((container) => {
+      const [x, y] = this.Woodlands[container.name];
+      this.renderSceneComposition.renderContainer(container);
+      this.renderSceneComposition.setContainerX(container, x);
+      this.renderSceneComposition.setContainerY(container, y);
+      this.renderSceneComposition.centerPivotContainer(container);
+    });
+  }
+
+  public renderFarmContainers(): void {
+    this.farmContainers.forEach((container) => {
+      const [x, y] = container.name.split("-").map((value) => Number(value));
+      this.renderSceneComposition.renderContainer(container);
+      if (container.name.search("dialog") === -1) {
+        this.renderSceneComposition.setContainerX(
+            container,
+            x * this.CELL_SIZE +
+            this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
+            this.CELL_GAP * x
+        );
+        this.renderSceneComposition.setContainerY(
+            container,
+            y * this.CELL_SIZE +
+            this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
+            this.CELL_GAP * y
+        );
+        this.renderSceneComposition.centerPivotContainer(container);
+      } else {
+        this.renderSceneComposition.setContainerX(
+            container,
+            x * this.CELL_SIZE +
+            this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER +
+            this.CELL_GAP * x
+        );
+        this.renderSceneComposition.setContainerY(
+            container,
+            y * this.CELL_SIZE +
+            this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER +
+            this.CELL_GAP * y
+        );
+        this.renderSceneComposition.centerPivotContainer(container);
+      }
+    });
   }
 
   public initCharactersSprite(): void {
@@ -113,76 +208,6 @@ export class RenderFarmComposition {
         container,
         height / this.CORRECT_DECORATION_SIZE_NUMBER
       );
-    });
-  }
-
-  public initFarmContainers(): void {
-    for (let y = 0; y < this.ROWS_COUNT; y++) {
-      for (let x = 0; x < this.COLS_COUNT; x++) {
-        this.containers.push({
-          name: `${x}-${y}`,
-          render: null,
-        });
-        this.containers.push({
-          name: `${x}-${y}-dialog`,
-          render: null,
-        });
-      }
-    }
-  }
-
-  public initWoodlandsContainers(): void {
-    for (const item in this.Woodlands) {
-      this.woodlandContainers.push({
-        name: item,
-        render: null,
-      });
-    }
-  }
-
-  public renderWoodlandsContainers(): void {
-    this.woodContainers.forEach((container) => {
-      const [x, y] = this.Woodlands[container.name];
-      this.renderSceneComposition.renderContainer(container);
-      this.renderSceneComposition.setContainerX(container, x);
-      this.renderSceneComposition.setContainerY(container, y);
-      this.renderSceneComposition.centerPivotContainer(container);
-    });
-  }
-
-  public renderFarmContainers(): void {
-    this.farmContainers.forEach((container) => {
-      const [x, y] = container.name.split("-").map((value) => Number(value));
-      this.renderSceneComposition.renderContainer(container);
-      if (container.name.search("dialog") === -1) {
-        this.renderSceneComposition.setContainerX(
-          container,
-          x * this.CELL_SIZE +
-            this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
-            this.CELL_GAP * x
-        );
-        this.renderSceneComposition.setContainerY(
-          container,
-          y * this.CELL_SIZE +
-            this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
-            this.CELL_GAP * y
-        );
-        this.renderSceneComposition.centerPivotContainer(container);
-      } else {
-        this.renderSceneComposition.setContainerX(
-          container,
-          x * this.CELL_SIZE +
-            this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER +
-            this.CELL_GAP * x
-        );
-        this.renderSceneComposition.setContainerY(
-          container,
-          y * this.CELL_SIZE +
-            this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER +
-            this.CELL_GAP * y
-        );
-        this.renderSceneComposition.centerPivotContainer(container);
-      }
     });
   }
 

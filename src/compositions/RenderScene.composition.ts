@@ -14,6 +14,14 @@ export class RenderSceneComposition {
     }
   }
 
+  public renderEffectContainer(container: EffectContainer): void {
+    if (container.render) return;
+    else {
+      container.render = new PIXI.ParticleContainer();
+      this.scene.stage.addChild(container.render);
+    }
+  }
+
   public setContainerWidth(container: Container, width: number) {
     if (container.render) {
       container.render.width = width;
