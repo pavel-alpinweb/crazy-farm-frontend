@@ -12,6 +12,7 @@ interface State {
   farm: Props["farm"];
   isAlmanacActive: boolean;
   isTutorialActive: boolean;
+  activeTool: tool;
 }
 
 export class FarmScene extends AbstractScene {
@@ -20,6 +21,7 @@ export class FarmScene extends AbstractScene {
     farm: DEFAULT_FARM_STATE,
     isAlmanacActive: false,
     isTutorialActive: false,
+    activeTool: "empty",
   };
   constructor(props: Props) {
     super();
@@ -43,6 +45,8 @@ export class FarmScene extends AbstractScene {
     this.renderFarmComposition.renderWoodlandsContainers();
     this.renderFarmComposition.initFarmContainers();
     this.renderFarmComposition.renderFarmContainers();
+    this.renderFarmComposition.initEffectContainers();
+    this.renderFarmComposition.renderEffectContainers();
   }
 
   protected async renderSprites(): Promise<void> {
@@ -81,8 +85,15 @@ export class FarmScene extends AbstractScene {
       this.renderFarmCells(this.state.isAlmanacActive, this.state.isTutorialActive);
     };
 
+    const setActiveTool = (tool: tool) => {
+      this.state.activeTool = tool;
+    };
+
     eventBusFarm.off("Farm:update", updateFarm);
     eventBusFarm.on("Farm:update", updateFarm);
+
+    eventBusFarm.off("Farm:set_tool", setActiveTool);
+    eventBusFarm.on("Farm:set_tool", setActiveTool);
 
     eventBusAlmanac.off("Almanac:activate", setAlmanacState);
     eventBusAlmanac.on("Almanac:activate", setAlmanacState);
@@ -101,10 +112,15 @@ export class FarmScene extends AbstractScene {
       container.render.eventMode = "static";
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       //@ts-ignore
-      container.render.on("pointerdown", () => {
+      container.render.on("pointerdown", (event) => {
         if (this.events.click) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           //@ts-ignore
+
+          const toolWithEffects: Array<tool> = ["bailer", "fertilizer", "sprayer"]
+          if (toolWithEffects.includes(this.state.activeTool)) {
+            this.renderFarmComposition.addParticleEffect(container.name, this.state.activeTool, event);
+          }
           this.events.click(container.name);
         }
       });

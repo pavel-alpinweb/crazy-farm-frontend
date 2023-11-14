@@ -1,0 +1,108 @@
+{
+	"lifetime": {
+		"min": 0.25,
+		"max": 0.5
+	},
+	"frequency": 0.001,
+	"emitterLifetime": 0,
+	"maxParticles": 100,
+	"addAtBack": false,
+	"pos": {
+		"x": 0,
+		"y": 0
+	},
+	"behaviors": [
+		{
+			"type": "alpha",
+			"config": {
+				"alpha": {
+					"list": [
+						{
+							"time": 0,
+							"value": 1
+						},
+						{
+							"time": 1,
+							"value": 0.8
+						}
+					]
+				}
+			}
+		},
+		{
+			"type": "moveSpeedStatic",
+			"config": {
+				"min": 300,
+				"max": 300
+			}
+		},
+		{
+			"type": "scale",
+			"config": {
+				"scale": {
+					"list": [
+						{
+							"time": 0,
+							"value": 0.5
+						},
+						{
+							"time": 1,
+							"value": 1
+						}
+					]
+				},
+				"minMult": 1
+			}
+		},
+		{
+			"type": "color",
+			"config": {
+				"color": {
+					"list": [
+						{
+							"time": 0,
+							"value": "ffffff"
+						},
+						{
+							"time": 1,
+							"value": "9ff3ff"
+						}
+					]
+				}
+			}
+		},
+		{
+			"type": "rotation",
+			"config": {
+				"accel": 0,
+				"minSpeed": 0,
+				"maxSpeed": 0,
+				"minStart": 30,
+				"maxStart": 150
+			}
+		},
+		{
+			"type": "textureRandom",
+			"config": {
+				"textures": [
+					"./assets/img/particles/sparks.png"
+				]
+			}
+		},
+		{
+			"type": "spawnShape",
+			"config": {
+				"type": "torus",
+				"data": {
+					"x": -100,
+					"y": -170,
+					"w": 150,
+					"h": 150,
+					"radius": 0,
+					"innerRadius": 0,
+					"affectRotation": false
+				}
+			}
+		}
+	]
+}

@@ -6,6 +6,11 @@ import { DropSprite } from "../view/sprites/Drop.sprite";
 import { NEEDS_SPRITES_NAMES } from "../utils/constants";
 import { RenderSceneComposition } from "./RenderScene.composition";
 import * as PIXI from "pixi.js";
+import * as particles from "@pixi/particle-emitter"
+import bailer from "../assets/particle-emitters/bailer.json"
+import sprayer from "../assets/particle-emitters/sprayer.json"
+import fertilizer from "../assets/particle-emitters/fertilizer.json"
+import {DropShadowFilter} from "@pixi/filter-drop-shadow";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
@@ -55,6 +60,8 @@ export class RenderFarmComposition {
 
   private readonly woodlandContainers: Containers = [];
 
+  private readonly effectsContainers: Array<EffectContainer> = [];
+
   public get containers(): Containers {
     return this.farmContainers;
   }
@@ -63,47 +70,36 @@ export class RenderFarmComposition {
     return this.woodlandContainers;
   }
 
-  public initCharactersSprite(): void {
-    this.charactersSpriteList = {
-      potato: [],
-      tomato: [],
-      empty: [],
-    };
-    for (const character in CHARACTERS_SPRITES) {
-      CHARACTERS_SPRITES[character].forEach((Sprite) => {
-        this.charactersSpriteList[character].push(new Sprite());
-      });
+  public get effContainers(): Array<EffectContainer> {
+    return this.effectsContainers;
+  }
+
+  public initEffectContainers(): void {
+    for (let y = 0; y < this.ROWS_COUNT; y++) {
+      for (let x = 0; x < this.COLS_COUNT; x++) {
+        this.effContainers.push({
+          name: `${x}-${y}-effect`,
+          render: null,
+        });
+      }
     }
   }
 
-  public initNeedsCharacterSprites(): void {
-    this.needsSpritesCollection = {
-      drop: null,
-      bug: null,
-      hunger: null,
-      dialog: null,
-    };
-    this.needsSpritesCollection.dialog = new DialogSprite();
-    this.needsSpritesCollection.bug = new BugSprite();
-    this.needsSpritesCollection.hunger = new HungerSprite();
-    this.needsSpritesCollection.drop = new DropSprite();
-  }
-
-  public renderDecorationSprites(): void {
-    this.woodContainers.forEach(async (container) => {
-      const [x, y, width, height] = this.Woodlands[container.name];
-      const DecorationSprite = new DECORATION_SPRITES[container.name]();
-      this.renderSceneComposition.addSprite(
-        container,
-        await DecorationSprite?.sprite()
+  public renderEffectContainers(): void {
+    this.effContainers.forEach((container) => {
+      const [x, y] = container.name.split("-").map((value) => Number(value));
+      this.renderSceneComposition.renderEffectContainer(container);
+      this.renderSceneComposition.setContainerX(
+          container,
+          x * this.CELL_SIZE +
+          this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
+          this.CELL_GAP * x
       );
-      this.renderSceneComposition.setContainerWidth(
-        container,
-        width / this.CORRECT_DECORATION_SIZE_NUMBER
-      );
-      this.renderSceneComposition.setContainerHeight(
-        container,
-        height / this.CORRECT_DECORATION_SIZE_NUMBER
+      this.renderSceneComposition.setContainerY(
+          container,
+          y * this.CELL_SIZE +
+          this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
+          this.CELL_GAP * y
       );
     });
   }
@@ -148,33 +144,139 @@ export class RenderFarmComposition {
       this.renderSceneComposition.renderContainer(container);
       if (container.name.search("dialog") === -1) {
         this.renderSceneComposition.setContainerX(
-          container,
-          x * this.CELL_SIZE +
+            container,
+            x * this.CELL_SIZE +
             this.scene.screen.width / this.CORRECT_CELL_X_NUMBER +
             this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
-          container,
-          y * this.CELL_SIZE +
+            container,
+            y * this.CELL_SIZE +
             this.scene.screen.height / this.CORRECT_CELL_Y_NUMBER +
             this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       } else {
         this.renderSceneComposition.setContainerX(
-          container,
-          x * this.CELL_SIZE +
+            container,
+            x * this.CELL_SIZE +
             this.CELL_SIZE * this.CORRECT_DIALOG_X_NUMBER +
             this.CELL_GAP * x
         );
         this.renderSceneComposition.setContainerY(
-          container,
-          y * this.CELL_SIZE +
+            container,
+            y * this.CELL_SIZE +
             this.CELL_SIZE / this.CORRECT_DIALOG_Y_NUMBER +
             this.CELL_GAP * y
         );
         this.renderSceneComposition.centerPivotContainer(container);
       }
+    });
+  }
+
+  public addParticleEffect(name: string, tool: tool, event: PIXI.FederatedPointerEvent): void {
+    const container = this.effContainers.find((container) => container.name.search(name));
+    const [x, y] = name.split("-").map((value) => Number(value));
+    let emitter: particles.Emitter | undefined;
+    if (container && container.render) {
+      switch (tool) {
+        case "bailer":
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          emitter = new particles.Emitter(container.render, bailer);
+          break;
+        case "fertilizer":
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          emitter = new particles.Emitter(container.render, fertilizer);
+          break;
+        case "sprayer":
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          emitter = new particles.Emitter(container.render, sprayer);
+          break;
+        default:
+          break;
+      }
+      if (emitter) {
+        // Calculate the current time
+        let elapsed = Date.now();
+
+        const update = () =>
+        {
+          requestAnimationFrame(update);
+
+          const now = Date.now();
+          emitter?.update((now - elapsed) * 0.001);
+          elapsed = now;
+        };
+        const xCoord = x === 0 && y === 0 ? event.screenX - 150 * 2 : event.screenX - 150;
+        const yCoord = event.screenY - 150;
+        emitter.emit = true;
+        emitter.resetPositionTracking();
+        emitter.updateOwnerPos(xCoord, yCoord);
+        update();
+        setTimeout(() => {
+          emitter?.destroy();
+        }, 500);
+      }
+    }
+  }
+
+  public clearParticleEffect(name: string) {
+    const container = this.effContainers.find((container) => container.name.search(name));
+    if (container) this.renderSceneComposition.removeAllSprites(container);
+  }
+
+  public initCharactersSprite(): void {
+    this.charactersSpriteList = {
+      potato: [],
+      tomato: [],
+      empty: [],
+    };
+    for (const character in CHARACTERS_SPRITES) {
+      CHARACTERS_SPRITES[character].forEach((Sprite) => {
+        this.charactersSpriteList[character].push(new Sprite());
+      });
+    }
+  }
+
+  public initNeedsCharacterSprites(): void {
+    this.needsSpritesCollection = {
+      drop: null,
+      bug: null,
+      hunger: null,
+      dialog: null,
+    };
+    this.needsSpritesCollection.dialog = new DialogSprite();
+    this.needsSpritesCollection.bug = new BugSprite();
+    this.needsSpritesCollection.hunger = new HungerSprite();
+    this.needsSpritesCollection.drop = new DropSprite();
+  }
+
+  public renderDecorationSprites(): void {
+    this.woodContainers.forEach(async (container) => {
+      const [x, y, width, height] = this.Woodlands[container.name];
+      const DecorationSprite = await new DECORATION_SPRITES[container.name]().sprite();
+      if (DecorationSprite) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        DecorationSprite.filters = [new DropShadowFilter({
+          offset: {x: 20, y: 20},
+        })];
+      }
+      this.renderSceneComposition.addSprite(
+        container,
+        DecorationSprite
+      );
+      this.renderSceneComposition.setContainerWidth(
+        container,
+        width / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
+      this.renderSceneComposition.setContainerHeight(
+        container,
+        height / this.CORRECT_DECORATION_SIZE_NUMBER
+      );
     });
   }
 
@@ -198,7 +300,6 @@ export class RenderFarmComposition {
       this.renderSceneComposition.setContainerHeight(container, this.CELL_SIZE);
     }
     if (cell.character && container?.render) {
-      console.log('container', container.render?.children?.length);
       if (container.render?.children?.length >= 2) {
         this.renderSceneComposition.removeChildren(container, 1);
       }
@@ -206,6 +307,11 @@ export class RenderFarmComposition {
         cell.character?.stage
       ]?.sprite();
       if (sprite) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        sprite.filters = [new DropShadowFilter({
+          offset: {x: 20, y: 10},
+        })];
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
       }
