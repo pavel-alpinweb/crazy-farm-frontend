@@ -210,10 +210,6 @@ export class RenderFarmComposition {
           emitter?.update((now - elapsed) * 0.001);
           elapsed = now;
         };
-        console.log('coords', {
-          x,
-          y,
-        });
         const xCoord = x === 0 && y === 0 ? event.screenX - 150 * 2 : event.screenX - 150;
         const yCoord = event.screenY - 150;
         emitter.emit = true;

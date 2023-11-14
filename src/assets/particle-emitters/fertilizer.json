@@ -23,7 +23,7 @@
             },
             {
               "time": 1,
-              "value": 0.31
+              "value": 0.9
             }
           ]
         }
@@ -36,11 +36,11 @@
           "list": [
             {
               "time": 0,
-              "value": 100
+              "value": 50
             },
             {
               "time": 1,
-              "value": 300
+              "value": 500
             }
           ]
         }
@@ -106,8 +106,8 @@
         "data": {
           "x": -100,
           "y": -100,
-          "w": 20,
-          "h": 10,
+          "w": 150,
+          "h": 50,
           "radius": 0,
           "innerRadius": 0,
           "affectRotation": false
