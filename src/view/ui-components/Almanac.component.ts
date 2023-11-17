@@ -2,20 +2,24 @@ import { AbstractView } from "../../framework/interface/AbstractView";
 import { $t } from "../../utils/helpers";
 import { eventBusAlmanac } from "../../model/almanac.model";
 
-const createAlmanacTemplate = (state: AlmanacState) => `
-    <div class="almanac ${state.isShow ? "active" : ""}">
-        <div class="almanac__text">${$t(state.currentTextKey)}</div>
-        <div class="almanac__buttons">
-            ${state.currentActions
-              .map(
-                (button) => `
+const createTextTemplate = (currentTextKey: string) => $t(currentTextKey);
+
+const createButtonsTemplate = (currentActions: Array<AlmanacAction>) => `
+  ${currentActions
+    .map(
+        (button) => `
                 <button class="button green" data-action-${button}>${$t(
-                  `almanacActions.${button}`
-                )}</button> 
+            `almanacActions.${button}`
+        )}</button> 
             `
-              )
-              .join("")}
-        </div>
+    )
+    .join("")}
+`;
+
+const createAlmanacTemplate = (state: AlmanacState) => `
+    <div class="almanac">
+        <div class="almanac__text">${createTextTemplate(state.currentTextKey)}</div>
+        <div class="almanac__buttons">${createButtonsTemplate(state.currentActions)}</div>
     </div>
 `;
 
@@ -23,8 +27,8 @@ export class AlmanacComponent extends AbstractView {
   protected state: AlmanacState = {
     isActive: false,
     isShow: false,
-    currentTextKey: "almanacDefault",
-    currentActions: ["show", "close"],
+    currentTextKey: "",
+    currentActions: [],
   };
   constructor(props: AlmanacState) {
     super();
@@ -43,13 +47,18 @@ export class AlmanacComponent extends AbstractView {
     };
 
     const toggleView = (data: AlmanacState) => {
-      this.state = data;
-      this.state.isShow
+      this.state.isActive = data.isActive;
+      this.state.currentTextKey = data.currentTextKey;
+      this.state.currentActions = data.currentActions;
+
+      const text = this.element?.querySelector('.almanac__text');
+      const buttons = this.element?.querySelector('.almanac__buttons');
+      if (text) text.innerHTML = createTextTemplate(this.state.currentTextKey);
+      if (buttons) buttons.innerHTML = createButtonsTemplate(this.state.currentActions);
+      this.setHandlers();
+      data.isShow
         ? this.element?.classList.add("active")
         : this.element?.classList.remove("active");
-      setTimeout(() => {
-        this.rerenderElement();
-      }, 1100);
     };
 
     eventBusAlmanac.off("Almanac:toggleView", toggleView);

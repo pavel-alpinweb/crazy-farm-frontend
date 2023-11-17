@@ -1,21 +1,33 @@
-Pixelify Sans Variable Font
+Shantell Sans Variable Font
 ===========================
 
-This download contains Pixelify Sans as both a variable font and static fonts.
+This download contains Shantell Sans as both variable fonts and static fonts.
 
-Pixelify Sans is a variable font with this axis:
+Shantell Sans is a variable font with these axes:
+  BNCE
+  INFM
+  SPAC
   wght
 
-This means all the styles are contained in a single file:
-  PixelifySans-VariableFont_wght.ttf
+This means all the styles are contained in these files:
+  ShantellSans-VariableFont_BNCE,INFM,SPAC,wght.ttf
+  ShantellSans-Italic-VariableFont_BNCE,INFM,SPAC,wght.ttf
 
 If your app fully supports variable fonts, you can now pick intermediate styles
 that aren’t available as static fonts. Not all apps support variable fonts, and
-in those cases you can use the static font files for Pixelify Sans:
-  static/PixelifySans-Regular.ttf
-  static/PixelifySans-Medium.ttf
-  static/PixelifySans-SemiBold.ttf
-  static/PixelifySans-Bold.ttf
+in those cases you can use the static font files for Shantell Sans:
+  static/ShantellSans-Light.ttf
+  static/ShantellSans-Regular.ttf
+  static/ShantellSans-Medium.ttf
+  static/ShantellSans-SemiBold.ttf
+  static/ShantellSans-Bold.ttf
+  static/ShantellSans-ExtraBold.ttf
+  static/ShantellSans-LightItalic.ttf
+  static/ShantellSans-Italic.ttf
+  static/ShantellSans-MediumItalic.ttf
+  static/ShantellSans-SemiBoldItalic.ttf
+  static/ShantellSans-BoldItalic.ttf
+  static/ShantellSans-ExtraBoldItalic.ttf
 
 Get started
 -----------
