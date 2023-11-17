@@ -262,7 +262,7 @@ export class RenderFarmComposition {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         DecorationSprite.filters = [new DropShadowFilter({
-          offset: {x: 20, y: 20},
+          offset: {x: 0, y: 10},
         })];
       }
       this.renderSceneComposition.addSprite(
@@ -310,7 +310,7 @@ export class RenderFarmComposition {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         sprite.filters = [new DropShadowFilter({
-          offset: {x: 20, y: 10},
+          offset: {x: 10, y: 10},
         })];
         this.renderSceneComposition.addSprite(container, sprite);
         sprite.y -= 200;
