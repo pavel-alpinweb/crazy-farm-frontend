@@ -22,7 +22,7 @@ export class RenderFarmComposition {
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
-  private readonly CORRECT_CELL_X_NUMBER: number = 4;
+  private readonly CORRECT_CELL_X_NUMBER: number = 3.7;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
   private readonly CORRECT_DIALOG_X_NUMBER: number = 2;
   private readonly CORRECT_DIALOG_Y_NUMBER: number = 1;
