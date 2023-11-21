@@ -165,6 +165,7 @@ export default class FarmController {
       },
       activateAlmanac: () => {
         this.almanacModel.activateAlmanac();
+        this.farmModel.setActiveTool("empty");
       },
       deactivateAlmanac: () => {
         this.almanacModel.deactivateAlmanac();
