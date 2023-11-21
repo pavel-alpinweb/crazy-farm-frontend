@@ -3,9 +3,9 @@
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg")
-    no-repeat center bottom;
-  background-size: 100%;
+  background: #78710e url("/assets/img/illustrations/texture-sprite-grass.png");
+  background-size: 20%;
+  //background-size: 100%;
   display: flex;
   flex-direction: column;
   &__top {
@@ -21,13 +21,14 @@
     right: 5px;
   }
   &__middle {
-    margin-bottom: 53px;
+    margin: 0 10px 53px;
   }
   &__bottom {
-    width: 100%;
+    width: calc(100% - 20px);
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    margin: 0 10px;
   }
 }
