@@ -50,7 +50,7 @@ export const TEST_FARM_STATE: FarmState = {
       name: "1-1",
       character: {
         type: 'potato',
-        stage: 6,
+        stage: 7,
         needs: [],
       },
     },
@@ -59,8 +59,8 @@ export const TEST_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "2-1",
       character: {
-        type: 'tomato',
-        stage: 6,
+        type: 'potato',
+        stage: 7,
         needs: [],
       },
     },

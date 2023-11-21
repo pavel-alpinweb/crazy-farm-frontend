@@ -9,6 +9,8 @@ export abstract class AbstractAnimatedSprite {
   protected abstract framesNumber: number;
   private bundle: any | null = null;
   protected isLoop = true;
+  protected spriteNameAfterLoop: string | null = null;
+  protected animationSpeedAfterLoop: number | null = null;
 
   private async render(): Promise<PIXI.AnimatedSprite | null> {
     let animatedSprite: PIXI.AnimatedSprite | null = null;
@@ -27,7 +29,20 @@ export abstract class AbstractAnimatedSprite {
       animatedSprite.name = this.spriteName;
       animatedSprite.loop = this.isLoop;
       animatedSprite.play();
-      if (!this.isLoop) {
+      if (!this.isLoop && this.spriteNameAfterLoop && this.animationSpeedAfterLoop) {
+        animatedSprite.onComplete = async () => {
+          if (animatedSprite instanceof PIXI.AnimatedSprite) {
+            const spritesheet = new PIXI.Spritesheet(
+                this.bundle[<string>this.spriteNameAfterLoop].sprite_sheet,
+                this.bundle[<string>this.spriteNameAfterLoop].sprite_data.data
+            );
+            await spritesheet.parse();
+            animatedSprite.textures = spritesheet.animations[<string>this.spriteNameAfterLoop];
+            animatedSprite.loop = false;
+            animatedSprite.play();
+          }
+        };
+      } else if (!this.isLoop) {
         animatedSprite.onComplete = () => {
           if (animatedSprite instanceof PIXI.AnimatedSprite) {
             animatedSprite.destroy();
