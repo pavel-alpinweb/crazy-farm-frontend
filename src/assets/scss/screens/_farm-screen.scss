@@ -13,11 +13,11 @@
     content: "";
     display: block;
     width: 100%;
-    min-height: 25vh;
-    background: url("/assets/img/illustrations/house.png") no-repeat top center;
+    min-height: 20vh;
+    //background: url("/assets/img/illustrations/house.png") no-repeat top center;
     background-size: 80%;
     @media screen and (orientation: landscape) {
-      min-height: 50vh;
+      min-height: 20vh;
     }
   }
   &__scene {
