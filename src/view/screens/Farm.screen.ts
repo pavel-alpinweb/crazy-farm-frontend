@@ -7,10 +7,12 @@ import { WalletComponent } from "../ui-components/Wallet.component";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { AlmanacComponent } from "../ui-components/Almanac.component";
+import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
 
 interface Props {
   farm: FarmState;
   player: Player;
+  language: language;
 }
 
 interface State {
@@ -19,6 +21,7 @@ interface State {
   toolAlmanacData: ToolData;
   toolListData: Array<ToolData>;
   player: Props["player"];
+  language: Props["language"];
 }
 
 const createFarmScreenTemplate = () => `
@@ -38,9 +41,11 @@ export class FarmScreen extends AbstractScreen {
     Almanac: null,
     ToolsSet: null,
     Wallet: null,
+    LanguageSwitcherComponent: null,
   };
   protected state: State = {
     farm: DEFAULT_FARM_STATE,
+    language: "en",
     toolSeedsData: {
       name: TOOLS.SEEDS,
       price: TOOLS_PRICES[TOOLS.SEEDS],
@@ -101,6 +106,9 @@ export class FarmScreen extends AbstractScreen {
     this.components.Wallet = new WalletComponent({
       cash: this.state.player.cash,
     });
+    this.components.LanguageSwitcherComponent = new LanguageSwitcherComponent({
+      activeLanguage: this.state.language,
+    });
   }
 
   protected renderComponents(): void {
@@ -118,6 +126,7 @@ export class FarmScreen extends AbstractScreen {
       AbstractView.positions.BEFOREEND
     );
     this.mountComponent("wallet", this.components.Wallet);
+    this.mountComponent("wallet", this.components.LanguageSwitcherComponent, AbstractView.positions.BEFOREEND);
   }
 
   protected setEvents(): void {
@@ -139,11 +148,17 @@ export class FarmScreen extends AbstractScreen {
     this.components.Almanac?.emits.setActivateClickEvent(() => {
       this.controllerMethods.activateAlmanac();
     });
+    this.components.LanguageSwitcherComponent?.emits.setClickEvent(
+        (lang: Concrete) => {
+          this.controllerMethods.setLanguage(lang);
+        }
+    );
   }
 
   protected setState(props: Props): void {
     this.state.farm = props.farm;
     this.state.player = props.player;
+    this.state.language = props.language;
   }
 
   get template(): string {

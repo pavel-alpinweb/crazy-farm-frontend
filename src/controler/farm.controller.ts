@@ -13,6 +13,7 @@ import FarmService from "../services/farm.service";
 import Socket from "../framework/Socket";
 import { $toaster, farmAssetsLoader, $loader } from "../main";
 import { updateTutorial } from "../mock/tutorial.mock";
+import Cookies from "js-cookie";
 
 export default class FarmController {
   private readonly farmModel: FarmModel;
@@ -35,6 +36,8 @@ export default class FarmController {
       init: async () => {
         const registrationToken = Router.getParam("token");
         const userToken = Service.getToken();
+        const lang = Cookies.get("crazy-farm-lang") ?? "en";
+        await this.methods.setLanguage(<language>lang);
         try {
           if (registrationToken) {
             const result = await AuthService.registrationFinalStep(
@@ -53,7 +56,11 @@ export default class FarmController {
             // this.farmModel.setPlayerCash(state.player.cash);
             // $loader.remove();
             this.FarmScreen = new FarmScreen(
-              { farm: farmModel.state, player: farmModel.player },
+              {
+                farm: this.farmModel.state,
+                player: this.farmModel.player,
+                language: this.userModel.language
+              },
               this.methods
             );
             appContainer?.insertAdjacentElement(
@@ -169,6 +176,9 @@ export default class FarmController {
       },
       deactivateAlmanac: () => {
         this.almanacModel.deactivateAlmanac();
+      },
+      setLanguage: (value: language) => {
+        this.userModel.setUserLanguage(value);
       },
     };
   }

@@ -1,6 +1,7 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { $t } from "../../utils/helpers";
 import { eventBusAlmanac } from "../../model/almanac.model";
+import {eventBusUser} from "../../model/user.model";
 
 const createTextTemplate = (currentTextKey: string) => $t(currentTextKey);
 
@@ -50,6 +51,7 @@ export class AlmanacComponent extends AbstractView {
       this.state.isActive = data.isActive;
       this.state.currentTextKey = data.currentTextKey;
       this.state.currentActions = data.currentActions;
+      this.state.isShow = data.isShow;
 
       const text = this.element?.querySelector('.almanac__text');
       const buttons = this.element?.querySelector('.almanac__buttons');
@@ -63,6 +65,13 @@ export class AlmanacComponent extends AbstractView {
 
     eventBusAlmanac.off("Almanac:toggleView", toggleView);
     eventBusAlmanac.on("Almanac:toggleView", toggleView);
+
+    eventBusUser.off("User:language", () => {
+      toggleView(this.state);
+    });
+    eventBusUser.on("User:language", () => {
+      toggleView(this.state);
+    });
   }
 
   setHandlers() {
