@@ -1,5 +1,6 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { GOOGLE_CLIENT_ID } from "../../utils/constants";
+import Cookies from "js-cookie";
 
 interface Props {
   size: string;
@@ -55,6 +56,9 @@ export class GoogleButtonComponent extends AbstractView {
       google.accounts.id.renderButton(this.element, {
         theme: this.state.theme,
         size: this.state.size,
+        width: 230,
+        height: 45,
+        locale: Cookies.get("crazy-farm-lang") ?? "en",
       });
     }
   }
