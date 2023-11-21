@@ -65,7 +65,6 @@ export class AlmanacModel {
     this.almanacState.isActive = false;
     this.almanacState.currentTextKey = "";
     this.almanacState.currentActions = [];
-    eventBusAlmanac.emit("Almanac:activate", this.state.isActive);
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
   }
 
