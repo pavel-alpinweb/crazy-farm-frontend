@@ -15,12 +15,16 @@
   &__content {
     padding: 20px 20px 0;
     margin: auto 0;
+    @media screen and (min-width: 768px) {
+      width: 400px;
+      margin: auto;
+    }
   }
   &__btn-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 200px;
+    max-width: 230px;
     margin: 0 auto;
   }
   &__footer {
