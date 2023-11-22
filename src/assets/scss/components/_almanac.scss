@@ -8,6 +8,7 @@ $characterScale: 5;
   background: #eab54f;
   height: 200px;
   width: 98vw;
+  max-width: 900px;
   transform: translateX(-50%);
   padding: 10px;
   transition: left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
