@@ -152,6 +152,8 @@ export default class FarmController {
           });
           this.Socket.onClose((event: CloseEvent) => {
             console.warn("Подключение закрыто", event.reason);
+            $toaster.show("Подключение закрыто", false);
+            Router.push("/#/welcome");
           });
         } catch (error: any) {
           for (const reason of error.response.data.reasons) {
@@ -179,6 +181,19 @@ export default class FarmController {
       },
       setLanguage: (value: language) => {
         this.userModel.setUserLanguage(value);
+      },
+      showExitMessage: () => {
+        this.almanacModel.showExitMessage();
+      },
+      showRestartMessage: () => {
+        this.almanacModel.showRestartMessage();
+      },
+      exitFromFarm: () => {
+        Cookies.remove("crazy-farm-jws");
+        this.Socket?.close();
+      },
+      restartGame: () => {
+        window.location.reload();
       },
     };
   }
