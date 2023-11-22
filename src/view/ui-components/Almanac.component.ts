@@ -47,6 +47,14 @@ export class AlmanacComponent extends AbstractView {
       this.events.clickActivate = callback;
     };
 
+    this.emits.setExitClickEvent = (callback: (data: Concrete) => void) => {
+      this.events.clickExit = callback;
+    };
+
+    this.emits.setRestartClickEvent = (callback: (data: Concrete) => void) => {
+      this.events.clickRestart = callback;
+    };
+
     const toggleView = (data: AlmanacState) => {
       this.state.isActive = data.isActive;
       this.state.currentTextKey = data.currentTextKey;
@@ -77,6 +85,8 @@ export class AlmanacComponent extends AbstractView {
   setHandlers() {
     const understandButton = this.element?.querySelector("[data-action-close]");
     const activateButton = this.element?.querySelector("[data-action-show]");
+    const exitButton = this.element?.querySelector("[data-action-exit]");
+    const restartButton = this.element?.querySelector("[data-action-restart]");
 
     understandButton?.addEventListener("click", () => {
       if (this.events.clickUnderstand) {
@@ -86,6 +96,18 @@ export class AlmanacComponent extends AbstractView {
     activateButton?.addEventListener("click", () => {
       if (this.events.clickActivate) {
         this.events.clickActivate(true);
+      }
+    });
+
+    exitButton?.addEventListener("click", () => {
+      if (this.events.clickExit) {
+        this.events.clickExit(true);
+      }
+    });
+
+    restartButton?.addEventListener("click", () => {
+      if (this.events.clickRestart) {
+        this.events.clickRestart(true);
       }
     });
   }

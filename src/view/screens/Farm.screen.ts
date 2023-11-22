@@ -152,6 +152,12 @@ export class FarmScreen extends AbstractScreen {
     this.components.Almanac?.emits.setActivateClickEvent(() => {
       this.controllerMethods.activateAlmanac();
     });
+    this.components.Almanac?.emits.setExitClickEvent(() => {
+      this.controllerMethods.exitFromFarm();
+    });
+    this.components.Almanac?.emits.setRestartClickEvent(() => {
+      this.controllerMethods.restartGame();
+    });
     this.components.LanguageSwitcherComponent?.emits.setClickEvent(
         (lang: Concrete) => {
           this.controllerMethods.setLanguage(lang);
