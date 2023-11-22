@@ -3,6 +3,10 @@ import { appContainer } from "../utils/constants";
 import { AbstractView } from "../framework/interface/AbstractView";
 import User from "../model/user.model";
 import Cookies from "js-cookie";
+import AuthService from "../services/auth.service";
+import Service from "../framework/Service";
+import { Router } from "../framework/Router";
+import { $toaster } from "../main";
 
 export default class WelcomeController {
   private readonly userModel: User;
@@ -29,6 +33,21 @@ export default class WelcomeController {
       },
       setLanguage: (value: language) => {
         this.userModel.setUserLanguage(value);
+      },
+      sendGoogleCredential: async (credential: string) => {
+        this.userModel.setLoading(true);
+        try {
+          const result = await AuthService.GoogleEnter(credential);
+          this.userModel.setUserData(result.user, false);
+          Service.setToken(result.jws);
+          Router.push("/#/");
+        } catch (error: any) {
+          for (const reason of error.response.data.reasons) {
+            $toaster.show(`${reason}`, false);
+          }
+        } finally {
+          this.userModel.setLoading(false);
+        }
       },
       destroy: () => {
         this.WelcomeScreen?.remove();

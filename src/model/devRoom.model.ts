@@ -5,6 +5,7 @@ export const TOOLS: Tools = {
   SPRAYER: "sprayer",
   SEEDS: "seeds",
   EMPTY: "empty",
+  ALMANAC: "almanac",
 };
 
 export const TEST_FARM_STATE: FarmState = {
@@ -19,7 +20,11 @@ export const TEST_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "1-0",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 2,
+        needs: [],
+      },
     },
     {
       isEmpty: true,
@@ -43,13 +48,21 @@ export const TEST_FARM_STATE: FarmState = {
       isEmpty: true,
       isBlocked: false,
       name: "1-1",
-      character: null,
+      character: {
+        type: 'potato',
+        stage: 6,
+        needs: [],
+      },
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "2-1",
-      character: null,
+      character: {
+        type: 'tomato',
+        stage: 6,
+        needs: [],
+      },
     },
     {
       isEmpty: true,

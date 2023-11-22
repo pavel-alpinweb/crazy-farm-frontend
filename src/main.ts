@@ -17,6 +17,7 @@ import i18next from "i18next";
 import en from "./localization/en.json";
 import ru from "./localization/ru.json";
 import Cookies from "js-cookie";
+import { AlmanacModel } from "./model/almanac.model";
 
 export const $toaster = new Toaster(3000);
 export const $loader = new Loader(1000);
@@ -24,13 +25,14 @@ export const farmAssetsLoader = new AssetsLoader(manifest);
 
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
+const almanacModel: AlmanacModel = new AlmanacModel();
 const loginController = new LoginController(userModel);
 const registrationController = new RegistrationController(userModel);
-const farmController = new FarmController(farmModel, userModel);
+const farmController = new FarmController(farmModel, userModel, almanacModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
 const welcomeController = new WelcomeController(userModel);
-const registrationWaysController = new RegistrationWaysController();
+const registrationWaysController = new RegistrationWaysController(userModel);
 
 const params: Array<RouterParams> = [
   {
@@ -69,7 +71,7 @@ const lang = Cookies.get("crazy-farm-lang") ?? "en";
 i18next
   .init({
     lng: lang,
-    debug: true,
+    debug: false,
     resources: {
       en: {
         translation: en,
