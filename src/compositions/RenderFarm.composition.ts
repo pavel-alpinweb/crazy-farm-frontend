@@ -22,7 +22,7 @@ export class RenderFarmComposition {
   private readonly NEEDS_GAP: number = 130;
   private readonly DIALOG_SPRITE_SIZE: number = 100;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
-  private readonly CORRECT_CELL_X_NUMBER: number = 3.7;
+  private readonly CORRECT_CELL_X_NUMBER: number = 3;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
   private readonly CORRECT_DIALOG_X_NUMBER: number = 2;
   private readonly CORRECT_DIALOG_Y_NUMBER: number = 1;
@@ -46,14 +46,14 @@ export class RenderFarmComposition {
   };
 
   private Woodlands: DecorationContainer = {
-    "fence-left": [108, 0, 64, 512 * 12],
-    "fence-top": [500, 0, 512 * 6, 272 * 2],
-    "fence-right": [878, 9, 64, 512 * 12],
-    "fence-bottom": [483, 795, 512 * 6, 272],
-    "tree-right": [950, 200, 912, 1536],
-    "tree-left": [60, 400, 1040, 1840],
-    "bush-right": [900, 850, 1280, 1280],
-    "bush-left": [300, 850, 1040, 944],
+    "fence-left": [238, 0, 64, 512 * 12],
+    "fence-top": [630, 0, 512 * 6, 272 * 2],
+    "fence-right": [1008, 9, 64, 512 * 12],
+    "fence-bottom": [613, 795, 512 * 6, 272],
+    "tree-right": [1080, 200, 912, 1536],
+    "tree-left": [190, 400, 1040, 1840],
+    "bush-right": [1030, 850, 1280, 1280],
+    "bush-left": [430, 850, 1040, 944],
   };
 
   private readonly farmContainers: Containers = [];
@@ -210,7 +210,7 @@ export class RenderFarmComposition {
           emitter?.update((now - elapsed) * 0.001);
           elapsed = now;
         };
-        const xCoord = x === 0 && y === 0 ? event.screenX - 150 * 2 : event.screenX - 150;
+        const xCoord = x === 0 && y === 0 ? event.screenX - 150 * 3 : event.screenX - 150 * 2;
         const yCoord = event.screenY - 150;
         emitter.emit = true;
         emitter.resetPositionTracking();

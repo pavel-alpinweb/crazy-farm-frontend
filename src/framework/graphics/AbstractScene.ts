@@ -53,7 +53,7 @@ export abstract class AbstractScene {
       background: "#78710e",
       backgroundAlpha: 0,
       view: canvas,
-      width: 1000,
+      width: 1200,
       height: 1000,
     });
     if (this.scene.renderer.view.style) {
