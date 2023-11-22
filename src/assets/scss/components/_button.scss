@@ -37,6 +37,18 @@
     background-position: 10px center;
     background-size: 18px;
   }
+  &.exit {
+    background-image: url("/assets/img/icons/exit.svg?inline");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px;
+  }
+  &.restart {
+    background-image: url("/assets/img/icons/restart.svg?inline");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35px;
+  }
   &.big {
     height: 55px;
     line-height: 50px;

@@ -26,6 +26,10 @@ interface State {
 
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
+    <div class="farm-screen__restart-btns">
+        <button class="button brown exit"></button>
+        <button class="button brown restart"></button>
+    </div>
     <div class="farm-screen__scene" data-slot-scene></div>
     <div class="farm-screen__wallet" data-slot-wallet></div>
     <div class="farm-screen__aside" data-slot-aside></div>
