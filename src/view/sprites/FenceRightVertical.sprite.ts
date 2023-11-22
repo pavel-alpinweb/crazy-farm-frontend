@@ -2,6 +2,6 @@ import { AbstractTilingSprite } from "../../framework/graphics/AbstractTilingSpr
 
 export class FenceRightVerticalSprite extends AbstractTilingSprite {
   protected width = 64;
-  protected height = 512 * 12;
+  protected height = 510 * 12;
   protected spriteName = "fence-right-vertical";
 }

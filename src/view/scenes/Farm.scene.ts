@@ -107,23 +107,18 @@ export class FarmScene extends AbstractScene {
 
   setHandlers() {
     for (const container of this.renderFarmComposition.containers) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      container.render.eventMode = "static";
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      //@ts-ignore
-      container.render.on("pointerdown", (event) => {
-        if (this.events.click) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          //@ts-ignore
-
-          const toolWithEffects: Array<tool> = ["bailer", "fertilizer", "sprayer"]
-          if (toolWithEffects.includes(this.state.activeTool)) {
-            this.renderFarmComposition.addParticleEffect(container.name, this.state.activeTool, event);
+      if (container && container.render) {
+        container.render.eventMode = "static";
+        container.render.on("pointerdown", (event) => {
+          if (this.events.click) {
+            const toolWithEffects: Array<tool> = ["bailer", "fertilizer", "sprayer"]
+            if (toolWithEffects.includes(this.state.activeTool)) {
+              this.renderFarmComposition.addParticleEffect(container.name, this.state.activeTool, event);
+            }
+            this.events.click(container.name);
           }
-          this.events.click(container.name);
-        }
-      });
+        });
+      }
     }
   }
 }
