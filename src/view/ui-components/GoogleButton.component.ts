@@ -14,7 +14,7 @@ interface State {
 }
 
 const createGoogleButtonTemplate = () => `
-    <div id="buttonDiv">Google</div>
+    <div id="buttonDiv"></div>
 `;
 
 export class GoogleButtonComponent extends AbstractView {
@@ -40,10 +40,10 @@ export class GoogleButtonComponent extends AbstractView {
   setHandlers() {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    if (google) {
+    if (typeof google !== 'undefined') {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      google?.accounts.id.initialize({
+      google?.accounts?.id?.initialize({
         client_id: this.state.clientId,
         callback: (response: Concrete) => {
           if (this.events.credentailResponseHandler) {
