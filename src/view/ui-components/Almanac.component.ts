@@ -87,8 +87,14 @@ export class AlmanacComponent extends AbstractView {
     const activateButton = this.element?.querySelector("[data-action-show]");
     const exitButton = this.element?.querySelector("[data-action-exit]");
     const restartButton = this.element?.querySelector("[data-action-restart]");
+    const noButton = this.element?.querySelector("[data-action-no-close]");
 
     understandButton?.addEventListener("click", () => {
+      if (this.events.clickUnderstand) {
+        this.events.clickUnderstand(false);
+      }
+    });
+    noButton?.addEventListener("click", () => {
       if (this.events.clickUnderstand) {
         this.events.clickUnderstand(false);
       }
