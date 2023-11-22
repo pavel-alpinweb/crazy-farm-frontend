@@ -51,7 +51,7 @@ export const TEST_FARM_STATE: FarmState = {
       character: {
         type: 'potato',
         stage: 7,
-        needs: [],
+        needs: ["HUNGER", "THIRST", "SICKNESS"],
       },
     },
     {

@@ -20,13 +20,13 @@ export class RenderFarmComposition {
   private readonly CELL_SIZE: number = 150;
   private readonly CELL_GAP: number = 15;
   private readonly NEEDS_GAP: number = 130;
-  private readonly DIALOG_SPRITE_SIZE: number = 100;
+  private readonly DIALOG_SPRITE_SIZE: number = 120;
   private readonly NEEDS_SPRITE_SIZE: number = 230;
   private readonly CORRECT_CELL_X_NUMBER: number = 3;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
   private readonly CORRECT_DIALOG_X_NUMBER: number = 3;
   private readonly CORRECT_DIALOG_Y_NUMBER: number = 1;
-  private readonly CORRECT_NEED_X_NUMBER: number = 25;
+  private readonly CORRECT_NEED_X_NUMBER: number = 15;
   private readonly CORRECT_DECORATION_SIZE_NUMBER = 4;
   constructor(scene: PIXI.Application) {
     this.scene = scene;
