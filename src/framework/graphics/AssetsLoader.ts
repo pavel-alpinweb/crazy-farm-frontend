@@ -11,13 +11,13 @@ export class AssetsLoader {
 
   async load(): Promise<PIXI.ResolverBundle | null> {
     if (!this.bundle) {
-      console.log("Assets is loading...");
+      // console.log("Assets is loading...");
       await PIXI.Assets.init({ manifest: this.manifest });
       this.bundle = await PIXI.Assets.loadBundle(
         this.manifest.bundles.map((bundle) => bundle.name)
       );
     } else {
-      console.log("Assets already loaded");
+      // console.log("Assets already loaded");
     }
     return this.bundle;
   }

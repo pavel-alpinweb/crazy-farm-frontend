@@ -17,11 +17,14 @@ export abstract class AbstractAnimatedSprite {
     let animatedSprite: PIXI.AnimatedSprite | null = null;
     this.bundle = await farmAssetsLoader.load();
     if (this.bundle) {
-      this.spritesheet = new PIXI.Spritesheet(
-        this.bundle[this.spriteName].sprite_sheet,
-        this.bundle[this.spriteName].sprite_data.data
-      );
-      await this.spritesheet.parse();
+      if (!this.spritesheet?.animations[this.spriteName]) {
+        PIXI.utils.clearTextureCache();
+        this.spritesheet = new PIXI.Spritesheet(
+            this.bundle[this.spriteName].sprite_sheet,
+            this.bundle[this.spriteName].sprite_data.data
+        );
+        await this.spritesheet.parse();
+      }
       animatedSprite = new PIXI.AnimatedSprite(
         this.spritesheet.animations[this.spriteName]
       );
