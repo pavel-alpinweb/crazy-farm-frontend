@@ -180,6 +180,12 @@ export default class FarmController {
       setLanguage: (value: language) => {
         this.userModel.setUserLanguage(value);
       },
+      showExitMessage: () => {
+        this.almanacModel.showExitMessage();
+      },
+      showRestartMessage: () => {
+        this.almanacModel.showRestartMessage();
+      },
     };
   }
 }
