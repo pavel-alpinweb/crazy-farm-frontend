@@ -24,7 +24,7 @@ export class RenderFarmComposition {
   private readonly NEEDS_SPRITE_SIZE: number = 230;
   private readonly CORRECT_CELL_X_NUMBER: number = 3;
   private readonly CORRECT_CELL_Y_NUMBER: number = 4;
-  private readonly CORRECT_DIALOG_X_NUMBER: number = 2;
+  private readonly CORRECT_DIALOG_X_NUMBER: number = 3;
   private readonly CORRECT_DIALOG_Y_NUMBER: number = 1;
   private readonly CORRECT_NEED_X_NUMBER: number = 25;
   private readonly CORRECT_DECORATION_SIZE_NUMBER = 4;
