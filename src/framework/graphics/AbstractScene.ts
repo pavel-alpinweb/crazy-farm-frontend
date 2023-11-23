@@ -76,7 +76,7 @@ export abstract class AbstractScene {
   }
 
   public remove(): void {
-    this.scene?.destroy();
+    this.scene?.destroy(true);
     this.renderedElement = null;
   }
 }

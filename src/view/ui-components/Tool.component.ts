@@ -72,6 +72,7 @@ export class ToolComponent extends AbstractView {
         if (tutorial.blockedTools.includes(this.state.tool.name)) {
           this.state.isBlocked = true;
           this.state.isActive = false;
+          this.state.isHighLight = false;
         } else {
           this.state.isHighLight = true;
           this.state.isBlocked = false;
