@@ -47,10 +47,10 @@ const params: Array<RouterParams> = [
     url: "/login",
     controller: loginController,
   },
-  // {
-  //   url: "/registration",
-  //   controller: registrationController,
-  // },
+  {
+    url: "/registration",
+    controller: registrationController,
+  },
   // {
   //   url: "/registration-ways",
   //   controller: registrationWaysController,
