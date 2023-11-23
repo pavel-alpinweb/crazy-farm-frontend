@@ -198,7 +198,8 @@ export default class FarmController extends AbstractController {
       },
 
       restartGame: () => {
-        window.location.reload();
+        this.Socket.push({ commandName: 'resetGame' });
+        this.almanacModel.deactivateAlmanac();
       },
   };
 }
