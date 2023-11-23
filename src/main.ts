@@ -35,30 +35,30 @@ const welcomeController = new WelcomeController(userModel);
 const registrationWaysController = new RegistrationWaysController(userModel);
 
 const params: Array<RouterParams> = [
-  {
-    url: "/",
-    controller: farmController,
-  },
-  {
-    url: "/welcome",
-    controller: welcomeController,
-  },
-  {
-    url: "/login",
-    controller: loginController,
-  },
-  {
-    url: "/registration",
-    controller: registrationController,
-  },
-  {
-    url: "/registration-ways",
-    controller: registrationWaysController,
-  },
-  {
-    url: "/dev-room",
-    controller: devRoomController,
-  },
+  // {
+  //   url: "/",
+  //   controller: farmController,
+  // },
+  // {
+  //   url: "/welcome",
+  //   controller: welcomeController,
+  // },
+  // {
+  //   url: "/login",
+  //   controller: loginController,
+  // },
+  // {
+  //   url: "/registration",
+  //   controller: registrationController,
+  // },
+  // {
+  //   url: "/registration-ways",
+  //   controller: registrationWaysController,
+  // },
+  // {
+  //   url: "/dev-room",
+  //   controller: devRoomController,
+  // },
   {
     url: "/404",
     controller: error404Controller,

@@ -1,31 +1,15 @@
-import FarmController from "../controler/farm.controller";
-import Error404ScreenController from "../controler/404.controller";
-import { LoginController } from "../controler/login.controller";
-import { RegistrationController } from "../controler/registration.controller";
-import DevRoomController from "../controler/devRoom.controller";
-import WelcomeController from "../controler/welcome.controller";
-import RegistrationWaysController from "../controler/registrationWays.controller";
 import {AbstractController} from "./AbstractController";
 
 declare global {
-  type controller =
-    | AbstractController
-    | FarmController
-    | Error404ScreenController
-    | LoginController
-    | RegistrationController
-    | RegistrationWaysController
-    | DevRoomController
-    | WelcomeController;
   interface RouterParams {
     url: string;
-    controller: controller;
+    controller: AbstractController;
   }
 }
 
 export class Router {
   private params: Array<RouterParams> = [];
-  private controller: controller | undefined;
+  private controller: AbstractController | undefined;
   constructor(params: Array<RouterParams>) {
     this.params = params;
   }
@@ -52,9 +36,9 @@ export class Router {
       (item: RouterParams) => item.url === Router.path[0]
     );
     if (route) {
-      this.controller?.methods.destroy();
+      this.controller?.destroy();
       this.controller = route.controller;
-      this.controller.methods.init();
+      this.controller.init();
     } else {
       Router.push("/#/404");
     }
