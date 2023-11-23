@@ -35,10 +35,10 @@ const welcomeController = new WelcomeController(userModel);
 const registrationWaysController = new RegistrationWaysController(userModel);
 
 const params: Array<RouterParams> = [
-  // {
-  //   url: "/",
-  //   controller: farmController,
-  // },
+  {
+    url: "/",
+    controller: farmController,
+  },
   {
     url: "/welcome",
     controller: welcomeController,
