@@ -4,9 +4,11 @@ import { AbstractView } from "../framework/interface/AbstractView";
 import { Toaster } from "../framework/interface/Toaster";
 import { farmAssetsLoader, $loader } from "../main";
 import { AbstractController } from "../framework/AbstractController";
+import {AbstractScreen} from "../framework/interface/AbstractScreen";
+import {AbstractStaticScreen} from "../framework/interface/AbstractStaticScreen";
 
 export default class DevRoomController extends AbstractController {
-  protected Screen = new DevRoomScreen();
+  protected Screen!: AbstractScreen | AbstractStaticScreen;
   private $testToaster = new Toaster(1000);
 
   public init = async () => {

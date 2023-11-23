@@ -43,10 +43,10 @@ const params: Array<RouterParams> = [
   //   url: "/welcome",
   //   controller: welcomeController,
   // },
-  // {
-  //   url: "/login",
-  //   controller: loginController,
-  // },
+  {
+    url: "/login",
+    controller: loginController,
+  },
   // {
   //   url: "/registration",
   //   controller: registrationController,
