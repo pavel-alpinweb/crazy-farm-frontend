@@ -90,6 +90,7 @@ export default class FarmController extends AbstractController {
       } else {
         for (const reason of error.response.data.reasons) {
           $toaster.show(`${reason}`, false);
+          Router.push("/#/welcome");
         }
       }
     }
