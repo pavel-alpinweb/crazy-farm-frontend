@@ -39,10 +39,10 @@ const params: Array<RouterParams> = [
   //   url: "/",
   //   controller: farmController,
   // },
-  // {
-  //   url: "/welcome",
-  //   controller: welcomeController,
-  // },
+  {
+    url: "/welcome",
+    controller: welcomeController,
+  },
   {
     url: "/login",
     controller: loginController,

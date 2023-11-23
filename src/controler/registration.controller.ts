@@ -33,7 +33,7 @@ export class RegistrationController extends AbstractController {
     );
   }
 
-  methods = {
+  methods: Methods = {
     sendRegistrationData: async (data: UserData) => {
       this.userModel.setLoading(true);
       try {

@@ -33,7 +33,7 @@ export class LoginController extends AbstractController {
     );
   }
 
-  methods = {
+  methods: Methods = {
     login: async (data: UserData) => {
       this.userModel.setLoading(true);
       try {

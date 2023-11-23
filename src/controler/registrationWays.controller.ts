@@ -10,7 +10,7 @@ import Service from "../framework/Service";
 import { Router } from "../framework/Router";
 import {AbstractController} from "../framework/AbstractController";
 
-export default class RegistrationWaysController extends AbstractController{
+export default class RegistrationWaysController extends AbstractController {
   protected Screen!: AbstractScreen | AbstractStaticScreen;
   private readonly userModel: User;
 
@@ -20,28 +20,28 @@ export default class RegistrationWaysController extends AbstractController{
   }
 
   init(): void {
-        this.Screen = new RegistrationWaysScreen(this.methods);
-        appContainer?.insertAdjacentElement(
-          AbstractView.positions.BEFOREEND,
-          <Element>this.Screen.element
-        );
+    this.Screen = new RegistrationWaysScreen(this.methods);
+    appContainer?.insertAdjacentElement(
+      AbstractView.positions.BEFOREEND,
+      <Element>this.Screen.element
+    );
   }
 
-  methods = {
-      sendGoogleCredential: async (credential: string) => {
-        this.userModel.setLoading(true);
-        try {
-          const result = await AuthService.GoogleRegistration(credential);
-          this.userModel.setUserData(result.user, false);
-          Service.setToken(result.jws);
-          Router.push("/#/");
-        } catch (error: any) {
-          for (const reason of error.response.data.reasons) {
-            $toaster.show(`${reason}`, false);
-          }
-        } finally {
-          this.userModel.setLoading(false);
+  methods: Methods = {
+    sendGoogleCredential: async (credential: string) => {
+      this.userModel.setLoading(true);
+      try {
+        const result = await AuthService.GoogleRegistration(credential);
+        this.userModel.setUserData(result.user, false);
+        Service.setToken(result.jws);
+        Router.push("/#/");
+      } catch (error: any) {
+        for (const reason of error.response.data.reasons) {
+          $toaster.show(`${reason}`, false);
         }
-      },
+      } finally {
+        this.userModel.setLoading(false);
+      }
+    },
   };
 }
