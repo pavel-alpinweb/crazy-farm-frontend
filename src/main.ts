@@ -55,10 +55,10 @@ const params: Array<RouterParams> = [
   //   url: "/registration-ways",
   //   controller: registrationWaysController,
   // },
-  // {
-  //   url: "/dev-room",
-  //   controller: devRoomController,
-  // },
+  {
+    url: "/dev-room",
+    controller: devRoomController,
+  },
   {
     url: "/404",
     controller: error404Controller,
