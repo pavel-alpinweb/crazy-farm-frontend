@@ -5,9 +5,11 @@ import { RegistrationController } from "../controler/registration.controller";
 import DevRoomController from "../controler/devRoom.controller";
 import WelcomeController from "../controler/welcome.controller";
 import RegistrationWaysController from "../controler/registrationWays.controller";
+import {AbstractController} from "./AbstractController";
 
 declare global {
   type controller =
+    | AbstractController
     | FarmController
     | Error404ScreenController
     | LoginController
