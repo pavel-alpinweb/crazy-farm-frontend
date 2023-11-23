@@ -51,10 +51,10 @@ const params: Array<RouterParams> = [
     url: "/registration",
     controller: registrationController,
   },
-  // {
-  //   url: "/registration-ways",
-  //   controller: registrationWaysController,
-  // },
+  {
+    url: "/registration-ways",
+    controller: registrationWaysController,
+  },
   {
     url: "/dev-room",
     controller: devRoomController,
