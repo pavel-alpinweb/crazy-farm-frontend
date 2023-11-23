@@ -26,6 +26,10 @@ interface State {
 
 const createFarmScreenTemplate = () => `
 <div class="farm-screen">
+    <div class="farm-screen__restart-btns">
+        <button class="button brown exit" data-exit></button>
+        <button class="button brown restart" data-restart></button>
+    </div>
     <div class="farm-screen__scene" data-slot-scene></div>
     <div class="farm-screen__wallet" data-slot-wallet></div>
     <div class="farm-screen__aside" data-slot-aside></div>
@@ -148,11 +152,30 @@ export class FarmScreen extends AbstractScreen {
     this.components.Almanac?.emits.setActivateClickEvent(() => {
       this.controllerMethods.activateAlmanac();
     });
+    this.components.Almanac?.emits.setExitClickEvent(() => {
+      this.controllerMethods.exitFromFarm();
+    });
+    this.components.Almanac?.emits.setRestartClickEvent(() => {
+      this.controllerMethods.restartGame();
+    });
     this.components.LanguageSwitcherComponent?.emits.setClickEvent(
         (lang: Concrete) => {
           this.controllerMethods.setLanguage(lang);
         }
     );
+  }
+
+  setHandlers() {
+    const exitBtn = <HTMLElement>this.element?.querySelector("[data-exit]");
+    const restartBtn = <HTMLElement>this.element?.querySelector("[data-restart]");
+
+    exitBtn.addEventListener("click", () => {
+      this.controllerMethods.showExitMessage();
+    });
+
+    restartBtn.addEventListener("click", () => {
+      this.controllerMethods.showRestartMessage();
+    });
   }
 
   protected setState(props: Props): void {

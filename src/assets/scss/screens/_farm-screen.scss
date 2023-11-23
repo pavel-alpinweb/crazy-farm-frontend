@@ -33,6 +33,14 @@
       touch-action: auto !important;
     }
   }
+  &__restart-btns {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 45px);
+    grid-gap: 15px;
+  }
   &__aside {
     position: fixed;
     left: 10px;

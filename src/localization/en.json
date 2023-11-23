@@ -10,6 +10,8 @@
   "byEmail": "By email",
   "loginByEmail": "Login by email",
   "signIn": "Sign Up",
+  "restart": "Ты хочешь начать работу с фермой заного? Все растения с грядки будут удалены, количество монет вернется к изначальному.Страница будете перезагружена через короткое время.",
+  "exit": "Ты хочешь покинуть свою ферму? Ты вернешься на экран приветсвия.",
   "tools": {
     "shovel": "Common shovel",
     "bailer": "Common bailer",
@@ -19,7 +21,10 @@
   },
   "almanacActions": {
     "show": "Show",
-    "close": "All understand!"
+    "close": "All understand!",
+    "exit": "Leave farm",
+    "restart": "Restart",
+    "no-close": "No, I don't want"
   },
   "almanacDefault": "Hello, what do want to know?",
   "character": {

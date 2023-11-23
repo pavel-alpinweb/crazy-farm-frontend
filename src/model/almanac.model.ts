@@ -1,7 +1,7 @@
 import { EventBus } from "../framework/EventBus";
 
 declare global {
-  type AlmanacAction = "show" | "close";
+  type AlmanacAction = "show" | "close" | "restart" | "exit" | "no-close";
 
   interface AlmanacState {
     isActive: boolean;
@@ -50,6 +50,22 @@ export class AlmanacModel {
       this.almanacState.currentTextKey = "almanacDefault";
       this.almanacState.currentActions = ["show", "close"];
     }
+    eventBusAlmanac.emit("Almanac:toggleView", this.state);
+  }
+
+  public showExitMessage(): void {
+    this.almanacState.isShow = true;
+    this.almanacState.isActive = false;
+    this.almanacState.currentTextKey = 'exit';
+    this.almanacState.currentActions = ["exit", "no-close"];
+    eventBusAlmanac.emit("Almanac:toggleView", this.state);
+  }
+
+  public showRestartMessage(): void {
+    this.almanacState.isShow = true;
+    this.almanacState.isActive = false;
+    this.almanacState.currentTextKey = 'restart';
+    this.almanacState.currentActions = ["restart", "no-close"];
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
   }
 
