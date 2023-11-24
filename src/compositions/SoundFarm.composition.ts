@@ -11,9 +11,13 @@ export class SoundFarmComposition {
         sound.add('sprayer', `${AUDIO_URL}/sprayer.mp3`);
     }
     static playClickSound():void {
-        sound.play('click');
+        sound.play('click', {
+            volume: 0.2
+        });
     }
     static playToolSound(tool: tool):void {
-        sound.play(tool);
+        sound.play(tool, {
+            volume: 0.5
+        });
     }
 }
