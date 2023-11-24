@@ -45,16 +45,78 @@ export class RenderFarmComposition {
     dialog: null,
   };
 
-  private Woodlands: DecorationContainer = {
-    "fence-left": [238, 0, 64, 512 * 12],
-    "fence-top": [630, 0, 512 * 6, 272 * 2],
-    "fence-right": [1008, 9, 64, 512 * 12],
-    "fence-bottom": [613, 795, 512 * 6, 272],
-    "tree-right": [1080, 200, 912, 1536],
-    "tree-left": [190, 400, 1040, 1840],
-    "bush-right": [1030, 850, 1280, 1280],
-    "bush-left": [430, 850, 1040, 944],
-  };
+  private Woodlands: Array<DecorationContainer> = [
+    {
+      name: "fence-left",
+      x: 238,
+      y: 0,
+      width: 64,
+      height: 512 * 12,
+    },
+    {
+      name: "fence-top",
+      x: 630,
+      y: 0,
+      width: 512 * 6,
+      height: 272 * 2,
+    },
+    {
+      name: "fence-right",
+      x: 1008,
+      y: 9,
+      width: 64,
+      height: 512 * 12,
+    },
+    {
+      name: "fence-bottom",
+      x: 613,
+      y: 795,
+      width: 512 * 6,
+      height: 272,
+    },
+    {
+      name: "tree-right",
+      x: 1080,
+      y: 200,
+      width: 912,
+      height: 1536,
+    },
+    {
+      name: "tree-left",
+      x: 190,
+      y: 400,
+      width: 1040,
+      height: 1840,
+    },
+    {
+      name: "bush-right",
+      x: 1030,
+      y: 850,
+      width: 1280,
+      height: 1280,
+    },
+    {
+      name: "bush-right2",
+      x: 1100,
+      y: 550,
+      width: 1280 / 1.6,
+      height: 1280 / 1.6,
+    },
+    {
+      name: "bush-left",
+      x: 190,
+      y: 850,
+      width: 1040,
+      height: 944,
+    },
+    {
+      name: "bush-left2",
+      x: 150,
+      y: 110,
+      width: 1280 / 1.5,
+      height: 1280 / 1.5,
+    },
+  ];
 
   private readonly farmContainers: Containers = [];
 
@@ -120,9 +182,9 @@ export class RenderFarmComposition {
   }
 
   public initWoodlandsContainers(): void {
-    for (const item in this.Woodlands) {
+    for (const item of this.Woodlands) {
       this.woodlandContainers.push({
-        name: item,
+        name: item.name,
         render: null,
       });
     }
@@ -130,7 +192,8 @@ export class RenderFarmComposition {
 
   public renderWoodlandsContainers(): void {
     this.woodContainers.forEach((container) => {
-      const [x, y] = this.Woodlands[container.name];
+      const object = <DecorationContainer>this.Woodlands.find((item) => item.name === container.name);
+      const {x, y} = object;
       this.renderSceneComposition.renderContainer(container);
       this.renderSceneComposition.setContainerX(container, x);
       this.renderSceneComposition.setContainerY(container, y);
@@ -256,7 +319,8 @@ export class RenderFarmComposition {
 
   public renderDecorationSprites(): void {
     this.woodContainers.forEach(async (container) => {
-      const [x, y, width, height] = this.Woodlands[container.name];
+      const object = <DecorationContainer>this.Woodlands.find((item) => item.name === container.name);
+      const {x, y, width, height} = object;
       const DecorationSprite = await new DECORATION_SPRITES[container.name]().sprite();
       if (DecorationSprite) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment

@@ -24,7 +24,11 @@ declare global {
   type Containers = Array<Container>;
 
   interface DecorationContainer {
-    [key: string]: [number, number, number, number]; // x, y, with, height
+    name: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
   }
 
   interface DecorationSprite {

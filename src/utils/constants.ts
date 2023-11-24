@@ -81,6 +81,8 @@ export const DECORATION_SPRITES: DecorationSprite = {
   "tree-right": TreeRightSprite,
   "tree-left": TreeLeftSprite,
   "bush-right": BushRightSprite,
+  "bush-right2": BushRightSprite,
+  "bush-left2": BushLeftSprite,
   "bush-left": BushLeftSprite,
   "fence-left": FenceLeftVerticalSprite,
   "fence-right": FenceRightVerticalSprite,
