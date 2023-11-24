@@ -29,6 +29,7 @@ import { FenceBottomHorizontalSprite } from "../view/sprites/FenceBottomHorizont
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
+export const AUDIO_URL = "./assets/audio";
 export const GOOGLE_CLIENT_ID =
   "980604727750-6al4lq2c0i0113f4vdimbhh7l1l6o2lj.apps.googleusercontent.com";
 export const CHARACTERS_SPRITES: CharactersSprites = {
@@ -57,10 +58,31 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
   empty: [DarkFieldSprite, LightFieldSprite],
 };
 
+export const HOT_KEYS = [
+  {
+    key: 1,
+    tool: "shovel",
+  },
+  {
+    key: 2,
+    tool: "bailer",
+  },
+  {
+    key: 3,
+    tool: "fertilizer",
+  },
+  {
+    key: 4,
+    tool: "sprayer",
+  },
+];
+
 export const DECORATION_SPRITES: DecorationSprite = {
   "tree-right": TreeRightSprite,
   "tree-left": TreeLeftSprite,
   "bush-right": BushRightSprite,
+  "bush-right2": BushRightSprite,
+  "bush-left2": BushLeftSprite,
   "bush-left": BushLeftSprite,
   "fence-left": FenceLeftVerticalSprite,
   "fence-right": FenceRightVerticalSprite,

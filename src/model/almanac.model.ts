@@ -115,7 +115,7 @@ export class AlmanacModel {
     eventBusAlmanac.emit("Almanac:toggleView", this.state);
     eventBusAlmanac.emit("Tutorial:update", this.tutorialState);
     if (state.isActive && state.currentStep === 7) {
-      eventBusAlmanac.emit("Tutorial:end");
+      eventBusAlmanac.emit("Tutorial:end", this.state);
     }
   }
 }

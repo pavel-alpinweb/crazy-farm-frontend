@@ -16,6 +16,7 @@ import { $toaster, farmAssetsLoader, $loader } from "../main";
 import Cookies from "js-cookie";
 import { AbstractController } from "../framework/AbstractController";
 import { AbstractStaticScreen } from "../framework/interface/AbstractStaticScreen";
+import {SoundFarmComposition} from "../compositions/SoundFarm.composition";
 
 export default class FarmController extends AbstractController {
   protected Screen!: AbstractScreen | AbstractStaticScreen;
@@ -49,6 +50,7 @@ export default class FarmController extends AbstractController {
         Router.push("/#/");
       } else if (userToken) {
         $loader.show();
+        SoundFarmComposition.init();
         await farmAssetsLoader.load();
         await this.methods.connectToWebSocketServer(userToken);
         // test farm rendering
@@ -61,6 +63,7 @@ export default class FarmController extends AbstractController {
             farm: this.farmModel.state,
             player: this.farmModel.player,
             language: this.userModel.language,
+            isTutorialActive: !!this.almanacModel.tutorial?.isActive,
           },
           this.methods
         );
@@ -135,6 +138,7 @@ export default class FarmController extends AbstractController {
           this.farmModel.tool !== TOOLS.EMPTY &&
           !this.almanacModel.state.isActive
         ) {
+          SoundFarmComposition.playToolSound(this.farmModel.tool);
           this.Socket?.push({ cell, tool: this.farmModel.tool });
           // test farm rendering, make function async
           // const state = await updateTutorial(cell, this.farmModel.tool);
@@ -160,10 +164,12 @@ export default class FarmController extends AbstractController {
       },
 
       setActiveTool: (tool: tool) => {
+        if (this.almanacModel.tutorial?.blockedTools.includes(tool)) return;
         if (this.almanacModel.state.isActive) {
           this.almanacModel.setAlmanacDataForTools(tool);
         } else {
           this.farmModel.setActiveTool(tool);
+          SoundFarmComposition.playClickSound();
         }
       },
 
@@ -198,7 +204,8 @@ export default class FarmController extends AbstractController {
       },
 
       restartGame: () => {
-        window.location.reload();
+        this.Socket.push({ commandName: 'resetGame' });
+        this.almanacModel.deactivateAlmanac();
       },
   };
 }
