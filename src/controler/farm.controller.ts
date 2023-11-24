@@ -63,6 +63,7 @@ export default class FarmController extends AbstractController {
             farm: this.farmModel.state,
             player: this.farmModel.player,
             language: this.userModel.language,
+            isTutorialActive: !!this.almanacModel.tutorial?.isActive,
           },
           this.methods
         );
@@ -163,6 +164,7 @@ export default class FarmController extends AbstractController {
       },
 
       setActiveTool: (tool: tool) => {
+        if (this.almanacModel.tutorial?.blockedTools.includes(tool)) return;
         if (this.almanacModel.state.isActive) {
           this.almanacModel.setAlmanacDataForTools(tool);
         } else {

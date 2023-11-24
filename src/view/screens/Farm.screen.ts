@@ -7,13 +7,15 @@ import { WalletComponent } from "../ui-components/Wallet.component";
 import { TOOLS_PRICES } from "../../model/farm.model";
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { AlmanacComponent } from "../ui-components/Almanac.component";
-import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
-import {HOT_KEYS} from "../../utils/constants";
+import { LanguageSwitcherComponent } from "../ui-components/LanguageSwitcher.component";
+import { HOT_KEYS } from "../../utils/constants";
+import { eventBusAlmanac } from "../../model/almanac.model";
 
 interface Props {
   farm: FarmState;
   player: Player;
   language: language;
+  isTutorialActive: boolean;
 }
 
 interface State {
@@ -23,13 +25,22 @@ interface State {
   toolListData: Array<ToolData>;
   player: Props["player"];
   language: Props["language"];
+  isTutorialActive: Props["isTutorialActive"];
 }
 
-const createFarmScreenTemplate = () => `
+const createLeaveButtonsTemplate = (isTutorialActive: boolean) => `
+  <button class="button brown exit" data-exit></button>
+    ${
+      !isTutorialActive
+        ? `<button class="button brown restart" data-restart></button>`
+        : ""
+    }
+`;
+
+const createFarmScreenTemplate = (state: State) => `
 <div class="farm-screen">
     <div class="farm-screen__restart-btns">
-        <button class="button brown exit" data-exit></button>
-        <button class="button brown restart" data-restart></button>
+        ${createLeaveButtonsTemplate(state.isTutorialActive)}
     </div>
     <div class="farm-screen__scene" data-slot-scene></div>
     <div class="farm-screen__wallet" data-slot-wallet></div>
@@ -84,6 +95,7 @@ export class FarmScreen extends AbstractScreen {
     player: {
       cash: 0,
     },
+    isTutorialActive: false,
   };
 
   constructor(props: Props, methods: Methods) {
@@ -135,7 +147,11 @@ export class FarmScreen extends AbstractScreen {
       AbstractView.positions.BEFOREEND
     );
     this.mountComponent("wallet", this.components.Wallet);
-    this.mountComponent("wallet", this.components.LanguageSwitcherComponent, AbstractView.positions.BEFOREEND);
+    this.mountComponent(
+      "wallet",
+      this.components.LanguageSwitcherComponent,
+      AbstractView.positions.BEFOREEND
+    );
   }
 
   protected setEvents(): void {
@@ -164,40 +180,61 @@ export class FarmScreen extends AbstractScreen {
       this.controllerMethods.restartGame();
     });
     this.components.LanguageSwitcherComponent?.emits.setClickEvent(
-        (lang: Concrete) => {
-          this.controllerMethods.setLanguage(lang);
-        }
+      (lang: Concrete) => {
+        this.controllerMethods.setLanguage(lang);
+      }
     );
+
+    const toggleBtns = (data: Tutorial) => {
+      console.log('tutorial', data);
+      const container = <HTMLElement>(
+        this.element?.querySelector(".farm-screen__restart-btns")
+      );
+      container.innerHTML = createLeaveButtonsTemplate(data.isActive);
+      this.setHandlers();
+    };
+
+
+    const changeTool = (e: KeyboardEvent) => {
+      const hotKey = HOT_KEYS.find((command) => command.key === Number(e.key));
+      if (hotKey) {
+        this.controllerMethods.setActiveTool(hotKey.tool);
+      }
+    };
+    document.addEventListener("keyup", changeTool);
+
+    eventBusAlmanac.off("Tutorial:update", toggleBtns);
+    eventBusAlmanac.on("Tutorial:update", toggleBtns);
+    eventBusAlmanac.on("Tutorial:end", toggleBtns);
+    eventBusAlmanac.on("Tutorial:end", toggleBtns);
   }
 
   setHandlers() {
     const exitBtn = <HTMLElement>this.element?.querySelector("[data-exit]");
-    const restartBtn = <HTMLElement>this.element?.querySelector("[data-restart]");
+    const restartBtn = <HTMLElement>(
+      this.element?.querySelector("[data-restart]")
+    );
 
     exitBtn.addEventListener("click", () => {
       this.controllerMethods.showExitMessage();
     });
 
-    restartBtn.addEventListener("click", () => {
-      this.controllerMethods.showRestartMessage();
-    });
-
-    document.addEventListener("keyup", (e) => {
-      const hotKey = HOT_KEYS.find((command) => command.key === Number(e.key));
-      if (hotKey) {
-        this.controllerMethods.setActiveTool(hotKey.tool);
-      }
-    })
+    if (restartBtn) {
+      restartBtn.addEventListener("click", () => {
+        this.controllerMethods.showRestartMessage();
+      });
+    }
   }
 
   protected setState(props: Props): void {
     this.state.farm = props.farm;
     this.state.player = props.player;
     this.state.language = props.language;
+    this.state.isTutorialActive = props.isTutorialActive;
   }
 
   get template(): string {
-    return createFarmScreenTemplate();
+    return createFarmScreenTemplate(this.state);
   }
 
   public remove(): void {
