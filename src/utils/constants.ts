@@ -29,6 +29,7 @@ import { FenceBottomHorizontalSprite } from "../view/sprites/FenceBottomHorizont
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
+export const AUDIO_URL = "./assets/audio";
 export const GOOGLE_CLIENT_ID =
   "980604727750-6al4lq2c0i0113f4vdimbhh7l1l6o2lj.apps.googleusercontent.com";
 export const CHARACTERS_SPRITES: CharactersSprites = {
