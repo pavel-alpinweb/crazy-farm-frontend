@@ -8,6 +8,7 @@ import { TOOLS_PRICES } from "../../model/farm.model";
 import { AbstractView } from "../../framework/interface/AbstractView";
 import { AlmanacComponent } from "../ui-components/Almanac.component";
 import {LanguageSwitcherComponent} from "../ui-components/LanguageSwitcher.component";
+import {HOT_KEYS} from "../../utils/constants";
 
 interface Props {
   farm: FarmState;
@@ -180,6 +181,13 @@ export class FarmScreen extends AbstractScreen {
     restartBtn.addEventListener("click", () => {
       this.controllerMethods.showRestartMessage();
     });
+
+    document.addEventListener("keyup", (e) => {
+      const hotKey = HOT_KEYS.find((command) => command.key === Number(e.key));
+      if (hotKey) {
+        this.controllerMethods.setActiveTool(hotKey.tool);
+      }
+    })
   }
 
   protected setState(props: Props): void {

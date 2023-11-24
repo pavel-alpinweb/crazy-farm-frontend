@@ -58,6 +58,25 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
   empty: [DarkFieldSprite, LightFieldSprite],
 };
 
+export const HOT_KEYS = [
+  {
+    key: 1,
+    tool: "shovel",
+  },
+  {
+    key: 2,
+    tool: "bailer",
+  },
+  {
+    key: 3,
+    tool: "fertilizer",
+  },
+  {
+    key: 4,
+    tool: "sprayer",
+  },
+];
+
 export const DECORATION_SPRITES: DecorationSprite = {
   "tree-right": TreeRightSprite,
   "tree-left": TreeLeftSprite,
