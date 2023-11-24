@@ -62,18 +62,22 @@ export class FarmScreen extends AbstractScreen {
       {
         name: TOOLS.SHOVEL,
         price: TOOLS_PRICES[TOOLS.SHOVEL],
+        key: 1,
       },
       {
         name: TOOLS.BAILER,
         price: TOOLS_PRICES[TOOLS.BAILER],
+        key: 2,
       },
       {
         name: TOOLS.FERTILIZER,
         price: TOOLS_PRICES[TOOLS.FERTILIZER],
+        key: 3,
       },
       {
         name: TOOLS.SPRAYER,
         price: TOOLS_PRICES[TOOLS.SPRAYER],
+        key: 4,
       },
     ],
     player: {

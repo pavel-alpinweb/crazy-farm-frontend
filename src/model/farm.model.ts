@@ -14,6 +14,7 @@ declare global {
   interface ToolData {
     name: tool;
     price: number;
+    key?: number;
   }
   interface Tools {
     SHOVEL: "shovel";

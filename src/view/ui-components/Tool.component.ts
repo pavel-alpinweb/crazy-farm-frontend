@@ -28,6 +28,11 @@ const createToolTemplate = (state: State) => `
              ? `<div class="tool__price">${state.tool.price}</div>`
              : ""
          }
+         ${
+           state.tool.key
+             ? `<div class="tool__key">${state.tool.key}</div>`
+             : ""
+         }
     </div>
 `;
 
