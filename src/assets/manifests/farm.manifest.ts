@@ -205,5 +205,47 @@ export const manifest: ResolverManifest = {
         sprite_data: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.json`,
       },
     },
+    {
+      name: "onion-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.json`,
+      },
+    },
+    {
+      name: "withered-onion-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-onion-sprout/withered-onion-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-onion-sprout/withered-onion-sprout.json`,
+      },
+    },
+    {
+      name: "onion-child",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.json`,
+      },
+    },
+    {
+      name: "onion-kid",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.json`,
+      },
+    },
+    {
+      name: "onion-adult",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.json`,
+      },
+    },
+    {
+      name: "onion-death",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-death/onion-death.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-death/onion-death.json`,
+      },
+    },
   ],
 };

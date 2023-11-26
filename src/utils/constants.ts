@@ -25,6 +25,13 @@ import { FenceLeftVerticalSprite } from "../view/sprites/FenceLeftVertical.sprit
 import { FenceTopHorizontalSprite } from "../view/sprites/FenceTopHorizontal";
 import { FenceRightVerticalSprite } from "../view/sprites/FenceRightVertical.sprite";
 import { FenceBottomHorizontalSprite } from "../view/sprites/FenceBottomHorizontal";
+import {SproutOnionSprite} from "../view/sprites/SproutOnion.sprite";
+import {ChildOnionSprite} from "../view/sprites/ChildOnion.sprite";
+import {KidOnionSprite} from "../view/sprites/KidOnion.sprite";
+import {WitheredOnionSprite} from "../view/sprites/WitheredOnion.sprite";
+import {OnionDeathSprite} from "../view/sprites/OnionDeath.sprite";
+import {MiniExplosionSprite} from "../view/sprites/MiniExplosion.sprite";
+import {AdultOnionSprite} from "../view/sprites/AdultOnion.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
@@ -54,6 +61,16 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ExplosionKidTomatoSprite,
     ExplosionAdultTomatoSprite,
     ExplosionSprite,
+  ],
+  onion: [
+    GroundSprite,
+    SproutOnionSprite,
+    ChildOnionSprite,
+    KidOnionSprite,
+    AdultOnionSprite,
+    WitheredOnionSprite,
+    OnionDeathSprite,
+    MiniExplosionSprite,
   ],
   empty: [DarkFieldSprite, LightFieldSprite],
 };

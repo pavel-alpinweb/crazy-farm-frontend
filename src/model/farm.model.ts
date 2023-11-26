@@ -11,6 +11,7 @@ declare global {
     | "seeds"
     | "empty"
     | "almanac";
+  type effect = "health";
   interface ToolData {
     name: tool;
     price: number;
@@ -42,6 +43,7 @@ declare global {
     isBlocked: boolean;
     name: string;
     character: Character | null;
+    effects?: Array<effect>,
   }
   interface FarmState {
     containers: Array<Cell>;

@@ -186,28 +186,26 @@ export class FarmScreen extends AbstractScreen {
     );
 
     const toggleBtns = (data: Tutorial) => {
-      console.log('tutorial', data);
       const container = <HTMLElement>(
         this.element?.querySelector(".farm-screen__restart-btns")
       );
       container.innerHTML = createLeaveButtonsTemplate(data.isActive);
       this.setHandlers();
     };
-
-
-    const changeTool = (e: KeyboardEvent) => {
-      const hotKey = HOT_KEYS.find((command) => command.key === Number(e.key));
-      if (hotKey) {
-        this.controllerMethods.setActiveTool(hotKey.tool);
-      }
-    };
-    document.addEventListener("keyup", changeTool);
+    document.addEventListener("keyup", this.changeTool);
 
     eventBusAlmanac.off("Tutorial:update", toggleBtns);
     eventBusAlmanac.on("Tutorial:update", toggleBtns);
     eventBusAlmanac.on("Tutorial:end", toggleBtns);
     eventBusAlmanac.on("Tutorial:end", toggleBtns);
   }
+
+  private changeTool = (e: KeyboardEvent) => {
+    const hotKey = HOT_KEYS.find((command) => command.key === Number(e.key));
+    if (hotKey) {
+      this.controllerMethods.setActiveTool(hotKey.tool);
+    }
+  };
 
   setHandlers() {
     const exitBtn = <HTMLElement>this.element?.querySelector("[data-exit]");
@@ -238,6 +236,7 @@ export class FarmScreen extends AbstractScreen {
   }
 
   public remove(): void {
+    document.removeEventListener("keyup", this.changeTool);
     this.components.FarmScene?.remove();
     super.remove();
   }
