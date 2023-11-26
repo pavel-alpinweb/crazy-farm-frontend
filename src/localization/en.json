@@ -24,7 +24,7 @@
     "close": "Everything is clear",
     "exit": "Leave the farm",
     "restart": "Start a new farm",
-    "no-close": "No, I want to stay here"
+    "no-close": "No, I don't want"
   },
   "almanacDefault": "Hello! What can I help you with?",
   "character": {
