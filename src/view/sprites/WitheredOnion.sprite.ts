@@ -3,5 +3,5 @@ import {AbstractAnimatedSprite} from "../../framework/graphics/AbstractAnimatedS
 export class WitheredOnionSprite extends AbstractAnimatedSprite{
     protected spriteName = "withered-onion-sprout";
     protected framesNumber = 3;
-    protected animationSpeed = 0.07;
+    protected animationSpeed = 0.02;
 }

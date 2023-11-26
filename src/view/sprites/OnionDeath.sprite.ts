@@ -3,5 +3,5 @@ import {AbstractAnimatedSprite} from "../../framework/graphics/AbstractAnimatedS
 export class OnionDeathSprite extends AbstractAnimatedSprite{
     protected spriteName = "onion-death";
     protected framesNumber = 2;
-    protected animationSpeed = 0.5;
+    protected animationSpeed = 0.02;
 }

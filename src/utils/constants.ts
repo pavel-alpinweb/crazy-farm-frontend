@@ -31,6 +31,7 @@ import {KidOnionSprite} from "../view/sprites/KidOnion.sprite";
 import {WitheredOnionSprite} from "../view/sprites/WitheredOnion.sprite";
 import {OnionDeathSprite} from "../view/sprites/OnionDeath.sprite";
 import {MiniExplosionSprite} from "../view/sprites/MiniExplosion.sprite";
+import {AdultOnionSprite} from "../view/sprites/AdultOnion.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
@@ -66,6 +67,7 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     SproutOnionSprite,
     ChildOnionSprite,
     KidOnionSprite,
+    AdultOnionSprite,
     WitheredOnionSprite,
     OnionDeathSprite,
     MiniExplosionSprite,

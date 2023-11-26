@@ -35,6 +35,7 @@ export class RenderFarmComposition {
   private charactersSpriteList: SpritesArray = {
     potato: [],
     tomato: [],
+    onion: [],
     empty: [],
   };
 
@@ -295,6 +296,7 @@ export class RenderFarmComposition {
     this.charactersSpriteList = {
       potato: [],
       tomato: [],
+      onion: [],
       empty: [],
     };
     for (const character in CHARACTERS_SPRITES) {

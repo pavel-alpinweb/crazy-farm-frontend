@@ -206,10 +206,10 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "sprout-onion",
+      name: "onion-sprout",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-onion/sprout-onion.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/sprout-onion/sprout-onion.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.json`,
       },
     },
     {
@@ -220,24 +220,24 @@ export const manifest: ResolverManifest = {
       },
     },
     {
-      name: "child-onion",
+      name: "onion-child",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/child-onion/child-onion.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/child-onion/child-onion.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.json`,
       },
     },
     {
-      name: "kid-onion",
+      name: "onion-kid",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/kid-onion/kid-onion.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/kid-onion/kid-onion.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.json`,
       },
     },
     {
-      name: "adult-onion",
+      name: "onion-adult",
       assets: {
-        sprite_sheet: `${ANIMATED_SPRITE_URL}/adult-onion/adult-onion.png`,
-        sprite_data: `${ANIMATED_SPRITE_URL}/adult-onion/adult-onion.json`,
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.json`,
       },
     },
     {
