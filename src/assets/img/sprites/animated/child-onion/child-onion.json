@@ -1,0 +1,87 @@
+{"frames": {
+
+"onion-child_1.png":
+{
+	"frame": {"x":1,"y":1,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_2.png":
+{
+	"frame": {"x":1,"y":515,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_3.png":
+{
+	"frame": {"x":469,"y":1,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_4.png":
+{
+	"frame": {"x":1,"y":1543,"w":466,"h":497},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":15,"w":466,"h":497},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_5.png":
+{
+	"frame": {"x":469,"y":1,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_6.png":
+{
+	"frame": {"x":1,"y":1029,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_7.png":
+{
+	"frame": {"x":469,"y":515,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_8.png":
+{
+	"frame": {"x":469,"y":1029,"w":466,"h":512},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":0,"w":466,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-child_9.png":
+{
+	"frame": {"x":469,"y":1543,"w":466,"h":497},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":15,"y":15,"w":466,"h":497},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"onion-child": ["onion-child_1.png","onion-child_2.png","onion-child_3.png","onion-child_4.png","onion-child_5.png","onion-child_6.png","onion-child_7.png","onion-child_8.png","onion-child_9.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "child-onion.png",
+	"format": "RGBA8888",
+	"size": {"w":936,"h":2041},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:911a63c2538a2befaec212153121e0be:0e57889fd5399f3c7393484f5bf48475:6d1d5f675dbd39d9120e87ff92215085$"
+}
+}

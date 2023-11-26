@@ -1,0 +1,31 @@
+{"frames": {
+
+"onion-death_1.png":
+{
+	"frame": {"x":1,"y":1,"w":370,"h":321},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":191,"w":370,"h":321},
+	"sourceSize": {"w":512,"h":512}
+},
+"onion-death_2.png":
+{
+	"frame": {"x":373,"y":1,"w":370,"h":321},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":191,"w":370,"h":321},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"onion-death": ["onion-death_1.png","onion-death_2.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "onion-death.png",
+	"format": "RGBA8888",
+	"size": {"w":744,"h":323},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0bd0fd94a4555680ed66fda7c55219ce:9e33de0d6e9c9f8777ec085eda4d45c3:c43cae6ebd62ca8a17e0381da848c76d$"
+}
+}
