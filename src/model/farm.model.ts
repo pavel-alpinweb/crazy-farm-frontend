@@ -11,9 +11,11 @@ declare global {
     | "seeds"
     | "empty"
     | "almanac";
+  type effect = "health";
   interface ToolData {
     name: tool;
     price: number;
+    key?: number;
   }
   interface Tools {
     SHOVEL: "shovel";
@@ -41,6 +43,7 @@ declare global {
     isBlocked: boolean;
     name: string;
     character: Character | null;
+    effects?: Array<effect>,
   }
   interface FarmState {
     containers: Array<Cell>;
@@ -89,7 +92,7 @@ export const TOOLS_PRICES = {
   [TOOLS.ALMANAC]: 0,
   [TOOLS.BAILER]: 0,
   [TOOLS.FERTILIZER]: 1,
-  [TOOLS.SPRAYER]: 2,
+  [TOOLS.SPRAYER]: 9,
   [TOOLS.SHOVEL]: 0,
   [TOOLS.SEEDS]: 3,
 };

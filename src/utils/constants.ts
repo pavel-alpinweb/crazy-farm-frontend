@@ -25,10 +25,18 @@ import { FenceLeftVerticalSprite } from "../view/sprites/FenceLeftVertical.sprit
 import { FenceTopHorizontalSprite } from "../view/sprites/FenceTopHorizontal";
 import { FenceRightVerticalSprite } from "../view/sprites/FenceRightVertical.sprite";
 import { FenceBottomHorizontalSprite } from "../view/sprites/FenceBottomHorizontal";
+import {SproutOnionSprite} from "../view/sprites/SproutOnion.sprite";
+import {ChildOnionSprite} from "../view/sprites/ChildOnion.sprite";
+import {KidOnionSprite} from "../view/sprites/KidOnion.sprite";
+import {WitheredOnionSprite} from "../view/sprites/WitheredOnion.sprite";
+import {OnionDeathSprite} from "../view/sprites/OnionDeath.sprite";
+import {MiniExplosionSprite} from "../view/sprites/MiniExplosion.sprite";
+import {AdultOnionSprite} from "../view/sprites/AdultOnion.sprite";
 
 export const appContainer: Element | null = document.getElementById("app");
 export const STATIC_SPRITE_URL = "./assets/img/sprites/static";
 export const ANIMATED_SPRITE_URL = "./assets/img/sprites/animated";
+export const AUDIO_URL = "./assets/audio";
 export const GOOGLE_CLIENT_ID =
   "980604727750-6al4lq2c0i0113f4vdimbhh7l1l6o2lj.apps.googleusercontent.com";
 export const CHARACTERS_SPRITES: CharactersSprites = {
@@ -54,13 +62,44 @@ export const CHARACTERS_SPRITES: CharactersSprites = {
     ExplosionAdultTomatoSprite,
     ExplosionSprite,
   ],
+  onion: [
+    GroundSprite,
+    SproutOnionSprite,
+    ChildOnionSprite,
+    KidOnionSprite,
+    AdultOnionSprite,
+    WitheredOnionSprite,
+    OnionDeathSprite,
+    MiniExplosionSprite,
+  ],
   empty: [DarkFieldSprite, LightFieldSprite],
 };
+
+export const HOT_KEYS = [
+  {
+    key: 1,
+    tool: "shovel",
+  },
+  {
+    key: 2,
+    tool: "bailer",
+  },
+  {
+    key: 3,
+    tool: "fertilizer",
+  },
+  {
+    key: 4,
+    tool: "sprayer",
+  },
+];
 
 export const DECORATION_SPRITES: DecorationSprite = {
   "tree-right": TreeRightSprite,
   "tree-left": TreeLeftSprite,
   "bush-right": BushRightSprite,
+  "bush-right2": BushRightSprite,
+  "bush-left2": BushLeftSprite,
   "bush-left": BushLeftSprite,
   "fence-left": FenceLeftVerticalSprite,
   "fence-right": FenceRightVerticalSprite,

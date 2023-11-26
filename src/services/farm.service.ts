@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
 import Service from "../framework/Service";
+import Cookies from "js-cookie";
 
 declare global {
   interface Jws {
@@ -14,6 +15,7 @@ export default class FarmService {
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          "accept-language": Cookies.get("crazy-farm-lang") ?? "en",
         },
       }
     );

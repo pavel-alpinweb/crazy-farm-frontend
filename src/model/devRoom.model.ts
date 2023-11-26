@@ -22,7 +22,7 @@ export const TEST_FARM_STATE: FarmState = {
       name: "1-0",
       character: {
         type: 'tomato',
-        stage: 2,
+        stage: 5,
         needs: [],
       },
     },
@@ -43,14 +43,15 @@ export const TEST_FARM_STATE: FarmState = {
       isBlocked: false,
       name: "0-1",
       character: null,
+      effects: ["health"],
     },
     {
       isEmpty: true,
       isBlocked: false,
       name: "1-1",
       character: {
-        type: 'potato',
-        stage: 7,
+        type: 'onion',
+        stage: 3,
         needs: [],
       },
     },
@@ -60,9 +61,10 @@ export const TEST_FARM_STATE: FarmState = {
       name: "2-1",
       character: {
         type: 'potato',
-        stage: 7,
+        stage: 4,
         needs: [],
       },
+      effects: ["health"],
     },
     {
       isEmpty: true,

@@ -28,6 +28,11 @@ const createToolTemplate = (state: State) => `
              ? `<div class="tool__price">${state.tool.price}</div>`
              : ""
          }
+         ${
+           state.tool.key
+             ? `<div class="tool__key">${state.tool.key}</div>`
+             : ""
+         }
     </div>
 `;
 
@@ -55,6 +60,8 @@ export class ToolComponent extends AbstractView {
     const updateElement = (tool: tool) => {
       this.state.isActive =
         this.state.tool.name === tool && this.state.tool.name !== TOOLS.EMPTY;
+      console.log('updateElement: tool', tool);
+      console.log('updateElement: isActive', this.state.isActive);
       this.updateClassList();
     };
     const highlightElement = (value: boolean) => {
@@ -72,6 +79,7 @@ export class ToolComponent extends AbstractView {
         if (tutorial.blockedTools.includes(this.state.tool.name)) {
           this.state.isBlocked = true;
           this.state.isActive = false;
+          this.state.isHighLight = false;
         } else {
           this.state.isHighLight = true;
           this.state.isBlocked = false;
