@@ -11,6 +11,7 @@ import bailer from "../assets/particle-emitters/bailer.json"
 import sprayer from "../assets/particle-emitters/sprayer.json"
 import fertilizer from "../assets/particle-emitters/fertilizer.json"
 import {DropShadowFilter} from "@pixi/filter-drop-shadow";
+import {GlowFilter} from "@pixi/filter-glow";
 
 export class RenderFarmComposition {
   private readonly scene!: PIXI.Application;
@@ -394,6 +395,10 @@ export class RenderFarmComposition {
         count += 0.05;
         colorMatrix.contrast(Math.sin(count) * 0.3, false);
       });
+    } else if (container?.render && cell.effects?.includes("health") && emptySprite) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      container.render.filters = [new GlowFilter(GlowFilter.defaults)];
     } else if (cell.isBlocked && container?.render) {
       container.render.filters = [colorMatrix];
       colorMatrix.greyscale(0.5, true);
