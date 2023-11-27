@@ -4,9 +4,8 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  background: #67c5ed url("/assets/img/illustrations/welcome-background.jpg")
-    no-repeat center bottom;
-  background-size: 100%;
+  background: #78710e url("/assets/img/illustrations/texture-sprite-grass.png");
+  background-size: 20%;
   &__header {
     position: absolute;
     top: 0;
@@ -16,12 +15,16 @@
   &__content {
     padding: 20px 20px 0;
     margin: auto 0;
+    @media screen and (min-width: 768px) {
+      width: 400px;
+      margin: auto;
+    }
   }
   &__btn-list {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    max-width: 200px;
+    max-width: 230px;
     margin: 0 auto;
   }
   &__footer {

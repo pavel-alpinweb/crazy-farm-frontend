@@ -11,19 +11,28 @@ import RegistrationWaysController from "./controler/registrationWays.controller"
 import DevRoomController from "./controler/devRoom.controller";
 import { AssetsLoader } from "./framework/graphics/AssetsLoader";
 import { manifest } from "./assets/manifests/farm.manifest";
-import { Toaster } from "./framework/Toaster";
+import { Toaster } from "./framework/interface/Toaster";
+import { Loader } from "./framework/interface/Loader";
+import i18next from "i18next";
+import en from "./localization/en.json";
+import ru from "./localization/ru.json";
+import Cookies from "js-cookie";
+import { AlmanacModel } from "./model/almanac.model";
 
 export const $toaster = new Toaster(3000);
+export const $loader = new Loader(1000);
 export const farmAssetsLoader = new AssetsLoader(manifest);
+
 const userModel: User = new User();
 const farmModel: FarmModel = new FarmModel();
+const almanacModel: AlmanacModel = new AlmanacModel();
 const loginController = new LoginController(userModel);
 const registrationController = new RegistrationController(userModel);
-const farmController = new FarmController(farmModel, userModel);
+const farmController = new FarmController(farmModel, userModel, almanacModel);
 const devRoomController = new DevRoomController();
 const error404Controller = new Error404ScreenController();
-const welcomeController = new WelcomeController();
-const registrationWaysController = new RegistrationWaysController();
+const welcomeController = new WelcomeController(userModel);
+const registrationWaysController = new RegistrationWaysController(userModel);
 
 const params: Array<RouterParams> = [
   {
@@ -57,4 +66,21 @@ const params: Array<RouterParams> = [
 ];
 
 const router: Router = new Router(params);
-router.init();
+const lang = Cookies.get("crazy-farm-lang") ?? "en";
+
+i18next
+  .init({
+    lng: lang,
+    debug: false,
+    resources: {
+      en: {
+        translation: en,
+      },
+      ru: {
+        translation: ru,
+      },
+    },
+  })
+  .then(() => {
+    router.init();
+  });

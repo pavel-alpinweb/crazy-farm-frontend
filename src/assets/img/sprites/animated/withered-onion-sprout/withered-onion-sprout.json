@@ -1,0 +1,39 @@
+{"frames": {
+
+"withered-onion-sprout_1.png":
+{
+	"frame": {"x":1,"y":1,"w":434,"h":369},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":143,"w":434,"h":369},
+	"sourceSize": {"w":512,"h":512}
+},
+"withered-onion-sprout_2.png":
+{
+	"frame": {"x":437,"y":1,"w":386,"h":369},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":63,"y":143,"w":386,"h":369},
+	"sourceSize": {"w":512,"h":512}
+},
+"withered-onion-sprout_3.png":
+{
+	"frame": {"x":1,"y":1,"w":434,"h":369},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":31,"y":143,"w":434,"h":369},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"withered-onion-sprout": ["withered-onion-sprout_1.png","withered-onion-sprout_2.png","withered-onion-sprout_3.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "withered-onion-sprout.png",
+	"format": "RGBA8888",
+	"size": {"w":824,"h":371},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:0f085696eb0490fdd97850980726bbf1:16eea800d1a0477b2c38c9befb75ba57:70cc0c1af7f82a69d9321674d934cd79$"
+}
+}

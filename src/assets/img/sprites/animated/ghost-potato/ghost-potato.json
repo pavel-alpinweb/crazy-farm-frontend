@@ -1,80 +1,71 @@
+{"frames": {
+
+"ghost-potato_01.png":
 {
-  "frames": {
-    "ghost-potato_01.png": {
-      "frame": { "x": 882, "y": 0, "w": 354, "h": 465 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 47, "w": 354, "h": 465 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_02.png": {
-      "frame": { "x": 1347, "y": 0, "w": 354, "h": 465 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 47, "w": 354, "h": 465 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_03.png": {
-      "frame": { "x": 867, "y": 354, "w": 354, "h": 481 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 31, "w": 354, "h": 481 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_04.png": {
-      "frame": { "x": 370, "y": 354, "w": 354, "h": 497 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 15, "w": 354, "h": 497 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_05.png": {
-      "frame": { "x": 0, "y": 0, "w": 370, "h": 497 },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 15, "w": 370, "h": 497 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_06.png": {
-      "frame": { "x": 370, "y": 0, "w": 354, "h": 512 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 0, "w": 354, "h": 512 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    },
-    "ghost-potato_07.png": {
-      "frame": { "x": 1348, "y": 354, "w": 354, "h": 465 },
-      "rotated": true,
-      "trimmed": true,
-      "spriteSourceSize": { "x": 79, "y": 47, "w": 354, "h": 465 },
-      "sourceSize": { "w": 512, "h": 512 },
-      "anchor": { "x": 0, "y": 0 }
-    }
-  },
-  "animations": {
-    "ghost-potato": [
-      "ghost-potato_01.png",
-      "ghost-potato_02.png",
-      "ghost-potato_03.png",
-      "ghost-potato_04.png",
-      "ghost-potato_05.png",
-      "ghost-potato_06.png",
-      "ghost-potato_07.png"
-    ]
-  },
-  "meta": {
-    "app": "https://www.codeandweb.com/texturepacker",
-    "version": "1.1",
-    "image": "ghost-potato.png",
-    "format": "RGBA8888",
-    "size": { "w": 1813, "h": 708 },
-    "scale": "1",
-    "smartupdate": "$TexturePacker:SmartUpdate:636625c4667389b5e1e1d61f8f36d5ca:651ac490fcce1cc05274284763605707:249efe9db63da378c5f2f06c5a3c095c$"
-  }
+	"frame": {"x":887,"y":1,"w":354,"h":465},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":47,"w":354,"h":465},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_02.png":
+{
+	"frame": {"x":1354,"y":1,"w":354,"h":465},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":47,"w":354,"h":465},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_03.png":
+{
+	"frame": {"x":872,"y":357,"w":354,"h":481},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":31,"w":354,"h":481},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_04.png":
+{
+	"frame": {"x":373,"y":357,"w":354,"h":497},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":15,"w":354,"h":497},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_05.png":
+{
+	"frame": {"x":1,"y":1,"w":370,"h":497},
+	"rotated": false,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":15,"w":370,"h":497},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_06.png":
+{
+	"frame": {"x":373,"y":1,"w":354,"h":512},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":0,"w":354,"h":512},
+	"sourceSize": {"w":512,"h":512}
+},
+"ghost-potato_07.png":
+{
+	"frame": {"x":1355,"y":357,"w":354,"h":465},
+	"rotated": true,
+	"trimmed": true,
+	"spriteSourceSize": {"x":79,"y":47,"w":354,"h":465},
+	"sourceSize": {"w":512,"h":512}
+}},
+"animations": {
+	"ghost-potato": ["ghost-potato_01.png","ghost-potato_02.png","ghost-potato_03.png","ghost-potato_04.png","ghost-potato_05.png","ghost-potato_06.png","ghost-potato_07.png"]
+},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.1",
+	"image": "ghost-potato.png",
+	"format": "RGBA8888",
+	"size": {"w":1821,"h":712},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:5cd80c080c1f9fe43caefebbdfbeebf4:651ac490fcce1cc05274284763605707:249efe9db63da378c5f2f06c5a3c095c$"
+}
 }

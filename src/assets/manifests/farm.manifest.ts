@@ -46,6 +46,54 @@ export const manifest: ResolverManifest = {
       },
     },
     {
+      name: "fence-left-vertical",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-left-vertical.sprite.png`,
+      },
+    },
+    {
+      name: "fence-top-horizontal",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-top-horizontal.sprite.png`,
+      },
+    },
+    {
+      name: "fence-right-vertical",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-right-vertical.sprite.png`,
+      },
+    },
+    {
+      name: "fence-bottom-horizontal",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/fence-bottom-horizontal.sprite.png`,
+      },
+    },
+    {
+      name: "tree-right",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/tree-right.sprite.png`,
+      },
+    },
+    {
+      name: "tree-left",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/tree-left.sprite.png`,
+      },
+    },
+    {
+      name: "bush-right",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/bush-right.sprite.png`,
+      },
+    },
+    {
+      name: "bush-left",
+      assets: {
+        sprite: `${STATIC_SPRITE_URL}/bush-left.sprite.png`,
+      },
+    },
+    {
       name: "sprout-potato",
       assets: {
         sprite_sheet: `${ANIMATED_SPRITE_URL}/sprout-potato/sprout-potato.png`,
@@ -155,6 +203,48 @@ export const manifest: ResolverManifest = {
       assets: {
         sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.png`,
         sprite_data: `${ANIMATED_SPRITE_URL}/withered-potato-sprout/withered-potato-sprout.json`,
+      },
+    },
+    {
+      name: "onion-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-sprout/onion-sprout.json`,
+      },
+    },
+    {
+      name: "withered-onion-sprout",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/withered-onion-sprout/withered-onion-sprout.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/withered-onion-sprout/withered-onion-sprout.json`,
+      },
+    },
+    {
+      name: "onion-child",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-child/onion-child.json`,
+      },
+    },
+    {
+      name: "onion-kid",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-kid/onion-kid.json`,
+      },
+    },
+    {
+      name: "onion-adult",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-adult/onion-adult.json`,
+      },
+    },
+    {
+      name: "onion-death",
+      assets: {
+        sprite_sheet: `${ANIMATED_SPRITE_URL}/onion-death/onion-death.png`,
+        sprite_data: `${ANIMATED_SPRITE_URL}/onion-death/onion-death.json`,
       },
     },
   ],

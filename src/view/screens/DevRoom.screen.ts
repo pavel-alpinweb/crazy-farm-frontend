@@ -7,6 +7,7 @@ import { WalletComponent } from "../ui-components/Wallet.component";
 import { TextInputComponent } from "../ui-components/TextInput.component";
 import { PageHeaderComponent } from "../ui-components/PageHeader.component";
 import { TEST_FARM_STATE, TOOLS } from "../../model/devRoom.model";
+import { AlmanacComponent } from "../ui-components/Almanac.component";
 
 interface State {
   farm: FarmState;
@@ -27,19 +28,20 @@ const createDevRoomScreenTemplate = () => `
             <div class="dev-room__ui-kit__item" data-slot-tool></div>
             <div class="dev-room__ui-kit__item" data-slot-tool-set></div>
             <div class="dev-room__ui-kit__item">
-                <button class="button">Action</button>
+                <button class="button">button</button>
                 <br>
                 <br>
-                <button class="button green">Action</button>
+                <button class="button green">green</button>
                 <br>
                 <br>
-                <button class="button brown">Action</button>
+                <button class="button brown">brown</button>
                 <br>
                 <br>
-                <button class="button green big">Action</button>
+                <button class="button green big">button green big</button>
             </div>
             <div class="dev-room__ui-kit__item" data-slot-input></div>
             <div class="dev-room__ui-kit__item" data-slot-header></div>
+            <div class="dev-room__ui-kit__item" data-slot-almanac></div>
         </div>
      </div>
 </div>
@@ -54,6 +56,7 @@ export class DevRoomScreen extends AbstractScreen {
     Wallet: null,
     TextInput: null,
     PageHeader: null,
+    Almanac: null,
   };
   protected state: State = {
     farm: TEST_FARM_STATE,
@@ -106,9 +109,16 @@ export class DevRoomScreen extends AbstractScreen {
       placeholder: "***",
       icon: "user",
       isPassword: false,
+      translationKey: "loginPlaceholder",
     });
     this.components.PageHeader = new PageHeaderComponent({
-      title: "Регистрация",
+      translationKey: "registration",
+    });
+    this.components.AlmanacComponent = new AlmanacComponent({
+      isActive: true,
+      isShow: true,
+      currentTextKey: "almanacDefault",
+      currentActions: ["show", "close"],
     });
   }
 
@@ -119,6 +129,7 @@ export class DevRoomScreen extends AbstractScreen {
     this.mountComponent("wallet", this.components.Wallet);
     this.mountComponent("input", this.components.TextInput);
     this.mountComponent("header", this.components.PageHeader);
+    this.mountComponent("almanac", this.components.AlmanacComponent);
   }
 
   protected setEvents(): void {

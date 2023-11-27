@@ -1,0 +1,45 @@
+$characterScale: 5;
+
+.almanac {
+  position: fixed;
+  bottom: 10px;
+  left: -100vw;
+  border: 3px solid #723e19;
+  background: #eab54f;
+  height: 200px;
+  width: 98vw;
+  max-width: 900px;
+  transform: translateX(-50%);
+  padding: 10px;
+  transition: left 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  display: grid;
+  grid-template-rows: auto 45px;
+  &:before {
+    content: '';
+    display: block;
+    width: calc(1092px / $characterScale);
+    height: calc(722px / $characterScale);
+    position: absolute;
+    left: 0;
+    top: - calc(722px / $characterScale);
+    background: url("/assets/img/illustrations/wizard.png") no-repeat center;
+    background-size: cover;
+  }
+  &.active {
+    left: 50%;
+  }
+  &__text {
+    color: #000;
+    font-size: 16px;
+    line-height: 100%;
+    margin-bottom: 10px;
+    overflow: auto;
+  }
+  &__buttons {
+    margin-top: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-gap: 10px;
+  }
+}

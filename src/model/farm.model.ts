@@ -9,10 +9,13 @@ declare global {
     | "fertilizer"
     | "sprayer"
     | "seeds"
-    | "empty";
+    | "empty"
+    | "almanac";
+  type effect = "health";
   interface ToolData {
     name: tool;
     price: number;
+    key?: number;
   }
   interface Tools {
     SHOVEL: "shovel";
@@ -21,6 +24,7 @@ declare global {
     SPRAYER: "sprayer";
     SEEDS: "seeds";
     EMPTY: "empty";
+    ALMANAC: "almanac";
   }
   type need = "HUNGER" | "SICKNESS" | "THIRST";
   type needSprite = "bug" | "hunger" | "drop";
@@ -39,6 +43,7 @@ declare global {
     isBlocked: boolean;
     name: string;
     character: Character | null;
+    effects?: Array<effect>,
   }
   interface FarmState {
     containers: Array<Cell>;
@@ -62,6 +67,7 @@ declare global {
   interface FarmResponse {
     containers: Array<Cell>;
     player: Player;
+    tutorial: Tutorial;
   }
 
   type NeedsSpritesNames = {
@@ -78,13 +84,15 @@ export const TOOLS: Tools = {
   SPRAYER: "sprayer",
   SEEDS: "seeds",
   EMPTY: "empty",
+  ALMANAC: "almanac",
 };
 
 export const TOOLS_PRICES = {
   [TOOLS.EMPTY]: 0,
+  [TOOLS.ALMANAC]: 0,
   [TOOLS.BAILER]: 0,
   [TOOLS.FERTILIZER]: 1,
-  [TOOLS.SPRAYER]: 2,
+  [TOOLS.SPRAYER]: 9,
   [TOOLS.SHOVEL]: 0,
   [TOOLS.SEEDS]: 3,
 };

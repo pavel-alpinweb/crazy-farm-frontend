@@ -60,6 +60,7 @@ export class AuthFormWidget extends AbstractWidget {
       placeholder: "Введите логин",
       isPassword: false,
       icon: "user",
+      translationKey: "loginPlaceholder",
     });
     if ("email" in this.state.user) {
       this.components.EmailTextInput = new TextInputComponent({
@@ -68,6 +69,7 @@ export class AuthFormWidget extends AbstractWidget {
         isDisabled: false,
         isPassword: false,
         icon: "envelope",
+        translationKey: "emailPlaceholder",
       });
     }
     if ("password" in this.state.user) {
@@ -76,10 +78,11 @@ export class AuthFormWidget extends AbstractWidget {
         placeholder: "Введите пароль",
         isPassword: true,
         icon: "lock",
+        translationKey: "passwordPlaceholder",
       });
     }
     this.components.FormButton = new ButtonComponent({
-      title: "Отправить",
+      translationKey: "send",
     });
   }
   protected setEvents(): void {

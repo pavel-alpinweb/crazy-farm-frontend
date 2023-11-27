@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import { AbstractStaticSprite } from "./AbstractStaticSprite";
 import { AbstractAnimatedSprite } from "./AbstractAnimatedSprite";
+import { AbstractTilingSprite } from "./AbstractTilingSprite";
 
 declare global {
   type SingleSprite = AbstractStaticSprite | AbstractAnimatedSprite | null;
@@ -14,7 +15,27 @@ declare global {
     name: string;
     render: PIXI.Container | null;
   }
+
+  interface EffectContainer {
+    name: string;
+    render: PIXI.Container | null;
+  }
+
   type Containers = Array<Container>;
+
+  interface DecorationContainer {
+    name: string,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+  }
+
+  interface DecorationSprite {
+    [key: string]:
+      | { new (): AbstractStaticSprite }
+      | { new (): AbstractTilingSprite };
+  }
 }
 
 export abstract class AbstractScene {
@@ -33,8 +54,11 @@ export abstract class AbstractScene {
   private render(): Element | null {
     const canvas = document.createElement("canvas");
     this.scene = new PIXI.Application({
-      background: "#1099bb",
+      background: "#78710e",
+      backgroundAlpha: 0,
       view: canvas,
+      width: 1200,
+      height: 1000,
     });
     if (this.scene.renderer.view.style) {
       this.scene.renderer.view.style.touchAction = "auto";
@@ -56,7 +80,7 @@ export abstract class AbstractScene {
   }
 
   public remove(): void {
-    this.scene?.destroy();
+    this.scene?.destroy(true);
     this.renderedElement = null;
   }
 }

@@ -3,7 +3,11 @@
   align-items: center;
   &__value {
     color: #e47c32;
-    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    background: #723e19;
+    padding: 5px;
+    border: 2px solid #eab54f;
+    border-radius: 5px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.95);
     font-size: 24px;
     font-style: normal;
     font-weight: 700;

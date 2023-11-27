@@ -1,35 +1,66 @@
 .farm-screen {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   height: auto;
-  background-color: #1099bb;
+  background: #78710e url("/assets/img/illustrations/texture-sprite-grass.png");
+  background-size: 20%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
+  &:before {
+    content: "";
+    display: block;
+    width: 100%;
+    min-height: 20vh;
+    //background: url("/assets/img/illustrations/house.png") no-repeat top center;
+    background-size: 80%;
+    @media screen and (orientation: landscape) {
+      min-height: 20vh;
+    }
+  }
   &__scene {
     width: 100%;
     height: 100%;
+    margin-bottom: auto;
+    @media screen and (min-width: 768px){
+      width: 70%;
+    }
     canvas {
       width: 100%;
       height: auto;
       touch-action: auto !important;
     }
   }
+  &__restart-btns {
+    position: fixed;
+    top: 20px;
+    left: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 45px);
+    grid-gap: 15px;
+  }
   &__aside {
     position: fixed;
-    left: 0;
+    left: 10px;
     top: 50%;
     transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   &__wallet {
     position: fixed;
     top: 0;
     right: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
   }
   &__footer {
     position: fixed;
-    bottom: 0;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
   }
