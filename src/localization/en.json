@@ -10,7 +10,7 @@
   "byEmail": "Sign up via email",
   "loginByEmail": "Sign in via email",
   "signIn": "Sign up",
-  "restart": "Do you want to start the game over? All plants from the plot will be removed, and your coin count will reset to its initial amount.",
+  "restart": "Do you want to start the game over? All plants from the plot will be removed, and your coin count will reset to its initial amount. The page will reload after a short time.",
   "exit": "Do you want to leave your farm? You will return to the start screen.",
   "tools": {
     "shovel": "This is a shovel. A tool of many talents... It's a pity that you only need it to dig up plants. By the way, when you dig them up, I will immediately pay you for them. Dead plants and sprouts, however, will not be paid for. </br></br> Anything else you'd like to know?",
@@ -24,7 +24,7 @@
     "close": "Everything is clear",
     "exit": "Leave the farm",
     "restart": "Start a new farm",
-    "no-close": "No, I don't want"
+    "no-close": "No, I want to stay here"
   },
   "almanacDefault": "Hello! What can I help you with?",
   "character": {
@@ -43,7 +43,7 @@
       "0": "A handful of soil with an unknown seed. It's interesting to see what will grow from it. Water it and find it out. </br></br>Anything else you'd like to know?",
       "1": "Explosive tomato sprout. Keep a watchful eye as it grows, and this sprout will soon turn into a burst of fun. Resist the urge to unearth it now, for I do not pay for the sprouts. </br></br>Anything else you'd like to know?",
       "2": "Junior explosive tomato. Tiny but mighty, it can explode nearby plants if left unattended.  I will pay very little for it, so let it grow a little. </br></br>Anything else you'd like to know?",
-      "3": "Medium explosive tomato. Consider keeping an eye on it, for neglecting it could set off a chain reaction among the neighbors. It'll be paid for better than its smaller counterpart, but if it ascends to true greatness, get ready for the ultimate reward! </br></br>Anything else you'd like to know?",
+      "3": "Medium explosive tomato. It's grown up now, so neglect it, and it'll blast more neighbors than ever. It'll be paid for better than its smaller counterpart, but if it ascends to true greatness, get ready for the ultimate reward! </br></br>Anything else you'd like to know?",
       "4": "Wow, we have a real senior tomato here! Hurry, send it my way before it blows up your farm! I'll pay top dollar!</br></br>Anything else you'd like to know?",
       "5": "Dead sprout of explosive tomato. Clearly, someone has forsaken their botanical duties. I won't pay for this. </br></br>Anything else you'd like to know?",
       "6": "BOOM! Junior explosive tomato explodes! In the future, be careful, because it affects other plants. </br></br>Anything else you'd like to know?",
@@ -53,9 +53,9 @@
     "onion": {
       "0": "A handful of soil with an unknown seed. It's interesting to see what will grow from it. Water it and find it out. </br></br>Anything else you'd like to know?",
       "1": "Doctor onion sprout. Keep taking care of it, and the sprout will start getting smarter. Resist the urge to unearth it now, for I do not pay for the sprouts.</br></br>Anything else you'd like to know?",
-      "2": "Tiny onion doctor!  Wise beyond its years!  I'm sure when it grows up, it'll be able to help a lot of folks.  I will pay very little for it, so let it grow a little. </br></br>Anything else you'd like to know?",
-      "3": "Teenage onion doctor. Wow, he made it to intern. He needs to study a lot and diligently to become a real doctor. It'll be paid for better than its smaller counterpart, but if it ascends to true greatness, get ready for the ultimate reward! </br></br>Anything else you'd like to know?",
-      "4": "Mature onion doctor. It can't wait to lend a leafy hand to those in need. Waste no time and send it my way — I'll pay you the highest price imaginable.</br></br>Anything else you'd like to know?",
+      "2": "Tiny onion doctor!  Wise beyond its years!  He's holding off pests on the neighboring plot, but watch out - if he falls, the neighbouring plot gets infected.  I will pay very little for it, so let it grow a little. </br></br>Anything else you'd like to know?",
+      "3": "Teenage onion doctor. Wow, he made it to intern. He's holding off pests on multiple plots, but watch out – if he falls, a couple of plots get infected. It'll be paid for better than its smaller counterpart, but if it ascends to true greatness, get ready for the ultimate reward! </br></br>Anything else you'd like to know?",
+      "4": "Mature onion doctor. It can't wait to lend a leafy hand to those in need. He's the Guardian of many neighboring plots, fending off pesky parasites. But beware, if he falls, prepare for a contagion across a bunch of plots! Waste no time and send it my way — I'll pay you the highest price imaginable.</br></br>Anything else you'd like to know?",
       "5": "Dead sprout of onion doctor. Clearly, someone has forsaken their botanical duties. I won't pay for this. </br></br>Anything else you'd like to know?",
       "6": "Ghost of onion doctor. It could have cured so many! Keep a closer eye on the plants, otherwise they will continue to die. </br></br>Anything else you'd like to know?",
       "7": "BOOM! Mature onion doctor explodes! Note to self: watch out for those explosive tomatoes next time! </br></br>Anything else you'd like to know?"
