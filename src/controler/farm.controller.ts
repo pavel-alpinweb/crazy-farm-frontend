@@ -50,9 +50,9 @@ export default class FarmController extends AbstractController {
         Router.push("/#/");
       } else if (userToken) {
         $loader.show();
+        this.methods.connectToWebSocketServer(userToken);
         SoundFarmComposition.init();
         await farmAssetsLoader.load();
-        await this.methods.connectToWebSocketServer(userToken);
         // test farm rendering
         // const state = await updateTutorial("1-0", this.farmModel.tool);
         // this.farmModel.setFarmState(state);
