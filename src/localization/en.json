@@ -10,7 +10,7 @@
   "byEmail": "Sign up via email",
   "loginByEmail": "Sign in via email",
   "signIn": "Sign up",
-  "restart": "Do you want to start the game over? All plants from the plot will be removed, and your coin count will reset to its initial amount. The page will reload after a short time.",
+  "restart": "Do you want to start the game over? All plants from the plot will be removed, and your coin count will reset to its initial amount.",
   "exit": "Do you want to leave your farm? You will return to the start screen.",
   "tools": {
     "shovel": "This is a shovel. A tool of many talents... It's a pity that you only need it to dig up plants. By the way, when you dig them up, I will immediately pay you for them. Dead plants and sprouts, however, will not be paid for. </br></br> Anything else you'd like to know?",
@@ -24,7 +24,7 @@
     "close": "Everything is clear",
     "exit": "Leave the farm",
     "restart": "Start a new farm",
-    "no-close": "No, I want to stay here"
+    "no-close": "No, I don't want"
   },
   "almanacDefault": "Hello! What can I help you with?",
   "character": {
