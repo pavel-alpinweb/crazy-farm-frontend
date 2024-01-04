@@ -129,4 +129,31 @@ describe("Almanac Model:", () => {
           currentActions: [],
       });
   });
+
+  test("method: setAlmanacDataForCharacter", () => {
+      // open almanac modal
+      almanac.toggleAlmanac();
+
+      almanac.activateAlmanac();
+
+      almanac.setAlmanacDataForCharacter(tutorialState[2].cell);
+
+      expect(almanac.state).toEqual({
+          isActive: false,
+          isShow: true,
+          currentTextKey: "character.potato.0",
+          currentActions: ["show", "close"],
+      });
+
+      almanac.activateAlmanac();
+
+      almanac.setAlmanacDataForCharacter(tutorialState[0].cell);
+
+      expect(almanac.state).toEqual({
+          isActive: false,
+          isShow: true,
+          currentTextKey: "character.empty",
+          currentActions: ["show", "close"],
+      });
+  });
 });
