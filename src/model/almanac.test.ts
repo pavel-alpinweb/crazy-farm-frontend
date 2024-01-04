@@ -77,4 +77,14 @@ describe("Almanac Model:", () => {
             currentActions: ["show", "close"],
         });
     });
+
+    test("method: showExitMessage", () => {
+        almanac.showExitMessage();
+        expect(almanac.state).toEqual({
+            isActive: false,
+            isShow: true,
+            currentTextKey: 'exit',
+            currentActions: ["exit", "no-close"],
+        });
+    });
 });
