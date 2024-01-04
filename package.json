@@ -1,6 +1,6 @@
 {
   "name": "crazy-farm-frontend",
-  "version": "0.1.0",
+  "version": "1.0.3",
   "description": "Frontend for HTML5 game. Crazy farm simulator",
   "main": "main.js",
   "scripts": {
