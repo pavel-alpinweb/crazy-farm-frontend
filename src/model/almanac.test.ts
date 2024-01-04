@@ -97,4 +97,36 @@ describe("Almanac Model:", () => {
       currentActions: ["restart", "no-close"],
     });
   });
+
+  test("method: activateAlmanac", () => {
+      // open almanac modal
+      almanac.toggleAlmanac();
+
+      almanac.activateAlmanac();
+
+      expect(almanac.state).toEqual({
+          isActive: true,
+          isShow: false,
+          currentTextKey: "almanacDefault",
+          currentActions: ["show", "close"],
+      });
+  });
+
+  test("method: deactivateAlmanac", () => {
+      almanac.setAlmanacState({
+          isActive: true,
+          isShow: false,
+          currentTextKey: "almanacDefault",
+          currentActions: ["show", "close"],
+      });
+
+      almanac.deactivateAlmanac();
+
+      expect(almanac.state).toEqual({
+          isActive: false,
+          isShow: false,
+          currentTextKey: "",
+          currentActions: [],
+      });
+  });
 });
