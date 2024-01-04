@@ -156,4 +156,20 @@ describe("Almanac Model:", () => {
           currentActions: ["show", "close"],
       });
   });
+
+  test("method: setAlmanacDataForTools", () => {
+      // open almanac modal
+      almanac.toggleAlmanac();
+
+      almanac.activateAlmanac();
+
+      almanac.setAlmanacDataForTools('shovel');
+
+      expect(almanac.state).toEqual({
+          isActive: false,
+          isShow: true,
+          currentTextKey: "tools.shovel",
+          currentActions: ["show", "close"],
+      });
+  });
 });
