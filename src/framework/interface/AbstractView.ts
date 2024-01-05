@@ -20,7 +20,7 @@ declare global {
 }
 export abstract class AbstractView {
   protected renderedElement: Element | null = null;
-  protected events: Events = {};
+  events: Events = {};
   public emits: Emits = {};
   private render(): Element | null {
     const newElement = document.createElement("div");

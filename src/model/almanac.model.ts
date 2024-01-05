@@ -41,6 +41,10 @@ export class AlmanacModel {
     return this.tutorialState;
   }
 
+  public setAlmanacState(state: AlmanacState): void {
+    this.almanacState = state;
+  }
+
   public toggleAlmanac(): void {
     this.almanacState.isShow = !this.almanacState.isShow;
     if (this.tutorial.isActive && this.tutorial.currentStep < 7) {

@@ -7,7 +7,7 @@ interface TutorialStep {
     needTools: Array<tool>;
 }
 
-const tutorialState: Array<TutorialStep> = [
+export const tutorialState: Array<TutorialStep> = [
     // шаг 0, его мы пропускаем
     {
         cell: {

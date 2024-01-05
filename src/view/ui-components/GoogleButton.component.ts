@@ -1,5 +1,4 @@
 import { AbstractView } from "../../framework/interface/AbstractView";
-import { GOOGLE_CLIENT_ID } from "../../utils/constants";
 import Cookies from "js-cookie";
 
 interface Props {
@@ -21,7 +20,7 @@ export class GoogleButtonComponent extends AbstractView {
   protected state: State = {
     size: "large",
     theme: "outline",
-    clientId: GOOGLE_CLIENT_ID,
+    clientId: <string>process.env.GOOGLE_CLIENT_ID,
   };
 
   constructor(props: Props) {
