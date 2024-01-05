@@ -40,7 +40,6 @@ export class GoogleButtonComponent extends AbstractView {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     if (typeof google !== 'undefined') {
-      console.log(this.state.clientId);
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       google?.accounts?.id?.initialize({
